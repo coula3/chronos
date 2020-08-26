@@ -7,8 +7,32 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Chronos</title>
 </head>
-<body>
-    <h1 id="test">Welcome!</h1>
-    <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+<body >
+    <div class="wrapper">
+        <h1 id="app-name">Chronos</h1>
+        <div id="main-container" style="margin-bottom: 150px;">
+            <div id="div-signup-signin">
+                <div id="div-signin" style="padding: 5px; float:right; clear:both">
+                    <form>
+                        <input class="input" type="text" name="sign-in" id="sign-up" placeholder="email">
+                        <button class="button" id="btn-sign-in">Sign In</button>
+                    </form>
+                </div>
+                <div id="div-signup" style="padding: 5px; float:right; clear: both;">
+                    <form>
+                        <input class="input" type="text" name="first-name" id="first-name" placeholder="first name">
+                        <input class="input" type="text" name="last-name" id="last-name" placeholder="last name">
+                        <input class="input" type="text" name="password" id="password" placeholder="password">
+                        <input class="input" type="text" name="password-confirmation" id="email confirmation" placeholder="email confirmation">
+                        <button class="button" id="btn-create-user">Create User</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer style="clear: both;">
+            <small>&copy; 2020 <span>Chronos</span></small>
+        </footer>
+        <script type="application/javascript" src="src/index.js" charset="UTF-8"></script>
+    </div>
 </body>
 </html>
