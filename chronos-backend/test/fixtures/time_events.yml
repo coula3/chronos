@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2020-08-26 12:04:49
+  time_in: 2020-08-26 12:04:49
+  time_out: 2020-08-26 12:04:49
+  break_start: 2020-08-26 12:04:49
+  break_end: 2020-08-26 12:04:49
+  employee: one
+
+two:
+  date: 2020-08-26 12:04:49
+  time_in: 2020-08-26 12:04:49
+  time_out: 2020-08-26 12:04:49
+  break_start: 2020-08-26 12:04:49
+  break_end: 2020-08-26 12:04:49
+  employee: two

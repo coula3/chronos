@@ -1,0 +1,2 @@
+class TimeEventsController < ApplicationController
+end
