@@ -1,9 +1,16 @@
-document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(() => {
-        const h1 = document.getElementById("test")
-        h1.style.color = "green"
-        const p = document.createElement("p")
-        p.innerText = "Javascript is awesome!"
-        h1.after(p)
-    }, 3000)
+const CHRONOS_URL = "http://localhost:3000";
+const buttonSignIn = document.getElementById("btn-sign-in");
+
+buttonSignIn.addEventListener("click", (e) => {
+    e.preventDefault();
+    getEmployeeData();
 })
+
+
+function getEmployeeData() {
+    email = document.getElementById("sign-in").value;
+
+    fetch(`${CHRONOS_URL}/employees/${email}`)
+    .then(response => response.json())
+    .then(json => console.log(json))
+}
