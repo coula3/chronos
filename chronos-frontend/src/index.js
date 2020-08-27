@@ -12,5 +12,13 @@ function getEmployeeData() {
 
     fetch(`${CHRONOS_URL}/employees/${email}`)
     .then(response => response.json())
-    .then(json => console.log(json))
+    .then(json => {
+        renderEmployeeData(json);
+    })
+}
+
+function renderEmployeeData(employeeObject) {
+    const h2 = document.createElement("h2");
+    h2.innerText = `Hi ${employeeObject.first_name}!`
+    document.getElementById("div-signup-signin").after(h2)
 }
