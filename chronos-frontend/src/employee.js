@@ -1,15 +1,20 @@
 function getEmployeeData() {
-    email = document.getElementById("sign-in").value;
+    const inputSignIn = document.getElementById("sign-in")
+    
+    if(inputSignIn.value !== "") {
 
-    fetch(`${CHRONOS_URL}/employees/${email}`)
-    .then(response => response.json())
-    .then(json => {
-        if(!json.message){
-        renderEmployeeData(json);
-        } else {
-            displayFailedSignInMesaage(json)
-        }
-    })
+        fetch(`${CHRONOS_URL}/employees/${inputSignIn.value}`)
+        .then(response => response.json())
+        .then(json => {
+            if(!json.message) {
+                renderEmployeeData(json);
+            } else {
+                displayFailedSignInMesaage(json)
+            }
+        })
+    } else {
+        console.log("Please provide a valid email to sign in")
+    }
 }
 
 function renderEmployeeData(employeeObject) {
