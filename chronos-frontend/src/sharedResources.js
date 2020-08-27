@@ -15,3 +15,11 @@ function appendSignInMessagesSpan(spanElement) {
         document.getElementById("email-message").remove()
     }, 3000)
 }
+
+function getDate(date) {
+    return date.slice(0, 10)
+}
+
+function getTime(time) {
+    return time.slice(11, 19)
+}

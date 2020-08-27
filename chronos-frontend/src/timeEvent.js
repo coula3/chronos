@@ -8,11 +8,11 @@ function renderEmployeeTimeEvents(employeeObject) {
         const paragraphOfEvents = `
         <p>
             <span style="margin: 0px 0px 0px 10px;">${timeEvents.indexOf(event) + 1}</span>
-            <span style="margin: 0px 10px 0px 10px">${event.date ? event.date.slice(0, 10) : ""}</span>
-            <span style="margin: 0px 10px 0px 10px">${event.time_in ? event.time_in.slice(11, 19) : ""}</span>
-            <span style="margin: 0px 10px 0px 10px">${event.time_out ? event.time_out.slice(11, 19) : ""}</span>
-            <span style="margin: 0px 10px 0px 10px">${event.break_start ? event.break_start.slice(11, 19) : ""}</span>
-            <span style="margin: 0px 10px 0px 10px">${event.break_end ? event.break_end.slice(11, 19) : ""}</span>
+            <span style="margin: 0px 10px 0px 10px">${event.date ? getDate(event.date) : ""}</span>
+            <span style="margin: 0px 10px 0px 10px">${event.time_in ? getTime(event.time_in) : ""}</span>
+            <span style="margin: 0px 10px 0px 10px">${event.time_out ? getTime(event.time_out) : ""}</span>
+            <span style="margin: 0px 10px 0px 10px">${event.break_start ? getTime(event.break_start) : ""}</span>
+            <span style="margin: 0px 10px 0px 10px">${event.break_end ? getTime(event.break_end) : ""}</span>
         </p>`;
    
         divTimeEvents.innerHTML += paragraphOfEvents;
