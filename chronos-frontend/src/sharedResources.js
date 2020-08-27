@@ -1,8 +1,10 @@
 function displayFailedSignInMesaage(message) {
+    if(document.getElementById("email-message") === null) {
     const span = document.createElement("span");
     span.innerText = message;
 
     appendSignInMessagesSpan(span);
+    }
 }
 
 function appendSignInMessagesSpan(spanElement) {
