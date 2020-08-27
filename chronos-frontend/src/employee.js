@@ -9,11 +9,12 @@ function getEmployeeData() {
             if(!json.message) {
                 renderEmployeeData(json);
             } else {
-                displayFailedSignInMesaage(json)
+                displayFailedSignInMesaage(json.message)
             }
         })
     } else {
-        console.log("Please provide a valid email to sign in")
+        const message = "Please provide a valid email to sign in";
+        displayFailedSignInMesaage(message)
     }
 }
 
@@ -30,14 +31,19 @@ function renderEmployeeData(employeeObject) {
     renderEmployeeTimeEvents(employeeObject)
 }
 
-function displayFailedSignInMesaage(json) {
+function displayFailedSignInMesaage(message) {
     const span = document.createElement("span");
-    span.innerText = json.message;
-    document.getElementById("div-signin").appendChild(span);
-    span.style.color = "red";
-    span.style.float = "right";
-    span.style.clear = "both";
-    span.setAttribute("id", "email-message");
+    span.innerText = message;
+
+    appendSignInMessagesSpan(span);
+}
+
+function appendSignInMessagesSpan(spanElement) {
+    document.getElementById("div-signin").appendChild(spanElement);
+    spanElement.style.color = "red";
+    spanElement.style.float = "right";
+    spanElement.style.clear = "both";
+    spanElement.setAttribute("id", "email-message");
     setTimeout(() => {
         document.getElementById("email-message").remove()
     }, 3000)
