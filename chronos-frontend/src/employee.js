@@ -4,7 +4,11 @@ function getEmployeeData() {
     fetch(`${CHRONOS_URL}/employees/${email}`)
     .then(response => response.json())
     .then(json => {
+        if(!json.message){
         renderEmployeeData(json);
+        } else {
+            displayFailedSignInMesaage(json)
+        }
     })
 }
 
@@ -19,4 +23,17 @@ function renderEmployeeData(employeeObject) {
     // document.querySelector("#employee-name").getAttribute("employee-data-id")
 
     renderEmployeeTimeEvents(employeeObject)
+}
+
+function displayFailedSignInMesaage(json) {
+    const span = document.createElement("span");
+    span.innerText = json.message;
+    document.getElementById("div-signin").appendChild(span);
+    span.style.color = "red";
+    span.style.float = "right";
+    span.style.clear = "both";
+    span.setAttribute("id", "email-message");
+    setTimeout(() => {
+        document.getElementById("email-message").remove()
+    }, 3000)
 }
