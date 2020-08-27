@@ -12,4 +12,14 @@ class EmployeesController < ApplicationController
         employees = Employee.all
         render json: employees
     end
+
+    def create
+        employee = Employee.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+        
+        if employee.save
+            render json: employee
+        else
+            render json: {message: employee.errors.full_messages}
+        end
+    end
 end
