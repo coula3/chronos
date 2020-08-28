@@ -26,6 +26,16 @@ function getTime(time) {
     return time.slice(11, 19)
 }
 
+function getShift(timeIn){
+    if((parseInt(timeIn.slice(0,2)) >= 5) && (parseInt(timeIn.slice(0,2)) < 12)){
+        return "A"
+    } else if((parseInt(timeIn.slice(0,2)) >= 12) && (parseInt(timeIn.slice(0,2)) < 18)) {
+        return "B"
+    } if((parseInt(timeIn.slice(0,2)) >= 18) && (parseInt(timeIn.slice(0,2)) <= 21)) {
+        return "C"
+    }
+}
+
 function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out")
