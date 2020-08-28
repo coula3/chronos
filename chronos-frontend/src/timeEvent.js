@@ -76,6 +76,34 @@ function createTimeEvent(e) {
     }
 }
 
+function takeBreakOrResumeWork(e) {
+    const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
+
+    if(e.target.innerText == "Take Break") {
+        e.target.innerText = "Resume";
+        
+        const bodyObject = {
+            id: timeEventId,
+            break_start: Date().slice(0, 24)
+        }
+
+        const configObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(bodyObject)
+        }
+
+        fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
+        .then(response => response.json())
+        .then(timeEvent => {
+            console.log(timeEvent);
+        })
+    }
+}
+
 function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.time_events;
     const divTimeEvents = document.createElement("div");
