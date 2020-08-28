@@ -40,7 +40,7 @@ function createTimeEvent() {
     .then(response => response.json())
     .then(timeEvent => {
         const newTimeEvent = new TimeEvent(timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
-        console.log(newTimeEvent);
+        renderNewTimeEvent(newTimeEvent);
     })
 }
 
@@ -64,4 +64,20 @@ function renderEmployeeTimeEvents(employeeObject) {
    
         divTimeEvents.innerHTML += paragraphOfEvents;
     })
+}
+
+function renderNewTimeEvent(event) {
+    const divTimeEvent = document.createElement("div");
+    const spansOfEvent = `
+        <span style="margin: 0px 0px 0px 10px; color:blue">current</span>
+        <span style="margin: 0px 10px 0px 10px;">${event.date ? event.date.slice(0, 10) : ""}</span>
+        <span id="time-in" style="margin: 0px 10px 0px 10px">${event.time_in ? getTime(event.time_in) : ""}</span>
+        <span id="time-out" style="margin: 0px 10px 0px 10px">${event.time_out ? getTime(event.time_out) : ""}</span>
+        <span id="break-start" style="margin: 0px 10px 0px 10px">${event.break_start ? getTime(event.break_start) : ""}</span>
+        <span id="break-end" style="clear:right; margin: 0px 10px 0px 10px">${event.break_end ? getTime(event.break_end) : ""}</span>
+        
+        <button style="float:right">Take Break</button>`;
+    
+    divTimeEvent.innerHTML += spansOfEvent
+    document.getElementById("main-container").appendChild(divTimeEvent)
 }
