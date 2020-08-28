@@ -10,16 +10,32 @@ class TimeEventsController < ApplicationController
         if time_event.save
             render json: time_event
         else
-            render json: {message: "Clock In Failure"}
+            render json: {message: "Clock In unsuccessful"}
         end
     end
 
     def update
         time_event = TimeEvent.find_by(id: params[:id])
-        if time_event.update(time_out: params[:time_out])
-            render json: time_event
-        else
-            render json: {message: "update unsuccessful"}
+        message = {message: time_event.errors.full_messages}
+
+        if params.keys.include?("time_out")
+            if time_event.update(time_out: params[:time_out])
+                render json: time_event
+            else
+                render json: message
+            end
+        elsif params.keys.include?("break_start")
+            if time_event.update(break_start: params[:break_start])
+                render json: time_event
+            else
+                render json: message
+            end
+        elsif params.keys.include?("break_end")
+            if time_event.update(break_end: params[:break_end])
+                render json: time_event
+            else
+                render json: message
+            end
         end
     end
 end
