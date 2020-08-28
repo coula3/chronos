@@ -64,9 +64,10 @@ function renderEmployeeData(employeeObject) {
     h2.innerText = `Hi ${employeeObject.first_name}!`
     h2.setAttribute("id", "employee-name")
     h2.setAttribute("employee-data-id", employeeObject.id)
+    h2.style.paddingLeft = "15px"
     document.getElementById("main-container").appendChild(h2)
+    h2.style.paddingTop = "50px"
     h2.style.clear = "both";
-    h2.style.paddingTop = "25px"
 
     appendButtonClockInOut();
     renderEmployeeTimeEvents(employeeObject);
