@@ -26,9 +26,9 @@ function getTime(time) {
     return time.slice(11, 19)
 }
 
-function createButtonClockInOut() {
-    const buttonClockInOut = document.createElement("button");
+function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
+    buttonClockInOut.setAttribute("id", "btn-clock-in-out")
     const divClockInOut = document.createElement("div");
     divClockInOut.style.float = "right";
     divClockInOut.style.marginBottom = "25px"

@@ -9,10 +9,13 @@ class TimeEvent {
     }
 }
 
+const buttonClockInOut = document.createElement("button");
+
 function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.time_events;
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
+    divTimeEvents.style.clear = "both"
     document.getElementById("main-container").appendChild(divTimeEvents);
     
     timeEvents.forEach((event) => {

@@ -68,6 +68,6 @@ function renderEmployeeData(employeeObject) {
     h2.style.clear = "both";
     h2.style.paddingTop = "25px"
 
-    createButtonClockInOut();
+    appendButtonClockInOut();
     renderEmployeeTimeEvents(employeeObject);
 }
