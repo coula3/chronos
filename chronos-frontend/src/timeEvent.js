@@ -52,19 +52,21 @@ function renderEmployeeTimeEvents(employeeObject) {
     divTimeEvents.style.clear = "both"
     document.getElementById("main-container").appendChild(divTimeEvents);
     
-    const spanLabels = `
-        <p style="padding-left:60px">
-            <strong><span style="margin: 0px 0px 0px 20px;">Date</span></strong>
-            <strong><span style="margin: 0px 0px 0px 95px;">Time In</span></strong>
-            <strong><span style="margin: 0px 0px 0px 50px;">Time Out</span></strong>
-            <strong><span style="margin: 0px 0px 0px 45px;">Break Start</span></strong>
-            <strong><span style="margin: 0px 0px 0px 25px;">Break End</span></strong>
-            <strong><span style="margin: 0px 0px 0px 25px;">Shift</span></strong>
-            <strong><span style="margin: 0px 0px 0px 25px;">Hours</span></strong>
-        </p>
-    `;
+    if(employeeObject.time_events.length > 0) {
+        const spanLabels = `
+            <p style="padding-left:60px">
+                <strong><span style="margin: 0px 0px 0px 20px;">Date</span></strong>
+                <strong><span style="margin: 0px 0px 0px 95px;">Time In</span></strong>
+                <strong><span style="margin: 0px 0px 0px 50px;">Time Out</span></strong>
+                <strong><span style="margin: 0px 0px 0px 45px;">Break Start</span></strong>
+                <strong><span style="margin: 0px 0px 0px 25px;">Break End</span></strong>
+                <strong><span style="margin: 0px 0px 0px 25px;">Shift</span></strong>
+                <strong><span style="margin: 0px 0px 0px 25px;">Hours</span></strong>
+            </p>
+        `;
 
-    divTimeEvents.innerHTML += spanLabels;
+        divTimeEvents.innerHTML += spanLabels;
+    }
 
     timeEvents.forEach((event) => {
         const paragraphOfEvents = `
