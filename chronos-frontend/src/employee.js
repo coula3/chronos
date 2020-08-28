@@ -7,6 +7,38 @@ class Employee {
     }
 }
 
+const addEmployeeForm = document.getElementById("form-create-employee")
+
+addEmployeeForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+    createEmployee();
+})
+
+function createEmployee() {
+    const firstName = document.getElementById("first-name").value;
+    const lastName = document.getElementById("last-name").value;
+    const email = document.getElementById("email").value;
+
+    const bodyObject = {first_name: firstName, last_name: lastName, email: email}
+
+    const configObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(bodyObject)
+    }
+
+    fetch(`${CHRONOS_URL}/employees`, configObj)
+    .then(response => response.json())
+    .then(employee => {
+        // console.log(employee);
+        const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
+        renderEmployeeData(employee);
+    })
+}
+
 function getEmployeeData() {
     const inputSignIn = document.getElementById("sign-in")
     
