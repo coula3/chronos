@@ -12,41 +12,67 @@ class TimeEvent {
 
 const buttonClockInOut = document.createElement("button");
 
-buttonClockInOut.addEventListener("click", () => {
-    createTimeEvent();
+buttonClockInOut.addEventListener("click", (e) => {
+    createTimeEvent(e);
     if(document.getElementById("p-new-user-msg") !== null){
         const p = document.getElementById("p-new-user-msg")
         p.remove()
     }
 })
 
-function createTimeEvent() {
+function createTimeEvent(e) {
     const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
+    if(e.target.innerText == "Clock In") {
+        e.target.innerText = "Clock Out";
     
-    const bodyObject = {
-        date: Date().slice(0, 24),
-        time_in: Date().slice(0, 24),
-        time_out: null,
-        break_start: null,
-        break_end: null,
-        employee_id: employeeId
-    }
+        const bodyObject = {
+            date: Date().slice(0, 24),
+            time_in: Date().slice(0, 24),
+            time_out: null,
+            break_start: null,
+            break_end: null,
+            employee_id: employeeId
+        }
 
-    const configObj = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(bodyObject)
-    }
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(bodyObject)
+        }
 
-    fetch(`${CHRONOS_URL}/time_events`, configObj)
-    .then(response => response.json())
-    .then(timeEvent => {
-        const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
-        renderNewTimeEvent(newTimeEvent);
-    })
+        fetch(`${CHRONOS_URL}/time_events`, configObj)
+        .then(response => response.json())
+        .then(timeEvent => {
+            const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            renderNewTimeEvent(newTimeEvent);
+        })
+    } else {
+        const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
+        const bodyObject = {
+            id: timeEventId,
+            time_out: Date().slice(0, 24)
+        }
+
+        const configObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(bodyObject)
+        }
+
+        fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
+        .then(response => response.json())
+        .then(timeEvent => {
+            e.target.innerText = "Clock In";
+            updateTimeEvent(timeEvent)
+        })
+            
+    }
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
@@ -103,16 +129,22 @@ function renderNewTimeEvent(event) {
     divTimeEvent.style.marginBottom = "25px"
     divTimeEvent.style.paddingLeft = "30px"
     divTimeEvent.setAttribute("event-data-id", event.id)
+    divTimeEvent.setAttribute("id", "div-time-event")
     const spansOfEvent = `
         <span style="margin: 0px 15px 0px 10px; color:blue;">new</span>
-        <span style="margin: 0px 25px 0px 25px;">${event.date ? event.date.slice(0, 10) : ""}</span>
-        <span id="time-in" style="margin: 0px 25px 0px 25px">${event.time_in ? getTime(event.time_in) : ""}</span>
-        <span id="time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
-        <span id="break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
-        <span id="break-end" style="clear:right; margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
+        <span id="span-event-date" style="margin: 0px 25px 0px 25px;">${event.date ? event.date.slice(0, 10) : ""}</span>
+        <span id="span-event-time-in" style="margin: 0px 25px 0px 25px">${event.time_in ? getTime(event.time_in) : ""}</span>
+        <span id="span-event-time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
+        <span id="span-event-break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
+        <span id="span-event-break-end" style="clear:right; margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
         
         <button id="btn-break-pause" style="float:right; width:100px;" disabled>Take Break</button>`;
     
     divTimeEvent.innerHTML += spansOfEvent
     document.getElementById("main-container").appendChild(divTimeEvent)
+}
+
+function updateTimeEvent(event) {
+    spanEventTimeOut = document.getElementById("span-event-time-out");
+    spanEventTimeOut.innerText = getTime(event.time_out)
 }
