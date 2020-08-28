@@ -1,3 +1,14 @@
+class TimeEvent {
+    constructor(date, time_in, time_out, break_start, break_end, employee_id){
+        this.date = date
+        this.timeIn = time_in
+        this.timeOut = time_out
+        this.breakStart = break_start
+        this.breakEnd = break_end
+        this.employeeId = employee_id
+    }
+}
+
 function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.time_events;
     const divTimeEvents = document.createElement("div");
