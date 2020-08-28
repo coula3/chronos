@@ -41,6 +41,7 @@ function appendButtonClockInOut() {
     buttonClockInOut.setAttribute("id", "btn-clock-in-out")
     buttonClockInOut.style.width = "100px"
     const divClockInOut = document.createElement("div");
+    divClockInOut.setAttribute("id", "div-clock-in-btn")
     divClockInOut.style.float = "right";
     divClockInOut.style.marginBottom = "25px"
     divClockInOut.appendChild(buttonClockInOut);
