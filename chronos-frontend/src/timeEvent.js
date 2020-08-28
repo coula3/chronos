@@ -52,6 +52,7 @@ function createTimeEvent(e) {
         })
     } else {
         const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
+
         const bodyObject = {
             id: timeEventId,
             time_out: Date().slice(0, 24)
@@ -146,6 +147,9 @@ function renderNewTimeEvent(event) {
     setTimeout(()=>{
         buttonBreakResume = document.getElementById("btn-break-resume");
         buttonBreakResume.disabled = false;
+        buttonBreakResume.addEventListener("click", (e) => {
+            takeBreakOrResumeWork(e);
+        })
     }, 5000)
 }
 
