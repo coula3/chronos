@@ -11,6 +11,7 @@ class TimeEvent {
 }
 
 const buttonClockInOut = document.createElement("button");
+let buttonBreakResume;
 
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
@@ -71,7 +72,6 @@ function createTimeEvent(e) {
             e.target.innerText = "Clock In";
             updateTimeEvent(timeEvent)
         })
-            
     }
 }
 
@@ -138,10 +138,15 @@ function renderNewTimeEvent(event) {
         <span id="span-event-break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
         <span id="span-event-break-end" style="clear:right; margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
         
-        <button id="btn-break-pause" style="float:right; width:100px;" disabled>Take Break</button>`;
+        <button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button>`;
     
     divTimeEvent.innerHTML += spansOfEvent
     document.getElementById("main-container").appendChild(divTimeEvent)
+
+    setTimeout(()=>{
+        buttonBreakResume = document.getElementById("btn-break-resume");
+        buttonBreakResume.disabled = false;
+    }, 5000)
 }
 
 function updateTimeEvent(event) {
