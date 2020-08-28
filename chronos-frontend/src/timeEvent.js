@@ -38,7 +38,10 @@ function createTimeEvent() {
 
     fetch(`${CHRONOS_URL}/time_events`, configObj)
     .then(response => response.json())
-    .then(timeEvent => console.log(timeEvent))
+    .then(timeEvent => {
+        const newTimeEvent = new TimeEvent(timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+        console.log(newTimeEvent);
+    })
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
