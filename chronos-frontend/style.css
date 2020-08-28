@@ -1,4 +1,4 @@
-.wrapper { background: #F0FFFF;
+.wrapper { background: #e6ffff;
     -moz-box-shadow: 0 0 10px rgba(0,0,0);
     -webkit-box-shadow: 0 0 10px rgba(0,0,0);
     box-shadow: 0 0 10px rgba(0,0,0);
@@ -6,6 +6,7 @@
     max-width: 1080px;
     padding: 2.25%;
     width: 85%;
+    height: 800px;
 }
 
 #app-name {
