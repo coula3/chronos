@@ -11,6 +11,36 @@ class TimeEvent {
 
 const buttonClockInOut = document.createElement("button");
 
+buttonClockInOut.addEventListener("click", () => {
+    createTimeEvent();
+})
+
+function createTimeEvent() {
+    const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
+    
+    const bodyObject = {
+        date: Date().slice(0, 24),
+        time_in: Date().slice(0, 24),
+        time_out: null,
+        break_start: null,
+        break_end: null,
+        employee_id: employeeId
+    }
+
+    const configObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(bodyObject)
+    }
+
+    fetch(`${CHRONOS_URL}/time_events`, configObj)
+    .then(response => response.json())
+    .then(timeEvent => console.log(timeEvent))
+}
+
 function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.time_events;
     const divTimeEvents = document.createElement("div");
