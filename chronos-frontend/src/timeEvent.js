@@ -13,6 +13,10 @@ const buttonClockInOut = document.createElement("button");
 
 buttonClockInOut.addEventListener("click", () => {
     createTimeEvent();
+    if(document.getElementById("p-new-user-msg") !== null){
+        const p = document.getElementById("p-new-user-msg")
+        p.remove()
+    }
 })
 
 function createTimeEvent() {
@@ -66,6 +70,13 @@ function renderEmployeeTimeEvents(employeeObject) {
         `;
 
         divTimeEvents.innerHTML += spanLabels;
+    } else {
+        const p = document.createElement("p");
+        p.innerText = "Welcome and let's get clocking...!";
+        p.setAttribute("id", "p-new-user-msg")
+        p.style.cssText = "text-align:center; color:blue"
+        const h2 = document.getElementById("employee-name");
+        h2.after(p)
     }
 
     timeEvents.forEach((event) => {
