@@ -25,3 +25,14 @@ function getDate(date) {
 function getTime(time) {
     return time.slice(11, 19)
 }
+
+function createButtonClockInOut() {
+    const buttonClockInOut = document.createElement("button");
+    buttonClockInOut.innerText = "Clock In";
+    const divClockInOut = document.createElement("div");
+    divClockInOut.style.float = "right";
+    divClockInOut.style.marginBottom = "25px"
+    divClockInOut.appendChild(buttonClockInOut);
+    const h2 = document.getElementById("employee-name");
+    h2.after(divClockInOut);
+}

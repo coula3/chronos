@@ -67,7 +67,7 @@ function renderEmployeeData(employeeObject) {
     document.getElementById("main-container").appendChild(h2)
     h2.style.clear = "both";
     h2.style.paddingTop = "25px"
-    // document.querySelector("#employee-name").getAttribute("employee-data-id")
 
-    renderEmployeeTimeEvents(employeeObject)
+    createButtonClockInOut();
+    renderEmployeeTimeEvents(employeeObject);
 }
