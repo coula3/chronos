@@ -1,5 +1,6 @@
 class TimeEvent {
-    constructor(date, time_in, time_out, break_start, break_end, employee_id){
+    constructor(id, date, time_in, time_out, break_start, break_end, employee_id){
+        this.id = id
         this.date = date
         this.time_in = time_in
         this.time_out = time_out
@@ -43,7 +44,7 @@ function createTimeEvent() {
     fetch(`${CHRONOS_URL}/time_events`, configObj)
     .then(response => response.json())
     .then(timeEvent => {
-        const newTimeEvent = new TimeEvent(timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+        const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
         renderNewTimeEvent(newTimeEvent);
     })
 }
@@ -101,6 +102,7 @@ function renderNewTimeEvent(event) {
     divTimeEvent.style.marginTop = "50px"
     divTimeEvent.style.marginBottom = "25px"
     divTimeEvent.style.paddingLeft = "30px"
+    divTimeEvent.setAttribute("event-data-id", event.id)
     const spansOfEvent = `
         <span style="margin: 0px 15px 0px 10px; color:blue;">new</span>
         <span style="margin: 0px 25px 0px 25px;">${event.date ? event.date.slice(0, 10) : ""}</span>
