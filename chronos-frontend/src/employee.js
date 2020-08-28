@@ -1,8 +1,8 @@
 class Employee {
     constructor(id, first_name, last_name, email) {
         this.id = id
-        this.firstName = first_name
-        this.lastName = last_name
+        this.first_name = first_name
+        this.last_name = last_name
         this.email = email
     }
 }
@@ -33,9 +33,8 @@ function createEmployee() {
     fetch(`${CHRONOS_URL}/employees`, configObj)
     .then(response => response.json())
     .then(employee => {
-        // console.log(employee);
         const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
-        renderEmployeeData(employee);
+        renderEmployeeData(newEmployee);
     })
 }
 
@@ -61,7 +60,7 @@ function getEmployeeData() {
 
 function renderEmployeeData(employeeObject) {
     const h2 = document.createElement("h2");
-    h2.innerText = `Hi ${employeeObject.first_name}!`
+    h2.innerText = `Hi ${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}!`
     h2.setAttribute("id", "employee-name")
     h2.setAttribute("employee-data-id", employeeObject.id)
     h2.style.paddingLeft = "15px"

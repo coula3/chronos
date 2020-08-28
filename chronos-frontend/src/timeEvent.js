@@ -1,11 +1,11 @@
 class TimeEvent {
     constructor(date, time_in, time_out, break_start, break_end, employee_id){
         this.date = date
-        this.timeIn = time_in
-        this.timeOut = time_out
-        this.breakStart = break_start
-        this.breakEnd = break_end
-        this.employeeId = employee_id
+        this.time_in = time_in
+        this.time_out = time_out
+        this.break_start = break_start
+        this.break_end = break_end
+        this.employee_id = employee_id
     }
 }
 
