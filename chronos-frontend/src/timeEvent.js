@@ -130,6 +130,7 @@ function takeBreakOrResumeWork(e) {
 
 function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.time_events;
+
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
     divTimeEvents.style.cssText = "padding-left:30px; clear:both";
@@ -168,7 +169,7 @@ function renderEmployeeTimeEvents(employeeObject) {
             <span style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
             <span style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
             <span style="margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
-            <span style="margin: 0px 25px 0px 25px"></span>
+            <span style="margin: 0px 25px 0px 10px">${getHours(event.time_in, event.time_out)}</span>
         </p>`;
         
         divTimeEvents.innerHTML += paragraphOfEvents;

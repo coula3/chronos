@@ -30,7 +30,7 @@ function getShift(timeIn){
         return "A"
     } else if((parseInt(timeIn.slice(0,2)) >= 12) && (parseInt(timeIn.slice(0,2)) < 18)) {
         return "B"
-    } if((parseInt(timeIn.slice(0,2)) >= 18) && (parseInt(timeIn.slice(0,2)) <= 21)) {
+    } else if((parseInt(timeIn.slice(0,2)) >= 18) && (parseInt(timeIn.slice(0,2)) <= 21)) {
         return "C"
     }
 }
@@ -45,4 +45,17 @@ function appendButtonClockInOut() {
     divClockInOut.appendChild(buttonClockInOut);
     const h2 = document.getElementById("employee-name");
     h2.after(divClockInOut);
+}
+
+function getHours(startTime, finishTime) {
+    const startShift = new Date(startTime);
+    const endShift = new Date(finishTime);
+    const millesecondsDiff = (endShift - startShift);
+    const secondsDiff = millesecondsDiff / 1000;
+
+    const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24)
+    const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60
+    const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60
+
+    return `${hours}:${minutes}:${seconds}`
 }
