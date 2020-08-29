@@ -44,25 +44,31 @@ function createEmployee() {
     }
 }
 
-function signInEmployee() {
+function signInEmployee(e) {
     const inputSignIn = document.getElementById("sign-in")
     
-    if(inputSignIn.value !== "") {
-
-        fetch(`${CHRONOS_URL}/employees/${inputSignIn.value}`)
-        .then(response => response.json())
-        .then(employee => {
-            if(!employee.message) {
-                renderEmployeeData(employee);
-                const divSignUp = document.getElementById("div-signup")
-                divSignUp.remove()
-            } else {
-                displayFailedSignInMesaage(employee.message)
-            }
-        })
+    if(e.target.innerText == "Sign In") {
+        if(inputSignIn.value !== "") {
+            fetch(`${CHRONOS_URL}/employees/${inputSignIn.value}`)
+            .then(response => response.json())
+            .then(employee => {
+                if(!employee.message) {
+                    renderEmployeeData(employee);
+                    e.target.innerText = "Sign Out"
+                    const divSignUp = document.getElementById("div-signup");
+                    inputSignIn.remove();
+                    divSignUp.remove();
+                } else {
+                    displayFailedSignInMesaage(employee.message);
+                }
+            })
+        } else {
+            const message = "Please provide a valid email to sign in";
+            displayFailedSignInMesaage(message);
+        }
     } else {
-        const message = "Please provide a valid email to sign in";
-        displayFailedSignInMesaage(message)
+        location.reload();
+        e.target.innerText = "Sign In"
     }
 }
 

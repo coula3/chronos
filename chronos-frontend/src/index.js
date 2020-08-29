@@ -3,5 +3,5 @@ const buttonSignIn = document.getElementById("btn-sign-in");
 
 buttonSignIn.addEventListener("click", (e) => {
     e.preventDefault();
-    signInEmployee();
+    signInEmployee(e);
 })
