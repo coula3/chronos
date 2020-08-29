@@ -54,6 +54,8 @@ function signInEmployee() {
         .then(employee => {
             if(!employee.message) {
                 renderEmployeeData(employee);
+                const divSignUp = document.getElementById("div-signup")
+                divSignUp.remove()
             } else {
                 displayFailedSignInMesaage(employee.message)
             }
