@@ -101,6 +101,26 @@ function takeBreakOrResumeWork(e) {
         .then(timeEvent => {
             updateTimeEvent(timeEvent);
         })
+    } else {
+        const bodyObject = {
+            id: timeEventId,
+            break_end: Date().slice(0, 24)
+        }
+
+        const configObj = {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body:   JSON.stringify(bodyObject)
+        }
+
+        fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
+        .then(response => response.json())
+        .then(timeEvent => {
+            updateTimeEvent(timeEvent);
+        })
     }
 }
 
@@ -154,7 +174,7 @@ function renderEmployeeTimeEvents(employeeObject) {
 
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
-    divTimeEvent.style.marginTop = "50px"
+    divTimeEvent.style.marginTop = "75px"
     divTimeEvent.style.marginBottom = "25px"
     divTimeEvent.style.paddingLeft = "30px"
     divTimeEvent.setAttribute("event-data-id", event.id)
@@ -166,7 +186,7 @@ function renderNewTimeEvent(event) {
         <span id="span-event-time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
         <span id="span-event-break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
         <span id="span-event-break-end" style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
-        <span id="span-event-shift" style="clear:right; margin: 0px 25px 0px 25px">${getShift(getTime(event.time_in))}</span>
+        <span id="span-event-shift" style="clear:right; margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
         
         <button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button>`;
     
