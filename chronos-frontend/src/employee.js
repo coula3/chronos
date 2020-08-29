@@ -18,24 +18,30 @@ function createEmployee() {
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const email = document.getElementById("email").value;
+    const emailConfirmation = document.getElementById("email-confirmation").value
 
-    const bodyObject = {first_name: firstName, last_name: lastName, email: email}
+    if(email !== emailConfirmation) {
+        console.log("Emails do not match")
+    } else {
+        const bodyObject = {first_name: firstName, last_name: lastName, email: email}
 
-    const configObj = {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json"
-        },
-        body: JSON.stringify(bodyObject)
+        const configObj = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(bodyObject)
+        }
+
+        fetch(`${CHRONOS_URL}/employees`, configObj)
+        .then(response => response.json())
+        .then(employee => {
+            const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
+            renderEmployeeData(newEmployee);
+        })
+        .catch(error => console.log(error))
     }
-
-    fetch(`${CHRONOS_URL}/employees`, configObj)
-    .then(response => response.json())
-    .then(employee => {
-        const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
-        renderEmployeeData(newEmployee);
-    })
 }
 
 function getEmployeeData() {
@@ -45,11 +51,11 @@ function getEmployeeData() {
 
         fetch(`${CHRONOS_URL}/employees/${inputSignIn.value}`)
         .then(response => response.json())
-        .then(json => {
-            if(!json.message) {
-                renderEmployeeData(json);
+        .then(employee => {
+            if(!employee.message) {
+                renderEmployeeData(employee);
             } else {
-                displayFailedSignInMesaage(json.message)
+                displayFailedSignInMesaage(employee.message)
             }
         })
     } else {
