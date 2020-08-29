@@ -99,7 +99,7 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            console.log(timeEvent);
+            updateTimeEvent(timeEvent);
         })
     }
 }
@@ -183,6 +183,11 @@ function renderNewTimeEvent(event) {
 }
 
 function updateTimeEvent(event) {
-    spanEventTimeOut = document.getElementById("span-event-time-out");
-    spanEventTimeOut.innerText = getTime(event.time_out)
+    const spanEventTimeOut = document.getElementById("span-event-time-out");
+    const spanEventBreakStart = document.getElementById("span-event-break-start");
+    const spanEventBreakEnd = document.getElementById("span-event-break-end");
+
+    spanEventTimeOut.innerText = event.time_out ? getTime(event.time_out) : "";
+    spanEventBreakStart.innerText = event.break_start ? getTime(event.break_start) : "";
+    spanEventBreakEnd.innerText = event.break_end ? getTime(event.break_end) : "";
 }
