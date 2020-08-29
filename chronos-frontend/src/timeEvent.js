@@ -24,7 +24,6 @@ buttonClockInOut.addEventListener("click", (e) => {
 function createTimeEvent(e) {
     const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
     if(e.target.innerText == "Clock In") {
-        e.target.innerText = "Clock Out";
     
         const bodyObject = {
             date: Date().slice(0, 24),
@@ -49,6 +48,7 @@ function createTimeEvent(e) {
         .then(timeEvent => {
             const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
             renderNewTimeEvent(newTimeEvent);
+            e.target.innerText = "Clock Out";
         })
     } else {
         const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
@@ -80,7 +80,6 @@ function takeBreakOrResumeWork(e) {
     const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
 
     if(e.target.innerText == "Take Break") {
-        e.target.innerText = "Resume";
         
         const bodyObject = {
             id: timeEventId,
@@ -100,6 +99,8 @@ function takeBreakOrResumeWork(e) {
         .then(response => response.json())
         .then(timeEvent => {
             updateTimeEvent(timeEvent);
+            e.target.innerText = "Resume";
+            buttonClockInOut.disabled = true
         })
     } else {
         const bodyObject = {
@@ -120,6 +121,9 @@ function takeBreakOrResumeWork(e) {
         .then(response => response.json())
         .then(timeEvent => {
             updateTimeEvent(timeEvent);
+            e.target.innerText = "Take Break";
+            e.target.disabled = true
+            buttonClockInOut.disabled = false
         })
     }
 }
