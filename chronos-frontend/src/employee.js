@@ -67,5 +67,6 @@ function renderEmployeeData(employeeObject) {
     h2.style.cssText = "padding-left:15px; padding-top:50px; clear:both;"
 
     appendButtonClockInOut();
-    renderEmployeeTimeEvents(employeeObject);
+    if(employeeObject.time_events)
+        renderEmployeeTimeEvents(employeeObject);
 }
