@@ -139,12 +139,12 @@ function renderEmployeeTimeEvents(employeeObject) {
     if(employeeObject.time_events.length > 0) {
         const spanLabels = `
             <p style="padding-left:60px">
-                <strong><span style="margin: 0px 0px 0px 20px;">Date</span></strong>
-                <strong><span style="margin: 0px 0px 0px 95px;">Time In</span></strong>
-                <strong><span style="margin: 0px 0px 0px 50px;">Time Out</span></strong>
-                <strong><span style="margin: 0px 0px 0px 45px;">Break Start</span></strong>
-                <strong><span style="margin: 0px 0px 0px 25px;">Break End</span></strong>
-                <strong><span style="margin: 0px 0px 0px 25px;">Shift</span></strong>
+                <strong><span style="margin: 0px 0px 0px 25px;">Date</span></strong>
+                <strong><span style="margin: 0px 0px 0px 90px;">Time In</span></strong>
+                <strong><span style="margin: 0px 0px 0px 50px;">Break Start</span></strong>
+                <strong><span style="margin: 0px 0px 0px 28px;">Break End</span></strong>
+                <strong><span style="margin: 0px 0px 0px 30px;">Time Out</span></strong>
+                <strong><span style="margin: 0px 0px 0px 35px;">Shift</span></strong>
                 <strong><span style="margin: 0px 0px 0px 25px;">Hours</span></strong>
             </p>
         `;
@@ -165,9 +165,9 @@ function renderEmployeeTimeEvents(employeeObject) {
             <span style="margin: 0px 20px 0px 25px;">${timeEvents.indexOf(event) + 1}</span>
             <span style="margin: 0px 25px 0px 25px">${event.date ? getDate(event.date) : ""}</span>
             <span style="margin: 0px 25px 0px 25px">${event.time_in ? getTime(event.time_in) : ""}</span>
-            <span style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
             <span style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
             <span style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
+            <span style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
             <span style="margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
             <span style="margin: 0px 25px 0px 25px"></span>
         </p>`;
@@ -187,9 +187,9 @@ function renderNewTimeEvent(event) {
         <span style="margin: 0px 15px 0px 10px; color:blue;">new</span>
         <span id="span-event-date" style="margin: 0px 25px 0px 25px;">${event.date ? event.date.slice(0, 10) : ""}</span>
         <span id="span-event-time-in" style="margin: 0px 25px 0px 25px">${event.time_in ? getTime(event.time_in) : ""}</span>
-        <span id="span-event-time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
         <span id="span-event-break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
         <span id="span-event-break-end" style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
+        <span id="span-event-time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
         <span id="span-event-shift" style="clear:right; margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
         
         <button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button>`;
