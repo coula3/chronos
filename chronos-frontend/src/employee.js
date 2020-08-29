@@ -44,7 +44,7 @@ function createEmployee() {
     }
 }
 
-function getEmployeeData() {
+function signInEmployee() {
     const inputSignIn = document.getElementById("sign-in")
     
     if(inputSignIn.value !== "") {
