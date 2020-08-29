@@ -16,8 +16,8 @@ let buttonBreakResume;
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
     if(document.getElementById("p-new-user-msg") !== null){
-        const p = document.getElementById("p-new-user-msg")
-        p.remove()
+        const p = document.getElementById("p-new-user-msg");
+        p.remove();
     }
 })
 
@@ -46,12 +46,12 @@ function createTimeEvent(e) {
         fetch(`${CHRONOS_URL}/time_events`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
             renderNewTimeEvent(newTimeEvent);
             e.target.innerText = "Clock Out";
         })
     } else {
-        const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
+        const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id");
 
         const bodyObject = {
             id: timeEventId,
@@ -71,13 +71,13 @@ function createTimeEvent(e) {
         .then(response => response.json())
         .then(timeEvent => {
             e.target.innerText = "Clock In";
-            updateTimeEvent(timeEvent)
+            updateTimeEvent(timeEvent);
         })
     }
 }
 
 function takeBreakOrResumeWork(e) {
-    const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id")
+    const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id");
 
     if(e.target.innerText == "Take Break") {
         
@@ -100,7 +100,7 @@ function takeBreakOrResumeWork(e) {
         .then(timeEvent => {
             updateTimeEvent(timeEvent);
             e.target.innerText = "Resume";
-            buttonClockInOut.disabled = true
+            buttonClockInOut.disabled = true;
         })
     } else {
         const bodyObject = {
@@ -122,8 +122,8 @@ function takeBreakOrResumeWork(e) {
         .then(timeEvent => {
             updateTimeEvent(timeEvent);
             e.target.innerText = "Take Break";
-            e.target.disabled = true
-            buttonClockInOut.disabled = false
+            e.target.disabled = true;
+            buttonClockInOut.disabled = false;
         })
     }
 }
@@ -132,8 +132,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.time_events;
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
-    divTimeEvents.style.paddingLeft = "30px"
-    divTimeEvents.style.clear = "both"
+    divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     document.getElementById("main-container").appendChild(divTimeEvents);
     
     if(employeeObject.time_events.length > 0) {
@@ -153,10 +152,10 @@ function renderEmployeeTimeEvents(employeeObject) {
     } else {
         const p = document.createElement("p");
         p.innerText = "Welcome and let's get clocking...!";
-        p.setAttribute("id", "p-new-user-msg")
-        p.style.cssText = "text-align:center; color:blue"
+        p.setAttribute("id", "p-new-user-msg");
+        p.style.cssText = "text-align:center; color:blue";
         const h2 = document.getElementById("employee-name");
-        h2.after(p)
+        h2.after(p);
     }
 
     timeEvents.forEach((event) => {
@@ -178,11 +177,9 @@ function renderEmployeeTimeEvents(employeeObject) {
 
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
-    divTimeEvent.style.marginTop = "75px"
-    divTimeEvent.style.marginBottom = "25px"
-    divTimeEvent.style.paddingLeft = "30px"
-    divTimeEvent.setAttribute("event-data-id", event.id)
-    divTimeEvent.setAttribute("id", "div-time-event")
+    divTimeEvent.style.cssText = "margin-top:75px; margin-bottom:25px; padding-left:30px";
+    divTimeEvent.setAttribute("event-data-id", event.id);
+    divTimeEvent.setAttribute("id", "div-time-event");
     const spansOfEvent = `
         <span style="margin: 0px 15px 0px 10px; color:blue;">new</span>
         <span id="span-event-date" style="margin: 0px 25px 0px 25px;">${event.date ? event.date.slice(0, 10) : ""}</span>
@@ -194,8 +191,8 @@ function renderNewTimeEvent(event) {
         
         <button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button>`;
     
-    divTimeEvent.innerHTML += spansOfEvent
-    document.getElementById("main-container").appendChild(divTimeEvent)
+    divTimeEvent.innerHTML += spansOfEvent;
+    document.getElementById("main-container").appendChild(divTimeEvent);
 
     setTimeout(()=>{
         buttonBreakResume = document.getElementById("btn-break-resume");
