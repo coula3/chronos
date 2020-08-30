@@ -71,7 +71,7 @@ function createTimeEvent(e) {
         .then(response => response.json())
         .then(timeEvent => {
             e.target.innerText = "Clock In";
-            updateTimeEvent(timeEvent);
+            updateTimeEventOnDOM(timeEvent);
             buttonBreakResume.disabled = true
         })
     }
@@ -99,7 +99,7 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            updateTimeEvent(timeEvent);
+            updateTimeEventOnDOM(timeEvent);
             e.target.innerText = "Resume";
             buttonClockInOut.disabled = true;
         })
@@ -121,7 +121,7 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            updateTimeEvent(timeEvent);
+            updateTimeEventOnDOM(timeEvent);
             e.target.innerText = "Take Break";
             e.target.disabled = true;
             buttonClockInOut.disabled = false;
@@ -218,7 +218,7 @@ function renderNewTimeEvent(event) {
     }
 }
 
-function updateTimeEvent(event) {
+function updateTimeEventOnDOM(event) {
     const spanEventTimeOut = document.getElementById("span-event-time-out");
     const spanEventBreakStart = document.getElementById("span-event-break-start");
     const spanEventBreakEnd = document.getElementById("span-event-break-end");
