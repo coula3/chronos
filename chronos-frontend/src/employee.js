@@ -69,7 +69,7 @@ function signInEmployee(e) {
                         document.getElementById("btn-clock-in-out").innerText = "Clock Out";
                     }
                 } else {
-                    displayFailedSignInMesaage(employee.message);
+                    displayMessages(employee.message);
                 }
             })
         } else {
