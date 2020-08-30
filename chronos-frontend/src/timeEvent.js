@@ -12,6 +12,7 @@ class TimeEvent {
 
 const buttonClockInOut = document.createElement("button");
 let buttonBreakResume;
+let activateButtonTimeout;
 
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
@@ -57,7 +58,6 @@ function createTimeEvent(e) {
             id: timeEventId,
             time_out: Date().slice(0, 24)
         }
-
         const configObj = {
             method: "PATCH",
             headers: {
@@ -66,14 +66,20 @@ function createTimeEvent(e) {
             },
             body: JSON.stringify(bodyObject)
         }
-
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            e.target.innerText = "Clock In";
-            updateTimeEventOnDOM(timeEvent);
-            buttonBreakResume.disabled = true
-            buttonClockInOut.disabled = true
+            if(!buttonBreakResume) {
+                clearTimeout(activateButtonTimeout);
+                e.target.innerText = "Clock In";
+                buttonClockInOut.disabled = true;
+                updateTimeEventOnDOM(timeEvent);
+            } else {
+                e.target.innerText = "Clock In";
+                buttonBreakResume.disabled = true;
+                buttonClockInOut.disabled = true;
+                updateTimeEventOnDOM(timeEvent);
+            }
 
             if(timeEvent.time_out) {
                 updateHours();
@@ -222,7 +228,7 @@ function renderNewTimeEvent(event) {
             takeBreakOrResumeWork(e);
         })
     } else {
-        setTimeout(()=>{
+        activateButtonTimeout = setTimeout(()=>{
             buttonBreakResume = document.getElementById("btn-break-resume");
             buttonBreakResume.disabled = false;
             buttonBreakResume.addEventListener("click", (e)=>{
