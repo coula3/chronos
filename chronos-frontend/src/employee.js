@@ -58,7 +58,7 @@ function signInEmployee(e) {
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
                     divSignUp.remove();
-                    if(document.getElementById("span-event-break-end") && document.getElementById("span-event-break-end").innerText != "") {
+                    if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
                         buttonBreakResume.disabled = true;
                         document.getElementById("btn-break-resume").innerText = "Take Break"
                         document.getElementById("btn-clock-in-out").innerText = "Clock Out";
