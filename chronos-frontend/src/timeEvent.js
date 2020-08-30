@@ -73,6 +73,14 @@ function createTimeEvent(e) {
             e.target.innerText = "Clock In";
             updateTimeEventOnDOM(timeEvent);
             buttonBreakResume.disabled = true
+
+            if(timeEvent.time_out) {
+                updateHours();
+                function updateHours(){
+                    const hrs = getHours(timeEvent.time_in, timeEvent.time_out);
+                    document.getElementById("span-event-hours").innerText = hrs;
+                }
+            }
         })
     }
 }
@@ -193,7 +201,8 @@ function renderNewTimeEvent(event) {
         <span id="span-event-break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
         <span id="span-event-break-end" style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
         <span id="span-event-time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
-        <span id="span-event-shift" style="clear:right; margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
+        <span id="span-event-shift" style="margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
+        <span id="span-event-hours" style="clear:right; margin: 0px 25px 0px 15px"></span>
         
         <button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button>`;
     
