@@ -78,7 +78,7 @@ function createTimeEvent(e) {
                 updateHours();
                 function updateHours(){
                     const hrs = getHours(timeEvent.time_in, timeEvent.time_out);
-                    document.getElementById("span-event-hours").innerText = hrs;
+                    document.getElementById("td-event-hours").innerText = hrs;
                 }
             }
         })
@@ -212,7 +212,7 @@ function renderNewTimeEvent(event) {
     divTimeEvent.innerHTML += tableOfEvent;
     document.getElementById("main-container").appendChild(divTimeEvent);
 
-    if(document.getElementById("span-event-break-start").innerText != "") {
+    if(document.getElementById("td-event-break-start").innerText != "") {
         buttonBreakResume = document.getElementById("btn-break-resume");
         buttonBreakResume.disabled = false;
         buttonBreakResume.innerText = "Resume"
@@ -231,9 +231,9 @@ function renderNewTimeEvent(event) {
 }
 
 function updateTimeEventOnDOM(event) {
-    const spanEventBreakStart = document.getElementById("span-event-break-start");
-    const spanEventBreakEnd = document.getElementById("span-event-break-end");
-    const spanEventTimeOut = document.getElementById("span-event-time-out");
+    const spanEventBreakStart = document.getElementById("td-event-break-start");
+    const spanEventBreakEnd = document.getElementById("td-event-break-end");
+    const spanEventTimeOut = document.getElementById("td-event-time-out");
 
     spanEventBreakStart.innerText = event.break_start ? getTime(event.break_start) : "";
     spanEventBreakEnd.innerText = event.break_end ? getTime(event.break_end) : "";
