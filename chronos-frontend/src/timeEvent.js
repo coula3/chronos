@@ -72,6 +72,7 @@ function createTimeEvent(e) {
         .then(timeEvent => {
             e.target.innerText = "Clock In";
             updateTimeEvent(timeEvent);
+            buttonBreakResume.disabled = true
         })
     }
 }
