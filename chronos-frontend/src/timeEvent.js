@@ -228,11 +228,11 @@ function renderNewTimeEvent(event) {
 }
 
 function updateTimeEventOnDOM(event) {
-    const spanEventTimeOut = document.getElementById("span-event-time-out");
     const spanEventBreakStart = document.getElementById("span-event-break-start");
     const spanEventBreakEnd = document.getElementById("span-event-break-end");
+    const spanEventTimeOut = document.getElementById("span-event-time-out");
 
-    spanEventTimeOut.innerText = event.time_out ? getTime(event.time_out) : "";
     spanEventBreakStart.innerText = event.break_start ? getTime(event.break_start) : "";
     spanEventBreakEnd.innerText = event.break_end ? getTime(event.break_end) : "";
+    spanEventTimeOut.innerText = event.time_out ? getTime(event.time_out) : "";
 }
