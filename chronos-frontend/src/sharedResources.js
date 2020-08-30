@@ -22,7 +22,7 @@ function getDate(date) {
 }
 
 function getTime(time) {
-    return time.slice(11, 19);
+    return time ? time.slice(11, 19) : "";
 }
 
 function getShift(timeIn){
