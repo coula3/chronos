@@ -47,10 +47,15 @@ function appendButtonClockInOut() {
     h2.after(divClockInOut);
 }
 
+function calculateTimeDiff(startTime, finishTime) {
+    const startTimeObj = new Date(startTime);
+    const finishTimeObj = new Date(finishTime);
+    const milleSecondsDiff = (finishTimeObj - startTimeObj);
+    return milleSecondsDiff;
+}
+
 function getHours(startTime, finishTime) {
-    const startShift = new Date(startTime);
-    const endShift = new Date(finishTime);
-    const secondsDiff = (endShift - startShift) / 1000;
+    const secondsDiff = calculateTimeDiff(startTime, finishTime) / 1000
 
     const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24)
     const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60
