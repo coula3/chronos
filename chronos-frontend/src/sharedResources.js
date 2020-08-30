@@ -1,19 +1,19 @@
-function displayFailedSignInMesaage(message) {
-    if(document.getElementById("email-message") === null) {
-    const span = document.createElement("span");
-    span.innerText = message;
+function displayMessages(message) {
+    if(!document.getElementById("messages")) {
+    const p = document.createElement("p");
+    p.innerText = message;
 
-    appendSignInMessagesSpan(span);
+    appendMessagesParagraph(p);
     }
 }
 
-function appendSignInMessagesSpan(spanElement) {
-    document.getElementById("div-signin").appendChild(spanElement);
-    spanElement.style.cssText = "color:red; padding-right: 5px; float:right; clear:both";
-    spanElement.setAttribute("id", "email-message");
+function appendMessagesParagraph(p) {
+    document.getElementById("main-container").insertBefore(p, document.getElementById("div-signup-signin"));
+    p.style.cssText = "color:red; font-size:14px; padding-right: 5px; float:right;";
+    p.setAttribute("id", "messages");
     
     setTimeout(() => {
-        document.getElementById("email-message").remove()
+        document.getElementById("messages").remove()
     }, 3000)
 }
 

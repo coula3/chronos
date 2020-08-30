@@ -74,7 +74,7 @@ function signInEmployee(e) {
             })
         } else {
             const message = "Please provide a valid email to sign in";
-            displayFailedSignInMesaage(message);
+            displayMessages(message);
         }
     } else {
         location.reload();
