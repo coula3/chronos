@@ -199,13 +199,22 @@ function renderNewTimeEvent(event) {
     divTimeEvent.innerHTML += spansOfEvent;
     document.getElementById("main-container").appendChild(divTimeEvent);
 
-    setTimeout(()=>{
+    if(document.getElementById("span-event-break-start").innerText != "") {
         buttonBreakResume = document.getElementById("btn-break-resume");
         buttonBreakResume.disabled = false;
-        buttonBreakResume.addEventListener("click", (e) => {
+        buttonBreakResume.innerText = "Resume"
+        buttonBreakResume.addEventListener("click", (e)=>{
             takeBreakOrResumeWork(e);
         })
-    }, 5000)
+    } else {
+        setTimeout(()=>{
+            buttonBreakResume = document.getElementById("btn-break-resume");
+            buttonBreakResume.disabled = false;
+            buttonBreakResume.addEventListener("click", (e)=>{
+                takeBreakOrResumeWork(e);
+            })
+        }, 2000)
+    }
 }
 
 function updateTimeEvent(event) {

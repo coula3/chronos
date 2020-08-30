@@ -58,6 +58,16 @@ function signInEmployee(e) {
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
                     divSignUp.remove();
+                    if(document.getElementById("span-event-break-end") && document.getElementById("span-event-break-end").innerText != "") {
+                        buttonBreakResume.disabled = true;
+                        document.getElementById("btn-break-resume").innerText = "Take Break"
+                        document.getElementById("btn-clock-in-out").innerText = "Clock Out";
+                    } else if(document.getElementById("btn-break-resume") && document.getElementById("btn-break-resume").innerText == "Resume" && document.getElementById("span-event-break-end") && document.getElementById("span-event-break-end").innerText == "") {
+                        document.getElementById("btn-clock-in-out").innerText = "Clock Out";
+                        document.getElementById("btn-clock-in-out").disabled = true;
+                    } else if(document.getElementById("btn-break-resume")) {
+                        document.getElementById("btn-clock-in-out").innerText = "Clock Out";
+                    }
                 } else {
                     displayFailedSignInMesaage(employee.message);
                 }
