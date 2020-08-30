@@ -73,6 +73,7 @@ function createTimeEvent(e) {
             e.target.innerText = "Clock In";
             updateTimeEventOnDOM(timeEvent);
             buttonBreakResume.disabled = true
+            buttonClockInOut.disabled = true
 
             if(timeEvent.time_out) {
                 updateHours();
