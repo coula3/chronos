@@ -37,8 +37,12 @@ function createEmployee() {
         fetch(`${CHRONOS_URL}/employees`, configObj)
         .then(response => response.json())
         .then(employee => {
-            const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
-            renderEmployeeData(newEmployee);
+            if(!employee.message){
+                const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
+                renderEmployeeData(newEmployee);
+            } else {
+                displayMessages(employee.message)
+            }
         })
         .catch(error => console.log(error))
     }
