@@ -145,21 +145,15 @@ function renderEmployeeTimeEvents(employeeObject) {
     divTimeEvents.setAttribute("id", "div-time-events");
     divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     document.getElementById("main-container").appendChild(divTimeEvents);
+
+    let table;
     
     if(employeeObject.time_events.length > 0) {
-        const spanLabels = `
-            <p style="padding-left:60px">
-                <strong><span style="margin: 0px 0px 0px 25px;">Date</span></strong>
-                <strong><span style="margin: 0px 0px 0px 90px;">Time In</span></strong>
-                <strong><span style="margin: 0px 0px 0px 50px;">Break Start</span></strong>
-                <strong><span style="margin: 0px 0px 0px 28px;">Break End</span></strong>
-                <strong><span style="margin: 0px 0px 0px 30px;">Time Out</span></strong>
-                <strong><span style="margin: 0px 0px 0px 35px;">Shift</span></strong>
-                <strong><span style="margin: 0px 0px 0px 25px;">Hours</span></strong>
-            </p>
-        `;
+        table = `
+            <table><thead>
+                <tr><th>&nbsp</th><th>Date</th><th>Time In</th><th>Break Start</th><th>Break End</th><th>Time Out</th><th>Shift</th><th>Hours</th><th></th></tr>
+            </thead><tbody>`;
 
-        divTimeEvents.innerHTML += spanLabels;
     } else {
         const p = document.createElement("p");
         p.innerText = "Welcome and let's get clocking...!";
@@ -170,20 +164,21 @@ function renderEmployeeTimeEvents(employeeObject) {
     }
 
     timeEvents.forEach((event) => {
-        const paragraphOfEvents = `
-        <p>
-            <span style="margin: 0px 20px 0px 25px;">${timeEvents.indexOf(event) + 1}</span>
-            <span style="margin: 0px 25px 0px 25px">${event.date ? getDate(event.date) : ""}</span>
-            <span style="margin: 0px 25px 0px 25px">${event.time_in ? getTime(event.time_in) : ""}</span>
-            <span style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
-            <span style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
-            <span style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
-            <span style="margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
-            <span style="margin: 0px 25px 0px 10px">${getHours(event.time_in, event.time_out)}</span>
-        </p>`;
-        
-        divTimeEvents.innerHTML += paragraphOfEvents;
+        table += `
+        <tr>
+            <td>${timeEvents.indexOf(event) + 1}</td>
+            <td>${event.date ? getDate(event.date) : ""}</td>
+            <td>${event.time_in ? getTime(event.time_in) : ""}</td>
+            <td>${event.break_start ? getTime(event.break_start) : ""}</td>
+            <td>${event.break_end ? getTime(event.break_end) : ""}</td>
+            <td>${event.time_out ? getTime(event.time_out) : ""}</td>
+            <td>${getShift(getTime(event.time_in))}</td>
+            <td>${getHours(event.time_in, event.time_out)}</td>
+        </tr>`;
     })
+        table += `</tbody></table>`
+        divTimeEvents.innerHTML += table;
+
     if(openTimeEvent.length !== 0){
         renderNewTimeEvent(openTimeEvent[0])
     }
@@ -194,19 +189,27 @@ function renderNewTimeEvent(event) {
     divTimeEvent.style.cssText = "margin-top:75px; margin-bottom:25px; padding-left:30px";
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.setAttribute("id", "div-time-event");
-    const spansOfEvent = `
-        <span style="margin: 0px 15px 0px 10px; color:blue;">new</span>
-        <span id="span-event-date" style="margin: 0px 25px 0px 25px;">${event.date ? event.date.slice(0, 10) : ""}</span>
-        <span id="span-event-time-in" style="margin: 0px 25px 0px 25px">${event.time_in ? getTime(event.time_in) : ""}</span>
-        <span id="span-event-break-start" style="margin: 0px 25px 0px 25px">${event.break_start ? getTime(event.break_start) : ""}</span>
-        <span id="span-event-break-end" style="margin: 0px 25px 0px 25px">${event.break_end ? getTime(event.break_end) : ""}</span>
-        <span id="span-event-time-out" style="margin: 0px 25px 0px 25px">${event.time_out ? getTime(event.time_out) : ""}</span>
-        <span id="span-event-shift" style="margin: 0px 25px 0px 30px">${getShift(getTime(event.time_in))}</span>
-        <span id="span-event-hours" style="clear:right; margin: 0px 25px 0px 15px"></span>
-        
-        <button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button>`;
+    const tableOfEvent = `
+    <table>
+        <thead>
+            <tr><th>&nbsp</th><th>Date</th><th>Time In</th><th>Break Start</th><th>Break End</th><th>Time Out</th><th>Shift</th><th>Hours</th><th></th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="td-event-new" style="color:blue">new</td>
+                <td id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
+                <td id="td-event-time-in" >${event.time_in ? getTime(event.time_in) : ""}</td>
+                <td id="td-event-break-start" >${event.break_start ? getTime(event.break_start) : ""}</td>
+                <td id="td-event-break-end" >${event.break_end ? getTime(event.break_end) : ""}</td>
+                <td id="td-event-time-out" >${event.time_out ? getTime(event.time_out) : ""}</td>
+                <td id="td-event-time-out" >${getShift(getTime(event.time_in))}</td>
+                <td id="td-event-hours" ></td>
+                <td id="td-event-hours"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
+            </tr>
+        </tbody>
+    </table>`;
     
-    divTimeEvent.innerHTML += spansOfEvent;
+    divTimeEvent.innerHTML += tableOfEvent;
     document.getElementById("main-container").appendChild(divTimeEvent);
 
     if(document.getElementById("span-event-break-start").innerText != "") {
