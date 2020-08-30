@@ -21,7 +21,7 @@ function createEmployee() {
     const emailConfirmation = document.getElementById("email-confirmation").value
 
     if(email !== emailConfirmation) {
-        console.log("Emails do not match")
+        displayMessages("Please provide matching emails")
     } else {
         const bodyObject = {first_name: firstName, last_name: lastName, email: email}
 
