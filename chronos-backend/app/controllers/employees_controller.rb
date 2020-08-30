@@ -14,12 +14,17 @@ class EmployeesController < ApplicationController
     end
 
     def create
-        employee = Employee.new(first_name: params[:first_name], last_name: params[:last_name], email: params[:email])
+        employee = Employee.new(employee_params)
         
         if employee.save
             render json: employee
         else
             render json: {message: employee.errors.full_messages.join(" ")}
         end
+    end
+
+    private
+    def employee_params
+        params.require(:employee).permit(:first_name, :last_name, :email)
     end
 end
