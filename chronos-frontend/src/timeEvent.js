@@ -129,7 +129,8 @@ function takeBreakOrResumeWork(e) {
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
-    const timeEvents = employeeObject.time_events;
+    const timeEvents = employeeObject.time_events.filter((e)=>{ return e.time_out});
+    const openTimeEvent = employeeObject.time_events.filter((e)=>{ return !e.time_out })
 
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
@@ -174,6 +175,9 @@ function renderEmployeeTimeEvents(employeeObject) {
         
         divTimeEvents.innerHTML += paragraphOfEvents;
     })
+    if(openTimeEvent.length !== 0){
+        renderNewTimeEvent(openTimeEvent[0])
+    }
 }
 
 function renderNewTimeEvent(event) {
