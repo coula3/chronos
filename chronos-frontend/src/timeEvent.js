@@ -211,6 +211,7 @@ function renderNewTimeEvent(event) {
     
     divTimeEvent.innerHTML += tableOfEvent;
     document.getElementById("main-container").appendChild(divTimeEvent);
+    const activateTime = calculateBreakButtonActivateTime(event);
 
     if(document.getElementById("td-event-break-start").innerText != "") {
         buttonBreakResume = document.getElementById("btn-break-resume");
@@ -226,8 +227,17 @@ function renderNewTimeEvent(event) {
             buttonBreakResume.addEventListener("click", (e)=>{
                 takeBreakOrResumeWork(e);
             })
-        }, 2000)
+        }, activateTime)
     }
+}
+
+function calculateBreakButtonActivateTime(event) {
+    const timeDiff = calculateTimeDiff(event.time_in, Date());
+    const fourHrsDiffInMillesecs = 60*60*4*1000;
+    const elapsedTime = timeDiff - fourHrsDiffInMillesecs;
+    const activateTime = 10000;
+
+    return activateTime - elapsedTime;
 }
 
 function updateTimeEventOnDOM(event) {
