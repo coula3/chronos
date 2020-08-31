@@ -44,7 +44,6 @@ function createEmployee() {
                 document.getElementById("div-signup").remove();
                 document.getElementById("sign-in").remove();
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
-                console.log(newEmployee);
                 renderEmployeeData(newEmployee);
             } else {
                 displayMessages(employee.message)
