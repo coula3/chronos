@@ -116,6 +116,7 @@ function takeBreakOrResumeWork(e) {
         .then(timeEvent => {
             updateTimeEventOnDOM(timeEvent);
             e.target.innerText = "Resume";
+            e.target.style.backgroundColor = "";
             buttonClockInOut.disabled = true;
         })
     } else {
@@ -241,6 +242,7 @@ function renderNewTimeEvent(event) {
         activateButtonTimeout = setTimeout(()=>{
             buttonBreakResume = document.getElementById("btn-break-resume");
             buttonBreakResume.disabled = false;
+            buttonBreakResume.style.backgroundColor = "#adebad";
             buttonBreakResume.addEventListener("click", (e)=>{
                 takeBreakOrResumeWork(e);
             })
