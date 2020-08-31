@@ -158,7 +158,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     if(employeeObject.time_events.length > 0) {
         table = `
             <table id="tbl-events"><thead>
-                <tr><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th><th class="th-events" id="th-events-col-z" style="width:10%"></th></tr>
+                <tr id="tr-events"><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th><th class="th-events" id="th-events-col-z" style="width:10%"></th></tr>
             </thead><tbody>`;
 
         timeEvents.forEach((event) => {
@@ -195,13 +195,14 @@ function renderEmployeeTimeEvents(employeeObject) {
 
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
-    divTimeEvent.style.cssText = "margin-top:75px; margin-bottom:25px; padding-left:30px";
+    divTimeEvent.style.cssText = "margin-top:75px; margin-bottom:25px; padding-left:30px; clear:both";
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.setAttribute("id", "div-time-event");
+
     const tableOfEvent = `
     <table id="tbl-event">
         <thead>
-            <tr><th class="th-event" id="th-event-new" style="width:4.25%">&nbsp</th><th class="th-event" id="th-event-date" style="width:12.75%"></th><th class="th-event" id="th-event-time-in" style="width:12.75%"></th><th class="th-event" id="th-event-break-start" style="width:12.75%"></th><th class="th-event" id="th-event-break-end" style="width:12.75%"></th><th class="th-event" id="th-event-time-out" style="width:12.75%"></th><th class="th-event" id="th-event-shift" style="width:8.5%"></th><th class="th-event" id="th-event-hours" style="width:12.75%"></th><th class="th-event" id="th-event-col-z" style="width:15%"></th></tr>
+            <tr id="tr-event"><th class="th-event" id="th-event-new" style="width:4.25%">&nbsp</th><th class="th-event" id="th-event-date" style="width:12.75%">Date</th><th class="th-event" id="th-event-time-in" style="width:12.75%">Time In</th><th class="th-event" id="th-event-break-start" style="width:12.75%">Break Start</th><th class="th-event" id="th-event-break-end" style="width:12.75%">Break End</th><th class="th-event" id="th-event-time-out" style="width:12.75%">Time Out</th><th class="th-event" id="th-event-shift" style="width:8.5%">Shift</th><th class="th-event" id="th-event-hours" style="width:12.75%">Hours</th><th class="th-event" id="th-event-col-z" style="width:15%"></th></tr>
         </thead>
         <tbody>
             <tr>
@@ -220,6 +221,18 @@ function renderNewTimeEvent(event) {
     
     divTimeEvent.innerHTML += tableOfEvent;
     document.getElementById("main-container").appendChild(divTimeEvent);
+
+    if(!document.getElementById("th-events-col-a")){
+        const thEvent = document.querySelectorAll(".th-event");
+        for(let i = 0; i < thEvent.length; i++){
+            thEvent[i].style.color = "black"
+        }
+    }
+
+    if(!document.getElementById("td-events-col-a")){
+        document.getElementById("div-time-event").style.marginTop = "0px"
+    }
+
     const activateTime = calculateBreakButtonActivateTime(event);
 
     if(document.getElementById("td-event-break-start").innerText != "") {
