@@ -199,19 +199,19 @@ function renderNewTimeEvent(event) {
     const tableOfEvent = `
     <table id="tbl-event">
         <thead>
-            <tr><th id="th-event-new">&nbsp</th><th id="th-event-date">Date</th><th id="th-event-time-in">Time In</th><th id="th-event-break-start">Break Start</th><th id="th-event-break-end">Break End</th><th id="th-event-time-out">Time Out</th><th id="th-event-shift">Shift</th><th id="th-event-hours">Hours</th><th id="th-event-col-z"></th></tr>
+            <tr><th class="th-event" id="th-event-new" style="width:4.25%">&nbsp</th><th class="th-event" id="th-event-date" style="width:12.75%"></th><th class="th-event" id="th-event-time-in" style="width:12.75%"></th><th class="th-event" id="th-event-break-start" style="width:12.75%"></th><th class="th-event" id="th-event-break-end" style="width:12.75%"></th><th class="th-event" id="th-event-time-out" style="width:12.75%"></th><th class="th-event" id="th-event-shift" style="width:8.5%"></th><th class="th-event" id="th-event-hours" style="width:12.75%"></th><th class="th-event" id="th-event-col-z" style="width:15%"></th></tr>
         </thead>
         <tbody>
             <tr>
-                <td id="td-event-new" style="color:blue">new</td>
-                <td id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
-                <td id="td-event-time-in" >${event.time_in ? getTime(event.time_in) : ""}</td>
-                <td id="td-event-break-start" >${event.break_start ? getTime(event.break_start) : ""}</td>
-                <td id="td-event-break-end" >${event.break_end ? getTime(event.break_end) : ""}</td>
-                <td id="td-event-time-out" >${event.time_out ? getTime(event.time_out) : ""}</td>
-                <td id="td-event-time-shift" >${getShift(getTime(event.time_in))}</td>
-                <td id="td-event-hours" ></td>
-                <td id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
+                <td class="td-event" id="td-event-new" style="color:blue">new</td>
+                <td class="td-event" id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
+                <td class="td-event" id="td-event-time-in" >${event.time_in ? getTime(event.time_in) : ""}</td>
+                <td class="td-event" id="td-event-break-start" >${event.break_start ? getTime(event.break_start) : ""}</td>
+                <td class="td-event" id="td-event-break-end" >${event.break_end ? getTime(event.break_end) : ""}</td>
+                <td class="td-event" id="td-event-time-out" >${event.time_out ? getTime(event.time_out) : ""}</td>
+                <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.time_in))}</td>
+                <td class="td-event" id="td-event-hours" ></td>
+                <td class="td-event" id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
             </tr>
         </tbody>
     </table>`;
