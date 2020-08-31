@@ -1,9 +1,10 @@
 class Employee {
-    constructor(id, first_name, last_name, email) {
+    constructor(id, first_name, last_name, position, email) {
         this.id = id
         this.first_name = first_name
         this.last_name = last_name
         this.email = email
+        this.position = position
     }
 }
 
@@ -17,13 +18,14 @@ addEmployeeForm.addEventListener("submit", (e)=>{
 function createEmployee() {
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
+    const position = document.getElementById("position").value
     const email = document.getElementById("email").value;
     const emailConfirmation = document.getElementById("email-confirmation").value
 
     if(email !== emailConfirmation) {
         displayMessages("Please provide matching emails")
     } else {
-        const bodyObject = {first_name: firstName, last_name: lastName, email: email}
+        const bodyObject = {first_name: firstName, last_name: lastName, position: position, email: email}
 
         const configObj = {
             method: "POST",
@@ -38,7 +40,8 @@ function createEmployee() {
         .then(response => response.json())
         .then(employee => {
             if(!employee.message){
-                const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.email);
+                const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email);
+                console.log(newEmployee)
                 renderEmployeeData(newEmployee);
             } else {
                 displayMessages(employee.message)
