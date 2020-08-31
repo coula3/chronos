@@ -182,9 +182,9 @@ function renderEmployeeTimeEvents(employeeObject) {
         const p = document.createElement("p");
         p.innerText = "Welcome and let's get clocking...!";
         p.setAttribute("id", "p-new-user-msg");
-        p.style.cssText = "text-align:center; color:blue; font-size:18px; margin-top:10px";
+        p.style.cssText = "text-align:center; color:blue; font-size:18px; padding-top:20px; clear:both;";
         const h2 = document.getElementById("employee-name");
-        h2.after(p);
+        document.getElementById("div-employee-tag-name").after(p);
         divTimeEvents.style.backgroundColor = "#e6ffff";
     }
 
