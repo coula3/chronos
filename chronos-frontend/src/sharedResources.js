@@ -53,7 +53,7 @@ function appendButtonClockInOut() {
     buttonClockInOut.style.width = "100px";
     const divClockInOut = document.createElement("div");
     divClockInOut.setAttribute("id", "div-clock-in-btn");
-    divClockInOut.style.cssText = "float:right; margin-bottom:25px;  margin-bottom:50px; clear:both;";
+    divClockInOut.style.cssText = "float:right; margin-top:50px; margin-bottom:50px; clear:both;";
     divClockInOut.appendChild(buttonClockInOut);
     const h2 = document.getElementById("employee-name");
     document.getElementById("div-employee-tag-name").after(divClockInOut);
