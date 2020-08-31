@@ -21,7 +21,7 @@
 
 .input {
     padding: 2px 5px 2px 5px;
-    width: 175px;
+    width: 160px;
 }
 
 #tbl-events {
@@ -48,4 +48,9 @@
 
 .th-event {
     color: #ffffff;
+}
+
+#position {
+    padding: 2px 5px 2px 5px;
+    width: 175px;
 }
