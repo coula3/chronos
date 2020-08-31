@@ -41,7 +41,10 @@ function createEmployee() {
         .then(employee => {
             if(!employee.message){
                 const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email);
-                console.log(newEmployee)
+                document.getElementById("div-signup").remove();
+                document.getElementById("sign-in").remove();
+                document.getElementById("btn-sign-in").innerText = "Sign Out";
+                console.log(newEmployee);
                 renderEmployeeData(newEmployee);
             } else {
                 displayMessages(employee.message)
