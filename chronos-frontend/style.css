@@ -39,3 +39,10 @@
 .td-events {
     padding: 4px 0px 4px 0px;
 }
+
+#div-time-events, #div-time-event {
+    background-color: #ffffff;
+    padding: 5px;
+    border-radius: 5%;
+
+}
