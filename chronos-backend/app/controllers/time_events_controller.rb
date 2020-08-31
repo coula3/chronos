@@ -18,20 +18,20 @@ class TimeEventsController < ApplicationController
         time_event = TimeEvent.find_by(id: params[:id])
         message = {message: time_event.errors.full_messages}
 
-        if params.keys.include?("time_out")
-            if time_event.update(time_out: params[:time_out])
-                render json: time_event
-            else
-                render json: message
-            end
-        elsif params.keys.include?("break_start")
-            if time_event.update(break_start: params[:break_start])
+        if params.keys.include?("break_start")
+            if time_event.update(break_start: time_event_params[:break_start])
                 render json: time_event
             else
                 render json: message
             end
         elsif params.keys.include?("break_end")
-            if time_event.update(break_end: params[:break_end])
+            if time_event.update(break_end: time_event_params[:break_end])
+                render json: time_event
+            else
+                render json: message
+            end
+        elsif params.keys.include?("time_out")
+            if time_event.update(time_out: time_event_params[:time_out])
                 render json: time_event
             else
                 render json: message
@@ -41,6 +41,6 @@ class TimeEventsController < ApplicationController
 
     private
     def time_event_params
-        params.require(:time_event).permit(:date, :time_in)
+        params.require(:time_event).permit(:date, :time_in, :break_start, :break_end, :time_out)
     end
 end
