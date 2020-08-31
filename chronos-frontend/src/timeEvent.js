@@ -78,6 +78,7 @@ function createTimeEvent(e) {
                 e.target.innerText = "Clock In";
                 buttonBreakResume.disabled = true;
                 buttonClockInOut.disabled = true;
+                buttonBreakResume.style.backgroundColor = "";
                 updateTimeEventOnDOM(timeEvent);
             }
 
