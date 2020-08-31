@@ -93,7 +93,7 @@ function renderEmployeeData(employeeObject) {
     const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
     const lastName = `${employeeObject.last_name[0].toUpperCase() + employeeObject.last_name.slice(1)}`
     const employeeNameTag = `
-        <h2 id="employee-name" employee-data-id = employeeObject.id style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
+        <h2 id="employee-name" employee-data-id = ${employeeObject.id} style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
         <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${employeeObject.position}</h4>
     `;
 
