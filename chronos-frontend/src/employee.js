@@ -90,12 +90,17 @@ function signInEmployee(e) {
 }
 
 function renderEmployeeData(employeeObject) {
-    const h2 = document.createElement("h2");
-    h2.innerText = `Hi ${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}!`
-    h2.setAttribute("id", "employee-name")
-    h2.setAttribute("employee-data-id", employeeObject.id)
-    document.getElementById("main-container").appendChild(h2)
-    h2.style.cssText = "padding-left:15px; padding-top:50px; clear:both;"
+    const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
+    const lastName = `${employeeObject.last_name[0].toUpperCase() + employeeObject.last_name.slice(1)}`
+    const employeeNameTag = `
+        <h2 id="employee-name" employee-data-id = employeeObject.id style="color:blue; padding-left:10px; margin:0px 20px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
+        <h4 id="employee-position" style="padding-left:10px; margin:0px 20px 0px 0px; float:right; clear:both">${employeeObject.position}</h4>
+    `;
+
+    divEmployeeNameTag = document.createElement("div");
+    divEmployeeNameTag.setAttribute("id", "div-employee-tag-name");
+    document.getElementById("main-container").appendChild(divEmployeeNameTag);
+    document.getElementById("div-employee-tag-name").innerHTML += employeeNameTag;
 
     appendButtonClockInOut();
     if(employeeObject.time_events)
