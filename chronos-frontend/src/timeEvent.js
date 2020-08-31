@@ -161,6 +161,23 @@ function renderEmployeeTimeEvents(employeeObject) {
                 <tr><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th><th class="th-events" id="th-events-col-z" style="width:10%"></th></tr>
             </thead><tbody>`;
 
+        timeEvents.forEach((event) => {
+            table += `
+            <tr>
+                <td class="td-events" id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
+                <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
+                <td class="td-events" id="td-events-time-in">${event.time_in ? getTime(event.time_in) : ""}</td>
+                <td class="td-events" id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
+                <td class="td-events" id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
+                <td class="td-events" id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
+                <td class="td-events" id="td-events-time-shift">${getShift(getTime(event.time_in))}</td>
+                <td class="td-events" id="td-events-col-z">${getHours(event.time_in, event.time_out)}</td>
+            </tr>`;
+        })
+
+        table += `</tbody></table>`
+        divTimeEvents.innerHTML += table;
+
     } else {
         const p = document.createElement("p");
         p.innerText = "Welcome and let's get clocking...!";
@@ -168,23 +185,8 @@ function renderEmployeeTimeEvents(employeeObject) {
         p.style.cssText = "text-align:center; color:blue; font-size:18px; margin-top:10px";
         const h2 = document.getElementById("employee-name");
         h2.after(p);
+        divTimeEvents.style.backgroundColor = "#e6ffff";
     }
-
-    timeEvents.forEach((event) => {
-        table += `
-        <tr>
-            <td class="td-events" id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
-            <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
-            <td class="td-events" id="td-events-time-in">${event.time_in ? getTime(event.time_in) : ""}</td>
-            <td class="td-events" id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
-            <td class="td-events" id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
-            <td class="td-events" id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
-            <td class="td-events" id="td-events-time-shift">${getShift(getTime(event.time_in))}</td>
-            <td class="td-events" id="td-events-col-z">${getHours(event.time_in, event.time_out)}</td>
-        </tr>`;
-    })
-        table += `</tbody></table>`
-        divTimeEvents.innerHTML += table;
 
     if(openTimeEvent.length !== 0){
         renderNewTimeEvent(openTimeEvent[0])
