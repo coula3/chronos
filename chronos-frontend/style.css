@@ -23,3 +23,19 @@
     padding: 2px 5px 2px 5px;
     width: 175px;
 }
+
+#tbl-events {
+    width: 85%;
+}
+
+#tbl-event {
+    width: 100%;
+}
+
+.th-events, .td-events {
+    text-align: left;
+}
+
+.td-events {
+    padding: 4px 0px 4px 0px;
+}

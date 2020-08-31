@@ -157,8 +157,8 @@ function renderEmployeeTimeEvents(employeeObject) {
     
     if(employeeObject.time_events.length > 0) {
         table = `
-            <table><thead>
-                <tr><th id="th-events-col-a">&nbsp</th><th id="th-events-date">Date</th><th id="th-events-time-in">Time In</th><th id="th-events-break-start">Break Start</th><th id="th-events-break-end">Break End</th><th id="th-events-time-out">Time Out</th><th id="th-events-shift">Shift</th><th id="th-events-hours">Hours</th><th id="th-events-col-z"></th></tr>
+            <table id="tbl-events"><thead>
+                <tr><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th><th class="th-events" id="th-events-col-z" style="width:10%"></th></tr>
             </thead><tbody>`;
 
     } else {
@@ -173,14 +173,14 @@ function renderEmployeeTimeEvents(employeeObject) {
     timeEvents.forEach((event) => {
         table += `
         <tr>
-            <td id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
-            <td id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
-            <td id="td-events-time-in">${event.time_in ? getTime(event.time_in) : ""}</td>
-            <td id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
-            <td id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
-            <td id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
-            <td id="td-events-time-shift">${getShift(getTime(event.time_in))}</td>
-            <td id="td-events-col-z">${getHours(event.time_in, event.time_out)}</td>
+            <td class="td-events" id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
+            <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
+            <td class="td-events" id="td-events-time-in">${event.time_in ? getTime(event.time_in) : ""}</td>
+            <td class="td-events" id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
+            <td class="td-events" id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
+            <td class="td-events" id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
+            <td class="td-events" id="td-events-time-shift">${getShift(getTime(event.time_in))}</td>
+            <td class="td-events" id="td-events-col-z">${getHours(event.time_in, event.time_out)}</td>
         </tr>`;
     })
         table += `</tbody></table>`
@@ -197,7 +197,7 @@ function renderNewTimeEvent(event) {
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.setAttribute("id", "div-time-event");
     const tableOfEvent = `
-    <table>
+    <table id="tbl-event">
         <thead>
             <tr><th id="th-event-new">&nbsp</th><th id="th-event-date">Date</th><th id="th-event-time-in">Time In</th><th id="th-event-break-start">Break Start</th><th id="th-event-break-end">Break End</th><th id="th-event-time-out">Time Out</th><th id="th-event-shift">Shift</th><th id="th-event-hours">Hours</th><th id="th-event-col-z"></th></tr>
         </thead>
