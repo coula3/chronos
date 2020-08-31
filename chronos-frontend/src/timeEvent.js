@@ -158,7 +158,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     if(employeeObject.time_events.length > 0) {
         table = `
             <table><thead>
-                <tr><th>&nbsp</th><th>Date</th><th>Time In</th><th>Break Start</th><th>Break End</th><th>Time Out</th><th>Shift</th><th>Hours</th><th></th></tr>
+                <tr><th id="th-events-col-a">&nbsp</th><th id="th-events-date">Date</th><th id="th-events-time-in">Time In</th><th id="th-events-break-start">Break Start</th><th id="th-events-break-end">Break End</th><th id="th-events-time-out">Time Out</th><th id="th-events-shift">Shift</th><th id="th-events-hours">Hours</th><th id="th-events-col-z"></th></tr>
             </thead><tbody>`;
 
     } else {
@@ -173,14 +173,14 @@ function renderEmployeeTimeEvents(employeeObject) {
     timeEvents.forEach((event) => {
         table += `
         <tr>
-            <td>${timeEvents.indexOf(event) + 1}</td>
-            <td>${event.date ? getDate(event.date) : ""}</td>
-            <td>${event.time_in ? getTime(event.time_in) : ""}</td>
-            <td>${event.break_start ? getTime(event.break_start) : ""}</td>
-            <td>${event.break_end ? getTime(event.break_end) : ""}</td>
-            <td>${event.time_out ? getTime(event.time_out) : ""}</td>
-            <td>${getShift(getTime(event.time_in))}</td>
-            <td>${getHours(event.time_in, event.time_out)}</td>
+            <td id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
+            <td id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
+            <td id="td-events-time-in">${event.time_in ? getTime(event.time_in) : ""}</td>
+            <td id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
+            <td id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
+            <td id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
+            <td id="td-events-time-shift">${getShift(getTime(event.time_in))}</td>
+            <td id="td-events-col-z">${getHours(event.time_in, event.time_out)}</td>
         </tr>`;
     })
         table += `</tbody></table>`
@@ -199,7 +199,7 @@ function renderNewTimeEvent(event) {
     const tableOfEvent = `
     <table>
         <thead>
-            <tr><th>&nbsp</th><th>Date</th><th>Time In</th><th>Break Start</th><th>Break End</th><th>Time Out</th><th>Shift</th><th>Hours</th><th></th></tr>
+            <tr><th id="th-event-new">&nbsp</th><th id="th-event-date">Date</th><th id="th-event-time-in">Time In</th><th id="th-event-break-start">Break Start</th><th id="th-event-break-end">Break End</th><th id="th-event-time-out">Time Out</th><th id="th-event-shift">Shift</th><th id="th-event-hours">Hours</th><th id="th-event-col-z"></th></tr>
         </thead>
         <tbody>
             <tr>
@@ -209,9 +209,9 @@ function renderNewTimeEvent(event) {
                 <td id="td-event-break-start" >${event.break_start ? getTime(event.break_start) : ""}</td>
                 <td id="td-event-break-end" >${event.break_end ? getTime(event.break_end) : ""}</td>
                 <td id="td-event-time-out" >${event.time_out ? getTime(event.time_out) : ""}</td>
-                <td id="td-event-time-out" >${getShift(getTime(event.time_in))}</td>
+                <td id="td-event-time-shift" >${getShift(getTime(event.time_in))}</td>
                 <td id="td-event-hours" ></td>
-                <td id="td-event-hours"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
+                <td id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
             </tr>
         </tbody>
     </table>`;
