@@ -25,7 +25,8 @@ function renderWelcomeMsg(employeeObject){
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
     const h2 = document.getElementById("employee-name");
     document.getElementById("div-employee-tag-name").after(p);
-    document.getElementById("div-time-events").style.backgroundColor = "#e6ffff";
+    if(document.getElementById("div-time-events"))
+        document.getElementById("div-time-events").style.backgroundColor = "#e6ffff";
 }
 
 function getDate(date) {
