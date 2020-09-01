@@ -6,7 +6,7 @@ class TimeEventsController < ApplicationController
 
     def create
         employee = Employee.find_by(id: params[:employee_id])
-        time_event = employee.time_events.build(date: time_event_params[:date], time_in: time_event_params[:time_in])
+        time_event = employee.time_events.build(date: time_event_params[:date])
         if time_event.save
             render json: time_event
         else
@@ -41,6 +41,6 @@ class TimeEventsController < ApplicationController
 
     private
     def time_event_params
-        params.require(:time_event).permit(:date, :time_in, :break_start, :break_end, :time_out)
+        params.require(:time_event).permit(:date, :break_start, :break_end, :time_out)
     end
 end
