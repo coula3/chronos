@@ -1,8 +1,7 @@
 class TimeEvent {
-    constructor(id, date, time_in, time_out, break_start, break_end, employee_id){
+    constructor(id, date, time_out, break_start, break_end, employee_id){
         this.id = id
         this.date = date
-        this.time_in = time_in
         this.time_out = time_out
         this.break_start = break_start
         this.break_end = break_end
@@ -28,7 +27,6 @@ function createTimeEvent(e) {
     
         const bodyObject = {
             date: Date().slice(0, 24),
-            time_in: Date().slice(0, 24),
             time_out: null,
             break_start: null,
             break_end: null,
@@ -47,7 +45,7 @@ function createTimeEvent(e) {
         fetch(`${CHRONOS_URL}/time_events`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_in, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
+            const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
             renderNewTimeEvent(newTimeEvent);
             e.target.innerText = "Clock Out";
         })
@@ -85,7 +83,7 @@ function createTimeEvent(e) {
             if(timeEvent.time_out) {
                 updateHours();
                 function updateHours(){
-                    const hrs = getHours(timeEvent.time_in, timeEvent.time_out);
+                    const hrs = getHours(timeEvent.date, timeEvent.time_out);
                     document.getElementById("td-event-hours").innerText = hrs;
                 }
             }
@@ -168,12 +166,12 @@ function renderEmployeeTimeEvents(employeeObject) {
             <tr>
                 <td class="td-events" id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
                 <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
-                <td class="td-events" id="td-events-time-in">${event.time_in ? getTime(event.time_in) : ""}</td>
+                <td class="td-events" id="td-events-time-in">${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-events" id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
                 <td class="td-events" id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
                 <td class="td-events" id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
-                <td class="td-events" id="td-events-time-shift">${getShift(getTime(event.time_in))}</td>
-                <td class="td-events" id="td-events-col-z">${getHours(event.time_in, event.time_out)}</td>
+                <td class="td-events" id="td-events-time-shift">${getShift(getTime(event.date))}</td>
+                <td class="td-events" id="td-events-col-z">${getHours(event.date, event.time_out)}</td>
             </tr>`;
         })
 
@@ -205,11 +203,11 @@ function renderNewTimeEvent(event) {
             <tr>
                 <td class="td-event" id="td-event-new" style="color:blue">new</td>
                 <td class="td-event" id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
-                <td class="td-event" id="td-event-time-in" >${event.time_in ? getTime(event.time_in) : ""}</td>
+                <td class="td-event" id="td-event-time-in" >${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-event" id="td-event-break-start" >${event.break_start ? getTime(event.break_start) : ""}</td>
                 <td class="td-event" id="td-event-break-end" >${event.break_end ? getTime(event.break_end) : ""}</td>
                 <td class="td-event" id="td-event-time-out" >${event.time_out ? getTime(event.time_out) : ""}</td>
-                <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.time_in))}</td>
+                <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.date))}</td>
                 <td class="td-event" id="td-event-hours" ></td>
                 <td class="td-event" id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
             </tr>
@@ -252,7 +250,7 @@ function renderNewTimeEvent(event) {
 }
 
 function calculateBreakButtonActivateTime(event) {
-    const timeDiff = calculateTimeDiff(event.time_in, Date());
+    const timeDiff = calculateTimeDiff(event.date, Date());
     const fourHrsDiffInMillesecs = 60*60*4*1000;
     const elapsedTime = timeDiff - fourHrsDiffInMillesecs;
     const activateTime = 10000;
