@@ -108,6 +108,7 @@ function renderEmployeeData(employeeObject) {
 
     if(employeeObject.time_events.length > 0){
         renderEmployeeTimeEvents(employeeObject);
+        renderWelcomeMsg(employeeObject);
     } else {
         renderWelcomeMsg(employeeObject);
     }
