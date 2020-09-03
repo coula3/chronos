@@ -29,6 +29,17 @@ function renderWelcomeMsg(employeeObject){
         document.getElementById("div-time-events").style.backgroundColor = "#e6ffff";
 }
 
+function greeting(){
+    const time = parseInt(Date().slice(16,24).slice(0,2), 10)
+    if(time > 6 && time < 12 ){
+        return "Good morning"
+    }  else if(time >= 12 && time <= 17) {
+        return "Good afternoon"
+    } else {
+        return "Good evening"
+    }
+}
+
 function getDate(date) {
     return date.slice(0, 10);
 }
