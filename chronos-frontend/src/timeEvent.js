@@ -145,7 +145,8 @@ function takeBreakOrResumeWork(e) {
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
-    const timeEvents = employeeObject.time_events.filter((e)=>{ return e.time_out});
+    const closedtimeEvents = employeeObject.time_events.filter((e)=>{ return e.time_out});
+    const timeEvents = closedtimeEvents.sort((a, b) => a.id - b.id );
     const openTimeEvent = employeeObject.time_events.filter((e)=>{ return !e.time_out })
 
     const divTimeEvents = document.createElement("div");
