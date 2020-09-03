@@ -191,7 +191,7 @@ function renderEmployeeTimeEvents(employeeObject) {
 
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
-    divTimeEvent.style.cssText = "margin-top:75px; margin-bottom:25px; padding-left:30px; clear:both";
+    divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; padding-left:30px; clear:both";
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.setAttribute("id", "div-time-event");
 
