@@ -106,7 +106,7 @@ function renderEmployeeData(employeeObject) {
 
     appendButtonClockInOut();
 
-    if(employeeObject.time_events){
+    if(employeeObject.time_events.length > 0){
         renderEmployeeTimeEvents(employeeObject);
     } else {
         renderWelcomeMsg(employeeObject);
