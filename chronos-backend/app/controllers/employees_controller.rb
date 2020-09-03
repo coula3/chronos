@@ -19,7 +19,7 @@ class EmployeesController < ApplicationController
         if employee.save
             render json: employee
         else
-            render json: {message: employee.errors.full_messages.join(" ")}
+            render json: {message: employee.errors.full_messages.join("; ")}
         end
     end
 
