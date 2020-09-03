@@ -1,17 +1,17 @@
 function displayMessages(message) {
     if(!document.getElementById("messages")) {
-    const p = document.createElement("p");
-    p.innerText = message;
+    const span = document.createElement("span");
+    span.innerText = message;
 
-    appendMessagesParagraph(p);
+    appendMessagesParagraph(span);
     }
 }
 
-function appendMessagesParagraph(p) {
-    document.getElementById("main-container").insertBefore(p, document.getElementById("div-signup-signin"));
-    p.style.cssText = "color:red; font-size:14px; padding-right: 5px; float:right;";
-    p.setAttribute("id", "messages");
-    
+function appendMessagesParagraph(span) {
+    document.getElementById("main-container").insertBefore(span, document.getElementById("div-signup-signin"));
+    span.style.cssText = "background-color:#fff7e6; font-size:14px; padding: 5px 10px 5px 10px; border-radius: 25%; float:right;";
+    span.setAttribute("id", "messages");
+
     setTimeout(() => {
         document.getElementById("messages").remove()
     }, 3000)
