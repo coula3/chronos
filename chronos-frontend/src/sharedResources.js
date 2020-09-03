@@ -20,7 +20,11 @@ function appendMessagesParagraph(span) {
 function renderWelcomeMsg(employeeObject){
     const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
     const p = document.createElement("p");
-    p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
+    if(employeeObject.time_events == 0){
+        p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
+    } else {
+        p.innerText = `${greeting()} ${firstName}!`;
+    }
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
     const h2 = document.getElementById("employee-name");
