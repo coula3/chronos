@@ -263,11 +263,11 @@ function calculateBreakButtonActivateTime(event) {
 }
 
 function updateTimeEventOnDOM(event) {
-    const spanEventBreakStart = document.getElementById("td-event-break-start");
-    const spanEventBreakEnd = document.getElementById("td-event-break-end");
-    const spanEventTimeOut = document.getElementById("td-event-time-out");
+    const tdEventBreakStart = document.getElementById("td-event-break-start");
+    const tdEventBreakEnd = document.getElementById("td-event-break-end");
+    const tdEventTimeOut = document.getElementById("td-event-time-out");
 
-    spanEventBreakStart.innerText = event.break_start ? getTime(event.break_start) : "";
-    spanEventBreakEnd.innerText = event.break_end ? getTime(event.break_end) : "";
-    spanEventTimeOut.innerText = event.time_out ? getTime(event.time_out) : "";
+    tdEventBreakStart.innerText = event.break_start ? getTime(event.break_start) : "";
+    tdEventBreakEnd.innerText = event.break_end ? getTime(event.break_end) : "";
+    tdEventTimeOut.innerText = event.time_out ? getTime(event.time_out) : "";
 }
