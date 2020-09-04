@@ -24,31 +24,34 @@ buttonClockInOut.addEventListener("click", (e) => {
 function createTimeEvent(e) {
     const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
     if(e.target.innerText == "Clock In") {
-    
-        const bodyObject = {
-            date: Date().slice(0, 24),
-            time_out: null,
-            break_start: null,
-            break_end: null,
-            employee_id: employeeId
-        }
+        if(parseInt(Date().slice(16,18)) >= 22 && parseInt(Date().slice(16,18)) <= 4){
+            displayMessages("You are not authorized to clock in at this time. Please contact your supervisor for assistance")
+        } else {
+            const bodyObject = {
+                date: Date().slice(0, 24),
+                time_out: null,
+                break_start: null,
+                break_end: null,
+                employee_id: employeeId
+            }
 
-        const configObj = {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json"
-            },
-            body: JSON.stringify(bodyObject)
-        }
+            const configObj = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+                body: JSON.stringify(bodyObject)
+            }
 
-        fetch(`${CHRONOS_URL}/time_events`, configObj)
-        .then(response => response.json())
-        .then(timeEvent => {
-            const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
-            renderNewTimeEvent(newTimeEvent);
-            e.target.innerText = "Clock Out";
-        })
+            fetch(`${CHRONOS_URL}/time_events`, configObj)
+            .then(response => response.json())
+            .then(timeEvent => {
+                const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
+                renderNewTimeEvent(newTimeEvent);
+                e.target.innerText = "Clock Out";
+            })
+        }
     } else {
         const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id");
 
