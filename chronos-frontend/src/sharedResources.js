@@ -90,3 +90,9 @@ function getHours(startTime, finishTime) {
 
     return `${hours}:${minutes}:${seconds}`
 }
+
+function removeMessages(){
+    if(document.getElementById("messages")){
+        document.getElementById("messages").remove();
+    }
+}
