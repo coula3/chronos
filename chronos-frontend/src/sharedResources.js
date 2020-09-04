@@ -8,13 +8,13 @@ function displayMessages(message) {
 }
 
 function appendMessagesParagraph(span) {
-    document.getElementById("main-container").insertBefore(span, document.getElementById("div-signup-signin"));
-    span.style.cssText = "background-color:#fff7e6; font-size:14px; padding: 5px 10px 5px 10px; border-radius: 25%; float:right;";
+    document.getElementById("main-container").appendChild(span);
+    span.style.cssText = "background-color:#f2ecdc; font-size:14px; margin-top:20px; padding: 5px 10px 5px 10px; float:right;";
     span.setAttribute("id", "messages");
 
     setTimeout(() => {
         document.getElementById("messages").remove()
-    }, 3000)
+    }, 5000)
 }
 
 function renderWelcomeMsg(employeeObject){
