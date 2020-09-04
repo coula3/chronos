@@ -13,7 +13,8 @@ function appendMessagesParagraph(span) {
     span.setAttribute("id", "messages");
 
     setTimeout(() => {
-        document.getElementById("messages").remove()
+        if(document.getElementById("messages"))
+            document.getElementById("messages").remove()
     }, 5000)
 }
 
