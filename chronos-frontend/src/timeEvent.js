@@ -54,10 +54,17 @@ function createTimeEvent(e) {
         }
     } else {
         const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id");
+        let breakEnd;
 
+        if(!!document.getElementById("td-event-break-start").innerText && !document.getElementById("td-event-break-end").innerText) {
+            breakEnd = Date().slice(0, 24);
+        } else {
+            breakEnd = null;
+        }
         const bodyObject = {
             id: timeEventId,
-            time_out: Date().slice(0, 24)
+            time_out: Date().slice(0, 24),
+            break_end: breakEnd
         }
         const configObj = {
             method: "PATCH",
@@ -119,7 +126,6 @@ function takeBreakOrResumeWork(e) {
             updateTimeEventOnDOM(timeEvent);
             e.target.innerText = "Resume";
             e.target.style.backgroundColor = "";
-            buttonClockInOut.disabled = true;
         })
     } else {
         const bodyObject = {
@@ -142,7 +148,6 @@ function takeBreakOrResumeWork(e) {
             updateTimeEventOnDOM(timeEvent);
             e.target.innerText = "Take Break";
             e.target.disabled = true;
-            buttonClockInOut.disabled = false;
         })
     }
 }
