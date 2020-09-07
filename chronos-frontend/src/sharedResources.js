@@ -18,6 +18,12 @@ function appendMessagesSpan(span) {
     }, 5000)
 }
 
+function removeMessagesSpan(){
+    if(document.getElementById("messages")){
+        document.getElementById("messages").remove();
+    }
+}
+
 function renderWelcomeMsg(employeeObject){
     const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
     const p = document.createElement("p");
@@ -94,10 +100,4 @@ function getHours(startTime, finishTime) {
     const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60
 
     return `${hours}:${minutes}:${seconds}`
-}
-
-function removeMessages(){
-    if(document.getElementById("messages")){
-        document.getElementById("messages").remove();
-    }
 }

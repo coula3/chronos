@@ -43,7 +43,7 @@ function createEmployee() {
                 const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email);
                 document.getElementById("div-signup").remove();
                 document.getElementById("sign-in").remove();
-                removeMessages()
+                removeMessagesSpan()
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
                 renderEmployeeData(newEmployee);
             } else {
@@ -68,7 +68,7 @@ function signInEmployee(e) {
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
                     divSignUp.remove();
-                    removeMessages();
+                    removeMessagesSpan();
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
                         buttonBreakResume.disabled = true;
                         document.getElementById("btn-break-resume").innerText = "Take Break"
