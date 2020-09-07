@@ -153,7 +153,7 @@ function takeBreakOrResumeWork(e) {
 
 function renderEmployeeTimeEvents(employeeObject) {
     const closedtimeEvents = employeeObject.time_events.filter((e)=>{ return e.time_out});
-    const timeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
+    const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
     const openTimeEvent = employeeObject.time_events.filter((e)=>{ return !e.time_out })
 
     const divTimeEvents = document.createElement("div");
@@ -167,10 +167,10 @@ function renderEmployeeTimeEvents(employeeObject) {
                 <tr id="tr-events"><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th></tr>
             </thead><tbody>`;
 
-        timeEvents.forEach((event) => {
+        renderedTimeEvents.forEach((event) => {
             tableOfEvents += `
             <tr>
-                <td class="td-events" id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
+                <td class="td-events" id="td-events-col-a">${renderedTimeEvents.indexOf(event) + 1}</td>
                 <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
                 <td class="td-events" id="td-events-time-in">${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-events" id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
