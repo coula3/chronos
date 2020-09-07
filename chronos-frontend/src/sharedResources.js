@@ -9,7 +9,7 @@ function displayMessages(message) {
 
 function appendMessagesParagraph(span) {
     document.getElementById("main-container").appendChild(span);
-    span.style.cssText = "background-color:#f2ecdc; font-size:14px; margin-top:20px; padding: 5px 10px 5px 10px; float:right;";
+    span.style.cssText = "background-color:#f2ecdc; font-size:14px; margin-top:20px; padding: 5px 10px 5px 10px; box-shadow:10px 10px grey; float:right;";
     span.setAttribute("id", "messages");
 
     setTimeout(() => {
