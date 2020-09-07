@@ -28,14 +28,14 @@ function renderWelcomeMsg(employeeObject){
     const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
     const p = document.createElement("p");
 
-    if(employeeObject.time_events == 0){
-        p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
-        document.getElementById("div-employee-tag-name").after(p);
-    } else {
+    if(employeeObject.time_events && employeeObject.time_events.length > 0){
         if(!document.getElementById("div-time-event")){
             p.innerText = `${greeting()} ${firstName}!`;
             document.getElementById("div-employee-tag-name").after(p);
         }
+    } else {
+        p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
+        document.getElementById("div-employee-tag-name").after(p);
     }
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";

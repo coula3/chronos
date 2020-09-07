@@ -107,11 +107,5 @@ function renderEmployeeData(employeeObject) {
     document.getElementById("div-employee-tag-name").innerHTML += employeeNameTag;
 
     appendButtonClockInOut();
-
-    if(employeeObject.time_events.length > 0){
-        renderEmployeeTimeEvents(employeeObject);
-        renderWelcomeMsg(employeeObject);
-    } else {
-        renderWelcomeMsg(employeeObject);
-    }
+    renderEmployeeTimeEvents(employeeObject);
 }

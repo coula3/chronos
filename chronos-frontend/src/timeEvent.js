@@ -183,9 +183,8 @@ function renderEmployeeTimeEvents(employeeObject) {
 
         tableOfEvents += `</tbody></table>`
         divTimeEvents.innerHTML += tableOfEvents;
-
+        renderWelcomeMsg(employeeObject);
     } else {
-
         renderWelcomeMsg(employeeObject);
     }
 
