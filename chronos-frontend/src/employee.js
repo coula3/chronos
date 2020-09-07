@@ -54,6 +54,13 @@ function createEmployee() {
     }
 }
 
+const buttonSignIn = document.getElementById("btn-sign-in");
+
+buttonSignIn.addEventListener("click", (e) => {
+    e.preventDefault();
+    signInEmployee(e);
+})
+
 function signInEmployee(e) {
     const inputSignIn = document.getElementById("sign-in")
     
