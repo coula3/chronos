@@ -1,11 +1,9 @@
 class EmployeesController < ApplicationController
 
     def signin
-        if employee = Employee.find_by(email: params[:email])
-            render json: employee
-        elsif 
-            render json: {message: "No user account matches email"}
-        end
+        employee = Employee.find_by(email: params[:email])
+
+        employee ? (render json: employee) : (render json: {message: "No user account matches email"})
     end
 
     def index
@@ -16,11 +14,7 @@ class EmployeesController < ApplicationController
     def create
         employee = Employee.new(employee_params)
         
-        if employee.save
-            render json: employee
-        else
-            render json: {message: employee.errors.full_messages.join("; ")}
-        end
+        employee.save ? (render json: employee) : (render json: {message: employee.errors.full_messages.join("; ")})
     end
 
     private

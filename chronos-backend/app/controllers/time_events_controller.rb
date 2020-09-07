@@ -7,11 +7,8 @@ class TimeEventsController < ApplicationController
     def create
         employee = Employee.find_by(id: params[:employee_id])
         time_event = employee.time_events.build(date: time_event_params[:date])
-        if time_event.save
-            render json: time_event
-        else
-            render json: {message: "Clock In unsuccessful"}
-        end
+
+        time_event.save ? (render json: time_event) : (render json: {message: "Clock In unsuccessful"})
     end
 
     def update
@@ -19,29 +16,13 @@ class TimeEventsController < ApplicationController
         message = {message: time_event.errors.full_messages}
 
         if params[:break_start]
-            if time_event.update(break_start: time_event_params[:break_start])
-                render json: time_event
-            else
-                render json: message
-            end
+            time_event.update(break_start: time_event_params[:break_start]) ? (render json: time_event) : (render json: message)
         elsif params[:break_end] && params[:time_out]
-            if time_event.update(break_end: time_event_params[:break_end], time_out: time_event_params[:time_out])
-                render json: time_event
-            else
-                render json: message
-            end
+            time_event.update(break_end: time_event_params[:break_end], time_out: time_event_params[:time_out]) ? (render json: time_event) : (render json: message)
         elsif params[:break_end] && !params[:time_out]
-            if time_event.update(break_end: time_event_params[:break_end])
-                render json: time_event
-            else
-                render json: message
-            end
+            time_event.update(break_end: time_event_params[:break_end]) ? (render json: time_event) : (render json: message)
         elsif params[:time_out]
-            if time_event.update(time_out: time_event_params[:time_out])
-                render json: time_event
-            else
-                render json: message
-            end
+            time_event.update(time_out: time_event_params[:time_out]) ? (render json: time_event) : (render json: message)
         end
     end
 
