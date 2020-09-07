@@ -1,9 +1,4 @@
 class TimeEventsController < ApplicationController
-    def index
-        time_events = TimeEvent.all
-        render json: time_events
-    end
-
     def create
         employee = Employee.find_by(id: params[:employee_id])
         time_event = employee.time_events.build(date: time_event_params[:date])

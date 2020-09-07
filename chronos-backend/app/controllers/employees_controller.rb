@@ -1,14 +1,8 @@
 class EmployeesController < ApplicationController
-
     def signin
         employee = Employee.find_by(email: params[:email])
 
         employee ? (render json: employee) : (render json: {message: "No user account matches email"})
-    end
-
-    def index
-        employees = Employee.all
-        render json: employees
     end
 
     def create
