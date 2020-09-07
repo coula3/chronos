@@ -160,17 +160,15 @@ function renderEmployeeTimeEvents(employeeObject) {
     divTimeEvents.setAttribute("id", "div-time-events");
     divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     document.getElementById("main-container").appendChild(divTimeEvents);
-
-    let table;
     
     if(employeeObject.time_events.length > 0) {
-        table = `
+        let tableOfEvents = `
             <table id="tbl-events"><thead>
                 <tr id="tr-events"><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th></tr>
             </thead><tbody>`;
 
         timeEvents.forEach((event) => {
-            table += `
+            tableOfEvents += `
             <tr>
                 <td class="td-events" id="td-events-col-a">${timeEvents.indexOf(event) + 1}</td>
                 <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
@@ -183,8 +181,8 @@ function renderEmployeeTimeEvents(employeeObject) {
             </tr>`;
         })
 
-        table += `</tbody></table>`
-        divTimeEvents.innerHTML += table;
+        tableOfEvents += `</tbody></table>`
+        divTimeEvents.innerHTML += tableOfEvents;
 
     } else {
 
