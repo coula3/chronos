@@ -24,7 +24,7 @@ buttonClockInOut.addEventListener("click", (e) => {
 function createTimeEvent(e) {
     const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
     if(e.target.innerText == "Clock In") {
-        if(parseInt(Date().slice(16,18)) >= 22 && parseInt(Date().slice(16,18)) <= 4){
+        if(parseInt(Date().slice(16,18)) >= 22 || parseInt(Date().slice(16,18)) <= 4){
             displayMessages("You are not authorized to clock in at this time. Please contact your supervisor for assistance")
         } else {
             const bodyObject = {
@@ -119,7 +119,6 @@ function takeBreakOrResumeWork(e) {
             },
             body: JSON.stringify(bodyObject)
         }
-
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
