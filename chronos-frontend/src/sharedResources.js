@@ -40,7 +40,7 @@ function renderWelcomeMsg(employeeObject){
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
 
-    if(document.getElementById("div-time-events").innerText == "")
+    if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText == "")
         document.getElementById("div-time-events").style.backgroundColor = "#e6ffff";
 }
 
