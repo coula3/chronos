@@ -6,6 +6,25 @@ class Employee {
         this.email = email
         this.position = position
     }
+
+    renderEmployeeData() {
+        const firstName = `${this.first_name[0].toUpperCase() + this.first_name.slice(1)}`
+        const lastName = `${this.last_name[0].toUpperCase() + this.last_name.slice(1)}`
+        const employeeNameTag = `
+            <h2 id="employee-name" employee-data-id = ${this.id} style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
+            <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${this.position}</h4>
+        `;
+
+        createNameTagDiv(employeeNameTag);
+
+        appendButtonClockInOut();
+
+        if(this.time_events){
+            renderEmployeeTimeEvents(this);
+        } else {
+            renderWelcomeMsg(this);
+        }
+    }
 }
 
 const addEmployeeForm = document.getElementById("form-create-employee")
@@ -45,7 +64,7 @@ function createEmployee() {
                 document.getElementById("sign-in").remove();
                 removeMessagesSpan()
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
-                renderEmployeeData(newEmployee);
+                newEmployee.renderEmployeeData();
             } else {
                 displayMessages(employee.message)
             }
@@ -70,7 +89,8 @@ function signInEmployee(e) {
             .then(response => response.json())
             .then(employee => {
                 if(!employee.message) {
-                    renderEmployeeData(employee);
+                    const currentEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email)
+                    currentEmployee.renderEmployeeData();
                     e.target.innerText = "Sign Out"
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
@@ -100,24 +120,9 @@ function signInEmployee(e) {
     }
 }
 
-function renderEmployeeData(employeeObject) {
-    const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
-    const lastName = `${employeeObject.last_name[0].toUpperCase() + employeeObject.last_name.slice(1)}`
-    const employeeNameTag = `
-        <h2 id="employee-name" employee-data-id = ${employeeObject.id} style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
-        <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${employeeObject.position}</h4>
-    `;
-
+function createNameTagDiv(employeeNameTag){
     divEmployeeNameTag = document.createElement("div");
     divEmployeeNameTag.setAttribute("id", "div-employee-tag-name");
     document.getElementById("main-container").appendChild(divEmployeeNameTag);
     document.getElementById("div-employee-tag-name").innerHTML += employeeNameTag;
-
-    appendButtonClockInOut();
-
-    if(employeeObject.time_events){
-        renderEmployeeTimeEvents(employeeObject);
-    } else {
-        renderWelcomeMsg(employeeObject);
-    }
 }
