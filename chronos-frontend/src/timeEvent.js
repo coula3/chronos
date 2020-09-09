@@ -22,6 +22,9 @@ class TimeEvent {
 const buttonClockInOut = document.createElement("button");
 let buttonBreakResume;
 let activateButtonTimeout;
+let counter = 0;
+let milleseconds;
+let runningTimeInterval;
 
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
@@ -60,12 +63,7 @@ function createTimeEvent(e) {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
                 renderNewTimeEvent(newTimeEvent);
                 e.target.innerText = "Clock Out";
-
-                let counter = 0;
-                setInterval(() => {
-                    const milleseconds = counter += 1
-                    document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds)
-                }, 1000);
+                addRunningTime();
             })
         }
     } else {
@@ -98,11 +96,13 @@ function createTimeEvent(e) {
 
             if(!buttonBreakResume) {
                 clearTimeout(activateButtonTimeout);
+                clearInterval(runningTimeInterval);
                 currentTimeEvent.updateTimeEventOnDOM();
                 e.target.innerText = "Clock In";
                 buttonClockInOut.disabled = true;
             } else {
                 currentTimeEvent.updateTimeEventOnDOM();
+                clearInterval(runningTimeInterval);
                 e.target.innerText = "Clock In";
                 buttonBreakResume.disabled = true;
                 buttonClockInOut.disabled = true;
@@ -147,6 +147,7 @@ function takeBreakOrResumeWork(e) {
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Resume";
             e.target.style.backgroundColor = "";
+            clearInterval(runningTimeInterval)
         })
     } else {
         const bodyObject = {
@@ -172,6 +173,8 @@ function takeBreakOrResumeWork(e) {
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Take Break";
             e.target.disabled = true;
+            counter = milleseconds;
+            addRunningTime();
         })
     }
 }
@@ -291,4 +294,11 @@ function calculateBreakButtonActivateTime(event) {
     const activateTime = 10000;
 
     return activateTime - elapsedTime;
+}
+
+function addRunningTime(){
+    runningTimeInterval = setInterval(() => {
+        milleseconds = counter += 1
+        document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds)
+    }, 1000);
 }
