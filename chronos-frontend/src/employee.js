@@ -3,8 +3,8 @@ class Employee {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.position = position;
+        this.email = email;
         this.timeEvents = timeEvents;
     }
 
@@ -90,7 +90,7 @@ function signInEmployee(e) {
             .then(response => response.json())
             .then(employee => {
                 if(!employee.message) {
-                    const currentEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email)
+                    const currentEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email, employee.time_events);
 
                     currentEmployee.renderEmployeeData();
                     e.target.innerText = "Sign Out"
