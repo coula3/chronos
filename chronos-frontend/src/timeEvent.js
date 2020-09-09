@@ -63,6 +63,7 @@ function createTimeEvent(e) {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
                 renderNewTimeEvent(newTimeEvent);
                 e.target.innerText = "Clock Out";
+                document.getElementById("td-event-hours").innerText = "00:00:00"
                 addRunningTime();
             })
         }
