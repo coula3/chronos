@@ -171,16 +171,21 @@ function takeBreakOrResumeWork(e) {
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
-    const closedtimeEvents = employeeObject.timeEvents.filter((e)=>{ return e.timeOut});
+    const timeEvents = employeeObject.timeEvents;
+    const employeeTimeEvents = [];
+    for(const i of timeEvents){
+        employeeTimeEvents.push(new TimeEvent(i.id, i.date, i.time_out, i.break_start, i.break_end, i.employee_id))
+    }
+    const closedtimeEvents = employeeTimeEvents.filter((e)=>{ return e.timeOut});
     const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
-    const openTimeEvent = employeeObject.timeEvents.filter((e)=>{ return !e.timeOut })
+    const openTimeEvent = employeeTimeEvents.filter((e)=>{ return !e.timeOut });
 
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
     divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     document.getElementById("main-container").appendChild(divTimeEvents);
     
-    if(employeeObject.timeEvents.length > 0) {
+    if(employeeTimeEvents.length > 0) {
         let tableOfEvents = `
             <table id="tbl-events"><thead>
                 <tr id="tr-events"><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th></tr>
