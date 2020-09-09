@@ -105,3 +105,10 @@ function getHours(startTime, finishTime) {
 
     return `${hours}:${minutes}:${seconds}`
 }
+
+function getRunningTime(milleseconds){
+    const hours = (Math.floor(milleseconds / 3600) % 24) < 10 ? `0${Math.floor(milleseconds / 3600) % 24}` : Math.floor(milleseconds / 3600) % 24
+    const minutes = (Math.floor(milleseconds / 60) % 60) < 10 ? `0${Math.floor(milleseconds / 60) % 60}` : Math.floor(milleseconds / 60) % 60
+    const secs =  milleseconds % 60 < 10 ? `0${milleseconds % 60 }` : milleseconds % 60
+    return `${hours}:${minutes}:${secs}`
+}

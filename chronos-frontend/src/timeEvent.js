@@ -60,6 +60,12 @@ function createTimeEvent(e) {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
                 renderNewTimeEvent(newTimeEvent);
                 e.target.innerText = "Clock Out";
+
+                let counter = 0;
+                setInterval(() => {
+                    const milleseconds = counter += 1
+                    document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds)
+                }, 1000);
             })
         }
     } else {
