@@ -41,18 +41,19 @@ function renderWelcomeMsg(employeeObject){
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
 
     if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText == "")
-        document.getElementById("div-time-events").style.backgroundColor = "#e6ffff";
+        { document.getElementById("div-time-events").style.backgroundColor = "#e6ffff"; }
 }
 
 function greeting(){
     const time = parseInt(Date().slice(16,24).slice(0,2), 10)
     if(time > 6 && time < 12 ){
         return "Good morning"
-    }  else if(time >= 12 && time <= 17) {
-        return "Good afternoon"
-    } else {
-        return "Good evening"
     }
+    if(time >= 12 && time <= 17) {
+        return "Good afternoon"
+    }
+    return "Good evening"
+
 }
 
 function getDate(date) {
@@ -66,9 +67,13 @@ function getTime(time) {
 function getShift(timeIn){
     if((parseInt(timeIn.slice(0,2)) >= 5) && (parseInt(timeIn.slice(0,2)) < 12)){
         return "A"
-    } else if((parseInt(timeIn.slice(0,2)) >= 12) && (parseInt(timeIn.slice(0,2)) < 18)) {
+    }
+
+    if((parseInt(timeIn.slice(0,2)) >= 12) && (parseInt(timeIn.slice(0,2)) < 18)) {
         return "B"
-    } else if((parseInt(timeIn.slice(0,2)) >= 18) && (parseInt(timeIn.slice(0,2)) <= 21)) {
+    }
+
+    if((parseInt(timeIn.slice(0,2)) >= 18) && (parseInt(timeIn.slice(0,2)) <= 21)) {
         return "C"
     }
 }
@@ -88,8 +93,7 @@ function appendButtonClockInOut() {
 function calculateTimeDiff(startTime, finishTime) {
     const startTimeObj = new Date(startTime);
     const finishTimeObj = new Date(finishTime);
-    const milleSecondsDiff = (finishTimeObj - startTimeObj);
-    return milleSecondsDiff;
+    return (finishTimeObj - startTimeObj);
 }
 
 function getHours(startTime, finishTime) {
