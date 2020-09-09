@@ -1,10 +1,11 @@
 class Employee {
-    constructor(id, firstName, lastName, position, email) {
-        this.id = id
-        this.firstName = firstName
-        this.lastName = lastName
-        this.email = email
-        this.position = position
+    constructor(id, firstName, lastName, position, email, timeEvents) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.position = position;
+        this.timeEvents = timeEvents;
     }
 
     renderEmployeeData() {
@@ -19,7 +20,7 @@ class Employee {
 
         appendButtonClockInOut();
 
-        if(this.time_events){
+        if(this.timeEvents){
             renderEmployeeTimeEvents(this);
         } else {
             renderWelcomeMsg(this);
@@ -90,12 +91,14 @@ function signInEmployee(e) {
             .then(employee => {
                 if(!employee.message) {
                     const currentEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email)
+
                     currentEmployee.renderEmployeeData();
                     e.target.innerText = "Sign Out"
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
                     divSignUp.remove();
                     removeMessagesSpan();
+
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
                         buttonBreakResume.disabled = true;
                         document.getElementById("btn-break-resume").innerText = "Take Break"
