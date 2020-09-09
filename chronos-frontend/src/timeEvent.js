@@ -1,11 +1,11 @@
 class TimeEvent {
-    constructor(id, date, time_out, break_start, break_end, employee_id){
+    constructor(id, date, timeOut, breakStart, breakEnd, employeeId){
         this.id = id
         this.date = date
-        this.time_out = time_out
-        this.break_start = break_start
-        this.break_end = break_end
-        this.employee_id = employee_id
+        this.timeOut = timeOut
+        this.breakStart = breakStart
+        this.breakEnd = breakEnd
+        this.employeeId = employeeId
     }
 }
 
@@ -90,10 +90,10 @@ function createTimeEvent(e) {
                 updateTimeEventOnDOM(timeEvent);
             }
 
-            if(timeEvent.time_out) {
+            if(timeEvent.timeOut) {
                 updateHours();
                 function updateHours(){
-                    const hrs = getHours(timeEvent.date, timeEvent.time_out);
+                    const hrs = getHours(timeEvent.date, timeEvent.timeOut);
                     document.getElementById("td-event-hours").innerText = hrs;
                 }
             }
@@ -152,16 +152,16 @@ function takeBreakOrResumeWork(e) {
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
-    const closedtimeEvents = employeeObject.time_events.filter((e)=>{ return e.time_out});
+    const closedtimeEvents = employeeObject.timeEvents.filter((e)=>{ return e.timeOut});
     const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
-    const openTimeEvent = employeeObject.time_events.filter((e)=>{ return !e.time_out })
+    const openTimeEvent = employeeObject.timeEvents.filter((e)=>{ return !e.timeOut })
 
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
     divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     document.getElementById("main-container").appendChild(divTimeEvents);
     
-    if(employeeObject.time_events.length > 0) {
+    if(employeeObject.timeEvents.length > 0) {
         let tableOfEvents = `
             <table id="tbl-events"><thead>
                 <tr id="tr-events"><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th></tr>
@@ -173,11 +173,11 @@ function renderEmployeeTimeEvents(employeeObject) {
                 <td class="td-events" id="td-events-col-a">${renderedTimeEvents.indexOf(event) + 1}</td>
                 <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
                 <td class="td-events" id="td-events-time-in">${event.date ? getTime(event.date) : ""}</td>
-                <td class="td-events" id="td-events-break-start">${event.break_start ? getTime(event.break_start) : ""}</td>
-                <td class="td-events" id="td-events-break-end">${event.break_end ? getTime(event.break_end) : ""}</td>
-                <td class="td-events" id="td-events-time-out">${event.time_out ? getTime(event.time_out) : ""}</td>
+                <td class="td-events" id="td-events-break-start">${event.breakStart ? getTime(event.breakStart) : ""}</td>
+                <td class="td-events" id="td-events-break-end">${event.breakEnd ? getTime(event.breakEnd) : ""}</td>
+                <td class="td-events" id="td-events-time-out">${event.timeOut ? getTime(event.timeOut) : ""}</td>
                 <td class="td-events" id="td-events-time-shift">${getShift(getTime(event.date))}</td>
-                <td class="td-events" id="td-events-col-z">${getHours(event.date, event.time_out)}</td>
+                <td class="td-events" id="td-events-col-z">${getHours(event.date, event.timeOut)}</td>
             </tr>`;
         })
 
@@ -209,9 +209,9 @@ function renderNewTimeEvent(event) {
                 <td class="td-event" id="td-event-new" style="color:blue">new</td>
                 <td class="td-event" id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
                 <td class="td-event" id="td-event-time-in" >${event.date ? getTime(event.date) : ""}</td>
-                <td class="td-event" id="td-event-break-start" >${event.break_start ? getTime(event.break_start) : ""}</td>
-                <td class="td-event" id="td-event-break-end" >${event.break_end ? getTime(event.break_end) : ""}</td>
-                <td class="td-event" id="td-event-time-out" >${event.time_out ? getTime(event.time_out) : ""}</td>
+                <td class="td-event" id="td-event-break-start" >${event.breakStart ? getTime(event.breakStart) : ""}</td>
+                <td class="td-event" id="td-event-break-end" >${event.breakEnd ? getTime(event.breakEnd) : ""}</td>
+                <td class="td-event" id="td-event-time-out" >${event.timeOut ? getTime(event.timeOut) : ""}</td>
                 <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.date))}</td>
                 <td class="td-event" id="td-event-hours" ></td>
                 <td class="td-event" id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
@@ -268,7 +268,7 @@ function updateTimeEventOnDOM(event) {
     const tdEventBreakEnd = document.getElementById("td-event-break-end");
     const tdEventTimeOut = document.getElementById("td-event-time-out");
 
-    tdEventBreakStart.innerText = event.break_start ? getTime(event.break_start) : "";
-    tdEventBreakEnd.innerText = event.break_end ? getTime(event.break_end) : "";
-    tdEventTimeOut.innerText = event.time_out ? getTime(event.time_out) : "";
+    tdEventBreakStart.innerText = event.breakStart ? getTime(event.breakStart) : "";
+    tdEventBreakEnd.innerText = event.breakEnd ? getTime(event.breakEnd) : "";
+    tdEventTimeOut.innerText = event.timeOut ? getTime(event.timeOut) : "";
 }

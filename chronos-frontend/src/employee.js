@@ -1,15 +1,15 @@
 class Employee {
-    constructor(id, first_name, last_name, position, email) {
+    constructor(id, firstName, lastName, position, email) {
         this.id = id
-        this.first_name = first_name
-        this.last_name = last_name
+        this.firstName = firstName
+        this.lastName = lastName
         this.email = email
         this.position = position
     }
 
     renderEmployeeData() {
-        const firstName = `${this.first_name[0].toUpperCase() + this.first_name.slice(1)}`
-        const lastName = `${this.last_name[0].toUpperCase() + this.last_name.slice(1)}`
+        const firstName = `${this.firstName[0].toUpperCase() + this.firstName.slice(1)}`
+        const lastName = `${this.lastName[0].toUpperCase() + this.lastName.slice(1)}`
         const employeeNameTag = `
             <h2 id="employee-name" employee-data-id = ${this.id} style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
             <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${this.position}</h4>

@@ -25,10 +25,10 @@ function removeMessagesSpan(){
 }
 
 function renderWelcomeMsg(employeeObject){
-    const firstName = `${employeeObject.first_name[0].toUpperCase() + employeeObject.first_name.slice(1)}`
+    const firstName = `${employeeObject.firstName[0].toUpperCase() + employeeObject.firstName.slice(1)}`
     const p = document.createElement("p");
 
-    if(employeeObject.time_events && employeeObject.time_events.length > 0){
+    if(employeeObject.timeEvents && employeeObject.timeEvents.length > 0){
         if(!document.getElementById("div-time-event")){
             p.innerText = `${greeting()} ${firstName}!`;
             document.getElementById("div-employee-tag-name").after(p);
