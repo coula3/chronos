@@ -103,10 +103,10 @@ function createTimeEvent(e) {
                 buttonBreakResume.style.backgroundColor = "";
             }
 
-            if(timeEvent.timeOut) {
+            if(currentTimeEvent.timeOut) {
                 updateHours();
                 function updateHours(){
-                    const hrs = getHours(timeEvent.date, timeEvent.timeOut);
+                    const hrs = getHours(currentTimeEvent.date, currentTimeEvent.timeOut);
                     document.getElementById("td-event-hours").innerText = hrs;
                 }
             }
