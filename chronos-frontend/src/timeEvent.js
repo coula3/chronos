@@ -247,7 +247,7 @@ function renderNewTimeEvent(event) {
                 <td class="td-event" id="td-event-break-end" >${event.breakEnd ? getTime(event.breakEnd) : ""}</td>
                 <td class="td-event" id="td-event-time-out" >${event.timeOut ? getTime(event.timeOut) : ""}</td>
                 <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.date))}</td>
-                <td class="td-event" id="td-event-hours" ></td>
+                <td class="td-event" id="td-event-hours" style="color:blue"></td>
                 <td class="td-event" id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
             </tr>
         </tbody>
@@ -280,7 +280,7 @@ function renderNewTimeEvent(event) {
         activateButtonTimeout = setTimeout(()=>{
             buttonBreakResume = document.getElementById("btn-break-resume");
             buttonBreakResume.disabled = false;
-            buttonBreakResume.style.backgroundColor = "#adebad";
+            buttonBreakResume.style.backgroundColor = "#ebffb3";
             buttonBreakResume.addEventListener("click", (e)=>{
                 takeBreakOrResumeWork(e);
             })
