@@ -7,6 +7,16 @@ class TimeEvent {
         this.breakEnd = breakEnd
         this.employeeId = employeeId
     }
+
+    updateTimeEventOnDOM() {
+        const tdEventBreakStart = document.getElementById("td-event-break-start");
+        const tdEventBreakEnd = document.getElementById("td-event-break-end");
+        const tdEventTimeOut = document.getElementById("td-event-time-out");
+
+        tdEventBreakStart.innerText = this.breakStart ? getTime(this.breakStart) : "";
+        tdEventBreakEnd.innerText = this.breakEnd ? getTime(this.breakEnd) : "";
+        tdEventTimeOut.innerText = this.timeOut ? getTime(this.timeOut) : "";
+    }
 }
 
 const buttonClockInOut = document.createElement("button");
@@ -77,17 +87,20 @@ function createTimeEvent(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
+
+            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+
             if(!buttonBreakResume) {
                 clearTimeout(activateButtonTimeout);
+                currentTimeEvent.updateTimeEventOnDOM();
                 e.target.innerText = "Clock In";
                 buttonClockInOut.disabled = true;
-                updateTimeEventOnDOM(timeEvent);
             } else {
+                currentTimeEvent.updateTimeEventOnDOM();
                 e.target.innerText = "Clock In";
                 buttonBreakResume.disabled = true;
                 buttonClockInOut.disabled = true;
                 buttonBreakResume.style.backgroundColor = "";
-                updateTimeEventOnDOM(timeEvent);
             }
 
             if(timeEvent.timeOut) {
@@ -122,7 +135,10 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            updateTimeEventOnDOM(timeEvent);
+
+            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+
+            currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Resume";
             e.target.style.backgroundColor = "";
         })
@@ -144,7 +160,10 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-            updateTimeEventOnDOM(timeEvent);
+
+            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+
+            currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Take Break";
             e.target.disabled = true;
         })
@@ -261,14 +280,4 @@ function calculateBreakButtonActivateTime(event) {
     const activateTime = 10000;
 
     return activateTime - elapsedTime;
-}
-
-function updateTimeEventOnDOM(event) {
-    const tdEventBreakStart = document.getElementById("td-event-break-start");
-    const tdEventBreakEnd = document.getElementById("td-event-break-end");
-    const tdEventTimeOut = document.getElementById("td-event-time-out");
-
-    tdEventBreakStart.innerText = event.breakStart ? getTime(event.breakStart) : "";
-    tdEventBreakEnd.innerText = event.breakEnd ? getTime(event.breakEnd) : "";
-    tdEventTimeOut.innerText = event.timeOut ? getTime(event.timeOut) : "";
 }
