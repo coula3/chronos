@@ -89,6 +89,16 @@ function appendButtonClockInOut() {
     document.getElementById("div-employee-tag-name").after(divMenu);
 }
 
+function appendButtonAdmin(employee) {
+    buttonAdmin.innerText = "Manage Accounts";
+    buttonAdmin.setAttribute("id", "btn-admin");
+    buttonAdmin.style.width = "125px";
+
+    if(employee.position == "Manager"){
+        document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
+    }
+}
+
 function calculateTimeDiff(startTime, finishTime) {
     const startTimeObj = new Date(startTime);
     const finishTimeObj = new Date(finishTime);
