@@ -89,6 +89,13 @@ function appendButtonClockInOut() {
     document.getElementById("div-employee-tag-name").after(divMenu);
 }
 
+function appendButtonEditProfile(){
+    buttonEditProfile.innerText = "Edit Profile";
+    buttonEditProfile.setAttribute = ("id", "btn-edit-profile");
+    buttonEditProfile.style.width = "125px";
+    document.getElementById("div-menu").insertBefore(buttonEditProfile, document.getElementById("btn-clock-in-out"));
+}
+
 function appendButtonAdmin(employee) {
     buttonAdmin.innerText = "Manage Accounts";
     buttonAdmin.setAttribute("id", "btn-admin");
