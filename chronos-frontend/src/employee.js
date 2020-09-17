@@ -44,6 +44,11 @@ addEmployeeForm.addEventListener("submit", (e)=>{
 
     if(!document.querySelector("#div-input-elements")){
         buttonCreateUser.innerText = "Submit"
+
+        if(document.getElementById("messages")){
+            buttonCreateUser.disabled = true;
+        }
+
         appendEmployeeFormElements();
     }
 })
@@ -131,7 +136,6 @@ function signInEmployee(e) {
         } else {
             const message = "Please provide a valid email to sign in";
             displayMessages(message);
-            console.log(e.target)
             disableButtonCreateUserSubmit(e);
         }
     } else {
