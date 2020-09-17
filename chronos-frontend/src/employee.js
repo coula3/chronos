@@ -20,6 +20,10 @@ class Employee {
 
         appendButtonClockInOut();
 
+        if(this.position == "Manager"){
+            appendButtonAdmin(this);
+        }
+
         if(this.timeEvents){
             renderEmployeeTimeEvents(this);
         } else {
@@ -28,7 +32,8 @@ class Employee {
     }
 }
 
-const addEmployeeForm = document.getElementById("form-create-employee")
+const buttonAdmin = document.createElement("button");
+const addEmployeeForm = document.getElementById("form-create-employee");
 
 addEmployeeForm.addEventListener("submit", (e)=>{
     e.preventDefault();
