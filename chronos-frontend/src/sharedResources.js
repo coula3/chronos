@@ -1,3 +1,6 @@
+const buttonAdmin = document.createElement("button");
+const buttonEditProfile = document.createElement("button");
+
 function displayMessages(message) {
     if(!document.getElementById("messages")) {
     const span = document.createElement("span");
@@ -78,15 +81,20 @@ function getShift(timeIn){
     }
 }
 
+function createDivMenu(){
+    const divMenu = document.createElement("div");
+    divMenu.setAttribute("id", "div-menu");
+    divMenu.style.cssText = "float:right; margin-top:50px; margin-bottom:50px; clear:both;";
+    document.getElementById("div-employee-tag-name").after(divMenu);
+    appendButtonClockInOut();
+}
+
 function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
     buttonClockInOut.style.cssText = "width:100px; margin-left:15px;";
-    const divMenu = document.createElement("div");
-    divMenu.setAttribute("id", "div-menu");
-    divMenu.style.cssText = "float:right; margin-top:50px; margin-bottom:50px; clear:both;";
-    divMenu.appendChild(buttonClockInOut);
-    document.getElementById("div-employee-tag-name").after(divMenu);
+    document.getElementById("div-menu").appendChild(buttonClockInOut);
+    appendButtonEditProfile();
 }
 
 function appendButtonEditProfile(){
