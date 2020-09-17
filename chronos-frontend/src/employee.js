@@ -32,11 +32,17 @@ class Employee {
     }
 }
 
+const buttonCreateUser = document.getElementById("btn-create-user");
 const addEmployeeForm = document.getElementById("form-create-employee");
+
+buttonCreateUser.addEventListener("click", (e)=>{
+    e.target.innerText = "Submit";
+    appendEmployeeFormElements();
+})
 
 addEmployeeForm.addEventListener("submit", (e)=>{
     e.preventDefault();
-    createEmployee();
+    // createEmployee();
 })
 
 function createEmployee() {

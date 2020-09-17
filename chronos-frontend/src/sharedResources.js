@@ -1,6 +1,25 @@
 const buttonAdmin = document.createElement("button");
 const buttonEditProfile = document.createElement("button");
 
+function appendEmployeeFormElements(){
+    const formElements = `
+        <input class="input" type="text" name="first-name" id="first-name" placeholder="first name">
+        <input class="input" type="text" name="last-name" id="last-name" placeholder="last name">
+        <select type="select" name="position" id="position">
+            <option value="">--choose your position--</option>
+            <option value="Customer Associate">Customer Associate</option>
+            <option value="Fresh Food Associate">Fresh Food Associate</option>
+            <option value="Manager">Manager</option>
+            <option value="Sales Associate">Sales Associate</option>
+            <option value="Stocker Associate">Stocker</option>
+        </select>
+        <input class="input" type="text" name="email" id="email" placeholder="email">
+        <input class="input" type="text" name="email-confirmation" id="email-confirmation" placeholder="email confirmation">
+    `
+    // document.getElementById("form-create-employee").prepend(formElements);
+    buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
+}
+
 function displayMessages(message) {
     if(!document.getElementById("messages")) {
     const span = document.createElement("span");
