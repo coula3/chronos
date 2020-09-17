@@ -3,18 +3,20 @@ const buttonEditProfile = document.createElement("button");
 
 function appendEmployeeFormElements(){
     const formElements = `
-        <input class="input" type="text" name="first-name" id="first-name" placeholder="first name">
-        <input class="input" type="text" name="last-name" id="last-name" placeholder="last name">
-        <select type="select" name="position" id="position">
-            <option value="">--choose your position--</option>
-            <option value="Customer Associate">Customer Associate</option>
-            <option value="Fresh Food Associate">Fresh Food Associate</option>
-            <option value="Manager">Manager</option>
-            <option value="Sales Associate">Sales Associate</option>
-            <option value="Stocker Associate">Stocker</option>
-        </select>
-        <input class="input" type="text" name="email" id="email" placeholder="email">
-        <input class="input" type="text" name="email-confirmation" id="email-confirmation" placeholder="email confirmation">
+        <div id="div-input-elements" style="display:inline-block">
+            <p><input class="input" type="text" name="first-name" id="first-name" placeholder="first name"></p>
+            <p><input class="input" type="text" name="last-name" id="last-name" placeholder="last name"></p>
+            <p><select type="select" name="position" id="position">
+                <option value="">--choose your position--</option>
+                <option value="Customer Associate">Customer Associate</option>
+                <option value="Fresh Food Associate">Fresh Food Associate</option>
+                <option value="Manager">Manager</option>
+                <option value="Sales Associate">Sales Associate</option>
+                <option value="Stocker Associate">Stocker</option>
+            </select></p>
+            <p><input class="input" type="text" name="email" id="email" placeholder="email"></p>
+            <p><input class="input" type="text" name="email-confirmation" id="email-confirmation" placeholder="email confirmation"></p>
+        </div>
     `
     // document.getElementById("form-create-employee").prepend(formElements);
     buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
@@ -31,7 +33,7 @@ function displayMessages(message) {
 
 function appendMessagesSpan(span) {
     document.getElementById("main-container").appendChild(span);
-    span.style.cssText = "background-color:#f2ecdc; font-size:14px; margin-top:20px; padding: 5px 10px 5px 10px; box-shadow:10px 10px grey; float:right;";
+    span.style.cssText = "background-color:#f2ecdc; font-size:14px; margin-top:20px; padding: 5px 10px 5px 10px; box-shadow:10px 10px grey; float:right; clear:both;";
     span.setAttribute("id", "messages");
 
     setTimeout(() => {
