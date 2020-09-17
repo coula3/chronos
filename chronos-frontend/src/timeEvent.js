@@ -183,8 +183,8 @@ function takeBreakOrResumeWork(e) {
 function renderEmployeeTimeEvents(employeeObject) {
     const timeEvents = employeeObject.timeEvents;
     const employeeTimeEvents = [];
-    for(const i of timeEvents){
-        employeeTimeEvents.push(new TimeEvent(i.id, i.date, i.time_out, i.break_start, i.break_end, i.employee_id))
+    for(const event of timeEvents){
+        employeeTimeEvents.push(new TimeEvent(event.id, event.date, event.time_out, event.break_start, event.break_end, event.employee_id))
     }
     const closedtimeEvents = employeeTimeEvents.filter((e)=>{ return e.timeOut});
     const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
