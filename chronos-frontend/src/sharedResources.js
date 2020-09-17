@@ -22,6 +22,12 @@ function appendEmployeeFormElements(){
     buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
 }
 
+function disableButtonSignIn(e){
+    if(e.submitter.innerText == "Submit"){
+        buttonSignIn.disabled = true;
+    }
+}
+
 function displayMessages(message) {
     if(!document.getElementById("messages")) {
     const span = document.createElement("span");
@@ -37,8 +43,10 @@ function appendMessagesSpan(span) {
     span.setAttribute("id", "messages");
 
     setTimeout(() => {
-        if(document.getElementById("messages"))
-            document.getElementById("messages").remove()
+        if(document.getElementById("messages")){
+            document.getElementById("messages").remove();
+            buttonSignIn.disabled = false;
+        }
     }, 5000)
 }
 

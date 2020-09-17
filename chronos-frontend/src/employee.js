@@ -39,7 +39,7 @@ addEmployeeForm.addEventListener("submit", (e)=>{
     e.preventDefault();
 
     if(buttonCreateUser.innerText == "Submit"){
-        createEmployee();
+        createEmployee(e);
     }
 
     if(!document.querySelector("#div-input-elements")){
@@ -48,7 +48,7 @@ addEmployeeForm.addEventListener("submit", (e)=>{
     }
 })
 
-function createEmployee() {
+function createEmployee(e) {
     const firstName = document.getElementById("first-name").value;
     const lastName = document.getElementById("last-name").value;
     const position = document.getElementById("position").value
@@ -81,6 +81,7 @@ function createEmployee() {
                 newEmployee.renderEmployeeData();
             } else {
                 displayMessages(employee.message)
+                disableButtonSignIn(e)
             }
         })
         .catch(error => console.log(error))
