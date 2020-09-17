@@ -125,11 +125,14 @@ function signInEmployee(e) {
                     }
                 } else {
                     displayMessages(employee.message);
+                    disableButtonCreateUserSubmit(e);
                 }
             })
         } else {
             const message = "Please provide a valid email to sign in";
             displayMessages(message);
+            console.log(e.target)
+            disableButtonCreateUserSubmit(e);
         }
     } else {
         location.reload();

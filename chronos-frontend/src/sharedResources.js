@@ -28,6 +28,12 @@ function disableButtonSignIn(e){
     }
 }
 
+function disableButtonCreateUserSubmit(e){
+    if(e.target.innerText == "Sign In" && buttonCreateUser.innerText == "Submit"){
+        buttonCreateUser.disabled = true;
+    }
+}
+
 function displayMessages(message) {
     if(!document.getElementById("messages")) {
     const span = document.createElement("span");
@@ -46,6 +52,7 @@ function appendMessagesSpan(span) {
         if(document.getElementById("messages")){
             document.getElementById("messages").remove();
             buttonSignIn.disabled = false;
+            buttonCreateUser.disabled = false;
         }
     }, 5000)
 }
