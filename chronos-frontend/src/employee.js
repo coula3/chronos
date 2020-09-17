@@ -16,7 +16,7 @@ class Employee {
             <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${this.position}</h4>
         `;
 
-        createNameTagDiv(employeeNameTag);
+        createDivNameTag(employeeNameTag);
 
         createDivMenu();
 
@@ -127,7 +127,7 @@ function signInEmployee(e) {
     }
 }
 
-function createNameTagDiv(employeeNameTag){
+function createDivNameTag(employeeNameTag){
     divEmployeeNameTag = document.createElement("div");
     divEmployeeNameTag.setAttribute("id", "div-employee-tag-name");
     document.getElementById("main-container").appendChild(divEmployeeNameTag);
