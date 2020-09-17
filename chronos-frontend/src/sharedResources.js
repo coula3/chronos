@@ -82,12 +82,11 @@ function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
     buttonClockInOut.style.width = "100px";
-    const divClockInOut = document.createElement("div");
-    divClockInOut.setAttribute("id", "div-clock-in-btn");
-    divClockInOut.style.cssText = "float:right; margin-top:50px; margin-bottom:50px; clear:both;";
-    divClockInOut.appendChild(buttonClockInOut);
-    const h2 = document.getElementById("employee-name");
-    document.getElementById("div-employee-tag-name").after(divClockInOut);
+    const divMenu = document.createElement("div");
+    divMenu.setAttribute("id", "div-menu");
+    divMenu.style.cssText = "float:right; margin-top:50px; margin-bottom:50px; clear:both;";
+    divMenu.appendChild(buttonClockInOut);
+    document.getElementById("div-employee-tag-name").after(divMenu);
 }
 
 function calculateTimeDiff(startTime, finishTime) {
