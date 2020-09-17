@@ -81,7 +81,7 @@ function getShift(timeIn){
 function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
-    buttonClockInOut.style.width = "100px";
+    buttonClockInOut.style.cssText = "width:100px; margin-left:15px;";
     const divMenu = document.createElement("div");
     divMenu.setAttribute("id", "div-menu");
     divMenu.style.cssText = "float:right; margin-top:50px; margin-bottom:50px; clear:both;";
