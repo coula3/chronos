@@ -33,6 +33,7 @@ class Employee {
 }
 
 const buttonCreateUser = document.getElementById("btn-create-user");
+let buttonSubmitUser;
 
 buttonCreateUser.addEventListener("click", (e)=>{
     e.target.remove();
@@ -42,19 +43,20 @@ buttonCreateUser.addEventListener("click", (e)=>{
 function preCreateEmployee(){
     appendEmployeeFormElements();
     const addEmployeeForm = document.getElementById("form-create-employee");
+    buttonSubmitUser = document.getElementById("btn-create-user");
 
     addEmployeeForm.addEventListener("submit", (e)=>{
         e.preventDefault();
 
-        if(buttonCreateUser.innerText == "Submit"){
+        if(buttonSubmitUser.innerText == "Submit"){
             createEmployee(e);
         }
 
         if(!document.querySelector("#div-input-elements")){
-            buttonCreateUser.innerText = "Submit"
+            buttonSubmitUser.innerText = "Submit"
 
             if(document.getElementById("messages")){
-                buttonCreateUser.disabled = true;
+                buttonSubmitUser.disabled = true;
             }
         }
     })

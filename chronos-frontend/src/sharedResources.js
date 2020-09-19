@@ -24,8 +24,6 @@ function appendEmployeeFormElements(){
         </div>
     `
     document.getElementById("main-container").innerHTML += formElements;
-    // document.getElementById("form-create-employee").prepend(formElements);
-    // buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
 }
 
 function disableButtonSignIn(e){
@@ -35,8 +33,8 @@ function disableButtonSignIn(e){
 }
 
 function disableButtonCreateUserSubmit(e){
-    if(e.target.innerText == "Sign In" && buttonCreateUser.innerText == "Submit"){
-        buttonCreateUser.disabled = true;
+    if(e.target.innerText == "Sign In" && buttonSubmitUser.innerText == "Submit"){
+        buttonSubmitUser.disabled = true;
     }
 }
 
@@ -59,6 +57,7 @@ function appendMessagesSpan(span) {
             document.getElementById("messages").remove();
             buttonSignIn.disabled = false;
             buttonCreateUser.disabled = false;
+            buttonSubmitUser.disabled = false;
         }
     }, 5000)
 }
