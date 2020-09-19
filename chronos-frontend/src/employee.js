@@ -33,25 +33,32 @@ class Employee {
 }
 
 const buttonCreateUser = document.getElementById("btn-create-user");
-const addEmployeeForm = document.getElementById("form-create-employee");
 
-addEmployeeForm.addEventListener("submit", (e)=>{
-    e.preventDefault();
+buttonCreateUser.addEventListener("click", (e)=>{
+    e.target.remove();
+    preCreateEmployee();
+})
 
-    if(buttonCreateUser.innerText == "Submit"){
-        createEmployee(e);
-    }
+function preCreateEmployee(){
+    appendEmployeeFormElements();
+    const addEmployeeForm = document.getElementById("form-create-employee");
 
-    if(!document.querySelector("#div-input-elements")){
-        buttonCreateUser.innerText = "Submit"
+    addEmployeeForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
 
-        if(document.getElementById("messages")){
-            buttonCreateUser.disabled = true;
+        if(buttonCreateUser.innerText == "Submit"){
+            createEmployee(e);
         }
 
-        appendEmployeeFormElements();
-    }
-})
+        if(!document.querySelector("#div-input-elements")){
+            buttonCreateUser.innerText = "Submit"
+
+            if(document.getElementById("messages")){
+                buttonCreateUser.disabled = true;
+            }
+        }
+    })
+}
 
 function createEmployee(e) {
     const firstName = document.getElementById("first-name").value;
@@ -115,7 +122,7 @@ function signInEmployee(e) {
                     e.target.innerText = "Sign Out"
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
-                    divSignUp.remove();
+                    buttonCreateUser.remove();
                     removeMessagesSpan();
 
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {

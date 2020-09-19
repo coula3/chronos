@@ -3,23 +3,29 @@ const buttonEditProfile = document.createElement("button");
 
 function appendEmployeeFormElements(){
     const formElements = `
-        <div id="div-input-elements" style="display:inline-block">
-            <p><input class="input" type="text" name="first-name" id="first-name" placeholder="first name"></p>
-            <p><input class="input" type="text" name="last-name" id="last-name" placeholder="last name"></p>
-            <p><select type="select" name="position" id="position">
-                <option value="">--choose your position--</option>
-                <option value="Customer Associate">Customer Associate</option>
-                <option value="Fresh Food Associate">Fresh Food Associate</option>
-                <option value="Manager">Manager</option>
-                <option value="Sales Associate">Sales Associate</option>
-                <option value="Stocker Associate">Stocker</option>
-            </select></p>
-            <p><input class="input" type="text" name="email" id="email" placeholder="email"></p>
-            <p><input class="input" type="text" name="email-confirmation" id="email-confirmation" placeholder="email confirmation"></p>
+        <div id="div-signup" style="padding: 5px; float:right; clear:both;">
+            <form id="form-create-employee">
+                <div id="div-input-elements" style="display:inline-block">
+                    <p><input class="input" type="text" name="first-name" id="first-name" placeholder="first name"></p>
+                    <p><input class="input" type="text" name="last-name" id="last-name" placeholder="last name"></p>
+                    <p><select type="select" name="position" id="position">
+                        <option value="">--choose your position--</option>
+                        <option value="Customer Associate">Customer Associate</option>
+                        <option value="Fresh Food Associate">Fresh Food Associate</option>
+                        <option value="Manager">Manager</option>
+                        <option value="Sales Associate">Sales Associate</option>
+                        <option value="Stocker Associate">Stocker</option>
+                    </select></p>
+                    <p><input class="input" type="text" name="email" id="email" placeholder="email"></p>
+                    <p><input class="input" type="text" name="email-confirmation" id="email-confirmation" placeholder="email confirmation"></p>
+                </div>
+                <button class="button" id="btn-create-user">Submit</button>
+            </form>
         </div>
     `
+    document.getElementById("main-container").innerHTML += formElements;
     // document.getElementById("form-create-employee").prepend(formElements);
-    buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
+    // buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
 }
 
 function disableButtonSignIn(e){
