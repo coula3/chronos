@@ -33,34 +33,25 @@ class Employee {
 }
 
 const buttonCreateUser = document.getElementById("btn-create-user");
-let buttonSubmitUser;
 
-buttonCreateUser.addEventListener("click", (e)=>{
-    e.target.remove();
-    preCreateEmployee();
+const addEmployeeForm = document.getElementById("form-create-employee");
+
+addEmployeeForm.addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    if(buttonCreateUser.innerText == "Submit"){
+        createEmployee(e);
+    }
+
+    if(!document.querySelector("#div-input-elements")){
+        buttonCreateUser.innerText = "Submit"
+
+        if(document.getElementById("messages")){
+            buttonCreateUser.disabled = true;
+        }
+        appendEmployeeFormElements();
+    }
 })
-
-function preCreateEmployee(){
-    appendEmployeeFormElements();
-    const addEmployeeForm = document.getElementById("form-create-employee");
-    buttonSubmitUser = document.getElementById("btn-create-user");
-
-    addEmployeeForm.addEventListener("submit", (e)=>{
-        e.preventDefault();
-
-        if(buttonSubmitUser.innerText == "Submit"){
-            createEmployee(e);
-        }
-
-        if(!document.querySelector("#div-input-elements")){
-            buttonSubmitUser.innerText = "Submit"
-
-            if(document.getElementById("messages")){
-                buttonSubmitUser.disabled = true;
-            }
-        }
-    })
-}
 
 function createEmployee(e) {
     const firstName = document.getElementById("first-name").value;
@@ -124,7 +115,7 @@ function signInEmployee(e) {
                     e.target.innerText = "Sign Out"
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
-                    buttonCreateUser.remove();
+                    divSignUp.remove();
                     removeMessagesSpan();
 
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
