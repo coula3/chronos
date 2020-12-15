@@ -76,9 +76,10 @@ function createEmployee(e) {
 
         fetch(`${CHRONOS_URL}/employees`, configObj)
         .then(response => response.json())
-        .then(employee => {
-            if(!employee.message){
-                const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email);
+        .then(data => {
+            if(!data.message){
+                const newEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email);
+                localStorage.setItem('jwt_token', data.jwt)
                 document.getElementById("div-signup").remove();
                 document.getElementById("sign-in-email").remove();
                 document.getElementById("sign-in-password").remove();
@@ -88,7 +89,7 @@ function createEmployee(e) {
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
                 newEmployee.renderEmployeeData();
             } else {
-                displayMessages(employee.message)
+                displayMessages(data.message)
                 disableButtonSignIn(e)
             }
         })
