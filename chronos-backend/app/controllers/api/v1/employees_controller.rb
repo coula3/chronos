@@ -1,7 +1,15 @@
 class Api::V1::EmployeesController < ApplicationController
+    skip_before_action :authorized, only: [:create]
+
     def create
         employee = Employee.new(employee_params)
-        employee.save ? (render json: employee) : (render json: {message: employee.errors.full_messages.join("; ")})
+        token = encode_token(user_id: employee.id)
+
+        if employee.save
+            render json: employee, jwt: token, status: :created
+        else
+            render json: {message: employee.errors.full_messages.join("; ")}, status: :not_acceptable
+        end
     end
 
     private
