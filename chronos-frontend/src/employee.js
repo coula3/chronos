@@ -81,15 +81,9 @@ function createEmployee(e) {
                 const newEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email);
 
                 localStorage.setItem('jwt_token', data.jwt);
-                document.getElementById("div-signup").remove();
-                document.getElementById("sign-in-email").remove();
-                document.getElementById("sign-in-password").remove();
-                document.getElementById("btn-sign-in").style.cssText = "width: 100px";
-                document.getElementById("div-signin").style.cssText = "float: right;";
+                removeDOMElementsOnSignIn();
                 removeMessagesSpan()
-                document.getElementById("btn-sign-in").innerText = "Sign Out";
                 newEmployee.renderEmployeeData();
-
             } else {
                 displayMessages(data.message)
                 disableButtonSignIn(e)
@@ -129,14 +123,9 @@ function signInEmployee(e) {
                     const currentEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email, data.employee.time_events);
 
                     currentEmployee.renderEmployeeData();
-                    e.target.innerText = "Sign Out";
                     localStorage.setItem('jwt_token', data.jwt);
                     localStorage.setItem('data', JSON.stringify(data));
-                    document.getElementById("div-signup").remove();
-                    document.getElementById("sign-in-email").remove();
-                    document.getElementById("sign-in-password").remove();
-                    document.getElementById("btn-sign-in").style.cssText = "width: 100px";
-                    document.getElementById("div-signin").style.cssText = "float: right;";
+                    removeDOMElementsOnSignIn();
                     removeMessagesSpan();
 
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
@@ -168,13 +157,16 @@ function signInEmployee(e) {
 
 function reSignInEmployee(data){
     const currentEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email, data.employee.time_events);
-    const signInButton = document.getElementById("btn-sign-in");
 
+    removeDOMElementsOnSignIn();
     currentEmployee.renderEmployeeData();
-    signInButton.innerText = "Sign Out";
+}
+
+function removeDOMElementsOnSignIn(){
     document.getElementById("div-signup").remove();
     document.getElementById("sign-in-email").remove();
     document.getElementById("sign-in-password").remove();
+    document.getElementById("btn-sign-in").innerText = "Sign Out";
     document.getElementById("btn-sign-in").style.cssText = "width: 100px";
     document.getElementById("div-signin").style.cssText = "float: right;";
 }
