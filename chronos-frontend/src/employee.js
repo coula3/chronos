@@ -64,8 +64,8 @@ function createEmployee(e) {
     if(password !== passwordConfirmation) {
         displayMessages("Please provide matching passwords")
     } else {
-        const bodyObject = {first_name: firstName, last_name: lastName, position: position, email: email}
-
+        const bodyObject = {employee: {first_name: firstName, last_name: lastName, position: position, email: email, password: password}}
+        console.log(bodyObject);
         const configObj = {
             method: "POST",
             headers: {
