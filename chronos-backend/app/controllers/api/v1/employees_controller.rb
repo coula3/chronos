@@ -1,4 +1,4 @@
-class EmployeesController < ApplicationController
+class Api::V1::EmployeesController < ApplicationController
     def create
         employee = Employee.new(employee_params)
         employee.save ? (render json: employee) : (render json: {message: employee.errors.full_messages.join("; ")})

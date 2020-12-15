@@ -118,7 +118,7 @@ function signInEmployee(e) {
     
     if(e.target.innerText == "Sign In") {
         if(signInEmail !== "") {
-            fetch(`${CHRONOS_URL}/api/v1/signin`, configObj)
+            fetch(`${CHRONOS_URL}/signin`, configObj)
             .then(response => response.json())
             .then(employee => {
                 if(!employee.message) {

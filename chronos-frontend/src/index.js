@@ -1,1 +1,1 @@
-const CHRONOS_URL = "http://localhost:3000";
+const CHRONOS_URL = "http://localhost:3000/api/v1";
