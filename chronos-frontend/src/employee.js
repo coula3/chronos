@@ -116,6 +116,7 @@ function signInEmployee(e) {
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
                     divSignUp.remove();
+                    document.getElementById("div-signin").style.cssText = "float: right;";
                     removeMessagesSpan();
 
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
