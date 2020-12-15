@@ -65,7 +65,6 @@ function createEmployee(e) {
         displayMessages("Please provide matching passwords")
     } else {
         const bodyObject = {employee: {first_name: firstName, last_name: lastName, position: position, email: email, password: password}}
-        console.log(bodyObject);
         const configObj = {
             method: "POST",
             headers: {
@@ -82,6 +81,9 @@ function createEmployee(e) {
                 const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email);
                 document.getElementById("div-signup").remove();
                 document.getElementById("sign-in-email").remove();
+                document.getElementById("sign-in-password").remove();
+                document.getElementById("btn-sign-in").style.cssText = "width: 100px";
+                document.getElementById("div-signin").style.cssText = "float: right;";
                 removeMessagesSpan()
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
                 newEmployee.renderEmployeeData();
@@ -117,6 +119,8 @@ function signInEmployee(e) {
                     const divSignUp = document.getElementById("div-signup");
                     inputSignIn.remove();
                     divSignUp.remove();
+                    document.getElementById("sign-in-password").remove();
+                    document.getElementById("btn-sign-in").style.cssText = "width: 100px";
                     document.getElementById("div-signin").style.cssText = "float: right;";
                     removeMessagesSpan();
 
