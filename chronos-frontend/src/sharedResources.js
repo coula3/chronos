@@ -1,5 +1,5 @@
 const buttonAdmin = document.createElement("button");
-const buttonEditProfile = document.createElement("button");
+const buttonProfile = document.createElement("button");
 
 function appendEmployeeFormElements(){
     const formElements = `
@@ -130,14 +130,14 @@ function appendButtonClockInOut() {
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
     buttonClockInOut.style.cssText = "width:100px; margin-left:15px;";
     document.getElementById("div-menu").appendChild(buttonClockInOut);
-    appendButtonEditProfile();
+    appendButtonProfile();
 }
 
-function appendButtonEditProfile(){
-    buttonEditProfile.innerText = "Edit Profile";
-    buttonEditProfile.setAttribute = ("id", "btn-edit-profile");
-    buttonEditProfile.style.width = "125px";
-    document.getElementById("div-menu").insertBefore(buttonEditProfile, document.getElementById("btn-clock-in-out"));
+function appendButtonProfile(){
+    buttonProfile.innerText = "Profile";
+    buttonProfile.setAttribute = ("id", "btn-edit-profile");
+    buttonProfile.style.width = "125px";
+    document.getElementById("div-menu").insertBefore(buttonProfile, document.getElementById("btn-clock-in-out"));
 }
 
 function appendButtonAdmin(employee) {
