@@ -131,6 +131,7 @@ function signInEmployee(e) {
                     currentEmployee.renderEmployeeData();
                     e.target.innerText = "Sign Out";
                     localStorage.setItem('jwt_token', data.jwt);
+                    localStorage.setItem('data', JSON.stringify(data));
                     document.getElementById("div-signup").remove();
                     document.getElementById("sign-in-email").remove();
                     document.getElementById("sign-in-password").remove();
@@ -163,6 +164,19 @@ function signInEmployee(e) {
         localStorage.removeItem('jwt_token');
         e.target.innerText = "Sign In"
     }
+}
+
+function reSignInEmployee(data){
+    const currentEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email, data.employee.time_events);
+    const signInButton = document.getElementById("btn-sign-in");
+
+    currentEmployee.renderEmployeeData();
+    signInButton.innerText = "Sign Out";
+    document.getElementById("div-signup").remove();
+    document.getElementById("sign-in-email").remove();
+    document.getElementById("sign-in-password").remove();
+    document.getElementById("btn-sign-in").style.cssText = "width: 100px";
+    document.getElementById("div-signin").style.cssText = "float: right;";
 }
 
 function createDivNameTag(employeeNameTag){
