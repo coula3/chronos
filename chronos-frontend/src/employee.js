@@ -104,11 +104,21 @@ buttonSignIn.addEventListener("click", (e) => {
 })
 
 function signInEmployee(e) {
-    const inputSignIn = document.getElementById("sign-in-email")
+    const signInEmail = document.getElementById("sign-in-email") ? document.getElementById("sign-in-email").value : null;
+    const signInPassword = document.getElementById("sign-in-password") ? document.getElementById("sign-in-password").value : null;
+    const bodyObject = {employee: {email: signInEmail, password: signInPassword}};
+    const configObj = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(bodyObject)
+    };
     
     if(e.target.innerText == "Sign In") {
-        if(inputSignIn.value !== "") {
-            fetch(`${CHRONOS_URL}/employees/${inputSignIn.value}`)
+        if(signInEmail !== "") {
+            fetch(`${CHRONOS_URL}/api/v1/signin`, configObj)
             .then(response => response.json())
             .then(employee => {
                 if(!employee.message) {
@@ -116,9 +126,8 @@ function signInEmployee(e) {
 
                     currentEmployee.renderEmployeeData();
                     e.target.innerText = "Sign Out"
-                    const divSignUp = document.getElementById("div-signup");
-                    inputSignIn.remove();
-                    divSignUp.remove();
+                    document.getElementById("div-signup").remove();
+                    document.getElementById("sign-in-email").remove();
                     document.getElementById("sign-in-password").remove();
                     document.getElementById("btn-sign-in").style.cssText = "width: 100px";
                     document.getElementById("div-signin").style.cssText = "float: right;";
