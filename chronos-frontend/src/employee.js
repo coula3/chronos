@@ -80,7 +80,7 @@ function createEmployee(e) {
             if(!employee.message){
                 const newEmployee = new Employee(employee.id, employee.first_name, employee.last_name, employee.position, employee.email);
                 document.getElementById("div-signup").remove();
-                document.getElementById("sign-in").remove();
+                document.getElementById("sign-in-email").remove();
                 removeMessagesSpan()
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
                 newEmployee.renderEmployeeData();
@@ -101,7 +101,7 @@ buttonSignIn.addEventListener("click", (e) => {
 })
 
 function signInEmployee(e) {
-    const inputSignIn = document.getElementById("sign-in")
+    const inputSignIn = document.getElementById("sign-in-email")
     
     if(e.target.innerText == "Sign In") {
         if(inputSignIn.value !== "") {

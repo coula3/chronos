@@ -4,18 +4,18 @@ const buttonEditProfile = document.createElement("button");
 function appendEmployeeFormElements(){
     const formElements = `
         <div id="div-input-elements" style="display:inline-block">
-            <p><input class="input" type="text" name="first-name" id="first-name" placeholder="first name"></p>
-            <p><input class="input" type="text" name="last-name" id="last-name" placeholder="last name"></p>
-            <p><select type="select" name="position" id="position">
+            <input id="first-name" class="input" type="text" name="first-name" placeholder="first name">
+            <input id="last-name" class="input" type="text" name="last-name" placeholder="last name">
+            <select type="select" id="position" name="position">
                 <option value="">--choose your position--</option>
                 <option value="Customer Associate">Customer Associate</option>
                 <option value="Fresh Food Associate">Fresh Food Associate</option>
                 <option value="Manager">Manager</option>
                 <option value="Sales Associate">Sales Associate</option>
                 <option value="Stocker Associate">Stocker</option>
-            </select></p>
-            <p><input class="input" type="text" name="email" id="email" placeholder="email"></p>
-            <p><input class="input" type="text" name="email-confirmation" id="email-confirmation" placeholder="email confirmation"></p>
+            </select>
+            <input id="email" class="input" type="text" name="email" placeholder="email">
+            <input id="email-confirmation" class="input" type="text" name="email-confirmation" placeholder="email confirmation">
         </div>
     `
     buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
@@ -52,7 +52,6 @@ function appendMessagesSpan(span) {
             document.getElementById("messages").remove();
             buttonSignIn.disabled = false;
             buttonCreateUser.disabled = false;
-            buttonSubmitUser.disabled = false;
         }
     }, 5000)
 }

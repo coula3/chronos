@@ -18,12 +18,17 @@
 }
 
 .button {
+    padding: 2px 5px;
+    font-size: 17px;
     width: 100px
 }
 
 .input {
-    padding: 2px 5px 2px 5px;
-    width: 160px;
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 2px 5px;
+    font-size: 17px;
+    display: block;
 }
 
 #tbl-events {
@@ -53,12 +58,19 @@
 }
 
 #position {
-    padding: 2px 5px 2px 5px;
-    width: 175px;
+    padding: 2px 5px;
+    font-size: 17px;
+    width: 315px;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+#email-confirmation {
+    margin-bottom: 15px;
 }
