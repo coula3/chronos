@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-
-  get '/employees/:email', to: "employees#signin", constraints: { email: /[^\/]+/}
+  namespace :api do
+    namespace :v1 do
+      post '/signin', to: "auth#create"
+    end
+  end
   
   resources :time_events
   resources :employees
