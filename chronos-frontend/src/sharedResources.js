@@ -4,8 +4,8 @@ const buttonEditProfile = document.createElement("button");
 function appendEmployeeFormElements(){
     const formElements = `
         <div id="div-input-elements" style="display:inline-block">
-            <input id="first-name" class="input" type="text" name="first-name" placeholder="first name">
-            <input id="last-name" class="input" type="text" name="last-name" placeholder="last name">
+            <input id="first-name" class="input" type="text" name="first-name" placeholder="first name" />
+            <input id="last-name" class="input" type="text" name="last-name" placeholder="last name" />
             <select type="select" id="position" name="position">
                 <option value="">--choose your position--</option>
                 <option value="Customer Associate">Customer Associate</option>
@@ -14,8 +14,9 @@ function appendEmployeeFormElements(){
                 <option value="Sales Associate">Sales Associate</option>
                 <option value="Stocker Associate">Stocker</option>
             </select>
-            <input id="email" class="input" type="text" name="email" placeholder="email">
-            <input id="email-confirmation" class="input" type="text" name="email-confirmation" placeholder="email confirmation">
+            <input id="email" class="input" type="text" name="email" placeholder="email" />
+            <input id="password" class="input" type="password" name="password" placeholder="password" />
+            <input id="password-confirmation" class="input" type="password" name="password-confirmation" placeholder="password confirmation" />
         </div>
     `
     buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);

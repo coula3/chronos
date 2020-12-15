@@ -58,10 +58,11 @@ function createEmployee(e) {
     const lastName = document.getElementById("last-name").value;
     const position = document.getElementById("position").value
     const email = document.getElementById("email").value;
-    const emailConfirmation = document.getElementById("email-confirmation").value
+    const password = document.getElementById("password").value;
+    const passwordConfirmation = document.getElementById("password-confirmation").value
 
-    if(email !== emailConfirmation) {
-        displayMessages("Please provide matching emails")
+    if(password !== passwordConfirmation) {
+        displayMessages("Please provide matching passwords")
     } else {
         const bodyObject = {first_name: firstName, last_name: lastName, position: position, email: email}
 
