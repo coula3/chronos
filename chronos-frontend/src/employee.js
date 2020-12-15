@@ -79,6 +79,7 @@ function createEmployee(e) {
         .then(data => {
             if(data.employee){
                 const newEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email);
+
                 localStorage.setItem('jwt_token', data.jwt);
                 document.getElementById("div-signup").remove();
                 document.getElementById("sign-in-email").remove();
@@ -88,6 +89,7 @@ function createEmployee(e) {
                 removeMessagesSpan()
                 document.getElementById("btn-sign-in").innerText = "Sign Out";
                 newEmployee.renderEmployeeData();
+
             } else {
                 displayMessages(data.message)
                 disableButtonSignIn(e)
@@ -158,6 +160,7 @@ function signInEmployee(e) {
         }
     } else {
         location.reload();
+        localStorage.removeItem('jwt_token');
         e.target.innerText = "Sign In"
     }
 }
