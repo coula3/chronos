@@ -2,10 +2,11 @@ class Api::V1::AuthController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
     def create
-        employee = Employee.find_by(email: employee_params[:email])
+        @employee = Employee.find_by(email: employee_params[:email])
+        token = encode_token(user_id: @employee.id)
 
-        if employee && employee.authenticate(employee_params[:password])
-            render json: employee, status: :accepted
+        if @employee && @employee.authenticate(employee_params[:password])
+            render json: { employee: @employee, jwt: token }, status: :accepted
         else
             render json: {message: "No user account matches email"}, status: :not_acceptable
         end
