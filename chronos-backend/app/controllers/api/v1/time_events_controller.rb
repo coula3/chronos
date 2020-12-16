@@ -7,7 +7,7 @@ class Api::V1::TimeEventsController < ApplicationController
     end
 
     def update
-        time_event = TimeEvent.find_by(id: params[:id])
+        time_event = TimeEvent.find_by(id: time_event_params[:id])
         message = {message: time_event.errors.full_messages}
 
         if params[:break_start]
@@ -23,6 +23,6 @@ class Api::V1::TimeEventsController < ApplicationController
 
     private
     def time_event_params
-        params.require(:time_event).permit(:date, :break_start, :break_end, :time_out)
+        params.require(:time_event).permit(:id, :date, :break_start, :break_end, :time_out)
     end
 end
