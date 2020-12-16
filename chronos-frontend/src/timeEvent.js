@@ -64,13 +64,14 @@ function createTimeEvent(e) {
             .then(response => response.json())
             .then(timeEvent => {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
+                localStorage.setItem('editMode', true);
+                localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
                 renderNewTimeEvent(newTimeEvent);
                 e.target.innerText = "Clock Out";
                 e.target.style.color = "#000";
                 e.target.style.backgroundColor = "";
                 document.getElementById("td-event-hours").innerText = "00:00:00"
-                addRunningTime();
-                localStorage.setItem('editMode', true);
+                addRunningTime('newTimeEvent', newTimeEvent);
             })
         }
     } else {
@@ -104,6 +105,7 @@ function createTimeEvent(e) {
 
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
             localStorage.setItem('editMode', false);
+            localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
             if(!buttonBreakResume) {
                 clearTimeout(activateButtonTimeout);
@@ -158,6 +160,7 @@ function takeBreakOrResumeWork(e) {
         .then(timeEvent => {
 
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Resume";
@@ -188,6 +191,7 @@ function takeBreakOrResumeWork(e) {
         .then(timeEvent => {
 
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Take Break";
