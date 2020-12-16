@@ -70,6 +70,7 @@ function createTimeEvent(e) {
                 e.target.style.backgroundColor = "";
                 document.getElementById("td-event-hours").innerText = "00:00:00"
                 addRunningTime();
+                localStorage.setItem('editMode', true);
             })
         }
     } else {
@@ -102,6 +103,7 @@ function createTimeEvent(e) {
         .then(timeEvent => {
 
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            localStorage.setItem('editMode', false);
 
             if(!buttonBreakResume) {
                 clearTimeout(activateButtonTimeout);
