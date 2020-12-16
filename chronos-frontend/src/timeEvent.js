@@ -52,7 +52,8 @@ function createTimeEvent(e) {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json"
+                    "Accept": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
                 },
                 body: JSON.stringify(bodyObject)
             }
@@ -87,7 +88,8 @@ function createTimeEvent(e) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             },
             body: JSON.stringify(bodyObject)
         }
@@ -139,7 +141,8 @@ function takeBreakOrResumeWork(e) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             },
             body: JSON.stringify(bodyObject)
         }
@@ -165,7 +168,8 @@ function takeBreakOrResumeWork(e) {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             },
             body:   JSON.stringify(bodyObject)
         }
