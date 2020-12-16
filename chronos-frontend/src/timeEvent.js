@@ -41,11 +41,13 @@ function createTimeEvent(e) {
             displayMessages("You are not authorized to clock in at this time. Please contact your supervisor for assistance")
         } else {
             const bodyObject = {
-                date: Date().slice(0, 24),
-                time_out: null,
-                break_start: null,
-                break_end: null,
-                employee_id: employeeId
+                time_event: {
+                    date: Date().slice(0, 24),
+                    time_out: null,
+                    break_start: null,
+                    break_end: null,
+                    employee_id: employeeId
+                }
             }
 
             const configObj = {
@@ -80,9 +82,11 @@ function createTimeEvent(e) {
             breakEnd = null;
         }
         const bodyObject = {
-            id: timeEventId,
-            time_out: Date().slice(0, 24),
-            break_end: breakEnd
+            time_event: {
+                id: timeEventId,
+                time_out: Date().slice(0, 24),
+                break_end: breakEnd
+            }
         }
         const configObj = {
             method: "PATCH",
@@ -133,8 +137,10 @@ function takeBreakOrResumeWork(e) {
     if(e.target.innerText == "Take Break") {
         
         const bodyObject = {
-            id: timeEventId,
-            break_start: Date().slice(0, 24)
+            time_event: {
+                id: timeEventId,
+                break_start: Date().slice(0, 24)
+            }
         }
 
         const configObj = {
@@ -160,8 +166,10 @@ function takeBreakOrResumeWork(e) {
         })
     } else if(e.target.innerText == "Resume"){
         const bodyObject = {
-            id: timeEventId,
-            break_end: Date().slice(0, 24)
+            time_event: {
+                id: timeEventId,
+                break_end: Date().slice(0, 24)
+            }
         }
 
         const configObj = {
@@ -188,6 +196,7 @@ function takeBreakOrResumeWork(e) {
             addRunningTime();
         })
     } else {
+
         const message = confirm("Time record will be deleted.");
         if (message === true) {
             document.getElementById("div-time-event").remove();
