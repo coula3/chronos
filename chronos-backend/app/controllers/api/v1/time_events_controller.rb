@@ -21,6 +21,15 @@ class Api::V1::TimeEventsController < ApplicationController
         end
     end
 
+    def destroy
+        time_event = TimeEvent.find_by(id: params[:id])
+        if time_event && time_event.destroy
+            render json: { message: "Delete successful"}, status: :ok
+        else
+            render json: { message: "Delete unsuccessful"}, status: :not_acceptable
+        end
+    end
+
     private
     def time_event_params
         params.require(:time_event).permit(:id, :date, :break_start, :break_end, :time_out, :employee_id)
