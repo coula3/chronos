@@ -24,7 +24,7 @@ class Employee {
             appendButtonAdmin(this);
         }
 
-        if(this.timeEvents){
+        if(this.timeEvents[0]){
             renderEmployeeTimeEvents(this);
         } else {
             renderWelcomeMsg(this);
