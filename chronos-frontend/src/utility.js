@@ -128,22 +128,24 @@ function createDivMenu(){
 function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
-    buttonClockInOut.style.cssText = "width:100px; margin-left:15px;";
+    buttonClockInOut.classList.add("button");
+    buttonClockInOut.style.cssText = "margin-left:15px; background-color: #0000ff; color: #FFF;";
+
     document.getElementById("div-menu").appendChild(buttonClockInOut);
     appendButtonProfile();
 }
 
 function appendButtonProfile(){
     buttonProfile.innerText = "Profile";
-    buttonProfile.setAttribute = ("id", "btn-edit-profile");
-    buttonProfile.style.width = "125px";
+    buttonProfile.setAttribute = ("id", "btn-profile");
+    buttonProfile.classList.add("button");
     document.getElementById("div-menu").insertBefore(buttonProfile, document.getElementById("btn-clock-in-out"));
 }
 
 function appendButtonAdmin(employee) {
-    buttonAdmin.innerText = "Manage Accounts";
+    buttonAdmin.innerText = "Admin";
     buttonAdmin.setAttribute("id", "btn-admin");
-    buttonAdmin.style.width = "125px";
+    buttonAdmin.classList.add("button");
 
     if(employee.position == "Manager"){
         document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));

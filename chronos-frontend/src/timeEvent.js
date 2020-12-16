@@ -63,6 +63,8 @@ function createTimeEvent(e) {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
                 renderNewTimeEvent(newTimeEvent);
                 e.target.innerText = "Clock Out";
+                e.target.style.color = "#000";
+                e.target.style.backgroundColor = "";
                 document.getElementById("td-event-hours").innerText = "00:00:00"
                 addRunningTime();
             })
@@ -105,8 +107,10 @@ function createTimeEvent(e) {
                 currentTimeEvent.updateTimeEventOnDOM();
                 clearInterval(runningTimeInterval);
                 e.target.innerText = "Clock In";
+                e.target.style.color = "";
                 buttonBreakResume.disabled = true;
                 buttonClockInOut.disabled = true;
+                buttonBreakResume.style.color = "";
                 buttonBreakResume.style.backgroundColor = "";
             }
 
@@ -147,6 +151,7 @@ function takeBreakOrResumeWork(e) {
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Resume";
+            e.target.style.color = "#000";
             e.target.style.backgroundColor = "";
             clearInterval(runningTimeInterval)
         })
@@ -173,6 +178,7 @@ function takeBreakOrResumeWork(e) {
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Take Break";
+            e.target.style.color = "";
             e.target.disabled = true;
             counter = milleseconds;
             addRunningTime();
@@ -248,7 +254,7 @@ function renderNewTimeEvent(event) {
                 <td class="td-event" id="td-event-time-out" >${event.timeOut ? getTime(event.timeOut) : ""}</td>
                 <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.date))}</td>
                 <td class="td-event" id="td-event-hours" style="color:blue"></td>
-                <td class="td-event" id="td-event-button"><button id="btn-break-resume" style="float:right; width:100px;" disabled>Take Break</button></td>
+                <td class="td-event" id="td-event-button"><button id="btn-break-resume" class="button" style="float:right;" disabled>Take Break</button></td>
             </tr>
         </tbody>
     </table>`;
@@ -280,7 +286,8 @@ function renderNewTimeEvent(event) {
         activateButtonTimeout = setTimeout(()=>{
             buttonBreakResume = document.getElementById("btn-break-resume");
             buttonBreakResume.disabled = false;
-            buttonBreakResume.style.backgroundColor = "#ebffb3";
+            buttonBreakResume.style.backgroundColor = "#008000";
+            buttonBreakResume.style.color = "#FFF";
             buttonBreakResume.addEventListener("click", (e)=>{
                 takeBreakOrResumeWork(e);
             })
