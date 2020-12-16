@@ -1,15 +1,15 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
 document.addEventListener("DOMContentLoaded", () => {
+    const localStorageData = JSON.parse(localStorage.getItem('data'));
+    const employeeId = localStorageData && localStorageData.employee.id;
     const isAuthenticated = localStorage.getItem('jwt_token');
-    const data = JSON.parse(localStorage.getItem('data'));
-    const editMode = JSON.parse(localStorage.getItem('editMode'));;
-    const employeeId = data && data.employee.id;
+    const editMode = JSON.parse(localStorage.getItem('editMode'));
 
     if(isAuthenticated && editMode){
         updateDOM(employeeId);
     } else if(isAuthenticated){
-        reSignInEmployee(data);
+        reSignInEmployee(localStorageData);
     }
 })
 
@@ -30,3 +30,4 @@ function updateDOM(employeeId){
         buttonClockInOut.style.backgroundColor = "";
     })
 }
+
