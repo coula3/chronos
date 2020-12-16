@@ -1,6 +1,14 @@
 class Api::V1::EmployeesController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
+    def show
+        @employee = Employee.find_by(id: params[:id])
+
+        if @employee
+            render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
+        end
+    end
+
     def create
         @employee = Employee.new(employee_params)
 
