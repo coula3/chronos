@@ -121,11 +121,10 @@ function createTimeEvent(e) {
             }
 
             if(currentTimeEvent.timeOut) {
-                updateHours();
-                function updateHours(){
+                (function updateHours(){
                     const hrs = getHours(currentTimeEvent.date, currentTimeEvent.timeOut);
                     document.getElementById("td-event-hours").innerText = hrs;
-                }
+                })();
             }
         })
     }
