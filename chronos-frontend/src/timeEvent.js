@@ -257,7 +257,11 @@ function renderEmployeeTimeEvents(employeeObject) {
 
         tableOfEvents += `</tbody></table>`
         divTimeEvents.innerHTML += tableOfEvents;
-        renderWelcomeMsg(employeeObject);
+
+        const countTimeEvents = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
+        if(!countTimeEvents)
+            renderWelcomeMsg(employeeObject);
+        localStorage.setItem('welcomeMsgRendered', true);
     } else {
         renderWelcomeMsg(employeeObject);
     }
