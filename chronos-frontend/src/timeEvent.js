@@ -196,14 +196,28 @@ function takeBreakOrResumeWork(e) {
             addRunningTime();
         })
     } else {
-
-        const message = confirm("Time record will be deleted.");
-        if (message === true) {
-            document.getElementById("div-time-event").remove();
-            buttonClockInOut.disabled = false;
-            buttonClockInOut.style.backgroundColor = "#0000ff";
-            buttonClockInOut.style.color = "#FFF";
-        }
+        fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            if(json.message === "Delete successful"){
+                const message = confirm("Time record will be deleted.");
+                if (message === true) {
+                    document.getElementById("div-time-event").remove();
+                    buttonClockInOut.disabled = false;
+                    buttonClockInOut.style.backgroundColor = "#0000ff";
+                    buttonClockInOut.style.color = "#FFF";
+                }
+            } else {
+                console.log(json.message);
+            }
+        })
     }
 }
 
