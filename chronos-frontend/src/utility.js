@@ -66,6 +66,8 @@ function removeMessagesSpan(){
 function renderWelcomeMsg(employeeObject){
     const firstName = `${employeeObject.firstName[0].toUpperCase() + employeeObject.firstName.slice(1)}`
     const p = document.createElement("p");
+    p.setAttribute("id", "p-new-user-msg");
+    p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
 
     if(employeeObject.timeEvents && employeeObject.timeEvents.length > 0){
         if(!document.getElementById("div-time-event")){
@@ -76,8 +78,6 @@ function renderWelcomeMsg(employeeObject){
         p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
         document.getElementById("div-employee-tag-name").after(p);
     }
-    p.setAttribute("id", "p-new-user-msg");
-    p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
 
     if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText == "")
         { document.getElementById("div-time-events").style.backgroundColor = "#e6ffff"; }
