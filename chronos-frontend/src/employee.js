@@ -81,6 +81,7 @@ function createEmployee(e) {
                 const newEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email);
 
                 localStorage.setItem('jwt_token', data.jwt);
+                localStorage.setItem('employeeTimeEvents', 0);
                 removeDOMElementsOnSignIn();
                 removeMessagesSpan()
                 newEmployee.renderEmployeeData();
@@ -125,6 +126,8 @@ function signInEmployee(e) {
                     currentEmployee.renderEmployeeData();
                     localStorage.setItem('jwt_token', data.jwt);
                     localStorage.setItem('data', JSON.stringify(data));
+                    data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
+
                     removeDOMElementsOnSignIn();
                     removeMessagesSpan();
 
