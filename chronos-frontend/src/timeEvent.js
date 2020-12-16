@@ -108,10 +108,10 @@ function createTimeEvent(e) {
                 clearInterval(runningTimeInterval);
                 e.target.innerText = "Clock In";
                 e.target.style.color = "";
-                buttonBreakResume.disabled = true;
                 buttonClockInOut.disabled = true;
-                buttonBreakResume.style.color = "";
-                buttonBreakResume.style.backgroundColor = "";
+                buttonBreakResume.disabled = false;
+                buttonBreakResume.innerText = "X";
+                buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: red; display: block; margin: auto";
             }
 
             if(currentTimeEvent.timeOut) {
@@ -155,7 +155,7 @@ function takeBreakOrResumeWork(e) {
             e.target.style.backgroundColor = "";
             clearInterval(runningTimeInterval)
         })
-    } else {
+    } else if(e.target.innerText == "Resume"){
         const bodyObject = {
             id: timeEventId,
             break_end: Date().slice(0, 24)
@@ -183,6 +183,14 @@ function takeBreakOrResumeWork(e) {
             counter = milleseconds;
             addRunningTime();
         })
+    } else {
+        const message = confirm("Time record will be deleted.");
+        if (message === true) {
+            document.getElementById("div-time-event").remove();
+            buttonClockInOut.disabled = false;
+            buttonClockInOut.style.backgroundColor = "#0000ff";
+            buttonClockInOut.style.color = "#FFF";
+        }
     }
 }
 
