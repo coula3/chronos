@@ -150,7 +150,7 @@ function signInEmployee(e) {
         }
     } else {
         location.reload();
-        localStorage.removeItem('jwt_token');
+        localStorage.clear();
         e.target.innerText = "Sign In"
     }
 }
