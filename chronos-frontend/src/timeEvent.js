@@ -21,6 +21,7 @@ class TimeEvent {
 
 const buttonClockInOut = document.createElement("button");
 let buttonBreakResume;
+let buttonUpdateTimeEvents;
 let activateButtonTimeout;
 let counter = 0;
 let milleseconds;
@@ -121,7 +122,16 @@ function createTimeEvent(e) {
                 buttonClockInOut.disabled = true;
                 buttonBreakResume.disabled = false;
                 buttonBreakResume.innerText = "X";
-                buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: red; display: block; margin: auto";
+                buttonBreakResume.setAttribute("title", "Delete Record");
+                buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
+                buttonUpdateTimeEvents = document.createElement("button");
+                buttonUpdateTimeEvents.innerText = "✓";
+                buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
+                buttonUpdateTimeEvents.setAttribute("title", "Update Time Events")
+                buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
+                document.getElementById("td-event-button").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
+                document.getElementById("td-event-button").style.textAlign = "center";
+                buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
             }
 
             if(currentTimeEvent.timeOut) {
@@ -219,6 +229,7 @@ function takeBreakOrResumeWork(e) {
                     buttonClockInOut.style.backgroundColor = "#0000ff";
                     buttonClockInOut.style.color = "#FFF";
                 }
+                location.reload();
             } else {
                 console.log(json.message);
             }
