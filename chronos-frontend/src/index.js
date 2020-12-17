@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(breakStarted && breakEnded && clockedOut){
         updateDOM(employeeId);
     } else if(isAuthenticated && editMode){
-        updateDOM(employeeId);
+        updateDOM(employeeId, editMode);
     } else if(isAuthenticated){
         reSignInEmployee(localStorageData);
     }
@@ -33,7 +33,7 @@ function getTimeEventStatus(currentTimeEvent){
     }
 }
 
-function updateDOM(employeeId){
+function updateDOM(employeeId, editMode){
     fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
         method: "GET",
         headers: {
@@ -45,9 +45,24 @@ function updateDOM(employeeId){
     .then(response => response.json())
     .then(data => {
         reSignInEmployee(data);
-        buttonClockInOut.innerText = "Clock Out";
-        buttonClockInOut.style.color = "#000";
-        buttonClockInOut.style.backgroundColor = "";
+        if(editMode && breakEnded){
+            resetButtonBreakResume();
+            resetButtonClockInOut();
+        } else if(editMode){
+            resetButtonClockInOut();
+        }
     })
 }
 
+function resetButtonClockInOut(){
+    buttonClockInOut.innerText = "Clock Out";
+    buttonClockInOut.style.color = "#000";
+    buttonClockInOut.style.backgroundColor = "";
+}
+
+function resetButtonBreakResume(){
+    buttonBreakResume.innerText = "Take Break";
+    buttonBreakResume.disabled = true;
+    buttonClockInOut.style.color = "#000";
+    buttonClockInOut.style.backgroundColor = "";
+}
