@@ -129,8 +129,8 @@ function createTimeEvent(e) {
                 buttonUpdateTimeEvents = document.createElement("button");
                 buttonUpdateTimeEvents.innerText = "✓";
                 buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
-                buttonUpdateTimeEvents.setAttribute("title", "Update Time Events");
-                buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
+                buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
+                buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 3px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
                 document.getElementById("td-event-button").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
                 document.getElementById("td-event-button").style.textAlign = "center";
                 buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
