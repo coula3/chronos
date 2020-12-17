@@ -21,14 +21,14 @@ document.addEventListener("DOMContentLoaded", () => {
 })
 
 function getTimeEventStatus(currentTimeEvent){
-    if(currentTimeEvent && currentTimeEvent.timeOut){
+    if(currentTimeEvent && (currentTimeEvent.timeOut || currentTimeEvent.time_out)){
         breakStarted = true;
         breakEnded = true;
         clockedOut = true;
-    } else if(currentTimeEvent && currentTimeEvent.breakEnd){
+    } else if(currentTimeEvent && (currentTimeEvent.breakEnd || currentTimeEvent.break_end)){
         breakStarted = true;
         breakEnded = true;
-    } else if(currentTimeEvent && currentTimeEvent.breakStart){
+    } else if(currentTimeEvent && (currentTimeEvent.breakStart || currentTimeEvent.break_start)){
         breakStarted = true;
     }
 }
