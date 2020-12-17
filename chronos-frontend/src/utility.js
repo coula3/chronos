@@ -64,7 +64,7 @@ function removeMessagesSpan(){
 }
 
 function renderWelcomeMsg(employeeObject){
-    const firstName = `${employeeObject.firstName[0].toUpperCase() + employeeObject.firstName.slice(1)}`
+    const firstName = `${employeeObject.firstName[0].toUpperCase() + employeeObject.firstName.slice(1)}`;
     const p = document.createElement("p");
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
@@ -80,18 +80,18 @@ function renderWelcomeMsg(employeeObject){
     }
 
     if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText == "")
-        { document.getElementById("div-time-events").style.backgroundColor = "#e6ffff"; }
+        { document.getElementById("div-time-events").style.backgroundColor = "#e6ffff"; };
 }
 
 function greeting(){
-    const time = parseInt(Date().slice(16,24).slice(0,2), 10)
+    const time = parseInt(Date().slice(16,24).slice(0,2), 10);
     if(time > 6 && time < 12 ){
-        return "Good morning"
+        return "Good morning";
     }
     if(time >= 12 && time <= 17) {
-        return "Good afternoon"
+        return "Good afternoon";
     }
-    return "Good evening"
+    return "Good evening";
 
 }
 
@@ -105,15 +105,15 @@ function getTime(time) {
 
 function getShift(timeIn){
     if((parseInt(timeIn.slice(0,2)) >= 5) && (parseInt(timeIn.slice(0,2)) < 12)){
-        return "A"
+        return "A";
     }
 
     if((parseInt(timeIn.slice(0,2)) >= 12) && (parseInt(timeIn.slice(0,2)) < 18)) {
-        return "B"
+        return "B";
     }
 
     if((parseInt(timeIn.slice(0,2)) >= 18) && (parseInt(timeIn.slice(0,2)) <= 21)) {
-        return "C"
+        return "C";
     }
 }
 
@@ -159,18 +159,18 @@ function calculateTimeDiff(startTime, finishTime) {
 }
 
 function getHours(startTime, finishTime) {
-    const secondsDiff = calculateTimeDiff(startTime, finishTime) / 1000
+    const secondsDiff = calculateTimeDiff(startTime, finishTime) / 1000;
 
-    const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24)
-    const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60
-    const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60
+    const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24);
+    const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60;
+    const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60;
 
-    return `${hours}:${minutes}:${seconds}`
+    return `${hours}:${minutes}:${seconds}`;
 }
 
 function getRunningTime(milleseconds){
-    const hours = (Math.round(milleseconds / 3600) % 24) < 10 ? `0${Math.round(milleseconds / 3600) % 24}` : Math.round(milleseconds / 3600) % 24
-    const minutes = (Math.round(milleseconds / 60) % 60) < 10 ? `0${Math.round(milleseconds / 60) % 60}` : Math.round(milleseconds / 60) % 60
-    const secs =  milleseconds % 60 < 10 ? `0${milleseconds % 60 }` : milleseconds % 60
-    return `${hours}:${minutes}:${secs}`
+    const hours = (Math.round(milleseconds / 3600) % 24) < 10 ? `0${Math.round(milleseconds / 3600) % 24}` : Math.round(milleseconds / 3600) % 24;
+    const minutes = (Math.round(milleseconds / 60) % 60) < 10 ? `0${Math.round(milleseconds / 60) % 60}` : Math.round(milleseconds / 60) % 60;
+    const secs =  milleseconds % 60 < 10 ? `0${milleseconds % 60 }` : milleseconds % 60;
+    return `${hours}:${minutes}:${secs}`;
 }

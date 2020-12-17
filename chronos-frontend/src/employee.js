@@ -9,8 +9,8 @@ class Employee {
     }
 
     renderEmployeeData() {
-        const firstName = `${this.firstName[0].toUpperCase() + this.firstName.slice(1)}`
-        const lastName = `${this.lastName[0].toUpperCase() + this.lastName.slice(1)}`
+        const firstName = `${this.firstName[0].toUpperCase() + this.firstName.slice(1)}`;
+        const lastName = `${this.lastName[0].toUpperCase() + this.lastName.slice(1)}`;
         const employeeNameTag = `
             <h2 id="employee-name" employee-data-id = ${this.id} style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
             <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${this.position}</h4>
@@ -44,7 +44,7 @@ addEmployeeForm.addEventListener("submit", (e)=>{
     }
 
     if(!document.querySelector("#div-input-elements")){
-        buttonCreateUser.innerText = "Submit"
+        buttonCreateUser.innerText = "Submit";
 
         if(document.getElementById("messages")){
             buttonCreateUser.disabled = true;
@@ -59,10 +59,10 @@ function createEmployee(e) {
     const position = document.getElementById("position").value
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    const passwordConfirmation = document.getElementById("password-confirmation").value
+    const passwordConfirmation = document.getElementById("password-confirmation").value;
 
     if(password !== passwordConfirmation) {
-        displayMessages("Please provide matching passwords")
+        displayMessages("Please provide matching passwords");
     } else {
         const bodyObject = {employee: {first_name: firstName, last_name: lastName, position: position, email: email, password: password}}
         const configObj = {
@@ -72,7 +72,7 @@ function createEmployee(e) {
                 "Accept": "application/json"
             },
             body: JSON.stringify(bodyObject)
-        }
+        };
 
         fetch(`${CHRONOS_URL}/employees`, configObj)
         .then(response => response.json())
@@ -129,7 +129,7 @@ function signInEmployee(e) {
 
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
                         buttonBreakResume.disabled = true;
-                        buttonClockInOut.innerText = "Take Break"
+                        buttonClockInOut.innerText = "Take Break";
                         buttonClockInOut.innerText = "Clock Out";
                         buttonClockInOut.style.color = "#000";
                         buttonClockInOut.style.backgroundColor = "";
@@ -154,7 +154,7 @@ function signInEmployee(e) {
     } else {
         location.reload();
         localStorage.clear();
-        e.target.innerText = "Sign In"
+        e.target.innerText = "Sign In";
     }
 }
 

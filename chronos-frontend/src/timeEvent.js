@@ -30,8 +30,7 @@ let runningTimeInterval;
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
     if(document.getElementById("p-new-user-msg") !== null){
-        const p = document.getElementById("p-new-user-msg");
-        p.remove();
+        document.getElementById("p-new-user-msg").remove();
     }
 })
 
@@ -39,7 +38,7 @@ function createTimeEvent(e) {
     const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
     if(e.target.innerText == "Clock In") {
         if(parseInt(Date().slice(16,18)) >= 22 || parseInt(Date().slice(16,18)) <= 4){
-            displayMessages("You are not authorized to clock in at this time. Please contact your supervisor for assistance")
+            displayMessages("You are not authorized to clock in at this time. Please contact your supervisor for assistance");
         } else {
             const bodyObject = {
                 time_event: {
@@ -59,7 +58,7 @@ function createTimeEvent(e) {
                     Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
                 },
                 body: JSON.stringify(bodyObject)
-            }
+            };
 
             fetch(`${CHRONOS_URL}/time_events`, configObj)
             .then(response => response.json())
@@ -71,7 +70,7 @@ function createTimeEvent(e) {
                 e.target.innerText = "Clock Out";
                 e.target.style.color = "#000";
                 e.target.style.backgroundColor = "";
-                document.getElementById("td-event-hours").innerText = "00:00:00"
+                document.getElementById("td-event-hours").innerText = "00:00:00";
                 addRunningTime('newTimeEvent', newTimeEvent);
             })
         }
@@ -84,13 +83,15 @@ function createTimeEvent(e) {
         } else {
             breakEnd = null;
         }
+
         const bodyObject = {
             time_event: {
                 id: timeEventId,
                 time_out: Date().slice(0, 24),
                 break_end: breakEnd
             }
-        }
+        };
+
         const configObj = {
             method: "PATCH",
             headers: {
@@ -99,12 +100,13 @@ function createTimeEvent(e) {
                 Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             },
             body: JSON.stringify(bodyObject)
-        }
+        };
+
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
 
-            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
             localStorage.setItem('editMode', false);
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
@@ -127,7 +129,7 @@ function createTimeEvent(e) {
                 buttonUpdateTimeEvents = document.createElement("button");
                 buttonUpdateTimeEvents.innerText = "✓";
                 buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
-                buttonUpdateTimeEvents.setAttribute("title", "Update Time Events")
+                buttonUpdateTimeEvents.setAttribute("title", "Update Time Events");
                 buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
                 document.getElementById("td-event-button").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
                 document.getElementById("td-event-button").style.textAlign = "center";
@@ -154,7 +156,7 @@ function takeBreakOrResumeWork(e) {
                 id: timeEventId,
                 break_start: Date().slice(0, 24)
             }
-        }
+        };
 
         const configObj = {
             method: "PATCH",
@@ -164,7 +166,8 @@ function takeBreakOrResumeWork(e) {
                 Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             },
             body: JSON.stringify(bodyObject)
-        }
+        };
+
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
@@ -176,7 +179,7 @@ function takeBreakOrResumeWork(e) {
             e.target.innerText = "Resume";
             e.target.style.color = "#000";
             e.target.style.backgroundColor = "";
-            clearInterval(runningTimeInterval)
+            clearInterval(runningTimeInterval);
         })
     } else if(e.target.innerText == "Resume"){
         const bodyObject = {
@@ -184,7 +187,7 @@ function takeBreakOrResumeWork(e) {
                 id: timeEventId,
                 break_end: Date().slice(0, 24)
             }
-        }
+        };
 
         const configObj = {
             method: "PATCH",
@@ -194,13 +197,13 @@ function takeBreakOrResumeWork(e) {
                 Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
             },
             body:   JSON.stringify(bodyObject)
-        }
+        };
 
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
 
-            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+            const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
             currentTimeEvent.updateTimeEventOnDOM();
@@ -272,7 +275,7 @@ function renderEmployeeTimeEvents(employeeObject) {
             </tr>`;
         })
 
-        tableOfEvents += `</tbody></table>`
+        tableOfEvents += `</tbody></table>`;
         divTimeEvents.innerHTML += tableOfEvents;
 
         const countTimeEvents = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
@@ -284,7 +287,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     }
 
     if(openTimeEvent.length !== 0){
-        renderNewTimeEvent(openTimeEvent[0])
+        renderNewTimeEvent(openTimeEvent[0]);
     }
 }
 
@@ -320,12 +323,12 @@ function renderNewTimeEvent(event) {
     if(!document.getElementById("th-events-col-a")){
         const thEvent = document.querySelectorAll(".th-event");
         for(let i = 0; i < thEvent.length; i++){
-            thEvent[i].style.color = "black"
+            thEvent[i].style.color = "black";
         }
     }
 
     if(!document.getElementById("td-events-col-a")){
-        document.getElementById("div-time-event").style.marginTop = "0px"
+        document.getElementById("div-time-event").style.marginTop = "0px";
     }
 
     const activateTime = calculateBreakButtonActivateTime(event);
@@ -333,7 +336,7 @@ function renderNewTimeEvent(event) {
     if(document.getElementById("td-event-break-start").innerText != "") {
         buttonBreakResume = document.getElementById("btn-break-resume");
         buttonBreakResume.disabled = false;
-        buttonBreakResume.innerText = "Resume"
+        buttonBreakResume.innerText = "Resume";
         buttonBreakResume.addEventListener("click", (e)=>{
             takeBreakOrResumeWork(e);
         })
@@ -361,7 +364,7 @@ function calculateBreakButtonActivateTime(event) {
 
 function addRunningTime(){
     runningTimeInterval = setInterval(() => {
-        milleseconds = counter += 1
-        document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds)
+        milleseconds = counter += 1;
+        document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
     }, 1000);
 }
