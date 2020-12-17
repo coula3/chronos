@@ -125,8 +125,6 @@ function signInEmployee(e) {
 
                     currentEmployee.renderEmployeeData();
                     persistToLocalStorageOnSignIn(data);
-                    data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
-
                     removeDOMElementsOnSignIn();
                     removeMessagesSpan();
 
@@ -160,8 +158,12 @@ function signInEmployee(e) {
 function persistToLocalStorageOnSignIn(data){
     const newTimeEvent = data.employee.time_events.find(event => !event.time_out);
     localStorage.setItem('jwt_token', data.jwt);
+    data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
     localStorage.setItem('data', JSON.stringify(data));
-    newTimeEvent && localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
+    if(newTimeEvent){
+        localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
+        localStorage.setItem('editMode', true);
+    }
 }
 
 function reSignInEmployee(data){
