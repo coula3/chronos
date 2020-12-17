@@ -24,7 +24,7 @@ class Employee {
             appendButtonAdmin(this);
         }
 
-        if(this.timeEvents[0]){
+        if(this.timeEvents){
             renderEmployeeTimeEvents(this);
         } else {
             renderWelcomeMsg(this);
@@ -80,11 +80,10 @@ function createEmployee(e) {
             if(data.employee){
                 const newEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email);
 
-                localStorage.setItem('jwt_token', data.jwt);
-                localStorage.setItem('employeeTimeEvents', 0);
+                newEmployee.renderEmployeeData();
+                persistToLocalStorageOnCreateEmployee(data);
                 removeDOMElementsOnSignIn();
                 removeMessagesSpan()
-                newEmployee.renderEmployeeData();
             } else {
                 displayMessages(data.message)
                 disableButtonSignIn(e)
@@ -153,6 +152,11 @@ function signInEmployee(e) {
         localStorage.clear();
         e.target.innerText = "Sign In"
     }
+}
+
+function persistToLocalStorageOnCreateEmployee(data){
+    localStorage.setItem('jwt_token', data.jwt);
+    localStorage.setItem('employeeTimeEvents', 0);
 }
 
 function persistToLocalStorageOnSignIn(data){
