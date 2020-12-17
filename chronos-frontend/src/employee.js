@@ -124,8 +124,7 @@ function signInEmployee(e) {
                     const currentEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email, data.employee.time_events);
 
                     currentEmployee.renderEmployeeData();
-                    localStorage.setItem('jwt_token', data.jwt);
-                    localStorage.setItem('data', JSON.stringify(data));
+                    persistToLocalStorageOnSignIn(data);
                     data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
 
                     removeDOMElementsOnSignIn();
@@ -156,6 +155,13 @@ function signInEmployee(e) {
         localStorage.clear();
         e.target.innerText = "Sign In"
     }
+}
+
+function persistToLocalStorageOnSignIn(data){
+    const newTimeEvent = data.employee.time_events.find(event => !event.time_out);
+    localStorage.setItem('jwt_token', data.jwt);
+    localStorage.setItem('data', JSON.stringify(data));
+    newTimeEvent && localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
 }
 
 function reSignInEmployee(data){
