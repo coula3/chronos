@@ -129,13 +129,17 @@ function signInEmployee(e) {
 
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
                         buttonBreakResume.disabled = true;
-                        document.getElementById("btn-break-resume").innerText = "Take Break"
-                        document.getElementById("btn-clock-in-out").innerText = "Clock Out";
+                        buttonClockInOut.innerText = "Take Break"
+                        buttonClockInOut.innerText = "Clock Out";
+                        buttonClockInOut.style.color = "#000";
+                        buttonClockInOut.style.backgroundColor = "";
                     } else if(document.getElementById("btn-break-resume") && document.getElementById("btn-break-resume").innerText == "Resume" && document.getElementById("span-event-break-end") && document.getElementById("span-event-break-end").innerText == "") {
-                        document.getElementById("btn-clock-in-out").innerText = "Clock Out";
-                        document.getElementById("btn-clock-in-out").disabled = true;
+                        buttonClockInOut.innerText = "Clock Out";
+                        buttonClockInOut.disabled = true;
                     } else if(document.getElementById("btn-break-resume")) {
-                        document.getElementById("btn-clock-in-out").innerText = "Clock Out";
+                        buttonClockInOut.innerText = "Clock Out";
+                        buttonClockInOut.style.color = "#000";
+                        buttonClockInOut.style.backgroundColor = "";
                     }
                 } else {
                     displayMessages(data.message);
