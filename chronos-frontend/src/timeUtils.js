@@ -37,6 +37,7 @@ function addRunningTime(){
     runningTimeInterval = setInterval(() => {
         milleseconds = counter += 1;
         document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
+        localStorage.setItem('runningTimeStarted', true);
     }, 1000);
 }
 
@@ -59,6 +60,7 @@ function calculateBreakButtonActivateTime(event) {
 function calculateTimeDiff(startTime, finishTime) {
     const startTimeObj = new Date(startTime);
     const finishTimeObj = new Date(finishTime);
+
     return (finishTimeObj - startTimeObj);
 }
 
