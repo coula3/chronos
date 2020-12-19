@@ -218,29 +218,31 @@ function takeBreakOrResumeWork(e) {
             addRunningTime();
         })
     } else {
-        fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
-            }
-        })
-        .then(response => response.json())
-        .then(json => {
-            if(json.message === "Delete successful"){
-                const message = confirm("Time record will be deleted.");
-                if (message === true) {
-                    document.getElementById("div-time-event").remove();
-                    buttonClockInOut.disabled = false;
-                    buttonClockInOut.style.backgroundColor = "#0000ff";
-                    buttonClockInOut.style.color = "#FFF";
+        const message = confirm("Time record will be deleted.");
+
+        if (message === true) {
+            fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json",
+                    Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
                 }
-                location.reload();
-            } else {
-                console.log(json.message);
-            }
-        })
+            })
+            .then(response => response.json())
+            .then(json => {
+                if(json.message === "Delete successful"){
+                        document.getElementById("div-time-event").remove();
+                        buttonClockInOut.disabled = false;
+                        buttonClockInOut.style.backgroundColor = "#0000ff";
+                        buttonClockInOut.style.color = "#FFF";
+                        localStorage.setItem('runningTimeStarted', false);
+                        location.reload();
+                } else {
+                    console.log(json.message);
+                }
+            })
+        }
     }
 }
 
