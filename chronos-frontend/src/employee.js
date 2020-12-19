@@ -20,7 +20,7 @@ class Employee {
 
         createDivMenu();
 
-        if(this.position == "Manager"){
+        if(this.position === "Manager"){
             appendButtonAdmin(this);
         }
 
@@ -39,7 +39,7 @@ const addEmployeeForm = document.getElementById("form-create-employee");
 addEmployeeForm.addEventListener("submit", (e)=>{
     e.preventDefault();
 
-    if(buttonCreateUser.innerText == "Submit"){
+    if(buttonCreateUser.innerText === "Submit"){
         createEmployee(e);
     }
 
@@ -114,7 +114,7 @@ function signInEmployee(e) {
         body: JSON.stringify(bodyObject)
     };
     
-    if(e.target.innerText == "Sign In") {
+    if(e.target.innerText === "Sign In") {
         if(signInEmail !== "") {
             fetch(`${CHRONOS_URL}/signin`, configObj)
             .then(response => response.json())

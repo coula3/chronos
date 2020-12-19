@@ -23,13 +23,13 @@ function appendEmployeeFormElements(){
 }
 
 function disableButtonSignIn(e){
-    if(e.submitter.innerText == "Submit"){
+    if(e.submitter.innerText === "Submit"){
         buttonSignIn.disabled = true;
     }
 }
 
 function disableButtonCreateUserSubmit(e){
-    if(e.target.innerText == "Sign In" && buttonCreateUser.innerText == "Submit"){
+    if(e.target.innerText === "Sign In" && buttonCreateUser.innerText === "Submit"){
         buttonCreateUser.disabled = true;
     }
 }
@@ -79,7 +79,7 @@ function renderWelcomeMsg(employeeObject){
         document.getElementById("div-employee-tag-name").after(p);
     }
 
-    if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText == "")
+    if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText === "")
         { document.getElementById("div-time-events").style.backgroundColor = "#e6ffff"; };
 }
 
@@ -113,7 +113,7 @@ function appendButtonAdmin(employee) {
     buttonAdmin.setAttribute("id", "btn-admin");
     buttonAdmin.classList.add("button");
 
-    if(employee.position == "Manager"){
+    if(employee.position === "Manager"){
         document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
     }
 }
