@@ -71,7 +71,7 @@ function createTimeEvent(e) {
                 e.target.style.color = "#000";
                 e.target.style.backgroundColor = "";
                 document.getElementById("td-event-hours").innerText = "00:00:00";
-                addRunningTime('newTimeEvent', newTimeEvent);
+                addRunningTime();
             })
         }
     } else {
@@ -116,6 +116,8 @@ function createTimeEvent(e) {
                 currentTimeEvent.updateTimeEventOnDOM();
                 e.target.innerText = "Clock In";
                 buttonClockInOut.disabled = true;
+                localStorage.setItem('runningTimeStarted', false);
+                clearInterval(runningTimeInterval);
             } else {
                 currentTimeEvent.updateTimeEventOnDOM();
                 clearInterval(runningTimeInterval);
@@ -134,6 +136,8 @@ function createTimeEvent(e) {
                 document.getElementById("td-event-button").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
                 document.getElementById("td-event-button").style.textAlign = "center";
                 buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
+                localStorage.setItem('runningTimeStarted', false);
+                clearInterval(runningTimeInterval);
             }
 
             if(currentTimeEvent.timeOut) {
