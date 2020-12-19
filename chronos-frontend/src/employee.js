@@ -133,9 +133,6 @@ function signInEmployee(e) {
                         buttonClockInOut.innerText = "Clock Out";
                         buttonClockInOut.style.color = "#000";
                         buttonClockInOut.style.backgroundColor = "";
-                    } else if(document.getElementById("btn-break-resume") && document.getElementById("btn-break-resume").innerText === "Resume" && document.getElementById("span-event-break-end") && !document.getElementById("span-event-break-end").innerText) {
-                        buttonClockInOut.innerText = "Clock Out";
-                        buttonClockInOut.disabled = true;
                     } else if(document.getElementById("btn-break-resume")) {
                         buttonClockInOut.innerText = "Clock Out";
                         buttonClockInOut.style.color = "#000";
