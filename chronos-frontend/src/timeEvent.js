@@ -352,19 +352,3 @@ function renderNewTimeEvent(event) {
         }, activateTime)
     }
 }
-
-function calculateBreakButtonActivateTime(event) {
-    const timeDiff = calculateTimeDiff(event.date, Date());
-    const fourHrsDiffInMillesecs = 60*60*4*1000;
-    const elapsedTime = timeDiff - fourHrsDiffInMillesecs;
-    const activateTime = 10000;
-
-    return activateTime - elapsedTime;
-}
-
-function addRunningTime(){
-    runningTimeInterval = setInterval(() => {
-        milleseconds = counter += 1;
-        document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
-    }, 1000);
-}
