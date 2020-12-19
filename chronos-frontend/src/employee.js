@@ -127,13 +127,13 @@ function signInEmployee(e) {
                     removeDOMElementsOnSignIn();
                     removeMessagesSpan();
 
-                    if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText != "") {
+                    if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText) {
                         buttonBreakResume.disabled = true;
-                        buttonClockInOut.innerText = "Take Break";
+                        buttonBreakResume.innerText = "Take Break";
                         buttonClockInOut.innerText = "Clock Out";
                         buttonClockInOut.style.color = "#000";
                         buttonClockInOut.style.backgroundColor = "";
-                    } else if(document.getElementById("btn-break-resume") && document.getElementById("btn-break-resume").innerText == "Resume" && document.getElementById("span-event-break-end") && document.getElementById("span-event-break-end").innerText == "") {
+                    } else if(document.getElementById("btn-break-resume") && document.getElementById("btn-break-resume").innerText === "Resume" && document.getElementById("span-event-break-end") && !document.getElementById("span-event-break-end").innerText) {
                         buttonClockInOut.innerText = "Clock Out";
                         buttonClockInOut.disabled = true;
                     } else if(document.getElementById("btn-break-resume")) {
