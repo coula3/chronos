@@ -105,7 +105,6 @@ function createTimeEvent(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
             localStorage.setItem('editMode', false);
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
@@ -247,30 +246,32 @@ function takeBreakOrResumeWork(e) {
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
+    const welcomeMsgRendered = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
     const timeEvents = employeeObject.timeEvents;
     const employeeTimeEvents = [];
+
     for(const event of timeEvents){
         employeeTimeEvents.push(new TimeEvent(event.id, event.date, event.time_out, event.break_start, event.break_end, event.employee_id))
     }
+
     const closedtimeEvents = employeeTimeEvents.filter((e)=>{ return e.timeOut});
     const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
     const openTimeEvent = employeeTimeEvents.filter((e)=>{ return !e.timeOut });
-
+    const divEventsContainer = document.createElement("div");
     const divTimeEvents = document.createElement("div");
+
+    divEventsContainer.setAttribute("id", "events-container");
+    divEventsContainer.style.cssText = "clear: both";
     divTimeEvents.setAttribute("id", "div-time-events");
+
+    document.getElementById("main-container").appendChild(divEventsContainer);
+    document.getElementById("events-container").appendChild(divTimeEvents);
 
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0){
         divTimeEvents.style.cssText = "border: solid 1px grey; clear:both";
     } else {
         divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     }
-
-    const divEventsContainer = document.createElement("div");
-    divEventsContainer.setAttribute("id", "events-container");
-    divEventsContainer.style.cssText = "clear: both";
-
-    document.getElementById("main-container").appendChild(divEventsContainer);
-    document.getElementById("events-container").appendChild(divTimeEvents);
     
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0) {
         let tableOfEvents = `
@@ -306,7 +307,6 @@ function renderEmployeeTimeEvents(employeeObject) {
         tableOfEvents += `</tbody></table>`;
         divTimeEvents.innerHTML += tableOfEvents;
 
-        const welcomeMsgRendered = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
 
         if(!welcomeMsgRendered){
             renderWelcomeMsg(employeeObject);
