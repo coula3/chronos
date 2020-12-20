@@ -33,12 +33,20 @@ function getShift(timeIn){
     }
 }
 
-function addRunningTime(){
-    runningTimeInterval = setInterval(() => {
-        milleseconds = counter += 1;
-        document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
-        localStorage.setItem('runningTimeStarted', true);
-    }, 1000);
+function addRunningTime(currentTimeEvent){
+    if(!currentTimeEvent){
+        runningTimeInterval = setInterval(() => {
+            milleseconds = counter += 1;
+            document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
+            localStorage.setItem('runningTimeStarted', true);
+        }, 1000);
+    } else {
+        counter = 600; //test new counter
+        runningTimeInterval = setInterval(() => {
+            milleseconds = counter += 1;
+            document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
+        }, 1000);
+    }
 }
 
 function getRunningTime(milleseconds){
