@@ -259,7 +259,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
 
-    if(hasTimeEvent){
+    if(employeeObject.timeEvents.length > 0){
         divTimeEvents.style.cssText = "padding-left:30px; border-radius: 15px; border: solid 1px grey; clear:both";
     } else {
         divTimeEvents.style.cssText = "padding-left:30px; clear:both";
