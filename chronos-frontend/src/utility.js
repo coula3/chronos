@@ -77,7 +77,7 @@ function renderWelcomeMsg(employeeObject){
     }
 
     if(employeeObject.timeEvents.length === 0) {
-        p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
+        p.innerText = `Hi ${firstName}, let's get clocking...!`;
         document.getElementById("div-employee-tag-name").after(p);
     }
 
