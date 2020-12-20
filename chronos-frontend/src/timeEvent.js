@@ -299,6 +299,7 @@ function renderEmployeeTimeEvents(employeeObject) {
 
     } else {
         renderWelcomeMsg(employeeObject);
+        localStorage.setItem('welcomeMsgRendered', true);
     }
 
     if(openTimeEvent.length !== 0){
