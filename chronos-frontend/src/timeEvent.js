@@ -260,7 +260,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     divTimeEvents.setAttribute("id", "div-time-events");
 
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0){
-        divTimeEvents.style.cssText = "padding-left:30px; border-radius: 15px; border: solid 1px grey; clear:both";
+        divTimeEvents.style.cssText = "border: solid 1px grey; clear:both";
     } else {
         divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     }
@@ -276,7 +276,7 @@ function renderEmployeeTimeEvents(employeeObject) {
         renderedTimeEvents.forEach((event) => {
             tableOfEvents += `
             <tr>
-                <td class="td-events" id="td-events-col-a">${renderedTimeEvents.indexOf(event) + 1}</td>
+                <td class="td-events" id="td-events-col-a" style="text-align:center">${renderedTimeEvents.indexOf(event) + 1}</td>
                 <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
                 <td class="td-events" id="td-events-time-in">${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-events" id="td-events-break-start">${event.breakStart ? getTime(event.breakStart) : ""}</td>
@@ -310,7 +310,7 @@ function renderEmployeeTimeEvents(employeeObject) {
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
     divTimeEvent.setAttribute("event-data-id", event.id);
-    divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; padding-left:30px; border-radius: 15px; border: solid 1px grey; clear:both";
+    divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; border: solid 1px grey; clear:both";
     divTimeEvent.setAttribute("id", "div-time-event");
 
     const tableOfEvent = `
@@ -320,7 +320,7 @@ function renderNewTimeEvent(event) {
         </thead>
         <tbody>
             <tr>
-                <td class="td-event" id="td-event-new" style="color:blue">new</td>
+                <td class="td-event" id="td-event-new" style="color:red; text-align:center">new</td>
                 <td class="td-event" id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
                 <td class="td-event" id="td-event-time-in" >${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-event" id="td-event-break-start" >${event.breakStart ? getTime(event.breakStart) : ""}</td>

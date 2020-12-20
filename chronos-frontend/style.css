@@ -50,7 +50,7 @@
 #div-time-events, #div-time-event {
     background-color: #ffffff;
     padding: 5px;
-    border-radius: 5%;
+    border-radius: 15px;
 }
 
 .th-event {
