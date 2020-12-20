@@ -127,6 +127,11 @@ function signInEmployee(e) {
                     removeDOMElementsOnSignIn();
                     removeMessagesSpan();
 
+                    if(document.getElementById("div-time-event")){
+                        localStorage.setItem('runningTimeStarted', true);
+                        addRunningTime(JSON.parse(localStorage.getItem('newTimeEvent')));
+                    }
+
                     if(document.getElementById("td-event-break-end") && document.getElementById("td-event-break-end").innerText) {
                         buttonBreakResume.disabled = true;
                         buttonBreakResume.innerText = "Take Break";

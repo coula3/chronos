@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editMode = JSON.parse(localStorage.getItem('editMode'));
 
     getTimeEventStatus(currentTimeEvent);
+    updateRunningTime(currentTimeEvent);
 
     if(breakStarted && breakEnded && clockedOut){
         updateDOM(employeeId);
@@ -19,6 +20,12 @@ document.addEventListener("DOMContentLoaded", () => {
         reSignInEmployee(localStorageData);
     }
 })
+
+function updateRunningTime(currentTimeEvent){
+    if(JSON.parse(localStorage.getItem('runningTimeStarted'))){
+        return addRunningTime(currentTimeEvent);
+    }
+}
 
 function getTimeEventStatus(currentTimeEvent){
     if(currentTimeEvent && (currentTimeEvent.timeOut || currentTimeEvent.time_out)){
