@@ -69,12 +69,14 @@ function renderWelcomeMsg(employeeObject){
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:20px; clear:both;";
 
-    if(employeeObject.timeEvents && employeeObject.timeEvents.length > 0){
+    if(employeeObject.timeEvents.length > 0 && employeeObject.timeEvents.some(event => event.time_out)){
         if(!document.getElementById("div-time-event")){
             p.innerText = `${greeting()} ${firstName}!`;
             document.getElementById("div-employee-tag-name").after(p);
         }
-    } else {
+    }
+
+    if(employeeObject.timeEvents.length === 0) {
         p.innerText = `Hi ${firstName}, welcome and let's get clocking...!`;
         document.getElementById("div-employee-tag-name").after(p);
     }
