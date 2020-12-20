@@ -1,6 +1,6 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
-let breakStarted, breakEnded, clockedOut;
+let breakStarted, breakEnded, clockedOut, hasTimeEvent;
 
 document.addEventListener("DOMContentLoaded", () => {
     const localStorageData = JSON.parse(localStorage.getItem('data'));
@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const employeeId = localStorageData && localStorageData.employee.id;
     const isAuthenticated = localStorage.getItem('jwt_token');
     const editMode = JSON.parse(localStorage.getItem('editMode'));
+    hasTimeEvent = isAuthenticated && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
