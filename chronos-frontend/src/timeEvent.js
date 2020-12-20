@@ -290,10 +290,13 @@ function renderEmployeeTimeEvents(employeeObject) {
         tableOfEvents += `</tbody></table>`;
         divTimeEvents.innerHTML += tableOfEvents;
 
-        const countTimeEvents = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
-        if(!countTimeEvents)
+        const welcomeMsgRendered = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
+
+        if(!welcomeMsgRendered){
             renderWelcomeMsg(employeeObject);
-        localStorage.setItem('welcomeMsgRendered', true);
+            localStorage.setItem('welcomeMsgRendered', true);
+        }
+
     } else {
         renderWelcomeMsg(employeeObject);
     }
