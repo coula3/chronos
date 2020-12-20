@@ -259,7 +259,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
 
-    if(employeeObject.timeEvents.length > 0){
+    if(employeeTimeEvents.filter(event => event.timeOut).length > 0){
         divTimeEvents.style.cssText = "padding-left:30px; border-radius: 15px; border: solid 1px grey; clear:both";
     } else {
         divTimeEvents.style.cssText = "padding-left:30px; clear:both";
@@ -267,7 +267,7 @@ function renderEmployeeTimeEvents(employeeObject) {
 
     document.getElementById("main-container").appendChild(divTimeEvents);
     
-    if(employeeTimeEvents.length > 0) {
+    if(employeeTimeEvents.filter(event => event.timeOut).length > 0) {
         let tableOfEvents = `
             <table id="tbl-events"><thead>
                 <tr id="tr-events"><th class="th-events" id="th-events-col-a" style="width:5%">&nbsp</th><th class="th-events" id="th-events-date" style="width:15%">Date</th><th class="th-events" id="th-events-time-in" style="width:15%">Time In</th><th class="th-events" id="th-events-break-start" style="width:15%">Break Start</th><th class="th-events" id="th-events-break-end" style="width:15%">Break End</th><th class="th-events" id="th-events-time-out" style="width:15%">Time Out</th><th class="th-events" id="th-events-shift" style="width:10%">Shift</th><th class="th-events" id="th-events-hours" style="width:15%">Hours</th></tr>
