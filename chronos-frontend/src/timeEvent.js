@@ -265,7 +265,12 @@ function renderEmployeeTimeEvents(employeeObject) {
         divTimeEvents.style.cssText = "padding-left:30px; clear:both";
     }
 
-    document.getElementById("main-container").appendChild(divTimeEvents);
+    const divEventsContainer = document.createElement("div");
+    divEventsContainer.setAttribute("id", "events-container");
+    divEventsContainer.style.cssText = "clear: both";
+
+    document.getElementById("main-container").appendChild(divEventsContainer);
+    document.getElementById("events-container").appendChild(divTimeEvents);
     
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0) {
         let tableOfEvents = `
@@ -355,7 +360,7 @@ function renderNewTimeEvent(event) {
     </table>`;
     
     divTimeEvent.innerHTML += tableOfEvent;
-    document.getElementById("main-container").appendChild(divTimeEvent);
+    document.getElementById("events-container").appendChild(divTimeEvent);
 
     if(!document.getElementById("th-events-col-a")){
         const thEvent = document.querySelectorAll(".th-event");
