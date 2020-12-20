@@ -258,7 +258,13 @@ function renderEmployeeTimeEvents(employeeObject) {
 
     const divTimeEvents = document.createElement("div");
     divTimeEvents.setAttribute("id", "div-time-events");
-    divTimeEvents.style.cssText = "padding-left:30px; clear:both";
+
+    if(hasTimeEvent){
+        divTimeEvents.style.cssText = "padding-left:30px; border-radius: 15px; border: solid 1px grey; clear:both";
+    } else {
+        divTimeEvents.style.cssText = "padding-left:30px; clear:both";
+    }
+
     document.getElementById("main-container").appendChild(divTimeEvents);
     
     if(employeeTimeEvents.length > 0) {
@@ -299,8 +305,8 @@ function renderEmployeeTimeEvents(employeeObject) {
 
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
-    divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; padding-left:30px; clear:both";
     divTimeEvent.setAttribute("event-data-id", event.id);
+    divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; padding-left:30px; border-radius: 15px; border: solid 1px grey; clear:both";
     divTimeEvent.setAttribute("id", "div-time-event");
 
     const tableOfEvent = `
