@@ -23,9 +23,6 @@ const buttonClockInOut = document.createElement("button");
 let buttonBreakResume;
 let buttonUpdateTimeEvents;
 let activateButtonTimeout;
-let counter = 0;
-let milleseconds;
-let runningTimeInterval;
 
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);

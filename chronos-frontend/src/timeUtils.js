@@ -1,3 +1,7 @@
+let counter = 0;
+let milleseconds;
+let runningTimeInterval;
+
 function greeting(){
     const time = parseInt(Date().slice(16,24).slice(0,2), 10);
     
