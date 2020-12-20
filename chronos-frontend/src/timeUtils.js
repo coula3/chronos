@@ -39,11 +39,14 @@ function addRunningTime(currentTimeEvent){
             milleseconds = counter += 1;
             document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
             localStorage.setItem('runningTimeStarted', true);
+            localStorage.setItem('runningTime', milleseconds)
         }, 1000);
     } else {
-        counter = 600; //test new counter
+        counter = JSON.parse(localStorage.getItem('runningTime'));
+
         runningTimeInterval = setInterval(() => {
             milleseconds = counter += 1;
+            localStorage.setItem('runningTime', milleseconds)
             document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
         }, 1000);
     }
