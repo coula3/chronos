@@ -174,6 +174,10 @@ function persistToLocalStorageOnSignIn(data){
         localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
         localStorage.setItem('editMode', true);
     }
+
+    const timeEventInLocalStorage = JSON.parse(localStorage.getItem('newTimeEvent'));
+    const onBreak = timeEventInLocalStorage && timeEventInLocalStorage.break_start && !timeEventInLocalStorage.break_end;
+    onBreak && localStorage.setItem('onBreak', true);
 }
 
 function reSignInEmployee(data){

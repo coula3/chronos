@@ -174,6 +174,7 @@ function takeBreakOrResumeWork(e) {
 
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
+            localStorage.setItem('onBreak', true);
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Resume";
