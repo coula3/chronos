@@ -81,15 +81,9 @@ function calculateBreakButtonActivateTime(event) {
     return activateTime - elapseTime;
 }
 
-function calculateTimeDiff(startTime, finishTime) {
-    const startTimeObj = new Date(startTime);
-    const finishTimeObj = new Date(finishTime);
-    return (finishTimeObj - startTimeObj);
-}
-
 function getHours(startTime, finishTime) {
-    const secondsDiff = calculateTimeDiff(startTime, finishTime) / 1000;
-
+    const millesecondsDiff = new Date(finishTime) - new Date(startTime);
+    const secondsDiff = millesecondsDiff / 1000;
     const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24);
     const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60;
     const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60;
