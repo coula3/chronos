@@ -43,17 +43,22 @@ function addRunningTime(currentTimeEvent){
             milleseconds = counter += 1;
             document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
             localStorage.setItem('runningTimeStarted', true);
-            localStorage.setItem('runningTime', milleseconds)
         }, 1000);
     } else {
-        counter = JSON.parse(localStorage.getItem('runningTime'));
+        let elapseTime = (new Date - new Date(currentTimeEvent.date).addHours(5));
+        counter = Math.round(elapseTime / 1000);
 
         runningTimeInterval = setInterval(() => {
             milleseconds = counter += 1;
-            localStorage.setItem('runningTime', milleseconds)
             document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
         }, 1000);
     }
+}
+
+Date.prototype.addHours = function(hour) {
+    const oneHour = 60 * 60 * 1000;
+    this.setTime(this.getTime() + (hour * oneHour));
+    return this;
 }
 
 function getRunningTime(milleseconds){
