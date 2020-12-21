@@ -113,6 +113,7 @@ function createTimeEvent(e) {
                 e.target.innerText = "Clock In";
                 buttonClockInOut.disabled = true;
                 localStorage.setItem('runningTimeStarted', false);
+                localStorage.setItem('onBreak', false);
                 clearInterval(runningTimeInterval);
             } else {
                 currentTimeEvent.updateTimeEventOnDOM();
@@ -133,6 +134,7 @@ function createTimeEvent(e) {
                 document.getElementById("td-event-button").style.textAlign = "center";
                 buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
                 localStorage.setItem('runningTimeStarted', false);
+                localStorage.setItem('onBreak', false);
                 clearInterval(runningTimeInterval);
             }
 
@@ -211,6 +213,7 @@ function takeBreakOrResumeWork(e) {
             e.target.innerText = "Take Break";
             e.target.style.color = "";
             e.target.disabled = true;
+            localStorage.setItem('onBreak', false);
             addRunningTime();
         })
     } else {
