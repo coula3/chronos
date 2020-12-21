@@ -45,9 +45,7 @@ function addRunningTime(currentTimeEvent){
             localStorage.setItem('runningTimeStarted', true);
         }, 1000);
     } else {
-        const timeEventStartTimeString = new Date(currentTimeEvent.date).toString();
-        const diffGMT = parseInt(timeEventStartTimeString.match(/GMT-\d+/)[0].slice(5,6));
-        let elapseTime = (new Date - new Date(currentTimeEvent.date).addHours(diffGMT));
+        const elapseTime = getElapseTime(currentTimeEvent);
 
         counter = Math.round(elapseTime / 1000);
 
@@ -56,6 +54,14 @@ function addRunningTime(currentTimeEvent){
             document.getElementById("td-event-hours").innerText = getRunningTime(seconds);
         }, 1000);
     }
+}
+
+function getElapseTime(timeEvent){
+    const timeEventStartTimeString = new Date(timeEvent.date).toString();
+    const diffGMT = parseInt(timeEventStartTimeString.match(/GMT-\d+/)[0].slice(5,6));
+    let elapseTime = (new Date - new Date(timeEvent.date).addHours(diffGMT));
+
+    return elapseTime;
 }
 
 Date.prototype.addHours = function(hour) {
@@ -75,6 +81,7 @@ function calculateBreakButtonActivateTime(event) {
     const timeDiff = calculateTimeDiff(event.date, Date());
     const fourHrsDiffInMillesecs = 60*60*4*1000;
     const elapsedTime = timeDiff - fourHrsDiffInMillesecs;
+
     const activateTime = 10000;
 
     return activateTime - elapsedTime;
