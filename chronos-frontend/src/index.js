@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const editMode = JSON.parse(localStorage.getItem('editMode'));
     hasTimeEvent = isAuthenticated && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
+    appendCurrentTime();
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
 
@@ -21,6 +22,27 @@ document.addEventListener("DOMContentLoaded", () => {
         reSignInEmployee(localStorageData);
     }
 })
+
+function appendCurrentTime(){
+    const spanTime = document.createElement("span");
+    const paraTime = document.getElementById("para-header")
+    paraTime.appendChild(spanTime);
+    document.getElementById("app-name").after(paraTime);
+    spanTime.setAttribute("id", "span-time");
+    spanTime.style.cssText = "font-size: 15px; display: block; margin-top: 15px";
+    computeCurrentTime(spanTime);
+}
+
+function computeCurrentTime(){
+    setInterval(() => {
+        const spanTime = document.getElementById("span-time")
+        const time = new Date();
+        const hours = time.getUTCHours()-5;
+        const minutes = time.getUTCMinutes();
+        const seconds = time.getUTCSeconds();
+        spanTime.innerText = `${hours}:${minutes}:${seconds}`;
+    }, 1000);
+}
 
 function updateRunningTime(currentTimeEvent){
     if(JSON.parse(localStorage.getItem('runningTimeStarted'))){
