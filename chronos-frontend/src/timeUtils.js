@@ -45,7 +45,10 @@ function addRunningTime(currentTimeEvent){
             localStorage.setItem('runningTimeStarted', true);
         }, 1000);
     } else {
-        let elapseTime = (new Date - new Date(currentTimeEvent.date).addHours(5));
+        const timeEventStartTimeString = new Date(currentTimeEvent.date).toString();
+        const diffGMT = parseInt(timeEventStartTimeString.match(/GMT-\d+/)[0].slice(5,6));
+        let elapseTime = (new Date - new Date(currentTimeEvent.date).addHours(diffGMT));
+
         counter = Math.round(elapseTime / 1000);
 
         runningTimeInterval = setInterval(() => {
