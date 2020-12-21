@@ -182,7 +182,6 @@ function takeBreakOrResumeWork(e) {
             e.target.innerText = "Resume";
             e.target.style.color = "#000";
             e.target.style.backgroundColor = "";
-            clearInterval(runningTimeInterval);
         })
     } else if(e.target.innerText === "Resume"){
         const bodyObject = {
@@ -214,7 +213,6 @@ function takeBreakOrResumeWork(e) {
             e.target.style.color = "";
             e.target.disabled = true;
             localStorage.setItem('onBreak', false);
-            addRunningTime();
         })
     } else {
         const message = confirm("Time record will be deleted.");
