@@ -210,7 +210,6 @@ function takeBreakOrResumeWork(e) {
             e.target.innerText = "Take Break";
             e.target.style.color = "";
             e.target.disabled = true;
-            counter = milleseconds;
             addRunningTime();
         })
     } else {
@@ -243,7 +242,7 @@ function takeBreakOrResumeWork(e) {
 }
 
 function renderEmployeeTimeEvents(employeeObject) {
-    const welcomeMsgRendered = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
+    const msgRendered = JSON.parse(localStorage.getItem('welcomeMsgRendered'));
     const timeEvents = employeeObject.timeEvents;
     const employeeTimeEvents = [];
 
@@ -305,7 +304,7 @@ function renderEmployeeTimeEvents(employeeObject) {
         divTimeEvents.innerHTML += tableOfEvents;
 
 
-        if(!welcomeMsgRendered){
+        if(!msgRendered){
             renderWelcomeMsg(employeeObject);
             localStorage.setItem('welcomeMsgRendered', true);
         }
