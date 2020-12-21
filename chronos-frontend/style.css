@@ -74,3 +74,10 @@
 #password-confirmation {
     margin-bottom: 15px;
 }
+
+#new-event {
+    background-color: #FF0000;
+    color: #FFF;
+    padding: 1.5px 3px;
+    border-radius: 6px;
+}
