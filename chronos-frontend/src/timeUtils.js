@@ -1,5 +1,5 @@
 let counter = 0;
-let milleseconds;
+let seconds;
 let runningTimeInterval;
 
 function greeting(){
@@ -40,8 +40,8 @@ function getShift(timeIn){
 function addRunningTime(currentTimeEvent){
     if(!currentTimeEvent){
         runningTimeInterval = setInterval(() => {
-            milleseconds = counter += 1;
-            document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
+            seconds = counter += 1;
+            document.getElementById("td-event-hours").innerText = getRunningTime(seconds);
             localStorage.setItem('runningTimeStarted', true);
         }, 1000);
     } else {
@@ -49,8 +49,8 @@ function addRunningTime(currentTimeEvent){
         counter = Math.round(elapseTime / 1000);
 
         runningTimeInterval = setInterval(() => {
-            milleseconds = counter += 1;
-            document.getElementById("td-event-hours").innerText = getRunningTime(milleseconds);
+            seconds = counter += 1;
+            document.getElementById("td-event-hours").innerText = getRunningTime(seconds);
         }, 1000);
     }
 }
@@ -61,10 +61,10 @@ Date.prototype.addHours = function(hour) {
     return this;
 }
 
-function getRunningTime(milleseconds){
-    const hours = (Math.floor(milleseconds / 3600) % 24) < 10 ? `0${Math.floor(milleseconds / 3600) % 24}` : Math.floor(milleseconds / 3600) % 24;
-    const minutes = (Math.floor(milleseconds / 60) % 60) < 10 ? `0${Math.floor(milleseconds / 60) % 60}` : Math.floor(milleseconds / 60) % 60;
-    const secs =  milleseconds % 60 < 10 ? `0${milleseconds % 60 }` : milleseconds % 60;
+function getRunningTime(seconds){
+    const hours = (Math.floor(seconds / 3600) % 24) < 10 ? `0${Math.floor(seconds / 3600) % 24}` : Math.floor(seconds / 3600) % 24;
+    const minutes = (Math.floor(seconds / 60) % 60) < 10 ? `0${Math.floor(seconds / 60) % 60}` : Math.floor(seconds / 60) % 60;
+    const secs =  seconds % 60 < 10 ? `0${seconds % 60 }` : seconds % 60;
     return `${hours}:${minutes}:${secs}`;
 }
 
