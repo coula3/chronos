@@ -133,7 +133,6 @@ function createTimeEvent(e) {
                 buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
                 localStorage.setItem('runningTimeStarted', false);
                 localStorage.setItem('onBreak', false);
-                clearInterval(runningTimeInterval);
             }
 
             if(currentTimeEvent.timeOut) {
