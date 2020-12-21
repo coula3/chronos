@@ -26,9 +26,7 @@ let activateButtonTimeout;
 
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
-    if(document.getElementById("p-new-user-msg") !== null){
-        document.getElementById("p-new-user-msg").remove();
-    }
+    document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
 })
 
 function createTimeEvent(e) {
@@ -182,6 +180,7 @@ function takeBreakOrResumeWork(e) {
             e.target.innerText = "Resume";
             e.target.style.color = "#000";
             e.target.style.backgroundColor = "";
+            document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
         })
     } else if(e.target.innerText === "Resume"){
         const bodyObject = {
@@ -212,6 +211,7 @@ function takeBreakOrResumeWork(e) {
             e.target.innerText = "Take Break";
             e.target.style.color = "";
             e.target.disabled = true;
+            document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
             localStorage.setItem('onBreak', false);
         })
     } else {
