@@ -371,21 +371,20 @@ function renderNewTimeEvent(event) {
     }
 
     const activateTime = calculateBreakButtonActivateTime(event);
+    buttonBreakResume = document.getElementById("btn-break-resume");
 
-    if(document.getElementById("td-event-break-start").innerText !== "") {
-        buttonBreakResume = document.getElementById("btn-break-resume");
+    if(document.getElementById("td-event-break-start").innerText) {
         buttonBreakResume.disabled = false;
         buttonBreakResume.innerText = "Resume";
-        buttonBreakResume.addEventListener("click", (e)=>{
+        buttonBreakResume.addEventListener("click", (e) => {
             takeBreakOrResumeWork(e);
         })
     } else {
-        activateButtonTimeout = setTimeout(()=>{
-            buttonBreakResume = document.getElementById("btn-break-resume");
+        activateButtonTimeout = setTimeout(() => {
             buttonBreakResume.disabled = false;
             buttonBreakResume.style.backgroundColor = "#008000";
             buttonBreakResume.style.color = "#FFF";
-            buttonBreakResume.addEventListener("click", (e)=>{
+            buttonBreakResume.addEventListener("click", (e) => {
                 takeBreakOrResumeWork(e);
             })
         }, activateTime)
