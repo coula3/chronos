@@ -12,7 +12,6 @@ function greeting(){
         return "Good afternoon";
     }
     return "Good evening";
-
 }
 
 function getDate(date) {
@@ -60,7 +59,6 @@ function getElapseTime(timeEvent){
     const timeEventStartTimeString = new Date(timeEvent.date).toString();
     const diffGMT = parseInt(timeEventStartTimeString.match(/GMT-\d+/)[0].slice(5,6));
     let elapseTime = (new Date - new Date(timeEvent.date).addHours(diffGMT));
-
     return elapseTime;
 }
 
@@ -78,19 +76,14 @@ function getRunningTime(seconds){
 }
 
 function calculateBreakButtonActivateTime(event) {
-    const timeDiff = calculateTimeDiff(event.date, Date());
-    const fourHrsDiffInMillesecs = 60*60*4*1000;
-    const elapsedTime = timeDiff - fourHrsDiffInMillesecs;
-
-    const activateTime = 10000;
-
-    return activateTime - elapsedTime;
+    const elapseTime = getElapseTime(event);
+    const activateTime = 300000;
+    return activateTime - elapseTime;
 }
 
 function calculateTimeDiff(startTime, finishTime) {
     const startTimeObj = new Date(startTime);
     const finishTimeObj = new Date(finishTime);
-
     return (finishTimeObj - startTimeObj);
 }
 
@@ -100,6 +93,5 @@ function getHours(startTime, finishTime) {
     const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24);
     const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60;
     const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60;
-
     return `${hours}:${minutes}:${seconds}`;
 }
