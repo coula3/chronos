@@ -23,27 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 })
 
-function appendCurrentTime(){
-    const spanTime = document.createElement("span");
-    const paraTime = document.getElementById("para-header")
-    paraTime.appendChild(spanTime);
-    document.getElementById("app-name").after(paraTime);
-    spanTime.setAttribute("id", "span-time");
-    spanTime.style.cssText = "font-size: 15px; font-weight: bold; color: red; display: block; margin-top: 15px";
-    computeCurrentTime(spanTime);
-}
-
-function computeCurrentTime(){
-    setInterval(() => {
-        const spanTime = document.getElementById("span-time")
-        const time = new Date();
-        const hours = time.getUTCHours()-5;
-        const minutes = time.getUTCMinutes();
-        const seconds = time.getUTCSeconds();
-        spanTime.innerText = `${hours}:${minutes}:${seconds}`;
-    }, 1000);
-}
-
 function updateRunningTime(currentTimeEvent){
     if(JSON.parse(localStorage.getItem('runningTimeStarted'))){
         return addRunningTime(currentTimeEvent);
