@@ -340,14 +340,14 @@ function renderNewTimeEvent(event) {
     <table id="tbl-event">
         <thead>
             <tr id="tr-event">
-                <th class="th-event" id="th-event-new" style="width:4.25%">&nbsp</th>
-                <th class="th-event" id="th-event-date" style="width:12.75%">Date</th>
-                <th class="th-event" id="th-event-time-in" style="width:12.75%">Time In</th>
-                <th class="th-event" id="th-event-break-start" style="width:12.75%">Break Start</th>
-                <th class="th-event" id="th-event-break-end" style="width:12.75%">Break End</th>
-                <th class="th-event" id="th-event-time-out" style="width:12.75%">Time Out</th>
-                <th class="th-event" id="th-event-shift" style="width:8.5%">Shift</th>
-                <th class="th-event" id="th-event-hours" style="width:12.75%">Hours</th>
+                <th class="th-event" id="th-event-new" style="width:5%">&nbsp</th>
+                <th class="th-event" id="th-event-date" style="width:15%">Date</th>
+                <th class="th-event" id="th-event-time-in" style="width:15%">Time In</th>
+                <th class="th-event" id="th-event-break-start" style="width:15%">Break Start</th>
+                <th class="th-event" id="th-event-break-end" style="width:15%">Break End</th>
+                <th class="th-event" id="th-event-time-out" style="width:15%">Time Out</th>
+                <th class="th-event" id="th-event-shift" style="width:10%">Shift</th>
+                <th class="th-event" id="th-event-hours" style="width:15%">Hours</th>
             </tr>
         </thead>
         <tbody>
