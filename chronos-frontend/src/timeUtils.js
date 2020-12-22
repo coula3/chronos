@@ -4,7 +4,7 @@ let runningTimeInterval;
 
 function appendCurrentTime(){
     const spanTime = document.createElement("span");
-    const paraTime = document.getElementById("para-header")
+    const paraTime = document.getElementById("para-header");
     paraTime.appendChild(spanTime);
     document.getElementById("app-name").after(paraTime);
     spanTime.setAttribute("id", "span-time");
@@ -14,29 +14,18 @@ function appendCurrentTime(){
 
 function computeCurrentTime(){
     setInterval(() => {
-        const spanTime = document.getElementById("span-time")
+        const spanTime = document.getElementById("span-time");
         const time = new Date();
         const hours = time.getHours();
         const minutes = time.getMinutes();
         const seconds = time.getSeconds();
-        spanTime.innerText = `${hours}:${minutes}:${seconds}`;
+        spanTime.innerText = `${padNumber(hours)}:${padNumber(minutes)}:${padNumber(seconds)}`;
     }, 1000);
 }
 
-// const getHour = () => {
-//     const gmtHour = new Date().getUTCHours();
-//     const hours = {0:19, 1:20, 2:21, 3:22, 4:23, 5:0};
-
-//     if(gmtHour <= 5){
-//         for(const key in hours){
-//             if(parseInt(key) === gmtHour){
-//                 return hours[key];
-//             }
-//         }
-//     } else {
-//         return gmtHour -5;
-//     }
-// }
+function padNumber(number){
+    return number < 10 ? `0${number}` : number;
+}
 
 function greeting(){
     const time = parseInt(Date().slice(16,24).slice(0,2), 10);
@@ -105,9 +94,9 @@ Date.prototype.addHours = function(hour) {
 }
 
 function getRunningTime(seconds){
-    const hours = (Math.floor(seconds / 3600) % 24) < 10 ? `0${Math.floor(seconds / 3600) % 24}` : Math.floor(seconds / 3600) % 24;
-    const minutes = (Math.floor(seconds / 60) % 60) < 10 ? `0${Math.floor(seconds / 60) % 60}` : Math.floor(seconds / 60) % 60;
-    const secs =  seconds % 60 < 10 ? `0${seconds % 60 }` : seconds % 60;
+    const hours = padNumber((Math.floor(seconds / 3600) % 24));
+    const minutes = padNumber((Math.floor(seconds / 60) % 60));
+    const secs =  padNumber(seconds % 60);
     return `${hours}:${minutes}:${secs}`;
 }
 
@@ -120,8 +109,8 @@ function calculateBreakButtonActivateTime(event) {
 function getHours(startTime, finishTime) {
     const millesecondsDiff = new Date(finishTime) - new Date(startTime);
     const secondsDiff = millesecondsDiff / 1000;
-    const hours = (Math.floor(secondsDiff / 3600) % 24) < 10 ? `0${(Math.floor(secondsDiff / 3600) % 24)}` : (Math.floor(secondsDiff / 3600) % 24);
-    const minutes = (Math.floor(secondsDiff / 60) % 60) < 10 ? `0${Math.floor(secondsDiff / 60) % 60}` : Math.floor(secondsDiff / 60) % 60;
-    const seconds = secondsDiff % 60 < 10 ? `0${secondsDiff % 60}` : secondsDiff % 60;
+    const hours = padNumber((Math.floor(secondsDiff / 3600) % 24));
+    const minutes = padNumber((Math.floor(secondsDiff / 60) % 60));
+    const seconds = padNumber(secondsDiff % 60);
     return `${hours}:${minutes}:${seconds}`;
 }
