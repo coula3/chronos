@@ -99,9 +99,7 @@ function appendButtonAdmin(employee) {
     buttonAdmin.setAttribute("id", "btn-admin");
     buttonAdmin.classList.add("button");
 
-    // if(employee.position === "Manager"){
-        document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
-    // }
+    document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
 }
 
 function appendMsgSpan(){
