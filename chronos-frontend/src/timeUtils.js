@@ -16,12 +16,27 @@ function computeCurrentTime(){
     setInterval(() => {
         const spanTime = document.getElementById("span-time")
         const time = new Date();
-        const hours = time.getUTCHours()-5;
-        const minutes = time.getUTCMinutes();
-        const seconds = time.getUTCSeconds();
+        const hours = time.getHours();
+        const minutes = time.getMinutes();
+        const seconds = time.getSeconds();
         spanTime.innerText = `${hours}:${minutes}:${seconds}`;
     }, 1000);
 }
+
+// const getHour = () => {
+//     const gmtHour = new Date().getUTCHours();
+//     const hours = {0:19, 1:20, 2:21, 3:22, 4:23, 5:0};
+
+//     if(gmtHour <= 5){
+//         for(const key in hours){
+//             if(parseInt(key) === gmtHour){
+//                 return hours[key];
+//             }
+//         }
+//     } else {
+//         return gmtHour -5;
+//     }
+// }
 
 function greeting(){
     const time = parseInt(Date().slice(16,24).slice(0,2), 10);
