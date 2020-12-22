@@ -21,7 +21,7 @@ class Employee {
         createDivMenu();
 
         if(this.position === "Manager"){
-            appendButtonAdmin(this);
+            appendButtonAdmin();
         }
 
         if(this.timeEvents){

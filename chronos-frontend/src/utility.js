@@ -94,7 +94,7 @@ function appendButtonProfile(){
     appendMsgSpan();
 }
 
-function appendButtonAdmin(employee) {
+function appendButtonAdmin() {
     buttonAdmin.innerText = "Admin";
     buttonAdmin.setAttribute("id", "btn-admin");
     buttonAdmin.classList.add("button");
