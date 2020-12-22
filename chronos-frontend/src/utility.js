@@ -23,6 +23,10 @@ function appendEmployeeFormElements(){
     buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
 }
 
+function instantiateEmployeeObject(employeeObject){
+    return new Employee(employeeObject.id, employeeObject.first_name, employeeObject.last_name, employeeObject.position, employeeObject.email, employeeObject.time_events);
+}
+
 function disableButtonSignIn(e){
     if(e.submitter.innerText === "Submit"){
         buttonSignIn.disabled = true;

@@ -78,7 +78,7 @@ function createEmployee(e) {
         .then(response => response.json())
         .then(data => {
             if(data.employee){
-                const newEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email);
+                const newEmployee = instantiateEmployeeObject(data.employee);
 
                 newEmployee.renderEmployeeData();
                 persistToLocalStorageOnCreateEmployee(data);
@@ -120,7 +120,7 @@ function signInEmployee(e) {
             .then(response => response.json())
             .then(data => {
                 if(data.employee) {
-                    const currentEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email, data.employee.time_events);
+                    const currentEmployee = instantiateEmployeeObject(data.employee);
 
                     currentEmployee.renderEmployeeData();
                     persistToLocalStorageOnSignIn(data);
@@ -180,7 +180,7 @@ function persistToLocalStorageOnSignIn(data){
 }
 
 function reSignInEmployee(data){
-    const currentEmployee = new Employee(data.employee.id, data.employee.first_name, data.employee.last_name, data.employee.position, data.employee.email, data.employee.time_events);
+    const currentEmployee = instantiateEmployeeObject(data.employee);
 
     removeDOMElementsOnSignIn();
     currentEmployee.renderEmployeeData();
