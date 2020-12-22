@@ -61,6 +61,7 @@ function createTimeEvent(e) {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
                 localStorage.setItem('editMode', true);
                 localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
+                localStorage.setItem("rendered", "Time Data");
                 renderNewTimeEvent(newTimeEvent);
                 e.target.innerText = "Clock Out";
                 e.target.style.color = "#000";
@@ -232,6 +233,7 @@ function takeBreakOrResumeWork(e) {
                         buttonClockInOut.style.backgroundColor = "#0000ff";
                         buttonClockInOut.style.color = "#FFF";
                         localStorage.setItem('runningTimeStarted', false);
+                        !hasTimeEvent && localStorage.removeItem("rendered");
                         location.reload();
                 } else {
                     console.log(json.message);

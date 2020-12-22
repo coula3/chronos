@@ -177,6 +177,7 @@ function persistToLocalStorageOnSignIn(data){
     const timeEventInLocalStorage = JSON.parse(localStorage.getItem('newTimeEvent'));
     const onBreak = timeEventInLocalStorage && timeEventInLocalStorage.break_start && !timeEventInLocalStorage.break_end;
     onBreak && localStorage.setItem('onBreak', true);
+    data.employee.time_events[0] && localStorage.setItem("rendered", "Time Data");
 }
 
 function reSignInEmployee(data){

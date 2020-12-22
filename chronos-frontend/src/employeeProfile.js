@@ -32,6 +32,7 @@ buttonProfile.addEventListener("click", (e) => {
     } else {
         divEmployeeProfile.remove();
         e.target.innerText = "Profile";
+        localStorage.setItem("rendered", "Time Data");
         location.reload();
     }
 })
