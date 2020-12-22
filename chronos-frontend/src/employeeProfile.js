@@ -2,25 +2,29 @@ const divEmployeeProfile = document.createElement("div");
 divEmployeeProfile.setAttribute("id", "div-emp-profile");
 divEmployeeProfile.style.cssText = "clear: both";
 
-buttonProfile.addEventListener("click", () => {
+buttonProfile.addEventListener("click", (e) => {
     clearInterval(runningTimeInterval);
-    
+    localStorage.setItem("isRendered", "employeeProfile");
+
     document.getElementById("events-container") && document.getElementById("events-container").remove();
-    buttonProfile.innerText = "Time Records";
-    document.getElementById("div-menu").after(divEmployeeProfile);
+    e.target.innerText = "Time Data";
+    document.getElementById("span-message").innerText = "";
+    document.getElementById("span-message").after(divEmployeeProfile);
+
     divEmployeeProfile.innerHTML += `
-            <div id="profile-card" style="padding-top: 15px">
-                <p class="profile-p profile-caption">Name</p>
-                <p class="profile-p">Ken Fry</p>
+        <div id="profile-card" style="padding-top: 15px">
+            <p class="profile-p profile-caption">Name</p>
+            <p class="profile-p">Ken Fry</p>
 
-                <p class="profile-p profile-caption">Position</p>
-                <p class="profile-p">Customer Associate</p>
+            <p class="profile-p profile-caption">Position</p>
+            <p class="profile-p">Customer Associate</p>
 
-                <p class="profile-p profile-caption">eMail</p>
-                <p class="profile-p">k@fry.com</p>
-                <div style="padding: 15px; background-color: #f2ecdc;">
-                    <button style="padding: 2px 5px; width: 80px">Edit</button>
-                </div>
+            <p class="profile-p profile-caption">eMail</p>
+            <p class="profile-p">k@fry.com</p>
+            <div style="padding: 15px; background-color: #e6ccb3;">
+                <button style="padding: 3px 5px; width: 200px; font-size: 17px">Edit</button>
+                <button style="padding: 3px 5px; width: 200px; font-size: 17px">Change Password</button>
             </div>
-        `;
+        </div>
+    `;
 })
