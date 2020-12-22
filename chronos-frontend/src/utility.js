@@ -1,5 +1,6 @@
 const buttonAdmin = document.createElement("button");
 const buttonProfile = document.createElement("button");
+const spanMsg = document.createElement("span");
 
 function appendEmployeeFormElements(){
     const formElements = `
@@ -35,32 +36,7 @@ function disableButtonCreateUserSubmit(e){
 }
 
 function displayMessages(message) {
-    if(!document.getElementById("messages")) {
-    const span = document.createElement("span");
-    span.innerText = message;
-
-    appendMessagesSpan(span);
-    }
-}
-
-function appendMessagesSpan(span) {
-    document.getElementById("main-container").appendChild(span);
-    span.style.cssText = "background-color:#f2ecdc; font-size:14px; margin-top:20px; padding: 5px 10px 5px 10px; box-shadow:10px 10px grey; float:right; clear:both;";
-    span.setAttribute("id", "messages");
-
-    setTimeout(() => {
-        if(document.getElementById("messages")){
-            document.getElementById("messages").remove();
-            buttonSignIn.disabled = false;
-            buttonCreateUser.disabled = false;
-        }
-    }, 5000)
-}
-
-function removeMessagesSpan(){
-    if(document.getElementById("messages")){
-        document.getElementById("messages").remove();
-    }
+    spanMsg.innerText = message;
 }
 
 function renderWelcomeMsg(employeeObject){
@@ -108,6 +84,8 @@ function appendButtonProfile(){
     buttonProfile.setAttribute = ("id", "btn-profile");
     buttonProfile.classList.add("button");
     document.getElementById("div-menu").insertBefore(buttonProfile, document.getElementById("btn-clock-in-out"));
+
+    appendMsgSpan();
 }
 
 function appendButtonAdmin(employee) {
@@ -118,4 +96,10 @@ function appendButtonAdmin(employee) {
     if(employee.position === "Manager"){
         document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
     }
+}
+
+function appendMsgSpan(){
+    spanMsg.setAttribute("id", "span-message");
+    spanMsg.style.cssText = "display: block; height: 20px; margin: 0px 0px 15px 0px; text-align: center; font-size: 15px; clear: both";
+    document.getElementById("div-menu").after(spanMsg);
 }
