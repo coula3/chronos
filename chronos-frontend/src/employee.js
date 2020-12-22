@@ -125,7 +125,6 @@ function signInEmployee(e) {
                     currentEmployee.renderEmployeeData();
                     persistToLocalStorageOnSignIn(data);
                     removeDOMElementsOnSignIn();
-                    removeMessagesSpan();
 
                     if(document.getElementById("div-time-event")){
                         localStorage.setItem('runningTimeStarted', true);
