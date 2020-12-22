@@ -128,8 +128,8 @@ function createTimeEvent(e) {
                 buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
                 buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
                 buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 3px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
-                document.getElementById("td-event-button").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
-                document.getElementById("td-event-button").style.textAlign = "center";
+                // document.getElementById("td-event-button").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
+                // document.getElementById("td-event-button").style.textAlign = "center";
                 buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
                 localStorage.setItem('runningTimeStarted', false);
                 localStorage.setItem('onBreak', false);
@@ -324,6 +324,11 @@ function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
     const divTimeEventContainer = document.createElement("div");
     const divTimeEventButtons = document.createElement("div");
+    buttonBreakResume = document.createElement("button");
+    buttonBreakResume.classList = "button";
+    buttonBreakResume.setAttribute("id", "btn-break-resume");
+    buttonBreakResume.innerText = "Take Break";
+    buttonBreakResume.disabled = true;
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; border: solid 1px grey; clear:both";
     divTimeEvent.setAttribute("id", "div-time-event");
@@ -343,7 +348,6 @@ function renderNewTimeEvent(event) {
                 <th class="th-event" id="th-event-time-out" style="width:12.75%">Time Out</th>
                 <th class="th-event" id="th-event-shift" style="width:8.5%">Shift</th>
                 <th class="th-event" id="th-event-hours" style="width:12.75%">Hours</th>
-                <th class="th-event" id="th-event-col-z" style="width:15%"></th>
             </tr>
         </thead>
         <tbody>
@@ -356,13 +360,13 @@ function renderNewTimeEvent(event) {
                 <td class="td-event" id="td-event-time-out" >${event.timeOut ? getTime(event.timeOut) : ""}</td>
                 <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.date))}</td>
                 <td class="td-event" id="td-event-hours" style="color:blue"></td>
-                <td class="td-event" id="td-event-button"><button id="btn-break-resume" class="button" style="float:right;" disabled>Take Break</button></td>
             </tr>
         </tbody>
     </table>`;
-    
+
     divTimeEvent.innerHTML += tableOfEvent;
     divTimeEventContainer.appendChild(divTimeEvent);
+    divTimeEventButtons.appendChild(buttonBreakResume);
     divTimeEventContainer.appendChild(divTimeEventButtons);
     document.getElementById("events-container").appendChild(divTimeEventContainer);
 
