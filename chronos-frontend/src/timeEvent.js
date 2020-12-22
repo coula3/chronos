@@ -329,7 +329,7 @@ function renderNewTimeEvent(event) {
     buttonBreakResume.innerText = "Take Break";
     buttonBreakResume.disabled = true;
     divTimeEvent.setAttribute("event-data-id", event.id);
-    divTimeEvent.style.cssText = "margin:50px 0px 15px 0px; border: solid 1px grey; clear:both";
+    divTimeEvent.style.cssText = "margin:30px 0px 15px 0px; border: solid 1px grey; clear:both";
     divTimeEvent.setAttribute("id", "div-time-event");
     divTimeEventContainer.setAttribute("id", "div-time-event-cont");
     divTimeEventButtons.setAttribute("id", "div-time-event-buttons");
