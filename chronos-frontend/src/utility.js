@@ -70,7 +70,7 @@ function renderWelcomeMsg(employeeObject){
 function createDivMenu(){
     const divMenu = document.createElement("div");
     divMenu.setAttribute("id", "div-menu");
-    divMenu.style.cssText = "float:right; margin:30px 0px 30px 0px; clear:both;";
+    divMenu.style.cssText = "float:right; margin:20px 0px 10px 0px; clear:both;";
     document.getElementById("div-employee-tag-name").after(divMenu);
     appendButtonClockInOut();
 }
@@ -104,6 +104,6 @@ function appendButtonAdmin(employee) {
 
 function appendMsgSpan(){
     spanMsg.setAttribute("id", "span-message");
-    spanMsg.style.cssText = "display: block; height: 20px; margin: 0px 0px 15px 0px; text-align: center; font-size: 15px; clear: both";
+    spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 16px; clear: both";
     document.getElementById("div-menu").after(spanMsg);
 }
