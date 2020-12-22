@@ -6,6 +6,8 @@ buttonProfile.addEventListener("click", (e) => {
     if(e.target.innerText === "Profile"){
         clearInterval(runningTimeInterval);
         localStorage.setItem("rendered", "Profile");
+        buttonClockInOut.disabled = true;
+        buttonClockInOut.style.cssText = "background-color: null, color: #000"
 
         document.getElementById("events-container") && document.getElementById("events-container").remove();
         e.target.innerText = "Time Data";
