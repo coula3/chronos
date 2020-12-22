@@ -322,9 +322,14 @@ function renderEmployeeTimeEvents(employeeObject) {
 
 function renderNewTimeEvent(event) {
     const divTimeEvent = document.createElement("div");
+    const divTimeEventContainer = document.createElement("div");
+    const divTimeEventButtons = document.createElement("div");
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.style.cssText = "margin-top:50px; margin-bottom:25px; border: solid 1px grey; clear:both";
     divTimeEvent.setAttribute("id", "div-time-event");
+    divTimeEventContainer.setAttribute("id", "div-time-event-cont");
+    divTimeEventButtons.setAttribute("id", "div-time-event-buttons");
+    divTimeEventButtons.style.cssText = "float:right";
 
     const tableOfEvent = `
     <table id="tbl-event">
@@ -357,7 +362,9 @@ function renderNewTimeEvent(event) {
     </table>`;
     
     divTimeEvent.innerHTML += tableOfEvent;
-    document.getElementById("events-container").appendChild(divTimeEvent);
+    divTimeEventContainer.appendChild(divTimeEvent);
+    divTimeEventContainer.appendChild(divTimeEventButtons);
+    document.getElementById("events-container").appendChild(divTimeEventContainer);
 
     if(!document.getElementById("th-events-col-a")){
         const thEvent = document.querySelectorAll(".th-event");
