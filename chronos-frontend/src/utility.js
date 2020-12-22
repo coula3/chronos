@@ -37,6 +37,12 @@ function disableButtonCreateUserSubmit(e){
 
 function displayMessages(message) {
     spanMsg.innerText = message;
+
+    setTimeout(() => {
+        if(document.getElementById("span-message").innerText){
+            document.getElementById("span-message").innerText = ""
+        }
+    }, 6000)
 }
 
 function renderWelcomeMsg(employeeObject){
