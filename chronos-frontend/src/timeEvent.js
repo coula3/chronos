@@ -105,41 +105,30 @@ function createTimeEvent(e) {
             localStorage.setItem('editMode', false);
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
-            if(!buttonBreakResume) {
-                clearTimeout(activateButtonTimeout);
-                clearInterval(runningTimeInterval);
-                currentTimeEvent.updateTimeEventOnDOM();
-                e.target.innerText = "Clock In";
-                buttonClockInOut.disabled = true;
-                localStorage.setItem('runningTimeStarted', false);
-                localStorage.setItem('onBreak', false);
-                clearInterval(runningTimeInterval);
-            } else {
-                clearTimeout(activateButtonTimeout);
-                clearInterval(runningTimeInterval);
-                currentTimeEvent.updateTimeEventOnDOM();
-                e.target.innerText = "Clock In";
-                e.target.style.color = "";
-                buttonClockInOut.disabled = true;
-                buttonBreakResume.disabled = false;
-                buttonBreakResume.innerText = "X";
-                buttonBreakResume.setAttribute("title", "Delete Record");
-                buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
+            clearTimeout(activateButtonTimeout);
+            clearInterval(runningTimeInterval);
+            currentTimeEvent.updateTimeEventOnDOM();
+            e.target.innerText = "Clock In";
+            e.target.style.color = "";
+            buttonClockInOut.disabled = true;
+            buttonBreakResume.disabled = false;
+            buttonBreakResume.innerText = "X";
+            buttonBreakResume.setAttribute("title", "Delete Record");
+            buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
 
-                buttonBreakResume.addEventListener("click", (e) => {
-                    takeBreakOrResumeWork(e);
-                })
+            buttonBreakResume.addEventListener("click", (e) => {
+                takeBreakOrResumeWork(e);
+            })
 
-                buttonUpdateTimeEvents = document.createElement("button");
-                buttonUpdateTimeEvents.innerText = "✓";
-                buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
-                buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
-                buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 6px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
-                document.getElementById("div-time-event-buttons").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
-                buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
-                localStorage.setItem('runningTimeStarted', false);
-                localStorage.setItem('onBreak', false);
-            }
+            buttonUpdateTimeEvents = document.createElement("button");
+            buttonUpdateTimeEvents.innerText = "✓";
+            buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
+            buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
+            buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 6px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
+            document.getElementById("div-time-event-buttons").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
+            buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
+            localStorage.setItem('runningTimeStarted', false);
+            localStorage.setItem('onBreak', false);
 
             if(currentTimeEvent.timeOut) {
                 (function updateHours(){
