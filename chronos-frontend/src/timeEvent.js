@@ -117,7 +117,7 @@ function createTimeEvent(e) {
             buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
 
             buttonBreakResume.addEventListener("click", (e) => {
-                takeBreakOrResumeWork(e);
+                deleteTimeEvent(timeEventId);
             })
 
             buttonUpdateTimeEvents = document.createElement("button");
