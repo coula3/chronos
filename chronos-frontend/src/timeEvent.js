@@ -116,9 +116,11 @@ function createTimeEvent(e) {
             buttonBreakResume.setAttribute("title", "Delete Record");
             buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
 
-            buttonBreakResume.addEventListener("click", (e) => {
-                deleteTimeEvent(timeEventId);
-            })
+            if(!JSON.parse(localStorage.getItem('selfTimeout'))){
+                buttonBreakResume.addEventListener("click", (e) => {
+                    deleteTimeEvent(timeEventId);
+                });
+            }
 
             buttonUpdateTimeEvents = document.createElement("button");
             buttonUpdateTimeEvents.innerText = "✓";
@@ -366,6 +368,7 @@ function renderNewTimeEvent(event) {
             buttonBreakResume.disabled = false;
             buttonBreakResume.style.backgroundColor = "#008000";
             buttonBreakResume.style.color = "#FFF";
+            localStorage.setItem('selfTimeout', true);
             buttonBreakResume.addEventListener("click", (e) => {
                 takeBreakOrResumeWork(e);
             })
@@ -394,6 +397,7 @@ function deleteTimeEvent(timeEventId){
                     buttonClockInOut.style.color = "#FFF";
                     localStorage.setItem('runningTimeStarted', false);
                     !hasTimeEvent && localStorage.removeItem("rendered");
+                    localStorage.removeItem('selfTimeout');
                     location.reload();
             } else {
                 console.log(json.message);
