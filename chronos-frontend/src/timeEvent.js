@@ -220,32 +220,7 @@ function takeBreakOrResumeWork(e) {
             localStorage.setItem('onBreak', false);
         })
     } else {
-        const message = confirm("Time record will be deleted.");
-
-        if (message === true) {
-            fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, {
-                method: "DELETE",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
-                }
-            })
-            .then(response => response.json())
-            .then(json => {
-                if(json.message === "Delete successful"){
-                        document.getElementById("div-time-event").remove();
-                        buttonClockInOut.disabled = false;
-                        buttonClockInOut.style.backgroundColor = "#0000ff";
-                        buttonClockInOut.style.color = "#FFF";
-                        localStorage.setItem('runningTimeStarted', false);
-                        !hasTimeEvent && localStorage.removeItem("rendered");
-                        location.reload();
-                } else {
-                    console.log(json.message);
-                }
-            })
-        }
+        deleteTimeEvent(timeEventId);
     }
 }
 
@@ -406,5 +381,34 @@ function renderNewTimeEvent(event) {
                 takeBreakOrResumeWork(e);
             })
         }, activateTime)
+    }
+}
+
+function deleteTimeEvent(timeEventId){
+    const message = confirm("Time record will be deleted.");
+
+    if (message === true) {
+        fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+            }
+        })
+        .then(response => response.json())
+        .then(json => {
+            if(json.message === "Delete successful"){
+                    document.getElementById("div-time-event").remove();
+                    buttonClockInOut.disabled = false;
+                    buttonClockInOut.style.backgroundColor = "#0000ff";
+                    buttonClockInOut.style.color = "#FFF";
+                    localStorage.setItem('runningTimeStarted', false);
+                    !hasTimeEvent && localStorage.removeItem("rendered");
+                    location.reload();
+            } else {
+                console.log(json.message);
+            }
+        })
     }
 }
