@@ -59,6 +59,9 @@ function displaySignUpMessages(messages) {
         } else if(message.includes("Last")){
             lastNameMsg = message;
             displayLastNameMsg(lastNameMsg, spanStyles);
+        } else if(message.includes("Position")){
+            positionMsg = message;
+            displayPositionMsg(positionMsg, spanStyles);
         }
     });
 }
@@ -79,6 +82,15 @@ function displayLastNameMsg(lastNameMsg, spanStyles){
     spanLastName.style.cssText = spanStyles;
     document.getElementById("last-name").style.cssText = "margin-bottom: 0px";
     !document.getElementById("span-last-name") && document.getElementById("div-input-elements").insertBefore(spanLastName, document.getElementById("position"));
+}
+
+function displayPositionMsg(positionMsg, spanStyles){
+    spanPosition = document.createElement("span");
+    spanPosition.innerText = positionMsg;
+    spanPosition.setAttribute("id", "span-position");
+    spanPosition.style.cssText = spanStyles;
+    document.getElementById("position").style.cssText = "margin-bottom: 0px";
+    !document.getElementById("span-position") && document.getElementById("div-input-elements").insertBefore(spanPosition, document.getElementById("email"));
 }
 
 function displayPasswordMsg(passwordMsg, spanStyles){
