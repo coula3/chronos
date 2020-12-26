@@ -2,7 +2,7 @@ class Api::V1::AuthController < ApplicationController
     skip_before_action :authorized, only: [:create]
 
     def create
-        @employee = Employee.find_by(email: employee_params[:email])
+        @employee = Employee.find_by(email: employee_params[:email].downcase)
 
         if @employee && @employee.authenticate(employee_params[:password])
             token = encode_token(user_id: @employee.id)

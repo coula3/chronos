@@ -10,7 +10,7 @@ class Api::V1::EmployeesController < ApplicationController
     end
 
     def create
-        @employee = Employee.new(employee_params)
+        @employee = Employee.new(first_name: employee_params[:first_name].downcase, last_name: employee_params[:last_name].downcase, email: employee_params[:email].downcase, position: employee_params[:position], password: employee_params[:password])
 
         if @employee.save
             token = encode_token(user_id: @employee.id)
