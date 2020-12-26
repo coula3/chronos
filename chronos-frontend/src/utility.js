@@ -53,8 +53,9 @@ function displaySignUpMessages(messages) {
 function displayPasswordMsg(passwordMsg){
     spanPassword = document.createElement("span");
     spanPassword.innerText = passwordMsg;
+    spanPassword.setAttribute("id", "span-password");
     spanPassword.style.cssText = "display: block;  margin: 5px 0px; font-size: 14px; color: red; text-align: center;";
-    document.getElementById("form-create-employee").insertBefore(spanPassword, document.getElementById("btn-create-user"));
+    !document.getElementById("span-password") && document.getElementById("form-create-employee").insertBefore(spanPassword, document.getElementById("btn-create-user"));
 }
 
 function displayMessages(message) {
