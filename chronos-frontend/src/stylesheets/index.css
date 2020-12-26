@@ -10,6 +10,11 @@
     position: relative;
 }
 
+#app-logo {
+    width: 100px;
+    height: 100px;
+}
+
 #app-name {
     color: #00008B;
     font-size: 50px;
@@ -17,6 +22,42 @@
     margin-bottom: 0px;
     margin-top: 0px;
     text-shadow: 5px 5px #558ABB;
+}
+
+#app-branding {
+    position: absolute;
+    bottom: 10px;
+}
+
+#div-signup-signin {
+    padding-bottom: 50px;
+}
+
+#div-signup {
+    padding: 15px;
+    margin-top: 15px;
+    border: solid 1px grey;
+    float: right;
+    clear: both;
+}
+
+#div-signin {
+    padding: 15px;
+    border: solid 1px grey;
+    float: right;
+}
+
+#btn-sign-in {
+    display: block;
+    margin-top: 15px;
+    width: 315px;
+}
+
+#btn-create-user {
+    display: block;
+    background-color: #0000ff;
+    color: #FFF;
+    width: 315px;
 }
 
 .button {

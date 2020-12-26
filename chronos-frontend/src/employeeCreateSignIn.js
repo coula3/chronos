@@ -193,7 +193,7 @@ function removeDOMElementsOnSignIn(){
     document.getElementById("sign-in-password").remove();
     document.getElementById("btn-sign-in").innerText = "Sign Out";
     document.getElementById("btn-sign-in").style.cssText = "width: 100px";
-    document.getElementById("div-signin").style.cssText = "float: right;";
+    document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
 }
 
 function createDivNameTag(employeeNameTag){

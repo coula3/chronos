@@ -11,23 +11,23 @@
 </head>
 <body >
     <div class="wrapper">
-        <img src="images/favicon.png" alt="antique clock photo" class="center" style="width:100px; height:100px;">
+        <img src="images/favicon.png" alt="antique clock photo" id="app-logo" class="center">
         <h1 id="app-name">chronos</h1>
         <p id="para-header">
             <span id="app-desc-span">time management of shift employees</span>
         </p>
         <div id="main-container">
-            <div id="div-signup-signin" style="padding-bottom:50px;">
-                <div id="div-signin" style="padding: 15px; border: solid 1px grey; float:right;">
+            <div id="div-signup-signin">
+                <div id="div-signin">
                     <form>
                         <input id="sign-in-email" class="input" type="text" name="sign-in-email" placeholder="email" />
                         <input id="sign-in-password" class="input" type="password" name="sign-in-password" placeholder="password" />
-                        <button id="btn-sign-in" class="button" style="display:block; margin-top: 15px; width: 315px;">Sign In</button>
+                        <button id="btn-sign-in" class="button">Sign In</button>
                     </form>
                 </div>
-                <div id="div-signup" style="padding: 15px; margin-top: 15px; border: solid 1px grey; float:right; clear:both;">
+                <div id="div-signup">
                     <form id="form-create-employee">
-                        <button id="btn-create-user" class="button" style="display: block; background-color: #0000ff; color: #FFF; width: 315px;">Sign Up</button>
+                        <button id="btn-create-user" class="button">Sign Up</button>
                     </form>
                 </div>
             </div>
@@ -40,7 +40,7 @@
         <script type="application/javascript" src="src/timeUtils.js" charset="UTF-8"></script>
         <script type="application/javascript" src="src/employeeProfile.js" charset="UTF-8"></script>
 
-        <div style="position: absolute; bottom: 10px;"><small>&copy; <script>document.write(new Date().getFullYear())</script> <span>chronos</span></small></div>
+        <div id="app-branding"><small>&copy; <script>document.write(new Date().getFullYear())</script> <span>chronos</span></small></div>
     </div>
 </body>
 </html>
