@@ -46,7 +46,7 @@ function displaySignInMessage(message) {
 }
 
 function displaySignUpMessages(messages) {
-    let firstNameMsg, passwordMsg;
+    let firstNameMsg, lastNameMsg, passwordMsg;
     const spanStyles = "display: block; margin-bottom: 5px; font-size: 14px; color: red; text-align: center;";
 
     messages.forEach(message => {
@@ -56,6 +56,9 @@ function displaySignUpMessages(messages) {
         } else if(message.includes("First")){
             firstNameMsg = message;
             displayFirstNameMsg(firstNameMsg, spanStyles);
+        } else if(message.includes("Last")){
+            lastNameMsg = message;
+            displayLastNameMsg(lastNameMsg, spanStyles);
         }
     });
 }
@@ -67,6 +70,15 @@ function displayFirstNameMsg(firstNameMsg, spanStyles){
     spanFirstName.style.cssText = spanStyles;
     document.getElementById("first-name").style.cssText = "margin-bottom: 0px";
     !document.getElementById("span-first-name") && document.getElementById("div-input-elements").insertBefore(spanFirstName, document.getElementById("last-name"));
+}
+
+function displayLastNameMsg(lastNameMsg, spanStyles){
+    spanLastName = document.createElement("span");
+    spanLastName.innerText = lastNameMsg;
+    spanLastName.setAttribute("id", "span-last-name");
+    spanLastName.style.cssText = spanStyles;
+    document.getElementById("last-name").style.cssText = "margin-bottom: 0px";
+    !document.getElementById("span-last-name") && document.getElementById("div-input-elements").insertBefore(spanLastName, document.getElementById("position"));
 }
 
 function displayPasswordMsg(passwordMsg, spanStyles){
