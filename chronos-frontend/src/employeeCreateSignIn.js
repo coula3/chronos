@@ -115,7 +115,7 @@ function signInEmployee(e) {
     };
     
     if(e.target.innerText === "Sign In") {
-        if(signInEmail !== "") {
+        if(signInEmail) {
             fetch(`${CHRONOS_URL}/signin`, configObj)
             .then(response => response.json())
             .then(data => {
@@ -143,13 +143,13 @@ function signInEmployee(e) {
                         buttonClockInOut.style.backgroundColor = "";
                     }
                 } else {
-                    displayMessages(data.message);
+                    displaySignInMessage(data.message);
                     disableButtonCreateUserSubmit(e);
                 }
             })
         } else {
-            const message = "Please provide a valid email to sign in";
-            displayMessages(message);
+            const message = "Please provide a valid email and password";
+            displaySignInMessage(message);
             disableButtonCreateUserSubmit(e);
         }
     } else {

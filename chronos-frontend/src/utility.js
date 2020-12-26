@@ -39,6 +39,12 @@ function disableButtonCreateUserSubmit(e){
     }
 }
 
+function displaySignInMessage(message) {
+    spanMsg.innerText = message;
+    spanMsg.style.cssText = "display: block; font-size: 14px; color: red; text-align: center;";
+    document.getElementById("form-signin").insertBefore(spanMsg, document.getElementById("btn-sign-in"))
+}
+
 function displayMessages(message) {
     spanMsg.innerText = message;
 
