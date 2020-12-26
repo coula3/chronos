@@ -62,7 +62,7 @@ function createEmployee(e) {
     const passwordConfirmation = document.getElementById("password-confirmation").value;
 
     if(password !== passwordConfirmation) {
-        displayMessages("Please provide matching passwords");
+        displaySignUpMessages(["Passwords do not match"]);
     } else {
         const bodyObject = {employee: {first_name: firstName, last_name: lastName, position: position, email: email, password: password}}
         const configObj = {
@@ -85,7 +85,7 @@ function createEmployee(e) {
                 removeDOMElementsOnSignIn();
                 removeMessagesSpan()
             } else {
-                displayMessages(data.message)
+                displaySignUpMessages(data.messages)
                 disableButtonSignIn(e)
             }
         })

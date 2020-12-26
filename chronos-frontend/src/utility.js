@@ -42,7 +42,19 @@ function disableButtonCreateUserSubmit(e){
 function displaySignInMessage(message) {
     spanMsg.innerText = message;
     spanMsg.style.cssText = "display: block; font-size: 14px; color: red; text-align: center;";
-    document.getElementById("form-signin").insertBefore(spanMsg, document.getElementById("btn-sign-in"))
+    document.getElementById("form-signin").insertBefore(spanMsg, document.getElementById("btn-sign-in"));
+}
+
+function displaySignUpMessages(messages) {
+    const passwordMsg = messages.find(message => message.includes("Password"));
+    displayPasswordMsg(passwordMsg);
+}
+
+function displayPasswordMsg(passwordMsg){
+    spanPassword = document.createElement("span");
+    spanPassword.innerText = passwordMsg;
+    spanPassword.style.cssText = "display: block;  margin: 5px 0px; font-size: 14px; color: red; text-align: center;";
+    document.getElementById("form-create-employee").insertBefore(spanPassword, document.getElementById("btn-create-user"));
 }
 
 function displayMessages(message) {
