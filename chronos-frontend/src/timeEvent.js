@@ -400,7 +400,6 @@ function deleteTimeEvent(timeEventId){
                     localStorage.setItem('runningTimeStarted', false);
                     !hasTimeEvent && localStorage.removeItem("rendered");
                     localStorage.removeItem('selfTimeout');
-                    location.reload();
             } else {
                 console.log(json.message);
             }
