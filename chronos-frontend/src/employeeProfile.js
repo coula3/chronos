@@ -16,19 +16,19 @@ buttonProfile.addEventListener("click", (e) => {
         document.getElementById("span-message").after(divEmployeeProfile);
 
         divEmployeeProfile.innerHTML += `
-            <div id="profile-card" style="padding-top: 15px;">
+            <div id="profile-card">
                 <h2 id="profileHeader">Profile</h2>
-                <p class="profile-p profile-caption">Name</p>
-                <p class="profile-p">Ken Fry</p>
+                <p class="profileCaption">Name</p>
+                <p class="profileParagraph">Ken Fry</p>
 
-                <p class="profile-p profile-caption">Position</p>
-                <p class="profile-p">Customer Associate</p>
+                <p class="profileCaption">Position</p>
+                <p class="profileParagraph">Customer Associate</p>
 
-                <p class="profile-p profile-caption">eMail</p>
-                <p class="profile-p">k@fry.com</p>
-                <div style="padding: 15px; background-color: #e6ccb3;">
-                    <button style="padding: 3px 5px; width: 200px; font-size: 17px">Edit</button>
-                    <button style="padding: 3px 5px; width: 200px; font-size: 17px">Change Password</button>
+                <p class="profileCaption">Email</p>
+                <p class="profileParagraph">k@fry.com</p>
+                <div id="profileButtonsDiv">
+                    <button class="profileButtons">Edit</button>
+                    <button class="profileButtons">Change Password</button>
                 </div>
             </div>
         `;

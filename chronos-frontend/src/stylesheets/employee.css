@@ -3,20 +3,32 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     margin: auto;
+    padding-top: 15px;
     background-color: #fff;
 }
 
-.profile-p {
-    font-size: 17px;
-    margin: 0px 0px 10px 0px;
-}
-
-.profile-caption {
+.profileCaption {
     font-weight: bold;
     color: blue;
     margin: 0px;
 }
 
+.profileParagraph {
+    font-size: 17px;
+    margin: 0px 0px 10px 0px;
+}
+
 #profileHeader {
     margin-top: 0px;
+}
+
+#profileButtonsDiv {
+    padding: 15px;
+    background-color: #e6ccb3;
+}
+
+.profileButtons {
+    padding: 3px 5px;
+    width: 200px;
+    font-size: 17px;
 }
