@@ -44,7 +44,7 @@ function displaySignInMessage(message) {
     spanSignInMsg.innerText = message;
     spanSignInMsg.setAttribute("id", "spanSignInMsg");
     spanSignInMsg.style.cssText = "display: block; font-size: 14px; color: red; text-align: center;";
-    document.getElementById("form-signin").insertBefore(spanSignInMsg, document.getElementById("btn-sign-in"));
+    !document.getElementById("spanSignInMsg") && document.getElementById("form-signin").insertBefore(spanSignInMsg, document.getElementById("btn-sign-in"));
 }
 
 function displaySignUpMessages(messages) {
