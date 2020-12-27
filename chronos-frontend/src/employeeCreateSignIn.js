@@ -194,6 +194,7 @@ function removeDOMElementsOnSignIn(){
     document.getElementById("div-signup").remove();
     document.getElementById("sign-in-email").remove();
     document.getElementById("sign-in-password").remove();
+    document.getElementById("btn-sign-in").disabled = false;
     document.getElementById("btn-sign-in").innerText = "Sign Out";
     document.getElementById("btn-sign-in").style.cssText = "width: 100px";
     document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
