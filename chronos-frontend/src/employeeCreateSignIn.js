@@ -192,8 +192,7 @@ function reSignInEmployee(data){
 
 function removeDOMElementsOnSignIn(){
     document.getElementById("div-signup").remove();
-    document.getElementById("sign-in-email").remove();
-    document.getElementById("sign-in-password").remove();
+    document.getElementById("div-signin-inputs").remove();
     document.getElementById("btn-sign-in").disabled = false;
     document.getElementById("btn-sign-in").innerText = "Sign Out";
     document.getElementById("btn-sign-in").style.cssText = "width: 100px";

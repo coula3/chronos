@@ -5,7 +5,7 @@ function renderSignInErrors(message) {
     spanSignInMsg.innerText = message;
     spanSignInMsg.setAttribute("id", "spanSignInMsg");
     spanSignInMsg.style.cssText = "display: block; font-size: 14px; color: red; text-align: center;";
-    !document.getElementById("spanSignInMsg") && document.getElementById("form-signin").insertBefore(spanSignInMsg, document.getElementById("btn-sign-in"));
+    !document.getElementById("spanSignInMsg") && document.getElementById("div-signin-inputs").appendChild(spanSignInMsg);
 }
 
 function renderSignUpErrors(messages) {
