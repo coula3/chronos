@@ -1,6 +1,7 @@
 const buttonAdmin = document.createElement("button");
 const buttonProfile = document.createElement("button");
 const spanMsg = document.createElement("span");
+const createFirstNameInput = document.getElementById("sign-in-email");
 
 function appendEmployeeFormElements(){
     const formElements = `
@@ -115,6 +116,14 @@ function displayPasswordMsg(passwordMsg, spanStyles){
     spanPassword.style.marginBottom = "10px";
     document.getElementById("password-confirmation").style.cssText = "margin-bottom: 0px";
     !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
+}
+
+if(createFirstNameInput) {
+    createFirstNameInput.addEventListener("focus", () => {
+        document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
+        document.getElementById("btn-create-user").innerText = "Sign Up";
+        document.getElementById("btn-sign-in").disabled = false;
+    });
 }
 
 function displayMessages(message) {
