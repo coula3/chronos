@@ -111,3 +111,10 @@ function appendMsgSpan(){
     spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 16px; clear: both";
     document.getElementById("div-menu").after(spanMsg);
 }
+
+function createDivEventsContainer(){
+    const divEventsContainer = document.createElement("div");
+    divEventsContainer.setAttribute("id", "events-container");
+    divEventsContainer.style.cssText = "clear: both";
+    return divEventsContainer;
+}

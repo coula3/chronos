@@ -227,11 +227,10 @@ function renderEmployeeTimeEvents(employeeObject) {
     const closedtimeEvents = employeeTimeEvents.filter((e)=>{ return e.timeOut});
     const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
     const openTimeEvent = employeeTimeEvents.filter((e)=>{ return !e.timeOut });
-    const divEventsContainer = document.createElement("div");
-    const divTimeEvents = document.createElement("div");
 
-    divEventsContainer.setAttribute("id", "events-container");
-    divEventsContainer.style.cssText = "clear: both";
+    const divTimeEvents = document.createElement("div");
+    const divEventsContainer = createDivEventsContainer();
+
     divTimeEvents.setAttribute("id", "div-time-events");
 
     document.getElementById("main-container").appendChild(divEventsContainer);
