@@ -1,7 +1,6 @@
 const buttonAdmin = document.createElement("button");
 const buttonProfile = document.createElement("button");
 const spanMsg = document.createElement("span");
-const createFirstNameInput = document.getElementById("sign-in-email");
 
 function appendEmployeeFormElements(){
     const formElements = `
@@ -38,92 +37,6 @@ function disableButtonCreateUserSubmit(e){
     if(e.target.innerText === "Sign In" && buttonCreateUser.innerText === "Submit"){
         buttonCreateUser.disabled = true;
     }
-}
-
-function displaySignInMessage(message) {
-    const spanSignInMsg = document.createElement("span")
-    spanSignInMsg.innerText = message;
-    spanSignInMsg.setAttribute("id", "spanSignInMsg");
-    spanSignInMsg.style.cssText = "display: block; font-size: 14px; color: red; text-align: center;";
-    !document.getElementById("spanSignInMsg") && document.getElementById("form-signin").insertBefore(spanSignInMsg, document.getElementById("btn-sign-in"));
-}
-
-function displaySignUpMessages(messages) {
-    let firstNameMsg, lastNameMsg, passwordMsg;
-    const spanStyles = "display: block; margin-bottom: 5px; font-size: 14px; color: red; text-align: center;";
-
-    messages.forEach(message => {
-        if(message.includes("Password")){
-            passwordMsg = message;
-            displayPasswordMsg(passwordMsg, spanStyles);
-        } else if(message.includes("First")){
-            firstNameMsg = message;
-            displayFirstNameMsg(firstNameMsg, spanStyles);
-        } else if(message.includes("Last")){
-            lastNameMsg = message;
-            displayLastNameMsg(lastNameMsg, spanStyles);
-        } else if(message.includes("Position")){
-            positionMsg = message;
-            displayPositionMsg(positionMsg, spanStyles);
-        } else if(message.includes("Email")){
-            emailMsg = message;
-            displayEmailMsg(emailMsg, spanStyles);
-        }
-    });
-}
-
-function displayFirstNameMsg(firstNameMsg, spanStyles){
-    spanFirstName = document.createElement("span");
-    spanFirstName.innerText = firstNameMsg;
-    spanFirstName.setAttribute("id", "span-first-name");
-    spanFirstName.style.cssText = spanStyles;
-    document.getElementById("first-name").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-first-name") && document.getElementById("div-input-elements").insertBefore(spanFirstName, document.getElementById("last-name"));
-}
-
-function displayLastNameMsg(lastNameMsg, spanStyles){
-    spanLastName = document.createElement("span");
-    spanLastName.innerText = lastNameMsg;
-    spanLastName.setAttribute("id", "span-last-name");
-    spanLastName.style.cssText = spanStyles;
-    document.getElementById("last-name").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-last-name") && document.getElementById("div-input-elements").insertBefore(spanLastName, document.getElementById("position"));
-}
-
-function displayPositionMsg(positionMsg, spanStyles){
-    spanPosition = document.createElement("span");
-    spanPosition.innerText = positionMsg;
-    spanPosition.setAttribute("id", "span-position");
-    spanPosition.style.cssText = spanStyles;
-    document.getElementById("position").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-position") && document.getElementById("div-input-elements").insertBefore(spanPosition, document.getElementById("email"));
-}
-
-function displayEmailMsg(emailMsg, spanStyles){
-    spanEmail = document.createElement("span");
-    spanEmail.innerText = emailMsg;
-    spanEmail.setAttribute("id", "span-email");
-    spanEmail.style.cssText = spanStyles;
-    document.getElementById("email").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-email") && document.getElementById("div-input-elements").insertBefore(spanEmail, document.getElementById("password"));
-}
-
-function displayPasswordMsg(passwordMsg, spanStyles){
-    spanPassword = document.createElement("span");
-    spanPassword.innerText = passwordMsg;
-    spanPassword.setAttribute("id", "span-password");
-    spanPassword.style.cssText = spanStyles;
-    spanPassword.style.marginBottom = "10px";
-    document.getElementById("password-confirmation").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
-}
-
-if(createFirstNameInput) {
-    createFirstNameInput.addEventListener("focus", () => {
-        document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
-        document.getElementById("btn-create-user").innerText = "Sign Up";
-        document.getElementById("btn-sign-in").disabled = false;
-    });
 }
 
 function displayMessages(message) {
