@@ -112,7 +112,7 @@ function displayPasswordMsg(passwordMsg, spanStyles){
     spanPassword.style.cssText = spanStyles;
     spanPassword.style.marginBottom = "10px";
     document.getElementById("password-confirmation").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-password") && document.getElementById("form-create-employee").insertBefore(spanPassword, document.getElementById("btn-create-user"));
+    !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
 }
 
 function displayMessages(message) {
