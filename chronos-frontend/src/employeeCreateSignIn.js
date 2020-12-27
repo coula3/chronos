@@ -66,7 +66,7 @@ function createEmployee(e) {
     const passwordConfirmation = document.getElementById("password-confirmation").value;
 
     if(password !== passwordConfirmation) {
-        displaySignUpMessages(["Passwords do not match"]);
+        renderSignUpMessages(["Passwords do not match"]);
     } else {
         const bodyObject = {employee: {first_name: firstName, last_name: lastName, position: position, email: email, password: password}}
         const configObj = {
@@ -88,7 +88,7 @@ function createEmployee(e) {
                 persistToLocalStorageOnCreateEmployee(data);
                 removeDOMElementsOnSignIn();
             } else {
-                displaySignUpMessages(data.messages)
+                renderSignUpMessages(data.messages)
                 disableButtonSignIn(e)
             }
         })
@@ -146,13 +146,13 @@ function signInEmployee(e) {
                         buttonClockInOut.style.backgroundColor = "";
                     }
                 } else {
-                    displaySignInMessage(data.message);
+                    renderSignInMessage(data.message);
                     disableButtonCreateUserSubmit(e);
                 }
             })
         } else {
             const message = "Please provide a valid email and password";
-            displaySignInMessage(message);
+            renderSignInMessage(message);
             disableButtonCreateUserSubmit(e);
         }
     } else {
