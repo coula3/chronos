@@ -14,12 +14,14 @@ document.addEventListener("DOMContentLoaded", () => {
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
 
-    if(breakStarted && breakEnded && clockedOut){
-        updateDOM(employeeId);
-    } else if(isAuthenticated && editMode){
-        updateDOM(employeeId, editMode);
-    } else if(isAuthenticated){
-        reSignInEmployee(localStorageData);
+    if(isAuthenticated){
+        if(breakStarted && breakEnded && clockedOut){
+            updateDOM(employeeId);
+        } else if(isAuthenticated && editMode){
+            updateDOM(employeeId, editMode);
+        } else if(isAuthenticated){
+            reSignInEmployee(localStorageData);
+        }
     }
 })
 
