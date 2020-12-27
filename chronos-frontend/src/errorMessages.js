@@ -9,25 +9,25 @@ function renderSignInErrors(message) {
 }
 
 function renderSignUpErrors(messages) {
-    let firstNameMsg, lastNameMsg, passwordMsg;
+    let firstNameErr, lastNameErr, positionErr, emailErr, passwordErr;
     const spanStyles = "display: block; margin-bottom: 5px; font-size: 14px; color: red; text-align: center;";
 
     messages.forEach(message => {
-        if(message.includes("Password")){
-            passwordMsg = message;
-            renderPasswordMsg(passwordMsg, spanStyles);
-        } else if(message.includes("First")){
-            firstNameMsg = message;
-            renderFirstNameMsg(firstNameMsg, spanStyles);
+        if(message.includes("First")){
+            firstNameErr = message;
+            renderFirstNameMsg(firstNameErr, spanStyles);
         } else if(message.includes("Last")){
-            lastNameMsg = message;
-            renderLastNameMsg(lastNameMsg, spanStyles);
+            lastNameErr = message;
+            renderLastNameMsg(lastNameErr, spanStyles);
         } else if(message.includes("Position")){
-            positionMsg = message;
-            renderPositionMsg(positionMsg, spanStyles);
+            positionErr = message;
+            renderPositionMsg(positionErr, spanStyles);
         } else if(message.includes("Email")){
-            emailMsg = message;
-            renderEmailMsg(emailMsg, spanStyles);
+            emailErr = message;
+            renderEmailMsg(emailErr, spanStyles);
+        } else if(message.includes("Password")){
+            passwordErr = message;
+            renderPasswordMsg(passwordErr, spanStyles);
         }
     });
 }
