@@ -340,7 +340,10 @@ function renderNewTimeEvent(event) {
     divTimeEventContainer.appendChild(divTimeEvent);
     divTimeEventButtons.appendChild(buttonBreakResume);
     divTimeEventContainer.appendChild(divTimeEventButtons);
-    document.getElementById("events-container").appendChild(divTimeEventContainer);
+    const divEventsContainer = createDivEventsContainer();
+
+    document.getElementById("main-container").appendChild(divEventsContainer);
+    divEventsContainer.appendChild(divTimeEventContainer);
 
     if(!document.getElementById("th-events-col-a")){
         const thEvent = document.querySelectorAll(".th-event");
