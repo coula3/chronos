@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const employeeId = localStorageData && localStorageData.employee.id;
     const isAuthenticated = localStorage.getItem('jwt_token');
     const editMode = JSON.parse(localStorage.getItem('editMode'));
-    hasTimeEvent = isAuthenticated && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
+    hasTimeEvent = isAuthenticated && localStorageData && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     appendCurrentTime();
     getTimeEventStatus(currentTimeEvent);
