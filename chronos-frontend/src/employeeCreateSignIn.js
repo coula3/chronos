@@ -12,7 +12,7 @@ class Employee {
         const firstName = `${this.firstName[0].toUpperCase() + this.firstName.slice(1)}`;
         const lastName = `${this.lastName[0].toUpperCase() + this.lastName.slice(1)}`;
         const employeeNameTag = `
-            <h2 id="employee-name" employee-data-id = ${this.id} style="color:blue; padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
+            <h2 id="employee-name" employee-data-id = ${this.id} style="color:blue; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
             <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${this.position}</h4>
         `;
 
@@ -202,6 +202,10 @@ function removeDOMElementsOnSignIn(){
 function createDivNameTag(employeeNameTag){
     divEmployeeNameTag = document.createElement("div");
     divEmployeeNameTag.setAttribute("id", "div-employee-tag-name");
+    appendEmployeeNameTag(divEmployeeNameTag, employeeNameTag);
+}
+
+function appendEmployeeNameTag(divEmployeeNameTag, employeeNameTag){
     document.getElementById("main-container").appendChild(divEmployeeNameTag);
     document.getElementById("div-employee-tag-name").innerHTML += employeeNameTag;
 }
