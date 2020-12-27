@@ -66,6 +66,7 @@ function createEmployee(e) {
     const passwordConfirmation = document.getElementById("password-confirmation").value;
 
     if(password !== passwordConfirmation) {
+        cleanUpSignUpErrors();
         renderSignUpErrors(["Passwords do not match"]);
     } else {
         const bodyObject = {employee: {first_name: firstName, last_name: lastName, position: position, email: email, password: password}}
@@ -88,6 +89,7 @@ function createEmployee(e) {
                 persistToLocalStorageOnCreateEmployee(data);
                 removeDOMElementsOnSignIn();
             } else {
+                cleanUpSignUpErrors();
                 renderSignUpErrors(data.messages)
                 disableButtonSignIn(e)
             }

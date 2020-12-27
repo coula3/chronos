@@ -85,3 +85,17 @@ if(signInEmailInput) {
         document.getElementById("btn-sign-in").disabled = false;
     });
 }
+
+function cleanUpSignUpErrors(){
+    document.getElementById("span-first-name") && document.getElementById("span-first-name").remove();
+    document.getElementById("span-last-name") && document.getElementById("span-last-name").remove();
+    document.getElementById("span-position") && document.getElementById("span-position").remove();
+    document.getElementById("span-email") && document.getElementById("span-email").remove();
+    document.getElementById("span-password") && document.getElementById("span-password").remove();
+
+    document.getElementById("first-name").style.cssText = "margin-bottom: 10px";
+    document.getElementById("last-name").style.cssText = "margin-bottom: 10px";
+    document.getElementById("position").style.cssText = "margin-bottom: 10px";
+    document.getElementById("email").style.cssText = "margin-bottom: 10px";
+    document.getElementById("password").style.cssText = "margin-bottom: 10px";
+}
