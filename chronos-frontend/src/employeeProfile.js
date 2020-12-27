@@ -9,6 +9,7 @@ buttonProfile.addEventListener("click", (e) => {
         buttonClockInOut.disabled = true;
         buttonClockInOut.style.cssText = "background-color: null, color: #000"
 
+        document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
         document.getElementById("events-container") && document.getElementById("events-container").remove();
         e.target.innerText = "Time Data";
         document.getElementById("span-message").innerText = "";
