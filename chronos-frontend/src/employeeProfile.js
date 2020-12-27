@@ -3,6 +3,7 @@ divEmployeeProfile.setAttribute("id", "profile-container");
 divEmployeeProfile.style.cssText = "clear: both";
 
 buttonProfile.addEventListener("click", (e) => {
+    const localStorageData = JSON.parse(localStorage.getItem('data'));
     if(e.target.innerText === "Profile"){
         clearInterval(runningTimeInterval);
         localStorage.setItem("rendered", "Profile");
@@ -19,13 +20,13 @@ buttonProfile.addEventListener("click", (e) => {
             <div id="profile-card">
                 <h2 id="profileHeader">Profile</h2>
                 <p class="profileCaption">Name</p>
-                <p class="profileParagraph">Ken Fry</p>
+                <p class="profileParagraph">${localStorageData.employee.first_name} ${localStorageData.employee.last_name}</p>
 
                 <p class="profileCaption">Position</p>
-                <p class="profileParagraph">Customer Associate</p>
+                <p class="profileParagraph">${localStorageData.employee.position}</p>
 
                 <p class="profileCaption">Email</p>
-                <p class="profileParagraph">k@fry.com</p>
+                <p class="profileParagraph">${localStorageData.employee.email}</p>
                 <div id="profileButtonsDiv">
                     <button class="profileButtons">Edit</button>
                     <button class="profileButtons">Change Password</button>
@@ -40,3 +41,5 @@ buttonProfile.addEventListener("click", (e) => {
         location.reload();
     }
 })
+
+// document.addEventListener("DOMContentLoaded", () => console.log("Hello world!"))
