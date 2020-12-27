@@ -1,5 +1,5 @@
 const divEmployeeProfile = document.createElement("div");
-divEmployeeProfile.setAttribute("id", "div-emp-profile");
+divEmployeeProfile.setAttribute("id", "profile-container");
 divEmployeeProfile.style.cssText = "clear: both";
 
 buttonProfile.addEventListener("click", (e) => {
