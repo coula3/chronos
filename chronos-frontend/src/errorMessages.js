@@ -1,6 +1,6 @@
 const signInEmailInput = document.getElementById("sign-in-email");
 
-function renderSignInMessage(message) {
+function renderSignInErrors(message) {
     const spanSignInMsg = document.createElement("span")
     spanSignInMsg.innerText = message;
     spanSignInMsg.setAttribute("id", "spanSignInMsg");
@@ -8,7 +8,7 @@ function renderSignInMessage(message) {
     !document.getElementById("spanSignInMsg") && document.getElementById("form-signin").insertBefore(spanSignInMsg, document.getElementById("btn-sign-in"));
 }
 
-function renderSignUpMessages(messages) {
+function renderSignUpErrors(messages) {
     let firstNameMsg, lastNameMsg, passwordMsg;
     const spanStyles = "display: block; margin-bottom: 5px; font-size: 14px; color: red; text-align: center;";
 
