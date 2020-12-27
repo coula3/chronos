@@ -1,4 +1,4 @@
-const createFirstNameInput = document.getElementById("sign-in-email");
+const signInEmailInput = document.getElementById("sign-in-email");
 
 function displaySignInMessage(message) {
     const spanSignInMsg = document.createElement("span")
@@ -78,8 +78,8 @@ function displayPasswordMsg(passwordMsg, spanStyles){
     !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
 }
 
-if(createFirstNameInput) {
-    createFirstNameInput.addEventListener("focus", () => {
+if(signInEmailInput) {
+    signInEmailInput.addEventListener("focus", () => {
         document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
         document.getElementById("btn-create-user").innerText = "Sign Up";
         document.getElementById("btn-sign-in").disabled = false;
