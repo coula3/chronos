@@ -84,7 +84,6 @@ function createEmployee(e) {
                 newEmployee.renderEmployeeData();
                 persistToLocalStorageOnCreateEmployee(data);
                 removeDOMElementsOnSignIn();
-                removeMessagesSpan()
             } else {
                 displaySignUpMessages(data.messages)
                 disableButtonSignIn(e)
