@@ -46,6 +46,9 @@ addEmployeeForm.addEventListener("submit", (e)=>{
     if(!document.querySelector("#div-input-elements")){
         buttonCreateUser.innerText = "Submit";
         document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
+        document.getElementById("btn-sign-in").disabled = true;
+        document.getElementById("sign-in-email").value = null;
+        document.getElementById("sign-in-password").value = null;
 
         if(document.getElementById("messages")){
             buttonCreateUser.disabled = true;
