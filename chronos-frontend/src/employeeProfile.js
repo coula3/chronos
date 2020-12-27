@@ -17,6 +17,7 @@ buttonProfile.addEventListener("click", (e) => {
 
         divEmployeeProfile.innerHTML += `
             <div id="profile-card" style="padding-top: 15px;">
+                <h2 id="profileHeader">Profile</h2>
                 <p class="profile-p profile-caption">Name</p>
                 <p class="profile-p">Ken Fry</p>
 

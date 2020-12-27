@@ -8,10 +8,15 @@
 
 .profile-p {
     font-size: 17px;
+    margin: 0px 0px 10px 0px;
 }
 
 .profile-caption {
     font-weight: bold;
     color: blue;
-    /* margin-bottom: 5px; */
+    margin: 0px;
+}
+
+#profileHeader {
+    margin-top: 0px;
 }
