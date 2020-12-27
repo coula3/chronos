@@ -304,7 +304,7 @@ function renderNewTimeEvent(event) {
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.style.cssText = "margin:30px 0px 15px 0px; border: solid 1px grey; clear:both";
     divTimeEvent.setAttribute("id", "div-time-event");
-    divTimeEventContainer.setAttribute("id", "div-time-event-cont");
+    divTimeEventContainer.setAttribute("id", "div-time-event-container");
     divTimeEventButtons.setAttribute("id", "div-time-event-buttons");
     divTimeEventButtons.style.cssText = "float:right";
 
@@ -393,7 +393,7 @@ function deleteTimeEvent(timeEventId){
         .then(response => response.json())
         .then(json => {
             if(json.message === "Delete successful"){
-                    document.getElementById("div-time-event").remove();
+                    document.getElementById("div-time-event-container").remove();
                     buttonClockInOut.disabled = false;
                     buttonClockInOut.style.backgroundColor = "#0000ff";
                     buttonClockInOut.style.color = "#FFF";
