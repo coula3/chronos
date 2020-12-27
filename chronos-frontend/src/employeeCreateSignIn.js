@@ -146,11 +146,13 @@ function signInEmployee(e) {
                         buttonClockInOut.style.backgroundColor = "";
                     }
                 } else {
+                    document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
                     renderSignInErrors(data.message);
                     disableButtonCreateUserSubmit(e);
                 }
             })
         } else {
+            document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
             const message = "Please provide a valid email and password";
             renderSignInErrors(message);
             disableButtonCreateUserSubmit(e);
