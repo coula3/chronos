@@ -91,7 +91,7 @@ function appendButtonClockInOut() {
 
 function appendButtonProfile(){
     buttonProfile.innerText = "Profile";
-    buttonProfile.setAttribute = ("id", "btn-profile");
+    buttonProfile.setAttribute("id", "btn-profile");
     buttonProfile.classList.add("button");
     document.getElementById("div-menu").insertBefore(buttonProfile, document.getElementById("btn-clock-in-out"));
 
