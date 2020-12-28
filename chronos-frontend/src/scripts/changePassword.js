@@ -36,8 +36,24 @@ function changePassword(){
             } else if (newPassword.value !== confirmPassword.value){
                 displayMessages("Please provide matching new passwords");
             } else {
-                displayMessages("Time to speak with API!");
+               updatePassword(currentPassword.value, newPassword.value);
             }
         })
     }
+}
+
+function updatePassword(currentPassword, newPassword){
+    const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
+    const bodyObj = {employee: {password: currentPassword, newPassword}};
+
+    fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+        },
+        body: JSON.stringify(bodyObj)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
 }
