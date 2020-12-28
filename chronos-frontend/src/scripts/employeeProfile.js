@@ -58,6 +58,7 @@ function switchToPasswordCard(){
         document.getElementById("changePassword").addEventListener("click", () => {
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += divPasswordCard;
+            changePassword();
         })
     }
 }
