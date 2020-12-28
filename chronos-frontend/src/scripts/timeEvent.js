@@ -332,7 +332,7 @@ function renderNewTimeEvent(event) {
                 <td class="td-event" id="td-event-break-end" >${event.breakEnd ? getTime(event.breakEnd) : ""}</td>
                 <td class="td-event" id="td-event-time-out" >${event.timeOut ? getTime(event.timeOut) : ""}</td>
                 <td class="td-event" id="td-event-time-shift" >${getShift(getTime(event.date))}</td>
-                <td class="td-event" id="td-event-hours" style="color:blue"></td>
+                <td class="td-event" id="td-event-hours" style="color:red"></td>
             </tr>
         </tbody>
     </table>`;
