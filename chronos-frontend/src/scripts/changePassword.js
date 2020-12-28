@@ -1,4 +1,4 @@
-const divPasswordCard = `
+const passwordCard = `
     <div id="passwordCard">
         <h2 class="profileHeader">Change Password</h2>
         <form id="changePasswordForm">
@@ -17,7 +17,7 @@ const divPasswordCard = `
             </div>
         </form>
     </div>
-`
+`;
 
 function changePassword(){
     const passwordForm = document.getElementById("changePasswordForm");
@@ -55,5 +55,12 @@ function updatePassword(currentPassword, newPassword){
         body: JSON.stringify(bodyObj)
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        if(data.employee){
+            document.getElementById("passwordCard").remove();
+            divEmployeeProfile.innerHTML += generateProfileCard();
+        } else {
+            displayMessages(data.message);
+        }
+    })
 }
