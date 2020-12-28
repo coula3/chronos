@@ -28,11 +28,15 @@ function appendEmployeeProfile(localStorageData){
     document.getElementById("span-message").innerText = "";
     document.getElementById("span-message").after(divEmployeeProfile);
 
+    const capitalize = (string) => {
+        return string[0].toUpperCase() + string.slice(1);
+    }
+
     divEmployeeProfile.innerHTML += `
         <div id="profile-card">
             <h2 id="profileHeader">Profile</h2>
             <p class="profileCaption">Name</p>
-            <p class="profileParagraph">${localStorageData.employee.first_name} ${localStorageData.employee.last_name}</p>
+            <p class="profileParagraph">${capitalize(localStorageData.employee.first_name)} ${capitalize(localStorageData.employee.last_name)}</p>
 
             <p class="profileCaption">Position</p>
             <p class="profileParagraph">${localStorageData.employee.position}</p>
