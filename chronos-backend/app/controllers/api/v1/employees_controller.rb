@@ -20,8 +20,19 @@ class Api::V1::EmployeesController < ApplicationController
         end
     end
 
+    def update
+        @employee = Employee.find_by(id: params[:id])
+
+        if @employee && @employee.authenticate(employee_params[:password])
+            @employee.update(password: employee_params[:newPassword])
+            render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
+        else
+            render json: { message: "Password update unsuccessful"}
+        end
+    end
+
     private
     def employee_params
-        params.require(:employee).permit(:first_name, :last_name, :email, :position, :password)
+        params.require(:employee).permit(:first_name, :last_name, :email, :position, :password, :newPassword)
     end
 end
