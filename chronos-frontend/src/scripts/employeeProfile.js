@@ -9,7 +9,7 @@ buttonProfile.addEventListener("click", (e) => {
         clearInterval(runningTimeInterval);
         localStorage.setItem("rendered", "Profile");
 
-        appendEmployeeProfile(localStorageData)
+        appendEmployeeProfile(localStorageData);
 
     } else {
         divEmployeeProfile.remove();
@@ -17,6 +17,8 @@ buttonProfile.addEventListener("click", (e) => {
         localStorage.setItem("rendered", "Time Data");
         location.reload();
     }
+
+    changePassword();
 })
 
 function appendEmployeeProfile(localStorageData){
@@ -33,8 +35,8 @@ function appendEmployeeProfile(localStorageData){
     }
 
     divEmployeeProfile.innerHTML += `
-        <div id="profile-card">
-            <h2 id="profileHeader">Profile</h2>
+        <div id="profileCard">
+            <h2 class="profileHeader">Profile</h2>
             <p class="profileCaption">Name</p>
             <p class="profileParagraph">${capitalize(localStorageData.employee.first_name)} ${capitalize(localStorageData.employee.last_name)}</p>
 
@@ -43,10 +45,20 @@ function appendEmployeeProfile(localStorageData){
 
             <p class="profileCaption">Email</p>
             <p class="profileParagraph">${localStorageData.employee.email}</p>
-            <div id="profileButtonsDiv">
-                <button class="profileButtons">Edit</button>
-                <button class="profileButtons">Change Password</button>
+            <div class="profileButtonsDiv">
+                <button id="editProfile" class="profileButtons">Edit</button>
+                <button id="changePassword" class="profileButtons">Change Password</button>
             </div>
         </div>
     `;
 }
+
+function changePassword(){
+    if(document.getElementById("changePassword")){
+        document.getElementById("changePassword").addEventListener("click", () => {
+            document.getElementById("profileCard").remove();
+            divEmployeeProfile.innerHTML += divPasswordCard;
+        })
+    }
+}
+

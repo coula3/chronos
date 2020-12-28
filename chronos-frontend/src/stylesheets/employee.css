@@ -1,4 +1,4 @@
-#profile-card {
+#profileCard {
     width: 275px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
@@ -19,11 +19,11 @@
     margin: 0px 0px 10px 0px;
 }
 
-#profileHeader {
+.profileHeader {
     margin-top: 0px;
 }
 
-#profileButtonsDiv {
+.profileButtonsDiv {
     margin-top: 40px;
     padding: 15px;
     background-color: #e6daba;
@@ -31,6 +31,22 @@
 
 .profileButtons {
     padding: 3px 5px;
+    width: 175px;
+    font-size: 15px;
+}
+
+#passwordCard {
+    width: 275px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin: auto;
+    padding-top: 15px;
+    border-radius: 15px;
+    background-color: #fff;
+}
+
+.passwordInputs {
+    padding: 3px 4px;
     width: 175px;
     font-size: 15px;
 }
