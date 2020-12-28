@@ -60,6 +60,7 @@ function updatePassword(currentPassword, newPassword){
             document.getElementById("passwordCard").remove();
             divEmployeeProfile.innerHTML += generateProfileCard();
             switchToPasswordCard();
+            displayMessages("Password successfully updated")
         } else {
             displayMessages(data.message);
         }
