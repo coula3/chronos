@@ -28,6 +28,8 @@ function changePassword(){
 
             if(e.submitter.innerText === "Save"){
                 checkPasswordEntries();
+            } else {
+                switchToProfileCard();
             }
         })
     }
@@ -64,12 +66,16 @@ function updatePassword(currentPassword, newPassword){
     .then(response => response.json())
     .then(data => {
         if(data.employee){
-            document.getElementById("passwordCard").remove();
-            divEmployeeProfile.innerHTML += generateProfileCard();
-            switchToPasswordCard();
-            displayMessages("Password successfully updated")
+            switchToProfileCard();
+            displayMessages("Password successfully updated");
         } else {
             displayMessages(data.message);
         }
     })
+}
+
+function switchToProfileCard(){
+    document.getElementById("passwordCard").remove();
+    divEmployeeProfile.innerHTML += generateProfileCard();
+    switchToPasswordCard();
 }
