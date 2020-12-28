@@ -23,6 +23,7 @@ const buttonClockInOut = document.createElement("button");
 let buttonBreakResume;
 let buttonUpdateTimeEvents;
 let activateButtonTimeout;
+let divEventsContainer;
 
 buttonClockInOut.addEventListener("click", (e) => {
     createTimeEvent(e);
@@ -229,7 +230,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     const openTimeEvent = employeeTimeEvents.filter((e)=>{ return !e.timeOut });
 
     const divTimeEvents = document.createElement("div");
-    const divEventsContainer = createDivEventsContainer();
+    divEventsContainer = createDivEventsContainer();
 
     divTimeEvents.setAttribute("id", "div-time-events");
 
@@ -340,9 +341,12 @@ function renderNewTimeEvent(event) {
     divTimeEventContainer.appendChild(divTimeEvent);
     divTimeEventButtons.appendChild(buttonBreakResume);
     divTimeEventContainer.appendChild(divTimeEventButtons);
-    const divEventsContainer = createDivEventsContainer();
 
-    document.getElementById("main-container").appendChild(divEventsContainer);
+    if(!document.getElementById("events-container")){
+        divEventsContainer = createDivEventsContainer();
+        document.getElementById("main-container").appendChild(divEventsContainer);
+    }
+
     divEventsContainer.appendChild(divTimeEventContainer);
 
     if(!document.getElementById("th-events-col-a")){
