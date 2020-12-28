@@ -18,7 +18,7 @@ buttonProfile.addEventListener("click", (e) => {
         location.reload();
     }
 
-    changePassword();
+    switchToPasswordCard();
 })
 
 function appendEmployeeProfile(localStorageData){
@@ -55,7 +55,7 @@ function appendEmployeeProfile(localStorageData){
     `;
 }
 
-function changePassword(){
+function switchToPasswordCard(){
     if(document.getElementById("changePassword")){
         document.getElementById("changePassword").addEventListener("click", () => {
             document.getElementById("profileCard").remove();
