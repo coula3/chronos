@@ -13,7 +13,7 @@ const passwordCard = `
 
             <div class="profileButtonsDiv">
                 <button id="passwordSaveBtn" class="profileButtons">Save</button>
-                <button id="passwordToProfileBtn" class="profileButtons" disabled>Profile</button>
+                <button id="passwordToProfileBtn" class="profileButtons">Profile</button>
             </div>
         </form>
     </div>
@@ -21,24 +21,31 @@ const passwordCard = `
 
 function changePassword(){
     const passwordForm = document.getElementById("changePasswordForm");
-    const currentPassword = document.getElementById("currentPassword");
-    const newPassword = document.getElementById("newPassword");
-    const confirmPassword = document.getElementById("confirmPassword");
 
     if(passwordForm){
         passwordForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            if((currentPassword.value && newPassword.value) && !confirmPassword.value){
-                displayMessages("Please confirm new password");
-            } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
-                displayMessages("Please provide current and new passwords");
-            } else if (newPassword.value !== confirmPassword.value){
-                displayMessages("Please provide matching new passwords");
-            } else {
-               updatePassword(currentPassword.value, newPassword.value);
+            if(e.submitter.innerText === "Save"){
+                checkPasswordEntries();
             }
         })
+    }
+}
+
+function checkPasswordEntries(){
+    const currentPassword = document.getElementById("currentPassword");
+    const newPassword = document.getElementById("newPassword");
+    const confirmPassword = document.getElementById("confirmPassword");
+
+    if((currentPassword.value && newPassword.value) && !confirmPassword.value){
+        displayMessages("Please confirm new password");
+    } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
+        displayMessages("Please provide current and new passwords");
+    } else if (newPassword.value !== confirmPassword.value){
+        displayMessages("Please provide matching new passwords");
+    } else {
+       updatePassword(currentPassword.value, newPassword.value);
     }
 }
 
