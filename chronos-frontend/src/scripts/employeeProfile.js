@@ -1,28 +1,31 @@
-const localStorageData = JSON.parse(localStorage.getItem('data'));
 const divEmployeeProfile = document.createElement("div");
 divEmployeeProfile.setAttribute("id", "profile-container");
 divEmployeeProfile.style.cssText = "clear: both";
 
 function generateProfileCard(){
-    const profileCard = `
-        <div id="profileCard">
-            <h2 class="profileHeader">Profile</h2>
-            <p class="profileCaption">Name</p>
-            <p class="profileParagraph">${capitalize(localStorageData.employee.first_name)} ${capitalize(localStorageData.employee.last_name)}</p>
+    const localStorageData = JSON.parse(localStorage.getItem('data'));
 
-            <p class="profileCaption">Position</p>
-            <p class="profileParagraph">${localStorageData.employee.position}</p>
+    if(localStorageData){
+        const profileCard = `
+            <div id="profileCard">
+                <h2 class="profileHeader">Profile</h2>
+                <p class="profileCaption">Name</p>
+                <p class="profileParagraph">${capitalize(localStorageData.employee.first_name)} ${capitalize(localStorageData.employee.last_name)}</p>
 
-            <p class="profileCaption">Email</p>
-            <p class="profileParagraph">${localStorageData.employee.email}</p>
-            <div class="profileButtonsDiv">
-                <button id="editProfile" class="profileButtons">Edit</button>
-                <button id="changePassword" class="profileButtons">Change Password</button>
+                <p class="profileCaption">Position</p>
+                <p class="profileParagraph">${localStorageData.employee.position}</p>
+
+                <p class="profileCaption">Email</p>
+                <p class="profileParagraph">${localStorageData.employee.email}</p>
+                <div class="profileButtonsDiv">
+                    <button id="editProfile" class="profileButtons">Edit</button>
+                    <button id="changePassword" class="profileButtons">Change Password</button>
+                </div>
             </div>
-        </div>
-    `;
+        `;
 
     return profileCard;
+    }
 }
 
 function capitalize(string){
