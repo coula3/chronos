@@ -29,9 +29,15 @@ function changePassword(){
         passwordForm.addEventListener("submit", (e) => {
             e.preventDefault();
 
-            console.log(currentPassword.value)
-            console.log(newPassword.value)
-            console.log(confirmPassword.value)
+            if((currentPassword.value && newPassword.value) && !confirmPassword.value){
+                displayMessages("Please confirm new password");
+            } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
+                displayMessages("Please provide current and new passwords");
+            } else if (newPassword.value !== confirmPassword.value){
+                displayMessages("Please provide matching new passwords");
+            } else {
+                displayMessages("Time to speak with API!");
+            }
         })
     }
 }
