@@ -75,6 +75,7 @@ function updatePassword(currentPassword, newPassword){
 }
 
 function switchToProfileCard(){
+    document.getElementById("span-message").innerText = ""
     document.getElementById("passwordCard").remove();
     divEmployeeProfile.innerHTML += generateProfileCard();
     setSwitchToPasswordCard();
