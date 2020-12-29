@@ -47,6 +47,7 @@ buttonProfile.addEventListener("click", (e) => {
     }
 
     setSwitchToPasswordCard();
+    setSwitchToProfileCard();
 })
 
 function appendEmployeeProfile(){
@@ -67,6 +68,15 @@ function setSwitchToPasswordCard(){
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += passwordCard;
             changePassword();
+        })
+    }
+}
+
+function setSwitchToProfileCard(){
+    if(document.getElementById("editProfile")){
+        document.getElementById("editProfile").addEventListener("click", () => {
+            document.getElementById("profileCard").remove();
+            divEmployeeProfile.innerHTML += editProfileCard;
         })
     }
 }
