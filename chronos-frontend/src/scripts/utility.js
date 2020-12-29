@@ -1,6 +1,7 @@
 const buttonAdmin = document.createElement("button");
 const buttonProfile = document.createElement("button");
 const spanMsg = document.createElement("span");
+let messageTimeout;
 
 function appendEmployeeFormElements(){
     const formElements = `
@@ -40,9 +41,11 @@ function disableButtonCreateUserSubmit(e){
 }
 
 function displayMessages(message) {
+    clearTimeout(messageTimeout);
+    spanMsg.innerText = "";
     spanMsg.innerText = message;
 
-    setTimeout(() => {
+    messageTimeout = setTimeout(() => {
         if(document.getElementById("span-message").innerText){
             document.getElementById("span-message").innerText = ""
         }
