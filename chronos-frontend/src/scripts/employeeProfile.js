@@ -46,7 +46,7 @@ buttonProfile.addEventListener("click", (e) => {
         location.reload();
     }
 
-    switchToPasswordCard();
+    setSwitchToPasswordCard();
 })
 
 function appendEmployeeProfile(){
@@ -61,7 +61,7 @@ function appendEmployeeProfile(){
     divEmployeeProfile.innerHTML += generateProfileCard();
 }
 
-function switchToPasswordCard(){
+function setSwitchToPasswordCard(){
     if(document.getElementById("changePassword")){
         document.getElementById("changePassword").addEventListener("click", () => {
             document.getElementById("profileCard").remove();
