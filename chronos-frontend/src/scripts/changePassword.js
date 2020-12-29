@@ -41,11 +41,11 @@ function checkPasswordEntries(){
     const confirmPassword = document.getElementById("confirmPassword");
 
     if((currentPassword.value && newPassword.value) && !confirmPassword.value){
-        displayMessages("Please confirm new password");
+        renderMessage("Please confirm new password");
     } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
-        displayMessages("Please provide current and new passwords");
+        renderMessage("Please provide current and new passwords");
     } else if (newPassword.value !== confirmPassword.value){
-        displayMessages("Please provide matching new passwords");
+        renderMessage("Please provide matching new passwords");
     } else {
        updatePassword(currentPassword.value, newPassword.value);
     }
@@ -67,9 +67,9 @@ function updatePassword(currentPassword, newPassword){
     .then(data => {
         if(data.employee){
             switchToProfileCard();
-            displayMessages("Password successfully updated");
+            renderMessage("Password successfully updated");
         } else {
-            displayMessages(data.message);
+            renderMessage(data.message);
         }
     })
 }

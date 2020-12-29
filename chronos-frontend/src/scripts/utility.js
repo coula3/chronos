@@ -40,7 +40,7 @@ function disableButtonCreateUserSubmit(e){
     }
 }
 
-function displayMessages(message) {
+function renderMessage(message) {
     clearTimeout(messageTimeout);
     spanMsg.innerText = "";
     spanMsg.innerText = message;
