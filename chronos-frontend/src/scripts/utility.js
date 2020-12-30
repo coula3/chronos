@@ -5,17 +5,20 @@ const employeePositions = ["Customer Associate", "Fresh Food Associate", "Manage
 let messageTimeout;
 
 function appendEmployeeFormElements(){
+    const defaultValue = "--choose your position--";
+    const positionList = [...employeePositions];
+    positionList.unshift(defaultValue);
+
+    const positionOptions = positionList.map(position => {
+        return  `<option value=${position}>${position}</option>`;
+    });
+
     const formElements = `
         <div id="div-input-elements" style="display:inline-block">
             <input id="first-name" class="input" type="text" name="first-name" placeholder="first name" />
             <input id="last-name" class="input" type="text" name="last-name" placeholder="last name" />
             <select type="select" id="position" name="position">
-                <option value="">--choose your position--</option>
-                <option value="Customer Associate">Customer Associate</option>
-                <option value="Fresh Food Associate">Fresh Food Associate</option>
-                <option value="Manager">Manager</option>
-                <option value="Sales Associate">Sales Associate</option>
-                <option value="Stocker Associate">Stocker</option>
+               ${positionOptions}
             </select>
             <input id="email" class="input" type="text" name="email" placeholder="email" />
             <input id="password" class="input" type="password" name="password" placeholder="password" />
