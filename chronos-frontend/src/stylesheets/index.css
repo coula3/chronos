@@ -24,9 +24,18 @@
     text-shadow: 5px 5px #558ABB;
 }
 
-#app-branding {
-    position: absolute;
-    bottom: 10px;
+#para-header {
+    height: 50px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+#app-desc-span {
+    font-size: 14px;
+    border: solid 1px #00008B;
+    color: #00008B;
+    border-radius: 15px;
+    padding: 2px 10px;
 }
 
 #div-signup-signin {
@@ -125,16 +134,7 @@
     border-radius: 6px;
 }
 
-#para-header {
-    height: 50px;
-    margin: 5px 0px 25px 0px;
-    text-align: center;
-}
-
-#app-desc-span {
-    font-size: 14px;
-    border: solid 1px #00008B;
-    color: #00008B;
-    border-radius: 15px;
-    padding: 2px 10px;
+#app-branding {
+    position: absolute;
+    bottom: 10px;
 }
