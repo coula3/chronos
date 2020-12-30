@@ -70,7 +70,7 @@ function updatePassword(currentPassword, newPassword){
             switchToProfileCard();
             renderMessage("Password successfully updated", msgColor="green");
         } else {
-            renderMessage(data.message);
+            renderMessage(data.message, msg="red");
         }
     })
 }
