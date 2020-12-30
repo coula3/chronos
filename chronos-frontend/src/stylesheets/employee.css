@@ -24,7 +24,7 @@
 }
 
 .profileButtonsDiv {
-    margin-top: 40px;
+    margin-top: 20px;
     padding: 15px;
     background-color: #e6daba;
 }
@@ -46,8 +46,14 @@
 }
 
 .passwordInputs {
-    padding: 3px 4px;
+    padding: 2px 4px;
     width: 175px;
+    font-size: 15px;
+}
+
+.editProfileInputs {
+    padding: 2px 4px;
+    width: 225px;
     font-size: 15px;
 }
 
@@ -59,4 +65,8 @@
     padding-top: 15px;
     border-radius: 15px;
     background-color: #fff;
+}
+
+#profilePosition {
+    width: 240px;
 }

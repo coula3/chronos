@@ -19,7 +19,7 @@ function generateEditProfileCard(){
 
             <p class="profileCaption">Position</p>
             <p class="profileParagraph">
-                <select type="select" id="profilePosition" name="position">
+                <select type="select" id="profilePosition" class="editProfileInputs" name="position">
                     ${positionOptions}
                 </select>
             </p>
