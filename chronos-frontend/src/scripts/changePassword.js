@@ -39,13 +39,14 @@ function checkPasswordEntries(){
     const currentPassword = document.getElementById("currentPassword");
     const newPassword = document.getElementById("newPassword");
     const confirmPassword = document.getElementById("confirmPassword");
+    const msgColor = "red";
 
     if((currentPassword.value && newPassword.value) && !confirmPassword.value){
-        renderMessage("Please confirm new password");
+        renderMessage("Please confirm new password", msgColor);
     } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
-        renderMessage("Please provide current and new passwords");
+        renderMessage("Please provide current and new passwords", msgColor);
     } else if (newPassword.value !== confirmPassword.value){
-        renderMessage("Please provide matching new passwords");
+        renderMessage("Please provide matching new passwords", msgColor);
     } else {
        updatePassword(currentPassword.value, newPassword.value);
     }

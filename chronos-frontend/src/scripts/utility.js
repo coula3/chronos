@@ -40,10 +40,14 @@ function disableButtonCreateUserSubmit(e){
     }
 }
 
-function renderMessage(message) {
+function renderMessage(message, msgColor) {
     clearTimeout(messageTimeout);
     spanMsg.innerText = "";
     spanMsg.innerText = message;
+
+    if(msgColor){
+        spanMsg.style.cssText += `color: ${msgColor}`;
+    }
 
     messageTimeout = setTimeout(() => {
         if(document.getElementById("span-message").innerText){
