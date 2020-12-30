@@ -1,6 +1,7 @@
 const buttonAdmin = document.createElement("button");
 const buttonProfile = document.createElement("button");
 const spanMsg = document.createElement("span");
+const employeePositions = ["Customer Associate", "Fresh Food Associate", "Manager", "Sales Associate", "Stocker"];
 let messageTimeout;
 
 function appendEmployeeFormElements(){

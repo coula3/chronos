@@ -1,8 +1,7 @@
 
 function generateEditProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
-    const positions = ["Customer Associate", "Fresh Food Associate", "Manager", "Sales Associate", "Stocker"];
-    const positionOptions = positions.map(position => {
+    const positionOptions = employeePositions.map(position => {
         const selected = localStorageData.employee.position === position ? "selected" : null;
         return  `<option value=${position} ${selected}>${position}</option>`;
     });
