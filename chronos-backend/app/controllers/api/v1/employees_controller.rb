@@ -27,7 +27,7 @@ class Api::V1::EmployeesController < ApplicationController
             @employee.update(password: employee_params[:newPassword])
             render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
         else
-            render json: { message: "Password update unsuccessful"}
+            render json: { message: "Invalid current password"}
         end
     end
 
