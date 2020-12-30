@@ -10,7 +10,8 @@ function appendEmployeeFormElements(){
     positionList.unshift(defaultValue);
 
     const positionOptions = positionList.map(position => {
-        return  `<option value=${position}>${position}</option>`;
+        const optionValue = position !== "--choose your position--" ? position : "";
+        return  `<option value=${optionValue}>${position}</option>`;
     });
 
     const formElements = `
