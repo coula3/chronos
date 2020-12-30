@@ -68,7 +68,7 @@ function updatePassword(currentPassword, newPassword){
     .then(data => {
         if(data.employee){
             switchToProfileCard();
-            renderMessage("Password successfully updated");
+            renderMessage("Password successfully updated", msgColor="green");
         } else {
             renderMessage(data.message);
         }
