@@ -1,6 +1,11 @@
 
 function generateEditProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
+    const positions = ["Customer Associate", "Fresh Food Associate", "Manager", "Sales Associate", "Stocker"];
+    const positionOptions = positions.map(position => {
+        const selected = localStorageData.employee.position === position ? "selected" : null;
+        return  `<option value=${position} ${selected}>${position}</option>`;
+    });
 
     const editProfileCard = `
         <div id="editProfileCard">
@@ -13,7 +18,11 @@ function generateEditProfileCard(){
             <p class="profileParagraph"><input id="profileLastName" class="editProfileInputs" type="text" value=${localStorageData.employee.last_name}></input></p>
 
             <p class="profileCaption">Position</p>
-            <p class="profileParagraph"><input id="profilePosition" class="editProfileInputs" type="text" value=${localStorageData.employee.position}></input></p>
+            <p class="profileParagraph">
+                <select type="select" id="profilePosition" name="position">
+                    ${positionOptions}
+                </select>
+            </p>
 
             <p class="profileCaption">Email</p>
             <p class="profileParagraph"><input id="profileEmail" class="editProfileInputs" type="text" value=${localStorageData.employee.email}></input></p>
