@@ -45,15 +45,21 @@ function renderMessage(message, msgColor) {
     spanMsg.innerText = "";
     spanMsg.innerText = message;
 
-    if(msgColor){
-        spanMsg.style.cssText += `color: ${msgColor}`;
-    }
+    addColorToMessage(spanMsg, msgColor);
 
     messageTimeout = setTimeout(() => {
         if(document.getElementById("span-message").innerText){
             document.getElementById("span-message").innerText = ""
         }
     }, 6000)
+}
+
+function addColorToMessage(spanMsg, msgColor){
+    if(msgColor){
+        spanMsg.style.cssText += `color: ${msgColor}`;
+    } else {
+        spanMsg.style.color = "";
+    }
 }
 
 function renderWelcomeMsg(employeeObject){
