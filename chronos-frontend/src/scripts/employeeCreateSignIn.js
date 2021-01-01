@@ -197,9 +197,9 @@ function reSignInEmployee(data){
 function removeDOMElementsOnSignIn(){
     document.getElementById("div-signup").remove();
     document.getElementById("div-signin-inputs").remove();
-    document.getElementById("btn-sign-in").disabled = false;
-    document.getElementById("btn-sign-in").innerText = "Sign Out";
-    document.getElementById("btn-sign-in").style.cssText = "width: 100px";
+    buttonSignIn.disabled = false;
+    buttonSignIn.innerText = "Sign Out";
+    buttonSignIn.style.cssText = "width: 100px";
     document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
 }
 
