@@ -32,30 +32,28 @@ class Employee {
     }
 }
 
-const buttonCreateUser = document.getElementById("btn-create-user");
+function stageCreateEmployeeForm(){
+    addEmployeeForm && addEmployeeForm.addEventListener("submit", (e)=>{
+        e.preventDefault();
 
-const addEmployeeForm = document.getElementById("form-create-employee");
-
-addEmployeeForm.addEventListener("submit", (e)=>{
-    e.preventDefault();
-
-    if(buttonCreateUser.innerText === "Submit"){
-        createEmployee(e);
-    }
-
-    if(!document.querySelector("#div-input-elements")){
-        buttonCreateUser.innerText = "Submit";
-        document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
-        document.getElementById("btn-sign-in").disabled = true;
-        document.getElementById("sign-in-email").value = null;
-        document.getElementById("sign-in-password").value = null;
-
-        if(document.getElementById("messages")){
-            buttonCreateUser.disabled = true;
+        if(buttonCreateUser.innerText === "Submit"){
+            createEmployee(e);
         }
-        appendEmployeeFormElements();
-    }
-})
+
+        if(!document.querySelector("#div-input-elements")){
+            buttonCreateUser.innerText = "Submit";
+            document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
+            document.getElementById("btn-sign-in").disabled = true;
+            document.getElementById("sign-in-email").value = null;
+            document.getElementById("sign-in-password").value = null;
+
+            if(document.getElementById("messages")){
+                buttonCreateUser.disabled = true;
+            }
+            appendEmployeeFormElements();
+        }
+    });
+}
 
 function createEmployee(e) {
     const firstName = document.getElementById("first-name").value;
@@ -98,12 +96,12 @@ function createEmployee(e) {
     }
 }
 
-const buttonSignIn = document.getElementById("btn-sign-in");
-
-buttonSignIn.addEventListener("click", (e) => {
-    e.preventDefault();
-    signInEmployee(e);
-})
+function stageSignInButton(){
+    buttonSignIn && buttonSignIn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signInEmployee(e);
+    });
+}
 
 function signInEmployee(e) {
     const signInEmail = document.getElementById("sign-in-email") ? document.getElementById("sign-in-email").value : null;

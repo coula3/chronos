@@ -1,6 +1,6 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
-let breakStarted, breakEnded, clockedOut, hasTimeEvent;
+let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, hasTimeEvent;
 
 document.addEventListener("DOMContentLoaded", () => {
     const localStorageData = JSON.parse(localStorage.getItem('data'));
@@ -8,9 +8,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const employeeId = localStorageData && localStorageData.employee.id;
     const isAuthenticated = localStorage.getItem('jwt_token');
     const editMode = JSON.parse(localStorage.getItem('editMode'));
+
+    document.getElementById("main-container").innerHTML += signInForm;
+
+    buttonSignIn = document.getElementById("btn-sign-in");
+    buttonCreateUser = document.getElementById("btn-create-user");
+    addEmployeeForm = document.getElementById("form-create-employee");
     hasTimeEvent = isAuthenticated && localStorageData && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     appendCurrentTime();
+    stageSignInButton();
+    stageCreateEmployeeForm();
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
 
