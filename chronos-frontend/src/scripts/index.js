@@ -9,7 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const isAuthenticated = localStorage.getItem('jwt_token');
     const editMode = JSON.parse(localStorage.getItem('editMode'));
 
-    document.getElementById("main-container").innerHTML += signInForm;
+    if(!isAuthenticated){
+        document.getElementById("main-container").innerHTML += signInForm;
+    }
 
     buttonSignIn = document.getElementById("btn-sign-in");
     buttonCreateUser = document.getElementById("btn-create-user");
