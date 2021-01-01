@@ -1,5 +1,3 @@
-const signInEmailInput = document.getElementById("sign-in-email");
-
 function renderSignInErrors(message) {
     const spanSignInMsg = document.createElement("span")
     spanSignInMsg.innerText = message;
@@ -78,12 +76,16 @@ function renderPasswordErr(passwordMsg, spanStyles){
     !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
 }
 
-if(signInEmailInput) {
-    signInEmailInput.addEventListener("focus", () => {
-        document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
-        document.getElementById("btn-create-user").innerText = "Sign Up";
-        document.getElementById("btn-sign-in").disabled = false;
-    });
+function collapseSignUpElements(){
+    const signInEmailInput = document.getElementById("sign-in-email");
+
+    if(signInEmailInput) {
+        signInEmailInput.addEventListener("click", () => {
+            document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
+            document.getElementById("btn-create-user").innerText = "Sign Up";
+            document.getElementById("btn-sign-in").disabled = false;
+        });
+    }
 }
 
 function cleanUpSignUpErrors(){

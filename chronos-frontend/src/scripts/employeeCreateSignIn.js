@@ -101,6 +101,8 @@ function stageSignInButton(){
         e.preventDefault();
         signInEmployee(e);
     });
+
+    document.getElementById('sign-in-email').addEventListener('focus', () => collapseSignUpElements());
 }
 
 function signInEmployee(e) {
