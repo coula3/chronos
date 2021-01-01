@@ -77,6 +77,7 @@ function setSwitchToProfileCard(){
         document.getElementById("editProfile").addEventListener("click", () => {
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += generateEditProfileCard();
+            editProfile();
         })
     }
 }

@@ -1,4 +1,3 @@
-
 function generateEditProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
     const positionOptions = employeePositions.map(position => {
@@ -35,4 +34,20 @@ function generateEditProfileCard(){
     `;
 
     return editProfileCard;
+}
+
+function editProfile(){
+    const editProfileForm = document.getElementById("editProfileForm");
+
+    if(editProfileForm){
+        editProfileForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if(e.submitter.innerText === "Save"){
+                checkEditProfileEntries();
+            } else {
+                switchEditProfileToProfile();
+            }
+        })
+    }
 }
