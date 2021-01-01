@@ -16,3 +16,11 @@ const signInForm = `
         </div>
     </div>
 `;
+
+const divSignIn = `
+    <div id="div-signin">
+        <form id="form-signin">
+            <button id="btn-sign-in" class="button">Sign Out</button>
+        </form>
+    </div>
+`;

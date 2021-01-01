@@ -188,7 +188,7 @@ function persistToLocalStorageOnSignIn(data){
 function reSignInEmployee(data){
     const currentEmployee = instantiateEmployeeObject(data.employee);
 
-    removeDOMElementsOnSignIn();
+    addSignOutBtnOnReSignInEmployee();
     currentEmployee.renderEmployeeData();
 }
 
@@ -199,6 +199,25 @@ function removeDOMElementsOnSignIn(){
     buttonSignIn.innerText = "Sign Out";
     buttonSignIn.style.cssText = "width: 100px";
     document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
+}
+
+function addSignOutBtnOnReSignInEmployee(){
+    divSignUpSignIn = document.createElement("div");
+    divSignUpSignIn.setAttribute("id",  "div-signup-signin");
+    document.getElementById("main-container").insertBefore(divSignUpSignIn, document.getElementById("div-employee-tag-name"));
+    divSignUpSignIn.innerHTML += divSignIn;
+    const buttonSignIn = document.getElementById("btn-sign-in");
+
+    buttonSignIn.disabled = false;
+    buttonSignIn.innerText = "Sign Out";
+    buttonSignIn.style.cssText = "width: 100px";
+
+    document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
+
+    buttonSignIn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signInEmployee(e);
+    });
 }
 
 function createDivNameTag(employeeNameTag){
