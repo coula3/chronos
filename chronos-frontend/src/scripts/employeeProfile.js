@@ -47,7 +47,7 @@ buttonProfile.addEventListener("click", (e) => {
     }
 
     setSwitchToPasswordCard();
-    setSwitchToProfileCard();
+    setSwitchToEditProfileCard();
 })
 
 function appendEmployeeProfile(){
@@ -72,7 +72,7 @@ function setSwitchToPasswordCard(){
     }
 }
 
-function setSwitchToProfileCard(){
+function setSwitchToEditProfileCard(){
     if(document.getElementById("editProfile")){
         document.getElementById("editProfile").addEventListener("click", () => {
             document.getElementById("profileCard").remove();

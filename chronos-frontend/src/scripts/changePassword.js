@@ -80,4 +80,5 @@ function switchPasswordToProfile(){
     document.getElementById("passwordCard").remove();
     divEmployeeProfile.innerHTML += generateProfileCard();
     setSwitchToPasswordCard();
+    setSwitchToEditProfileCard();
 }

@@ -57,5 +57,5 @@ function switchEditProfileToProfile(){
     document.getElementById("editProfileCard").remove();
     divEmployeeProfile.innerHTML += generateProfileCard();
     setSwitchToPasswordCard();
-    setSwitchToProfileCard();
+    setSwitchToEditProfileCard();
 }
