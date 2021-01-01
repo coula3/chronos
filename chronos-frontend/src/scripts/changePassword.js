@@ -29,7 +29,7 @@ function changePassword(){
             if(e.submitter.innerText === "Save"){
                 checkPasswordEntries();
             } else {
-                switchPasswordCardToProfileCard();
+                switchPasswordToProfile();
             }
         })
     }
@@ -67,7 +67,7 @@ function updatePassword(currentPassword, newPassword){
     .then(response => response.json())
     .then(data => {
         if(data.employee){
-            switchPasswordCardToProfileCard();
+            switchPasswordToProfile();
             renderMessage("Password successfully updated", msgColor="green");
         } else {
             renderMessage(data.message, msg="red");
@@ -75,7 +75,7 @@ function updatePassword(currentPassword, newPassword){
     })
 }
 
-function switchPasswordCardToProfileCard(){
+function switchPasswordToProfile(){
     document.getElementById("span-message").innerText = ""
     document.getElementById("passwordCard").remove();
     divEmployeeProfile.innerHTML += generateProfileCard();
