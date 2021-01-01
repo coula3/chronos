@@ -102,7 +102,7 @@ function stageSignInButton(){
         signInEmployee(e);
     });
 
-    document.getElementById('sign-in-email').addEventListener('focus', () => collapseSignUpElements());
+    document.getElementById('sign-in-email') && document.getElementById('sign-in-email').addEventListener('focus', () => collapseSignUpElements());
 }
 
 function signInEmployee(e) {
