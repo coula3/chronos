@@ -51,3 +51,11 @@ function editProfile(){
         })
     }
 }
+
+function switchEditProfileToProfile(){
+    document.getElementById("span-message").innerText = ""
+    document.getElementById("editProfileCard").remove();
+    divEmployeeProfile.innerHTML += generateProfileCard();
+    setSwitchToPasswordCard();
+    setSwitchToProfileCard();
+}
