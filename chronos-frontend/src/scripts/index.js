@@ -19,8 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     hasTimeEvent = isAuthenticated && localStorageData && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     appendCurrentTime();
-    stageSignInButton();
-    stageCreateEmployeeForm();
+    stageSignUpSignIn();
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
 
@@ -34,6 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 })
+
+function stageSignUpSignIn(){
+    stageCreateEmployeeForm();
+    stageSignInButton();
+}
 
 function updateRunningTime(currentTimeEvent){
     if(JSON.parse(localStorage.getItem('runningTimeStarted'))){
