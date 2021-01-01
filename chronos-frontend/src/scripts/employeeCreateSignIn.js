@@ -158,10 +158,27 @@ function signInEmployee(e) {
             disableButtonCreateUserSubmit(e);
         }
     } else {
-        location.reload();
+        clearInterval(runningTimeInterval);
         localStorage.clear();
-        e.target.innerText = "Sign In";
+
+        resetDOMOnSignOut();
+
+        buttonSignIn = document.getElementById("btn-sign-in");
+        buttonCreateUser = document.getElementById("btn-create-user");
+        addEmployeeForm = document.getElementById("form-create-employee");
+
+        stageSignUpSignIn();
     }
+}
+
+function resetDOMOnSignOut(){
+    document.getElementById("div-signup-signin").remove();
+    document.getElementById("div-employee-tag-name").remove();
+    document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
+    document.getElementById("div-menu").remove();
+    document.getElementById("span-message").remove();
+    document.getElementById("events-container").remove();
+    document.getElementById("main-container").innerHTML += signInForm;
 }
 
 function persistToLocalStorageOnCreateEmployee(data){
