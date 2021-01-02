@@ -60,7 +60,7 @@ function createTimeEvent(e) {
             .then(response => response.json())
             .then(timeEvent => {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
-                localStorage.setItem('editMode', true);
+                localStorage.setItem('editModeTimeEvent', true);
                 localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
                 localStorage.setItem("rendered", "Time Data");
                 renderNewTimeEvent(newTimeEvent);
@@ -103,7 +103,7 @@ function createTimeEvent(e) {
         .then(response => response.json())
         .then(timeEvent => {
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
-            localStorage.setItem('editMode', false);
+            localStorage.setItem('editModeTimeEvent', false);
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
             clearTimeout(activateButtonTimeout);

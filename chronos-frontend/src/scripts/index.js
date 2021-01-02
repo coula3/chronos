@@ -4,7 +4,7 @@ let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, c
 const localStorageData = JSON.parse(localStorage.getItem('data'));
 const employeeId = localStorageData && localStorageData.employee.id;
 const isAuthenticated = localStorage.getItem('jwt_token');
-const editMode = JSON.parse(localStorage.getItem('editMode'));
+const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
 
 document.addEventListener("DOMContentLoaded", () => {
     const currentTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
@@ -26,8 +26,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
             updateDOM(employeeId);
-        } else if(isAuthenticated && editMode){
-            updateDOM(employeeId, editMode);
+        } else if(isAuthenticated && editModeTimeEvent){
+            updateDOM(employeeId, editModeTimeEvent);
         } else if(isAuthenticated){
             reSignInEmployee(localStorageData);
         }
@@ -58,7 +58,7 @@ function getTimeEventStatus(currentTimeEvent){
     }
 }
 
-function updateDOM(employeeId, editMode){
+function updateDOM(employeeId, editModeTimeEvent){
     fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
         method: "GET",
         headers: {
@@ -70,10 +70,10 @@ function updateDOM(employeeId, editMode){
     .then(response => response.json())
     .then(data => {
         reSignInEmployee(data);
-        if(editMode && breakEnded){
+        if(editModeTimeEvent && breakEnded){
             resetButtonBreakResume();
             resetButtonClockInOut();
-        } else if(editMode){
+        } else if(editModeTimeEvent){
             resetButtonClockInOut();
         }
     })

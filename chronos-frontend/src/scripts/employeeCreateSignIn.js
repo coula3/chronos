@@ -199,7 +199,7 @@ function persistToLocalStorageOnSignIn(data){
     localStorage.setItem('data', JSON.stringify(data));
     if(newTimeEvent){
         localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
-        localStorage.setItem('editMode', true);
+        localStorage.setItem('editModeTimeEvent', true);
     }
 
     const timeEventInLocalStorage = JSON.parse(localStorage.getItem('newTimeEvent'));
