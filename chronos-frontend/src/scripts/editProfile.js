@@ -62,6 +62,7 @@ function switchEditProfileToProfile(){
 }
 
 function updateProfile(){
+    const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
     const profileFirstName = document.getElementById("profileFirstName");
     const profileLastName = document.getElementById("profileLastName");
     const profilePosition = document.getElementById("profilePosition");
