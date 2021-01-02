@@ -44,7 +44,7 @@ function editProfile(){
             e.preventDefault();
 
             if(e.submitter.innerText === "Save"){
-                checkEditProfileEntries();
+                updateProfile();
             } else {
                 switchEditProfileToProfile();
             }
@@ -58,4 +58,30 @@ function switchEditProfileToProfile(){
     divEmployeeProfile.innerHTML += generateProfileCard();
     setSwitchToPasswordCard();
     setSwitchToEditProfileCard();
+}
+
+function updateProfile(){
+    const profileFirstName = document.getElementById("profileFirstName");
+    const profileLastName = document.getElementById("profileLastName");
+    const profilePosition = document.getElementById("profilePosition");
+    const profileEmail = document.getElementById("profileEmail");
+
+    const bodyObj = { employee: {
+            first_name: profileFirstName.value,
+            last_name: profileLastName.value,
+            position: profilePosition.value,
+            email: profileEmail.value
+        }
+    };
+
+    fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
+        method: "PATCH",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+        },
+        body: JSON.stringify(bodyObj)
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
 }
