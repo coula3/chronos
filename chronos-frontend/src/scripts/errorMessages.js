@@ -8,7 +8,7 @@ function renderSignInErrors(message) {
 
 function renderSignUpErrors(messages) {
     let firstNameErr, lastNameErr, positionErr, emailErr, passwordErr;
-    const spanStyles = "display: block; margin-bottom: 5px; font-size: 14px; color: red; text-align: center;";
+    const spanStyles = "display: block; margin-bottom: 5px; font-size: 12px; color: red; text-align: center;";
 
     messages.forEach(message => {
         if(message.includes("First")){
