@@ -83,5 +83,11 @@ function updateProfile(){
         body: JSON.stringify(bodyObj)
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => {
+        if(data.employee){
+            switchEditProfileToProfile();
+        } else {
+            console.log(data);
+        }
+    })
 }
