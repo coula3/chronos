@@ -87,6 +87,7 @@ function updateProfile(){
     .then(response => response.json())
     .then(data => {
         if(data.employee){
+            localStorage.setItem('data', JSON.stringify(data));
             switchEditProfileToProfile();
             renderMessage("Profile successfully updated", msgColor="green");
         } else {
