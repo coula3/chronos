@@ -25,9 +25,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
-            updateDOM(employeeId);
+            updateDOMOnReload(employeeId);
         } else if(isAuthenticated && editModeTimeEvent){
-            updateDOM(employeeId, editModeTimeEvent);
+            updateDOMOnReload(employeeId, editModeTimeEvent);
         } else if(isAuthenticated){
             reSignInEmployee(localStorageData);
         }
@@ -58,7 +58,7 @@ function getTimeEventStatus(currentTimeEvent){
     }
 }
 
-function updateDOM(employeeId, editModeTimeEvent){
+function updateDOMOnReload(employeeId, editModeTimeEvent){
     fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
         method: "GET",
         headers: {
