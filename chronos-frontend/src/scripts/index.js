@@ -1,13 +1,13 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
 let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, hasTimeEvent;
+const localStorageData = JSON.parse(localStorage.getItem('data'));
+const employeeId = localStorageData && localStorageData.employee.id;
+const isAuthenticated = localStorage.getItem('jwt_token');
+const editMode = JSON.parse(localStorage.getItem('editMode'));
 
 document.addEventListener("DOMContentLoaded", () => {
-    const localStorageData = JSON.parse(localStorage.getItem('data'));
     const currentTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
-    const employeeId = localStorageData && localStorageData.employee.id;
-    const isAuthenticated = localStorage.getItem('jwt_token');
-    const editMode = JSON.parse(localStorage.getItem('editMode'));
 
     if(!isAuthenticated){
         document.getElementById("main-container").innerHTML += signInForm;
