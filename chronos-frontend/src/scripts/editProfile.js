@@ -87,6 +87,7 @@ function updateProfile(){
     .then(data => {
         if(data.employee){
             switchEditProfileToProfile();
+            renderMessage("Profile successfully updated", msgColor="green");
         } else {
             console.log(data);
         }
