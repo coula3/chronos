@@ -1,10 +1,8 @@
-let oldEmployeeData;
-
-document.addEventListener("DOMContentLoaded", () => {
+function getOldEmployeeData(){
     const employee = localStorage.getItem('data') && JSON.parse(localStorage.getItem('data')).employee;
     employee && delete employee.time_events;
-    oldEmployeeData = employee;
-})
+    return employee;
+}
 
 function generateEditProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
@@ -95,8 +93,9 @@ function updateProfile(){
     .then(response => response.json())
     .then(data => {
         if(data.employee){
+            const oldEmployeeData = getOldEmployeeData();
             localStorage.setItem('data', JSON.stringify(data));
-            updateEmployeeTag(data.employee);
+            updateEmployeeTag(oldEmployeeData, data.employee);
             switchEditProfileToProfile();
             renderMessage("Profile successfully updated", msgColor="green");
         } else {
@@ -105,8 +104,8 @@ function updateProfile(){
     })
 }
 
-function updateEmployeeTag(newEmployeeData){
-    const diffKeys = checkUpdateChanges(newEmployeeData);
+function updateEmployeeTag(oldEmployeeData, newEmployeeData){
+    const diffKeys = checkUpdateChanges(oldEmployeeData, newEmployeeData);
 
     if(diffKeys.includes("first_name") || diffKeys.includes("last_name")){
         document.getElementById("employee-name").innerText = `${newEmployeeData.first_name} ${newEmployeeData.last_name}`;
@@ -117,7 +116,7 @@ function updateEmployeeTag(newEmployeeData){
     }
 }
 
-function checkUpdateChanges(newEmployeeData){
+function checkUpdateChanges(oldEmployeeData, newEmployeeData){
     const diffKeys = [];
 
     if(oldEmployeeData.first_name !== newEmployeeData.first_name){
