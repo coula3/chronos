@@ -23,11 +23,19 @@ class Api::V1::EmployeesController < ApplicationController
     def update
         @employee = Employee.find_by(id: params[:id])
 
-        if @employee && @employee.authenticate(employee_params[:password])
-            @employee.update(password: employee_params[:newPassword])
-            render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
+        if employee_params[:password]
+            if @employee && @employee.authenticate(employee_params[:password])
+                @employee.update(password: employee_params[:newPassword])
+                render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
+            else
+                render json: { message: "Invalid current password"}
+            end
         else
-            render json: { message: "Invalid current password"}
+            if @employee.update(employee_params)
+                render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
+            else
+                render json: {messages: @employee.errors.full_messages}, status: :not_acceptable
+            end
         end
     end
 
