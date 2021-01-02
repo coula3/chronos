@@ -30,6 +30,7 @@ function changePassword(){
                 checkPasswordEntries();
             } else {
                 switchPasswordToProfile();
+                localStorage.setItem('rendered', 'Profile');
             }
         })
     }
@@ -79,6 +80,7 @@ function switchPasswordToProfile(){
     document.getElementById("span-message").innerText = ""
     document.getElementById("passwordCard").remove();
     divEmployeeProfile.innerHTML += generateProfileCard();
+    localStorage.setItem('rendered', 'Profile');
     setSwitchToPasswordCard();
     setSwitchToEditProfileCard();
 }

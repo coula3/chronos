@@ -56,6 +56,7 @@ function switchEditProfileToProfile(){
     document.getElementById("span-message").innerText = ""
     document.getElementById("editProfileCard").remove();
     divEmployeeProfile.innerHTML += generateProfileCard();
+    localStorage.setItem('rendered', 'Profile');
     setSwitchToPasswordCard();
     setSwitchToEditProfileCard();
 }

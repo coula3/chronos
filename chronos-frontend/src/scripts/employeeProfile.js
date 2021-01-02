@@ -68,6 +68,7 @@ function setSwitchToPasswordCard(){
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += passwordCard;
             changePassword();
+            localStorage.setItem('rendered', 'Change Password');
         })
     }
 }
@@ -78,6 +79,7 @@ function setSwitchToEditProfileCard(){
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += generateEditProfileCard();
             editProfile();
+            localStorage.setItem('rendered', 'Edit Profile');
         })
     }
 }
