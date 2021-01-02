@@ -129,7 +129,7 @@ function createTimeEvent(e) {
             buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
             buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 6px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
             document.getElementById("div-time-event-buttons").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
-            buttonUpdateTimeEvents.addEventListener("click", () => location.reload());
+            addNewTimeEventToTimeEvents(buttonUpdateTimeEvents);
             localStorage.setItem('runningTimeStarted', false);
             localStorage.setItem('onBreak', false);
 
@@ -380,6 +380,15 @@ function renderNewTimeEvent(event) {
             })
         }, activateTime)
     }
+}
+
+function addNewTimeEventToTimeEvents(buttonUpdateTimeEvents){
+    buttonUpdateTimeEvents.addEventListener("click", () => {
+        buttonClockInOut.disabled = false;
+        buttonClockInOut.style.cssText += "color: #FFF; background-color: #0000FF";
+        document.getElementById("div-time-event-container").remove();
+        updateDOM(employeeId);
+    });
 }
 
 function deleteTimeEvent(timeEventId){
