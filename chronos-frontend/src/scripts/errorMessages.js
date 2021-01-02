@@ -13,24 +13,24 @@ function renderSignUpErrors(messages) {
     messages.forEach(message => {
         if(message.includes("First")){
             firstNameErr = message;
-            renderFirstNameErr(firstNameErr, spanStyles);
+            renderSignUpFirstNameErr(firstNameErr, spanStyles);
         } else if(message.includes("Last")){
             lastNameErr = message;
-            renderLastNameErr(lastNameErr, spanStyles);
+            renderSignUpLastNameErr(lastNameErr, spanStyles);
         } else if(message.includes("Position")){
             positionErr = message;
-            renderPositionErr(positionErr, spanStyles);
+            renderSignUpPositionErr(positionErr, spanStyles);
         } else if(message.includes("Email")){
             emailErr = message;
-            renderEmailErr(emailErr, spanStyles);
+            renderSignUpEmailErr(emailErr, spanStyles);
         } else if(message.includes("Password")){
             passwordErr = message;
-            renderPasswordErr(passwordErr, spanStyles);
+            renderSignUpPasswordErr(passwordErr, spanStyles);
         }
     });
 }
 
-function renderFirstNameErr(firstNameMsg, spanStyles){
+function renderSignUpFirstNameErr(firstNameMsg, spanStyles){
     spanFirstName = document.createElement("span");
     spanFirstName.innerText = firstNameMsg;
     spanFirstName.setAttribute("id", "span-first-name");
@@ -39,7 +39,7 @@ function renderFirstNameErr(firstNameMsg, spanStyles){
     !document.getElementById("span-first-name") && document.getElementById("div-input-elements").insertBefore(spanFirstName, document.getElementById("last-name"));
 }
 
-function renderLastNameErr(lastNameMsg, spanStyles){
+function renderSignUpLastNameErr(lastNameMsg, spanStyles){
     spanLastName = document.createElement("span");
     spanLastName.innerText = lastNameMsg;
     spanLastName.setAttribute("id", "span-last-name");
@@ -48,7 +48,7 @@ function renderLastNameErr(lastNameMsg, spanStyles){
     !document.getElementById("span-last-name") && document.getElementById("div-input-elements").insertBefore(spanLastName, document.getElementById("position"));
 }
 
-function renderPositionErr(positionMsg, spanStyles){
+function renderSignUpPositionErr(positionMsg, spanStyles){
     spanPosition = document.createElement("span");
     spanPosition.innerText = positionMsg;
     spanPosition.setAttribute("id", "span-position");
@@ -57,7 +57,7 @@ function renderPositionErr(positionMsg, spanStyles){
     !document.getElementById("span-position") && document.getElementById("div-input-elements").insertBefore(spanPosition, document.getElementById("email"));
 }
 
-function renderEmailErr(emailMsg, spanStyles){
+function renderSignUpEmailErr(emailMsg, spanStyles){
     spanEmail = document.createElement("span");
     spanEmail.innerText = emailMsg;
     spanEmail.setAttribute("id", "span-email");
@@ -66,7 +66,7 @@ function renderEmailErr(emailMsg, spanStyles){
     !document.getElementById("span-email") && document.getElementById("div-input-elements").insertBefore(spanEmail, document.getElementById("password"));
 }
 
-function renderPasswordErr(passwordMsg, spanStyles){
+function renderSignUpPasswordErr(passwordMsg, spanStyles){
     spanPassword = document.createElement("span");
     spanPassword.innerText = passwordMsg;
     spanPassword.setAttribute("id", "span-password");
