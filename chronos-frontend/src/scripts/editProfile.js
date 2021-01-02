@@ -1,3 +1,11 @@
+let oldEmployeeData;
+
+document.addEventListener("DOMContentLoaded", () => {
+    const employee = localStorage.getItem('data') && JSON.parse(localStorage.getItem('data')).employee;
+    employee && delete employee.time_events;
+    oldEmployeeData = employee;
+})
+
 function generateEditProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
     const positionOptions = employeePositions.map(position => {
@@ -88,10 +96,41 @@ function updateProfile(){
     .then(data => {
         if(data.employee){
             localStorage.setItem('data', JSON.stringify(data));
+            updateEmployeeTag(data.employee);
             switchEditProfileToProfile();
             renderMessage("Profile successfully updated", msgColor="green");
         } else {
             console.log(data);
         }
     })
+}
+
+function updateEmployeeTag(newEmployeeData){
+    const diffKeys = checkUpdateChanges(newEmployeeData);
+
+    if(diffKeys.includes("first_name") || diffKeys.includes("last_name")){
+        document.getElementById("employee-name").innerText = `${newEmployeeData.first_name} ${newEmployeeData.last_name}`;
+    }
+
+    if(diffKeys.includes("position")){
+        document.getElementById("employee-position").innerText = `${newEmployeeData.position}`;
+    }
+}
+
+function checkUpdateChanges(newEmployeeData){
+    const diffKeys = [];
+
+    if(oldEmployeeData.first_name !== newEmployeeData.first_name){
+        diffKeys.push("first_name");
+    }
+
+    if (oldEmployeeData.last_name !== newEmployeeData.last_name){
+        diffKeys.push("last_name");
+    }
+
+    if (oldEmployeeData.position !== newEmployeeData.position){
+        diffKeys.push("position");
+    }
+
+    return diffKeys;
 }
