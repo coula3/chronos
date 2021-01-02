@@ -175,6 +175,8 @@ function signInEmployee(e) {
 
 function resetDOMOnSignOut(){
     buttonClockInOut.disabled = false;
+    document.getElementById("span-message").innerText = "";
+    clearTimeout(messageTimeout);
     document.getElementById("div-signup-signin").remove();
     document.getElementById("div-employee-tag-name").remove();
     document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
