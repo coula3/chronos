@@ -42,3 +42,9 @@ function renderEditProfileEmailErr(emailMsg, spanStyles){
     document.getElementById("profileEmail").style.cssText = "margin-bottom: 0px";
     !document.getElementById("spanEmail") && document.getElementById("profileEmail").after(spanEmail);
 }
+
+function cleanUpEditProfileErrors(){
+    document.getElementById("spanFirstName") && document.getElementById("spanFirstName").remove();
+    document.getElementById("spanLastName") && document.getElementById("spanLastName").remove();
+    document.getElementById("spanEmail") && document.getElementById("spanEmail").remove();
+}

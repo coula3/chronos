@@ -98,6 +98,7 @@ function updateProfile(){
             renderMessage("Profile successfully updated", msgColor="green");
         } else {
             document.getElementById("span-message").innerText = "";
+            cleanUpEditProfileErrors();
             renderEditProfileErrors(data.messages);
         }
     })
