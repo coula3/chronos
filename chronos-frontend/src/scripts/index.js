@@ -4,7 +4,7 @@ let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, c
 const localStorageData = JSON.parse(localStorage.getItem('data'));
 const employeeId = localStorageData && localStorageData.employee.id;
 const isAuthenticated = localStorage.getItem('jwt_token');
-const editModeTimeEvent = localStorage.getItem('editModeTimeEvent');
+const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
 
 document.addEventListener("DOMContentLoaded", () => {
     const currentTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
