@@ -67,7 +67,10 @@ function setSwitchToPasswordCard(){
         document.getElementById("changePassword").addEventListener("click", () => {
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += passwordCard;
+            document.getElementById("span-message").innerText = "";
+
             changePassword();
+
             localStorage.setItem('rendered', 'Change Password');
         })
     }
@@ -78,7 +81,10 @@ function setSwitchToEditProfileCard(){
         document.getElementById("editProfile").addEventListener("click", () => {
             document.getElementById("profileCard").remove();
             divEmployeeProfile.innerHTML += generateEditProfileCard();
+            document.getElementById("span-message").innerText = "";
+
             editProfile();
+
             localStorage.setItem('rendered', 'Edit Profile');
         })
     }
