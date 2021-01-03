@@ -301,6 +301,11 @@ function renderNewTimeEvent(event) {
     buttonBreakResume.classList = "button";
     buttonBreakResume.setAttribute("id", "btn-break-resume");
     buttonBreakResume.innerText = "Take Break";
+
+    if(event.breakStart && !event.breakEnd){
+        buttonBreakResume.style.cssText += "background-color: #9932CC; color: #FFF";
+    }
+
     buttonBreakResume.disabled = true;
     divTimeEvent.setAttribute("event-data-id", event.id);
     divTimeEvent.style.cssText = "margin:30px 0px 15px 0px; border: solid 1px grey; clear:both";
