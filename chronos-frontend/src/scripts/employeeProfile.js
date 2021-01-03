@@ -55,7 +55,7 @@ buttonProfile.addEventListener("click", (e) => {
             buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
         }
 
-        const employee = instantiateEmployeeObject(localStorageData.employee);
+        const employee = instantiateEmployeeObject(JSON.parse(localStorage.getItem('data')).employee);
         renderEmployeeTimeEvents(employee);
     }
 })
