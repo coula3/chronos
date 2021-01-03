@@ -55,7 +55,7 @@ buttonProfile.addEventListener("click", (e) => {
 
 function appendEmployeeProfile(card){
     buttonClockInOut.disabled = true;
-    buttonClockInOut.style.cssText = "background-color: null, color: #000";
+    buttonClockInOut.style.cssText = "margin-left: 15px; background-color: null, color: #000";
     document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
     document.getElementById("events-container") && document.getElementById("events-container").remove();
     document.getElementById("btn-profile").innerText = "Time Data";
