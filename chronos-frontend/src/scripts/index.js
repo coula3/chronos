@@ -111,7 +111,7 @@ function addCommonElementsToDOM(){
 function reloadProfile(){
     addCommonElementsToDOM();
 
-    appendEmployeeProfile();
+    appendEmployeeProfile(generateProfileCard());
     setSwitchToEditProfileCard();
     setSwitchToPasswordCard();
 }

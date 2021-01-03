@@ -37,7 +37,7 @@ buttonProfile.addEventListener("click", (e) => {
         clearInterval(runningTimeInterval);
         localStorage.setItem("rendered", "Profile");
 
-        appendEmployeeProfile();
+        appendEmployeeProfile(generateProfileCard());
         
     } else {
         divEmployeeProfile.remove();
@@ -50,7 +50,7 @@ buttonProfile.addEventListener("click", (e) => {
     setSwitchToEditProfileCard();
 })
 
-function appendEmployeeProfile(){
+function appendEmployeeProfile(card){
     buttonClockInOut.disabled = true;
     buttonClockInOut.style.cssText = "background-color: null, color: #000";
     document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
@@ -59,7 +59,7 @@ function appendEmployeeProfile(){
     document.getElementById("span-message").innerText = "";
     document.getElementById("span-message").after(divEmployeeProfile);
 
-    divEmployeeProfile.innerHTML += generateProfileCard();
+    divEmployeeProfile.innerHTML += card;
 }
 
 function setSwitchToPasswordCard(){
