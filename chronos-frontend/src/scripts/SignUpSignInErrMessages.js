@@ -76,18 +76,6 @@ function renderSignUpPasswordErr(passwordMsg, spanStyles){
     !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
 }
 
-function collapseSignUpElements(){
-    const signInEmailInput = document.getElementById("sign-in-email");
-
-    if(signInEmailInput) {
-        signInEmailInput.addEventListener("click", () => {
-            document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
-            document.getElementById("btn-create-user").innerText = "Sign Up";
-            document.getElementById("btn-sign-in").disabled = false;
-        });
-    }
-}
-
 function cleanUpSignUpErrors(){
     document.getElementById("span-first-name") && document.getElementById("span-first-name").remove();
     document.getElementById("span-last-name") && document.getElementById("span-last-name").remove();

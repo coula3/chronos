@@ -105,6 +105,18 @@ function stageSignInButton(){
     document.getElementById('sign-in-email') && document.getElementById('sign-in-email').addEventListener('focus', () => collapseSignUpElements());
 }
 
+function collapseSignUpElements(){
+    const signInEmailInput = document.getElementById("sign-in-email");
+
+    if(signInEmailInput) {
+        signInEmailInput.addEventListener("click", () => {
+            document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
+            document.getElementById("btn-create-user").innerText = "Sign Up";
+            document.getElementById("btn-sign-in").disabled = false;
+        });
+    }
+}
+
 function signInEmployee(e) {
     const signInEmail = document.getElementById("sign-in-email") ? document.getElementById("sign-in-email").value : null;
     const signInPassword = document.getElementById("sign-in-password") ? document.getElementById("sign-in-password").value : null;
