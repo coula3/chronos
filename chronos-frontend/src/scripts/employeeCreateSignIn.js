@@ -9,12 +9,7 @@ class Employee {
     }
 
     renderEmployeeData() {
-        const firstName = `${this.firstName[0].toUpperCase() + this.firstName.slice(1)}`;
-        const lastName = `${this.lastName[0].toUpperCase() + this.lastName.slice(1)}`;
-        const employeeNameTag = `
-            <h2 id="employee-name" employee-data-id = ${this.id} style="color:blue; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
-            <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${this.position}</h4>
-        `;
+        const employeeNameTag = createEmployeeNameTag(this);
 
         createDivNameTag(employeeNameTag);
 

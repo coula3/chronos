@@ -7,6 +7,18 @@ function instantiateEmployeeObject(employeeObject){
     return new Employee(employeeObject.id, employeeObject.first_name, employeeObject.last_name, employeeObject.position, employeeObject.email, employeeObject.time_events);
 }
 
+function createEmployeeNameTag(employee){
+        const firstName = `${employee.firstName[0].toUpperCase() + employee.firstName.slice(1)}`;
+        const lastName = `${employee.lastName[0].toUpperCase() + employee.lastName.slice(1)}`;
+
+        const employeeNameTag = `
+            <h2 id="employee-name" employee-data-id = ${employee.id} style="color:blue; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
+            <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${employee.position}</h4>
+        `;
+
+        return employeeNameTag;
+}
+
 function disableButtonSignIn(e){
     if(e.submitter.innerText === "Submit"){
         buttonSignIn.disabled = true;
