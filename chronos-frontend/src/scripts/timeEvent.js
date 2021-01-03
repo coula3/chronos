@@ -131,7 +131,7 @@ function createTimeEvent(e) {
             document.getElementById("div-time-event-buttons").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
             addNewTimeEventToTimeEvents(buttonUpdateTimeEvents);
             localStorage.setItem('runningTimeStarted', false);
-            localStorage.setItem('onBreak', false);
+            localStorage.getItem('onBreak') && localStorage.setItem('onBreak', false);
 
             if(currentTimeEvent.timeOut) {
                 (function updateHours(){
