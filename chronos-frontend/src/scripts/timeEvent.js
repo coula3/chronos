@@ -67,7 +67,7 @@ function createTimeEvent(e) {
                 buttonClockInOut.innerText = "Clock Out";
                 buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
                 document.getElementById("td-event-hours").innerText = "00:00:00";
-                addRunningTime();
+                addRunningTime(newTimeEvent);
             })
         }
     } else {
