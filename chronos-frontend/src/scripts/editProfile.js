@@ -97,7 +97,7 @@ function updateProfile(){
             switchEditProfileToProfile();
             renderMessage("Profile successfully updated", msgColor="green");
         } else {
-            console.log(data);
+            renderEditProfileErrors(data.messages);
         }
     })
 }
