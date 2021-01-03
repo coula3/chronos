@@ -111,6 +111,8 @@ function addCommonElementsToDOM(){
     if(employee.position === "Manager"){
         appendButtonAdmin();
     }
+
+    clearInterval(runningTimeInterval);
 }
 
 function reloadProfile(){
