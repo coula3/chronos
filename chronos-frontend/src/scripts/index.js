@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
             updateDOMOnReload(employeeId);
-        } else if(isTimeData && editModeTimeEvent){
+        } else if(isTimeData){
             updateDOMOnReload(employeeId, editModeTimeEvent);
         } else if(isProfile){
             reloadProfile();
@@ -38,8 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
             reloadEditProfile();
         } else if(isChangePassword){
             reloadChangePassword();
-        } else if(isAuthenticated){
-            reSignInEmployee(localStorageData);
         }
     }
 })
