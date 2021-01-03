@@ -38,7 +38,9 @@ function stageCreateEmployeeForm(){
         if(!document.querySelector("#div-input-elements")){
             buttonCreateUser.innerText = "Submit";
             document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
-            document.getElementById("btn-sign-in").disabled = true;
+            buttonSignIn.style.removeProperty("color");
+            buttonSignIn.style.removeProperty("background-color");
+            buttonSignIn.disabled = true;
             document.getElementById("sign-in-email").value = null;
             document.getElementById("sign-in-password").value = null;
 
@@ -108,6 +110,7 @@ function collapseSignUpElements(){
             document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
             document.getElementById("btn-create-user").innerText = "Sign Up";
             document.getElementById("btn-sign-in").disabled = false;
+            document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
         });
     }
 }
@@ -147,12 +150,10 @@ function signInEmployee(e) {
                         buttonBreakResume.disabled = true;
                         buttonBreakResume.innerText = "Take Break";
                         buttonClockInOut.innerText = "Clock Out";
-                        buttonClockInOut.style.color = "#000";
-                        buttonClockInOut.style.backgroundColor = "";
+                        buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
                     } else if(document.getElementById("btn-break-resume")) {
                         buttonClockInOut.innerText = "Clock Out";
-                        buttonClockInOut.style.color = "#000";
-                        buttonClockInOut.style.backgroundColor = "";
+                        buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
                     }
                 } else {
                     document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
@@ -229,7 +230,7 @@ function removeDOMElementsOnSignIn(){
     document.getElementById("div-signin-inputs").remove();
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
-    buttonSignIn.style.cssText = "width: 100px";
+    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF";
     document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
 }
 
@@ -242,7 +243,7 @@ function addSignOutBtnOnReSignInEmployee(){
 
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
-    buttonSignIn.style.cssText = "width: 100px";
+    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF";
 
     document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
 

@@ -64,9 +64,8 @@ function createTimeEvent(e) {
                 localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
                 localStorage.setItem("rendered", "Time Data");
                 renderNewTimeEvent(newTimeEvent);
-                e.target.innerText = "Clock Out";
-                e.target.style.color = "#000";
-                e.target.style.backgroundColor = "";
+                buttonClockInOut.innerText = "Clock Out";
+                buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
                 document.getElementById("td-event-hours").innerText = "00:00:00";
                 addRunningTime();
             })
@@ -109,8 +108,9 @@ function createTimeEvent(e) {
             clearTimeout(activateButtonTimeout);
             clearInterval(runningTimeInterval);
             currentTimeEvent.updateTimeEventOnDOM();
-            e.target.innerText = "Clock In";
-            e.target.style.color = "";
+            buttonClockInOut.innerText = "Clock In";
+            buttonClockInOut.style.removeProperty("color");
+            buttonClockInOut.style.removeProperty("background-color");
             buttonClockInOut.disabled = true;
             buttonBreakResume.disabled = false;
             buttonBreakResume.innerText = "X";
@@ -175,8 +175,7 @@ function takeBreakOrResumeWork(e) {
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Resume";
-            e.target.style.color = "#000";
-            e.target.style.backgroundColor = "";
+            e.target.style.cssText += "background-color: #9932CC; color: #FFF";
             document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
         })
     } else if(e.target.innerText === "Resume"){
@@ -206,7 +205,8 @@ function takeBreakOrResumeWork(e) {
 
             currentTimeEvent.updateTimeEventOnDOM();
             e.target.innerText = "Take Break";
-            e.target.style.color = "";
+            e.target.style.removeProperty("background-color");
+            e.target.style.removeProperty("color");
             e.target.disabled = true;
             document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
             localStorage.setItem('onBreak', false);

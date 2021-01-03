@@ -14,6 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     buttonSignIn = document.getElementById("btn-sign-in");
+    if(!isAuthenticated){
+        buttonSignIn.style.cssText += "background-color: #9932CC; color: #FFF";
+    }
+
     buttonCreateUser = document.getElementById("btn-create-user");
     addEmployeeForm = document.getElementById("form-create-employee");
     isTimeData = localStorage.getItem('rendered') === "Time Data";
@@ -45,6 +49,9 @@ document.addEventListener("DOMContentLoaded", () => {
 function stageSignUpSignIn(){
     stageCreateEmployeeForm();
     stageSignInButton();
+    if(!localStorage.getItem('jwt_token')){
+        document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
+    }
 }
 
 function updateRunningTime(currentTimeEvent){
@@ -89,8 +96,7 @@ function updateDOMOnReload(employeeId, editModeTimeEvent){
 
 function resetButtonClockInOut(){
     buttonClockInOut.innerText = "Clock Out";
-    buttonClockInOut.style.color = "#000";
-    buttonClockInOut.style.backgroundColor = "";
+    buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
 }
 
 function resetButtonBreakResume(){

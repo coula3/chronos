@@ -12,7 +12,7 @@ function createEmployeeNameTag(employee){
         const lastName = `${employee.lastName[0].toUpperCase() + employee.lastName.slice(1)}`;
 
         const employeeNameTag = `
-            <h2 id="employee-name" employee-data-id = ${employee.id} style="color:blue; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
+            <h2 id="employee-name" employee-data-id = ${employee.id} style="color: #0000CD; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
             <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${employee.position}</h4>
         `;
 
@@ -57,7 +57,7 @@ function renderWelcomeMsg(employeeObject){
     const firstName = `${employeeObject.firstName[0].toUpperCase() + employeeObject.firstName.slice(1)}`;
     const p = document.createElement("p");
     p.setAttribute("id", "p-new-user-msg");
-    p.style.cssText = "text-align:center; color:blue; font-size:20px; padding-top:10px; clear:both;";
+    p.style.cssText = "text-align:center; color:#0000CD; font-size:20px; padding-top:10px; clear:both;";
 
     if(employeeObject.timeEvents && employeeObject.timeEvents.some(event => event.time_out)){
         if(!document.getElementById("div-time-event")){
@@ -72,7 +72,7 @@ function renderWelcomeMsg(employeeObject){
     }
 
     if(document.getElementById("div-time-events") && document.getElementById("div-time-events").innerText === "")
-        { document.getElementById("div-time-events").style.backgroundColor = "#e6ffff"; };
+        { document.getElementById("div-time-events").style.backgroundColor = "#F5F5F5"; };
 }
 
 function createDivMenu(){
@@ -87,7 +87,7 @@ function appendButtonClockInOut() {
     buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
     buttonClockInOut.classList.add("button");
-    buttonClockInOut.style.cssText = "margin-left:15px; background-color: #0000ff; color: #FFF;";
+    buttonClockInOut.style.cssText = "margin-left:15px; background-color: #0000CD; color: #FFF;";
 
     document.getElementById("div-menu").appendChild(buttonClockInOut);
     appendButtonProfile();

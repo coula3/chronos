@@ -50,7 +50,7 @@ buttonProfile.addEventListener("click", (e) => {
         localStorage.setItem("rendered", "Time Data");
         buttonClockInOut.disabled = false;
         if(editModeTimeEvent){
-            buttonClockInOut.style.cssText += "margin-left: 15px";
+            buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #9932CC; color: #FFF";
         } else {
             buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
         }

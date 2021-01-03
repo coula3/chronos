@@ -10,7 +10,7 @@
 
 .profileCaption {
     font-weight: bold;
-    color: blue;
+    color: #0000CD;
     margin: 0px;
 }
 
@@ -26,13 +26,15 @@
 .profileButtonsDiv {
     margin-top: 20px;
     padding: 15px;
-    background-color: #e6daba;
+    background-color: #9932CC;
 }
 
 .profileButtons {
     padding: 3px 5px;
     width: 175px;
     font-size: 15px;
+    background-color: #0000CD;
+    color: #FFF;
 }
 
 #passwordCard {
@@ -70,4 +72,14 @@
 
 #profilePosition {
     width: 240px;
+}
+
+#btn-profile {
+    background-color: #9932CC;
+    color: #FFF;
+}
+
+#btn-admin {
+    background-color: #9932CC;
+    color: #FFF;
 }
