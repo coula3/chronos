@@ -95,7 +95,7 @@ function resetButtonBreakResume(){
     buttonClockInOut.style.backgroundColor = "";
 }
 
-function reloadProfile(){
+function addCommonElementsToDOM(){
     addSignOutBtnOnReSignInEmployee();
 
     const employee = instantiateEmployeeObject(localStorageData.employee);
@@ -106,6 +106,10 @@ function reloadProfile(){
     if(employee.position === "Manager"){
         appendButtonAdmin();
     }
+}
+
+function reloadProfile(){
+    addCommonElementsToDOM();
 
     appendEmployeeProfile();
     setSwitchToEditProfileCard();
