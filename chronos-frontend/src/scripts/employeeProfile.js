@@ -33,6 +33,8 @@ function capitalize(string){
 }
 
 buttonProfile.addEventListener("click", (e) => {
+    const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
+
     if(e.target.innerText === "Profile"){
         clearInterval(runningTimeInterval);
         localStorage.setItem("rendered", "Profile");
@@ -47,7 +49,11 @@ buttonProfile.addEventListener("click", (e) => {
         e.target.innerText = "Profile";
         localStorage.setItem("rendered", "Time Data");
         buttonClockInOut.disabled = false;
-        buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
+        if(editModeTimeEvent){
+            buttonClockInOut.style.cssText += "margin-left: 15px";
+        } else {
+            buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
+        }
 
         const employee = instantiateEmployeeObject(localStorageData.employee);
         renderEmployeeTimeEvents(employee);
