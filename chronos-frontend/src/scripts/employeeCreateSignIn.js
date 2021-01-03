@@ -185,15 +185,8 @@ function resetDOMOnSignOut(){
     buttonClockInOut.disabled = false;
     document.getElementById("span-message").innerText = "";
     clearTimeout(messageTimeout);
-    document.getElementById("div-signup-signin").remove();
-    document.getElementById("div-employee-tag-name").remove();
-    document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
-    document.getElementById("div-menu").remove();
-    document.getElementById("span-message").remove();
-    document.getElementById("events-container") && document.getElementById("events-container").remove();
-    document.getElementById("profileCard") && document.getElementById("profileCard").remove();
-    document.getElementById("editProfileCard") && document.getElementById("editProfileCard").remove();
-    document.getElementById("passwordCard") && document.getElementById("passwordCard").remove();
+
+    document.getElementById("main-container").innerHTML = "";
     document.getElementById("main-container").innerHTML += signInForm;
 }
 
