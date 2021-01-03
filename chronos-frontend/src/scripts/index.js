@@ -1,10 +1,10 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
-let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, hasTimeEvent;
+let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, isProfile, hasTimeEvent;
 const localStorageData = JSON.parse(localStorage.getItem('data'));
 const employeeId = localStorageData && localStorageData.employee.id;
 const isAuthenticated = localStorage.getItem('jwt_token');
-const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
+const editModeTimeEvent = localStorage.getItem('editModeTimeEvent');
 
 document.addEventListener("DOMContentLoaded", () => {
     const currentTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
     buttonSignIn = document.getElementById("btn-sign-in");
     buttonCreateUser = document.getElementById("btn-create-user");
     addEmployeeForm = document.getElementById("form-create-employee");
+    isProfile = localStorage.getItem('rendered') === "Profile";
     hasTimeEvent = isAuthenticated && localStorageData && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     appendCurrentTime();
@@ -28,6 +29,8 @@ document.addEventListener("DOMContentLoaded", () => {
             updateDOMOnReload(employeeId);
         } else if(isAuthenticated && editModeTimeEvent){
             updateDOMOnReload(employeeId, editModeTimeEvent);
+        } else if(isProfile){
+            reloadProfile();
         } else if(isAuthenticated){
             reSignInEmployee(localStorageData);
         }
@@ -90,4 +93,19 @@ function resetButtonBreakResume(){
     buttonBreakResume.disabled = true;
     buttonClockInOut.style.color = "#000";
     buttonClockInOut.style.backgroundColor = "";
+}
+
+function reloadProfile(){
+    addSignOutBtnOnReSignInEmployee();
+
+    const employee = instantiateEmployeeObject(localStorageData.employee);
+    const employeeNameTag = createEmployeeNameTag(employee);
+    createDivNameTag(employeeNameTag);
+    createDivMenu();
+
+    if(employee.position === "Manager"){
+        appendButtonAdmin();
+    }
+
+    appendEmployeeProfile();
 }
