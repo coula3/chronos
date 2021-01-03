@@ -1,6 +1,6 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
-let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, isProfile, isEditProfile, hasTimeEvent;
+let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, isProfile, isEditProfile, isChangePassword, hasTimeEvent;
 const localStorageData = JSON.parse(localStorage.getItem('data'));
 const employeeId = localStorageData && localStorageData.employee.id;
 const isAuthenticated = localStorage.getItem('jwt_token');
@@ -18,6 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
     addEmployeeForm = document.getElementById("form-create-employee");
     isProfile = localStorage.getItem('rendered') === "Profile";
     isEditProfile = localStorage.getItem('rendered') === "Edit Profile";
+    isChangePassword = localStorage.getItem('rendered') === "Change Password";
     hasTimeEvent = isAuthenticated && localStorageData && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     appendCurrentTime();
@@ -34,6 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
             reloadProfile();
         } else if(isEditProfile){
             reloadEditProfile();
+        } else if(isChangePassword){
+            reloadChangePassword();
         } else if(isAuthenticated){
             reSignInEmployee(localStorageData);
         }
@@ -124,4 +127,11 @@ function reloadEditProfile(){
 
     appendEmployeeProfile(generateEditProfileCard());
     editProfile();
+}
+
+function reloadChangePassword(){
+    addCommonElementsToDOM();
+
+    appendEmployeeProfile(passwordCard);
+    changePassword();
 }
