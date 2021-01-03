@@ -38,16 +38,19 @@ buttonProfile.addEventListener("click", (e) => {
         localStorage.setItem("rendered", "Profile");
 
         appendEmployeeProfile(generateProfileCard());
+        setSwitchToPasswordCard();
+        setSwitchToEditProfileCard();
         
     } else {
         divEmployeeProfile.remove();
         e.target.innerText = "Profile";
         localStorage.setItem("rendered", "Time Data");
-        location.reload();
-    }
+        buttonClockInOut.disabled = false;
+        buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
 
-    setSwitchToPasswordCard();
-    setSwitchToEditProfileCard();
+        const employee = instantiateEmployeeObject(localStorageData.employee);
+        renderEmployeeTimeEvents(employee);
+    }
 })
 
 function appendEmployeeProfile(card){
