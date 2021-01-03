@@ -38,10 +38,11 @@ buttonProfile.addEventListener("click", (e) => {
         localStorage.setItem("rendered", "Profile");
 
         appendEmployeeProfile(generateProfileCard());
+
         setSwitchToPasswordCard();
         setSwitchToEditProfileCard();
-        
     } else {
+        divEmployeeProfile.innerHTML = "";
         divEmployeeProfile.remove();
         e.target.innerText = "Profile";
         localStorage.setItem("rendered", "Time Data");
