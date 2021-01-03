@@ -387,7 +387,8 @@ function addNewTimeEventToTimeEvents(buttonUpdateTimeEvents){
         buttonClockInOut.disabled = false;
         buttonClockInOut.style.cssText += "color: #FFF; background-color: #0000FF";
         document.getElementById("div-time-event-container").remove();
-        updateDOM(employeeId);
+        // updateDOM(employeeId);
+        localStorage.removeItem('newTimeEvent');
     });
 }
 
@@ -412,6 +413,7 @@ function deleteTimeEvent(timeEventId){
                     buttonClockInOut.style.color = "#FFF";
                     localStorage.setItem('runningTimeStarted', false);
                     !hasTimeEvent && localStorage.removeItem("rendered");
+                    localStorage.removeItem('newTimeEvent');
                     localStorage.removeItem('selfTimeout');
             } else {
                 console.log(json.message);
