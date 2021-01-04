@@ -69,16 +69,17 @@ buttonProfile.addEventListener("click", (e) => {
         .then(response => response.json())
         .then(data => {
             const employee = instantiateEmployeeObject(data.employee);
+
             renderEmployeeTimeEvents(employee);
 
             if(JSON.parse(localStorage.getItem('editModeTimeEvent'))){
-                const newTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'))
+                const newTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
 
                 if(newTimeEvent.break_start && newTimeEvent.break_end){
                     resetButtonBreakResume();
-                    resetButtonClockInOut()
-                    addRunningTime(newTimeEvent);
+                    resetButtonClockInOut();
                 }
+                addRunningTime(newTimeEvent);
             }
         })
     }
