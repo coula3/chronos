@@ -456,7 +456,11 @@ function deleteTimeEvent(timeEventId){
                     buttonClockInOut.style.backgroundColor = "#0000ff";
                     buttonClockInOut.style.color = "#FFF";
                     localStorage.setItem('runningTimeStarted', false);
-                    !hasTimeEvent && localStorage.removeItem("rendered");
+
+                    if(JSON.parse(localStorage.getItem('data')).employee.time_events.length === 1){
+                        localStorage.setItem("rendered", "New User");
+                    }
+
                     localStorage.removeItem('newTimeEvent');
                     localStorage.removeItem('selfTimeout');
             } else {
