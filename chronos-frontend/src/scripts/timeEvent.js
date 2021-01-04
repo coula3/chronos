@@ -80,7 +80,7 @@ function createTimeEvent(e) {
         const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id");
         let breakEnd;
 
-        if(!!document.getElementById("td-event-break-start").innerText && !document.getElementById("td-event-break-end").innerText) {
+        if(!!document.getElementById("td-event-break-start").innerText && !!document.getElementById("td-event-break-end").innerText) {
             breakEnd = Date().slice(0, 24);
         } else {
             breakEnd = null;
