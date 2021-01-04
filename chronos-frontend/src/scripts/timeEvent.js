@@ -432,6 +432,7 @@ function addNewTimeEventToTimeEvents(buttonUpdateTimeEvents){
             renderEmployeeTimeEvents(employee);
 
             localStorage.removeItem('newTimeEvent');
+            JSON.parse(localStorage.getItem('selfTimeout')) && localStorage.removeItem('selfTimeout');
         })
     });
 }
