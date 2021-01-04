@@ -411,11 +411,28 @@ function renderNewTimeEvent(event) {
 
 function addNewTimeEventToTimeEvents(buttonUpdateTimeEvents){
     buttonUpdateTimeEvents.addEventListener("click", () => {
+        const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
         buttonClockInOut.disabled = false;
         buttonClockInOut.style.cssText += "color: #FFF; background-color: #0000FF";
         document.getElementById("div-time-event-container").remove();
-        // updateDOM(employeeId);
-        localStorage.removeItem('newTimeEvent');
+        document.getElementById("events-container").innerHTML = "";
+
+        fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const employee = instantiateEmployeeObject(data.employee);
+
+            renderEmployeeTimeEvents(employee);
+
+            localStorage.removeItem('newTimeEvent');
+        })
     });
 }
 
