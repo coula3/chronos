@@ -193,14 +193,13 @@ function resetDOMOnSignOut(){
 function persistToLocalStorageOnCreateEmployee(data){
     localStorage.setItem('jwt_token', data.jwt);
     localStorage.setItem('data', JSON.stringify(data));
-    // localStorage.setItem('employeeTimeEvents', 0);
 }
 
 function persistToLocalStorageOnSignIn(data){
     const newTimeEvent = data.employee.time_events.find(event => !event.time_out);
     localStorage.setItem('jwt_token', data.jwt);
-    // data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
     localStorage.setItem('data', JSON.stringify(data));
+
     if(newTimeEvent){
         localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
         localStorage.setItem('editModeTimeEvent', true);
