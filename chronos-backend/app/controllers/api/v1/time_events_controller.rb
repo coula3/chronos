@@ -17,7 +17,7 @@ class Api::V1::TimeEventsController < ApplicationController
         elsif time_event_params[:break_end] && !time_event_params[:time_out]
             time_event.update(break_end: time_event_params[:break_end]) ? (render json: time_event) : (render json: message)
         elsif time_event_params[:time_out]
-            time_event.update(time_out: time_event_params[:time_out]) ? (render json: time_event) : (render json: message)
+            close_new_time_event(time_event, message)
         end
     end
 
@@ -33,5 +33,14 @@ class Api::V1::TimeEventsController < ApplicationController
     private
     def time_event_params
         params.require(:time_event).permit(:id, :date, :break_start, :break_end, :time_out, :employee_id)
+    end
+
+    def close_new_time_event(time_event, message)
+        if time_event.update(time_out: time_event_params[:time_out])
+            @employee = TimeEvent.find(time_event_params[:id]).employee
+            render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
+        else
+            render json: message
+        end
     end
 end

@@ -100,9 +100,12 @@ function createTimeEvent(e) {
 
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
-        .then(timeEvent => {
+        .then(data => {
+            const timeEvent = getEmployeeLastTimeEvent(data);
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
+
             localStorage.setItem('editModeTimeEvent', false);
+            localStorage.setItem('data', JSON.stringify(data))
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
             clearTimeout(activateButtonTimeout);
@@ -141,6 +144,12 @@ function createTimeEvent(e) {
             }
         })
     }
+}
+
+function getEmployeeLastTimeEvent(data){
+    const sortedTimeEvents = [...data.employee.time_events].sort((a, b) => a.id - b.id);
+    const lastTimeEvent = sortedTimeEvents.pop();
+    return lastTimeEvent;
 }
 
 function takeBreakOrResumeWork(e) {
