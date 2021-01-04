@@ -34,6 +34,7 @@ function capitalize(string){
 
 buttonProfile.addEventListener("click", (e) => {
     const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
+    document.getElementById("span-message").innerText = "";
 
     if(e.target.innerText === "Profile"){
         clearInterval(runningTimeInterval);
@@ -55,11 +56,22 @@ buttonProfile.addEventListener("click", (e) => {
             buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
         }
 
-        const employee = instantiateEmployeeObject(JSON.parse(localStorage.getItem('data')).employee);
-        renderEmployeeTimeEvents(employee);
-    }
+        const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
 
-    document.getElementById("span-message").innerText = "";
+        fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            const employee = instantiateEmployeeObject(data.employee);
+            renderEmployeeTimeEvents(employee);
+        })
+    }
 })
 
 function appendEmployeeProfile(card){
