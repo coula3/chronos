@@ -1,6 +1,6 @@
 const CHRONOS_URL = "http://localhost:3000/api/v1";
 
-let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, isTimeData, isProfile, isEditProfile, isChangePassword, hasTimeEvent;
+let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, clockedOut, isNewUser, isTimeData, isProfile, isEditProfile, isChangePassword;
 const localStorageData = JSON.parse(localStorage.getItem('data'));
 const employeeId = localStorageData && localStorageData.employee.id;
 const isAuthenticated = localStorage.getItem('jwt_token');
@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     buttonCreateUser = document.getElementById("btn-create-user");
     addEmployeeForm = document.getElementById("form-create-employee");
+    isNewUser = localStorage.getItem('rendered') === "New User";
     isTimeData = localStorage.getItem('rendered') === "Time Data";
     isProfile = localStorage.getItem('rendered') === "Profile";
     isEditProfile = localStorage.getItem('rendered') === "Edit Profile";
     isChangePassword = localStorage.getItem('rendered') === "Change Password";
-    hasTimeEvent = isAuthenticated && localStorageData && JSON.parse(localStorage.getItem('data')).employee.time_events.length;
 
     appendCurrentTime();
     stageSignUpSignIn();
@@ -33,6 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
+            updateDOMOnReload(employeeId);
+        } else if(isNewUser){
             updateDOMOnReload(employeeId);
         } else if(isTimeData){
             updateDOMOnReload(employeeId, editModeTimeEvent);
