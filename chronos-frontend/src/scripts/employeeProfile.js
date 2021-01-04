@@ -75,7 +75,7 @@ buttonProfile.addEventListener("click", (e) => {
             if(JSON.parse(localStorage.getItem('editModeTimeEvent'))){
                 const newTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
 
-                if(newTimeEvent.break_start && newTimeEvent.break_end){
+                if((newTimeEvent.break_start || newTimeEvent.breakStart) && (newTimeEvent.break_end || newTimeEvent.breakEnd)){
                     resetButtonBreakResume();
                     resetButtonClockInOut();
                 }
