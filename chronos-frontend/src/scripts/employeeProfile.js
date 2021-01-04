@@ -73,7 +73,12 @@ buttonProfile.addEventListener("click", (e) => {
 
             if(JSON.parse(localStorage.getItem('editModeTimeEvent'))){
                 const newTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'))
-                addRunningTime(newTimeEvent);
+
+                if(newTimeEvent.break_start && newTimeEvent.break_end){
+                    resetButtonBreakResume();
+                    resetButtonClockInOut()
+                    addRunningTime(newTimeEvent);
+                }
             }
         })
     }
