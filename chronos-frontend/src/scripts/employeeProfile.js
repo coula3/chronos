@@ -70,6 +70,11 @@ buttonProfile.addEventListener("click", (e) => {
         .then(data => {
             const employee = instantiateEmployeeObject(data.employee);
             renderEmployeeTimeEvents(employee);
+
+            if(JSON.parse(localStorage.getItem('editModeTimeEvent'))){
+                const newTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'))
+                addRunningTime(newTimeEvent);
+            }
         })
     }
 })
