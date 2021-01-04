@@ -58,6 +58,8 @@ buttonProfile.addEventListener("click", (e) => {
         const employee = instantiateEmployeeObject(JSON.parse(localStorage.getItem('data')).employee);
         renderEmployeeTimeEvents(employee);
     }
+
+    document.getElementById("span-message").innerText = "";
 })
 
 function appendEmployeeProfile(card){
