@@ -16,10 +16,10 @@ function generateEditProfileCard(){
         <h2 class="profileHeader">Edit Profile</h2>
         <form id="editProfileForm">
             <p class="profileCaption">First name</p>
-            <input id="profileFirstName" class="editProfileInputs" type="text" value=${localStorageData.employee.first_name}></input>
+            <input id="profileFirstName" class="editProfileInputs" type="text" value=${capitalize(localStorageData.employee.first_name)}></input>
 
             <p class="profileCaption">Last name</p>
-            <input id="profileLastName" class="editProfileInputs" type="text" value=${localStorageData.employee.last_name}></input>
+            <input id="profileLastName" class="editProfileInputs" type="text" value=${capitalize(localStorageData.employee.last_name)}></input>
 
             <p class="profileCaption">Position</p>
                 <select type="select" id="profilePosition" class="editProfileInputs" name="position">
