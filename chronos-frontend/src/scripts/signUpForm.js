@@ -7,7 +7,7 @@ function appendEmployeeFormElements(){
 
     const positionOptions = positionList.map(position => {
         const optionValue = position !== "--choose your position--" ? position : "";
-        return  `<option value=${optionValue}>${position}</option>`;
+        return  `<option value="${optionValue}">${position}</option>`;
     });
 
     const formElements = `
