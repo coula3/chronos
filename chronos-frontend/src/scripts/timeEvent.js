@@ -32,6 +32,7 @@ buttonClockInOut.addEventListener("click", (e) => {
 
 function createTimeEvent(e) {
     const employeeId = document.querySelector("#employee-name").getAttribute("employee-data-id");
+
     if(e.target.innerText === "Clock In") {
         if(parseInt(Date().slice(16,18)) >= 22 || parseInt(Date().slice(16,18)) <= 4){
             renderMessage("You are not authorized to clock in at this time. Please contact your supervisor for assistance");
@@ -44,7 +45,7 @@ function createTimeEvent(e) {
                     break_end: null,
                     employee_id: employeeId
                 }
-            }
+            };
 
             const configObj = {
                 method: "POST",
@@ -60,13 +61,17 @@ function createTimeEvent(e) {
             .then(response => response.json())
             .then(timeEvent => {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
+
                 localStorage.setItem('editModeTimeEvent', true);
                 localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
                 localStorage.setItem("rendered", "Time Data");
+
                 renderNewTimeEvent(newTimeEvent);
+
                 buttonClockInOut.innerText = "Clock Out";
                 buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
                 document.getElementById("td-event-hours").innerText = "00:00:00";
+
                 addRunningTime(newTimeEvent);
             })
         }
@@ -110,7 +115,9 @@ function createTimeEvent(e) {
 
             clearTimeout(activateButtonTimeout);
             clearInterval(runningTimeInterval);
+
             currentTimeEvent.updateTimeEventOnDOM();
+
             buttonClockInOut.innerText = "Clock In";
             buttonClockInOut.style.removeProperty("color");
             buttonClockInOut.style.removeProperty("background-color");
@@ -132,7 +139,9 @@ function createTimeEvent(e) {
             buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
             buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 6px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
             document.getElementById("div-time-event-buttons").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
+
             addNewTimeEventToTimeEvents(buttonUpdateTimeEvents);
+
             localStorage.setItem('runningTimeStarted', false);
             localStorage.getItem('onBreak') && localStorage.setItem('onBreak', false);
 
@@ -156,7 +165,6 @@ function takeBreakOrResumeWork(e) {
     const timeEventId = document.querySelector("#div-time-event").getAttribute("event-data-id");
 
     if(e.target.innerText === "Take Break") {
-        
         const bodyObject = {
             time_event: {
                 id: timeEventId,
@@ -177,12 +185,13 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id)
+
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
             localStorage.setItem('onBreak', true);
 
             currentTimeEvent.updateTimeEventOnDOM();
+
             e.target.innerText = "Resume";
             e.target.style.cssText += "background-color: #9932CC; color: #FFF";
             document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
@@ -208,17 +217,18 @@ function takeBreakOrResumeWork(e) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, configObj)
         .then(response => response.json())
         .then(timeEvent => {
-
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
+
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
+            localStorage.setItem('onBreak', false);
 
             currentTimeEvent.updateTimeEventOnDOM();
+
             e.target.innerText = "Take Break";
             e.target.style.removeProperty("background-color");
             e.target.style.removeProperty("color");
             e.target.disabled = true;
             document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
-            localStorage.setItem('onBreak', false);
         })
     } else {
         deleteTimeEvent(timeEventId);
@@ -231,10 +241,10 @@ function renderEmployeeTimeEvents(employeeObject) {
     const employeeTimeEvents = [];
 
     for(const event of timeEvents){
-        employeeTimeEvents.push(new TimeEvent(event.id, event.date, event.time_out, event.break_start, event.break_end, event.employee_id))
+        employeeTimeEvents.push(new TimeEvent(event.id, event.date, event.time_out, event.break_start, event.break_end, event.employee_id));
     }
 
-    const closedtimeEvents = employeeTimeEvents.filter((e)=>{ return e.timeOut});
+    const closedtimeEvents = employeeTimeEvents.filter((e) => { return e.timeOut});
     const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
     const openTimeEvent = employeeTimeEvents.filter((e) => { return !e.timeOut });
 
@@ -380,6 +390,7 @@ function renderNewTimeEvent(event) {
     if(document.getElementById("td-event-break-start").innerText) {
         buttonBreakResume.disabled = false;
         buttonBreakResume.innerText = "Resume";
+
         buttonBreakResume.addEventListener("click", (e) => {
             takeBreakOrResumeWork(e);
         })
@@ -389,6 +400,7 @@ function renderNewTimeEvent(event) {
             buttonBreakResume.style.backgroundColor = "#008000";
             buttonBreakResume.style.color = "#FFF";
             localStorage.setItem('selfTimeout', true);
+
             buttonBreakResume.addEventListener("click", (e) => {
                 takeBreakOrResumeWork(e);
             })
@@ -409,7 +421,7 @@ function addNewTimeEventToTimeEvents(buttonUpdateTimeEvents){
 function deleteTimeEvent(timeEventId){
     const message = confirm("Time record will be deleted.");
 
-    if (message === true) {
+    if(message === true) {
         fetch(`${CHRONOS_URL}/time_events/${timeEventId}`, {
             method: "DELETE",
             headers: {
