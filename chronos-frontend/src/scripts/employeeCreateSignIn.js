@@ -193,13 +193,13 @@ function resetDOMOnSignOut(){
 function persistToLocalStorageOnCreateEmployee(data){
     localStorage.setItem('jwt_token', data.jwt);
     localStorage.setItem('data', JSON.stringify(data));
-    localStorage.setItem('employeeTimeEvents', 0);
+    // localStorage.setItem('employeeTimeEvents', 0);
 }
 
 function persistToLocalStorageOnSignIn(data){
     const newTimeEvent = data.employee.time_events.find(event => !event.time_out);
     localStorage.setItem('jwt_token', data.jwt);
-    data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
+    // data.employee.time_events.length === 0 && localStorage.setItem('employeeTimeEvents', 0);
     localStorage.setItem('data', JSON.stringify(data));
     if(newTimeEvent){
         localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
@@ -209,7 +209,7 @@ function persistToLocalStorageOnSignIn(data){
     const timeEventInLocalStorage = JSON.parse(localStorage.getItem('newTimeEvent'));
     const onBreak = timeEventInLocalStorage && timeEventInLocalStorage.break_start && !timeEventInLocalStorage.break_end;
     onBreak && localStorage.setItem('onBreak', true);
-    data.employee.time_events[0] && localStorage.setItem("rendered", "Time Data");
+    data.employee.time_events[0] ? localStorage.setItem("rendered", "Time Data") : localStorage.setItem("rendered", "New User");
 }
 
 function reSignInEmployee(data){
