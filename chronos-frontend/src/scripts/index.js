@@ -30,7 +30,10 @@ document.addEventListener("DOMContentLoaded", () => {
     stageSignUpSignIn();
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
+    checkToReRender();
+})
 
+function checkToReRender(){
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
             updateDOMOnReload(employeeId);
@@ -46,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
             reloadChangePassword();
         }
     }
-})
+}
 
 function stageSignUpSignIn(){
     stageCreateEmployeeForm();
