@@ -42,7 +42,9 @@ function checkPasswordEntries(){
     const confirmPassword = document.getElementById("confirmPassword");
     const msgColor = "red";
 
-    if((currentPassword.value && newPassword.value) && !confirmPassword.value){
+    if(currentPassword.value && (newPassword.value === confirmPassword.value) && newPassword.value.includes(" ")){
+        renderMessage("Password doesn't accept spaces", msgColor);
+    } else if((currentPassword.value && newPassword.value) && !confirmPassword.value){
         renderMessage("Please confirm new password", msgColor);
     } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
         renderMessage("Please provide current and new passwords", msgColor);
