@@ -73,7 +73,6 @@ function createTimeEvent(e) {
                 document.getElementById("td-event-hours").innerText = "00:00:00";
 
                 addRunningTime(newTimeEvent);
-                localStorage.setItem('runningTimeStarted', true);
             })
         }
     } else {
