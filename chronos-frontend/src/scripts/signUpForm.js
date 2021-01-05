@@ -1,4 +1,4 @@
-const employeePositions = ["Customer Associate", "Fresh Food Associate", "Manager", "Sales Associate", "Stocker"];
+const employeePositions = ["Cashier", "Cook", "Customer Associate", "Forklift Operator", "Fresh Food Associate", "Loader", "Manager", "Material Handler", "Receiving Associate", "Sales Associate", "Shipping Associate", "Stocker", "Warehouse Associate"];
 
 function appendEmployeeFormElements(){
     const defaultValue = "--choose your position--";
