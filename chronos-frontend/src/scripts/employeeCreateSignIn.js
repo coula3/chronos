@@ -99,19 +99,19 @@ function stageSignInButton(){
         signInEmployee(e);
     });
 
-    document.getElementById('sign-in-email') && document.getElementById('sign-in-email').addEventListener('focus', () => collapseSignUpElements());
+    const signInEmailInput = document.getElementById("sign-in-email");
+
+    signInEmailInput && signInEmailInput.addEventListener('focus', (e) => {
+        collapseSignUpElements();
+    });
 }
 
 function collapseSignUpElements(){
-    const signInEmailInput = document.getElementById("sign-in-email");
-
-    if(signInEmailInput) {
-        signInEmailInput.addEventListener("click", () => {
-            document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
-            document.getElementById("btn-create-user").innerText = "Sign Up";
-            document.getElementById("btn-sign-in").disabled = false;
-            document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
-        });
+    if(document.getElementById("btn-create-user").innerText === "Submit") {
+        document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
+        document.getElementById("btn-create-user").innerText = "Sign Up";
+        document.getElementById("btn-sign-in").disabled = false;
+        document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
     }
 }
 
