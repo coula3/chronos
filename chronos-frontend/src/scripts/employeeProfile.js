@@ -42,6 +42,7 @@ buttonProfile.addEventListener("click", (e) => {
         localStorage.setItem("rendered", "Profile");
 
         divEmployeeProfile.innerHTML = "";
+        document.getElementById("events-container").remove();
         appendEmployeeProfile(generateProfileCard());
 
         setSwitchToPasswordCard();
