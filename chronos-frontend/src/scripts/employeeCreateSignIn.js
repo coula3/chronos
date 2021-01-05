@@ -187,6 +187,7 @@ function resetDOMOnSignOut(){
     document.getElementById("span-message").innerText = "";
     clearTimeout(messageTimeout);
 
+    appendImageOfWorkers();
     document.getElementById("main-container").innerHTML = "";
     document.getElementById("main-container").innerHTML += signInForm;
 }
