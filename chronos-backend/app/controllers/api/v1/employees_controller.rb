@@ -27,7 +27,7 @@ class Api::V1::EmployeesController < ApplicationController
             if @employee && @employee.authenticate(employee_params[:password]) && @employee.update(password: employee_params[:newPassword])
                 render json: { employee: EmployeeSerializer.new(@employee) }, status: :ok
             else
-                render json: { message: @employee.errors.full_messages.join}
+                render json: { message: "Invalid current password"}
             end
         else
             if @employee.update(employee_params)
