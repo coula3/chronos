@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const currentTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
 
     if(!isAuthenticated){
+        const imageDiv = document.getElementById("workers-image-container");
+        imageDiv.style.cssText = "width: 100%; height: 600px; background-size: 100% 100%; background-repeat: no-repeat; background-image: url('images/workers.png')";
+
         document.getElementById("main-container").innerHTML += signInForm;
     }
 
