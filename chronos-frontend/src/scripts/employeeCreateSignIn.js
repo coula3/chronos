@@ -226,7 +226,7 @@ function removeDOMElementsOnSignIn(){
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
     buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF";
-    document.getElementById("div-signin").style.cssText = "padding: 0px 0px 0px 15px; border: none; float: right;";
+    document.getElementById("div-signin").style.cssText = "margin-right: 0px; padding: 0px 0px 0px 15px; border: none; float: right;";
     document.getElementById("workers-image-container").style.backgroundImage = "";
 }
 
