@@ -1,6 +1,4 @@
-let counter = 0;
-let seconds;
-let runningTimeInterval;
+let counter = 0, seconds, runningTimeInterval;
 
 function appendCurrentTime(){
     const spanTime = document.createElement("span");
