@@ -168,6 +168,7 @@ function signInEmployee(e) {
             disableButtonCreateUserSubmit(e);
         }
     } else {
+        clearTimeout(activateButtonTimeout);
         clearInterval(runningTimeInterval);
         localStorage.clear();
 

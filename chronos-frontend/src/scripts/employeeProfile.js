@@ -37,6 +37,7 @@ buttonProfile.addEventListener("click", (e) => {
     document.getElementById("span-message").innerText = "";
 
     if(e.target.innerText === "Profile"){
+        clearTimeout(activateButtonTimeout);
         clearInterval(runningTimeInterval);
         localStorage.setItem("rendered", "Profile");
 
