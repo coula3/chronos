@@ -13,15 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
         appendImageOfWorkers();
 
         document.getElementById("main-container").innerHTML += signInForm;
-    }
 
-    buttonSignIn = document.getElementById("btn-sign-in");
-    if(!isAuthenticated){
+        buttonSignIn = document.getElementById("btn-sign-in");
         buttonSignIn.style.cssText += "background-color: #9932CC; color: #FFF";
     }
 
     buttonCreateUser = document.getElementById("btn-create-user");
     addEmployeeForm = document.getElementById("form-create-employee");
+
     isNewUser = localStorage.getItem('rendered') === "New User";
     isTimeData = localStorage.getItem('rendered') === "Time Data";
     isProfile = localStorage.getItem('rendered') === "Profile";
