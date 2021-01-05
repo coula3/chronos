@@ -62,22 +62,16 @@ function getShift(timeIn){
 }
 
 function addRunningTime(currentTimeEvent){
-    if(!currentTimeEvent){
-        runningTimeInterval = setInterval(() => {
-            seconds = counter += 1;
-            document.getElementById("td-event-hours").innerText = getRunningTime(seconds);
-            localStorage.setItem('runningTimeStarted', true);
-        }, 1000);
-    } else {
-        const elapseTime = getElapseTime(currentTimeEvent);
+    const elapseTime = getElapseTime(currentTimeEvent);
 
-        counter = Math.round(elapseTime / 1000);
+    counter = Math.round(elapseTime / 1000);
 
-        runningTimeInterval = setInterval(() => {
-            seconds = counter += 1;
-            document.getElementById("td-event-hours").innerText = getRunningTime(seconds);
-        }, 1000);
-    }
+    runningTimeInterval = setInterval(() => {
+        seconds = counter += 1;
+        document.getElementById("td-event-hours").innerText = getRunningTime(seconds);
+        localStorage.setItem('runningTimeStarted', true);
+    }, 1000);
+
 }
 
 function getElapseTime(timeEvent){
