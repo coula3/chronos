@@ -3,6 +3,11 @@ const buttonProfile = document.createElement("button");
 const spanMsg = document.createElement("span");
 let messageTimeout;
 
+function appendImageOfWorkers(){
+    const imageDiv = document.getElementById("workers-image-container");
+    imageDiv.style.cssText = "width: 100%; height: 600px; background-size: 100% 100%; background-repeat: no-repeat; background-image: url('images/workers.png')";
+}
+
 function instantiateEmployeeObject(employeeObject){
     return new Employee(employeeObject.id, employeeObject.first_name, employeeObject.last_name, employeeObject.position, employeeObject.email, employeeObject.time_events);
 }
