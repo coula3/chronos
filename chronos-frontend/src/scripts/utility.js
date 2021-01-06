@@ -127,3 +127,16 @@ function createDivEventsContainer(){
     divEventsContainer.style.cssText = "clear: both";
     return divEventsContainer;
 }
+
+function capitalize(string){
+    const stringToArray = string.split("-");
+    const toUpdateString = stringToArray.some(string => string[0] === string[0].toLowerCase());
+
+    if(toUpdateString){
+        const newArray = stringToArray.map(str => str[0].toUpperCase() + str.slice(1));
+
+        return newArray.length === 1 ? newArray[0] : newArray.join("-");
+    } else {
+        return string;
+    }
+}

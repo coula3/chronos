@@ -28,10 +28,6 @@ function generateProfileCard(){
     }
 }
 
-function capitalize(string){
-    return string[0].toUpperCase() + string.slice(1);
-}
-
 buttonProfile.addEventListener("click", (e) => {
     const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
     document.getElementById("span-message").innerText = "";
