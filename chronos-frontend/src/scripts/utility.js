@@ -13,8 +13,8 @@ function instantiateEmployeeObject(employeeObject){
 }
 
 function createEmployeeNameTag(employee){
-        const firstName = `${employee.firstName[0].toUpperCase() + employee.firstName.slice(1)}`;
-        const lastName = `${employee.lastName[0].toUpperCase() + employee.lastName.slice(1)}`;
+        const firstName = `${capitalize(employee.firstName)}`;
+        const lastName = `${capitalize(employee.lastName)}`;
 
         const employeeNameTag = `
             <h2 id="employee-name" employee-data-id = ${employee.id} style="color: #0000CD; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
@@ -59,7 +59,7 @@ function addColorToMessage(spanMsg, msgColor){
 }
 
 function renderWelcomeMsg(employeeObject){
-    const firstName = `${employeeObject.firstName[0].toUpperCase() + employeeObject.firstName.slice(1)}`;
+    const firstName = capitalize(employeeObject.firstName);
     const p = document.createElement("p");
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:#0000CD; font-size:18px; padding-top:10px; clear:both;";

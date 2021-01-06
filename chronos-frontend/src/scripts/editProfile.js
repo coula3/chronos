@@ -108,7 +108,7 @@ function updateEmployeeTag(oldEmployeeData, newEmployeeData){
     const diffKeys = checkUpdateChanges(oldEmployeeData, newEmployeeData);
 
     if(diffKeys.includes("first_name") || diffKeys.includes("last_name")){
-        document.getElementById("employee-name").innerText = `${newEmployeeData.first_name} ${newEmployeeData.last_name}`;
+        document.getElementById("employee-name").innerText = `${capitalize(newEmployeeData.first_name)} ${capitalize(newEmployeeData.last_name)}`;
     }
 
     if(diffKeys.includes("position")){
