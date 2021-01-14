@@ -100,9 +100,18 @@ function stageSignInButton(){
     });
 
     const signInEmailInput = document.getElementById("sign-in-email");
+    const signInPasswordInput = document.getElementById("sign-in-password");
 
     signInEmailInput && signInEmailInput.addEventListener('focus', (e) => {
-        collapseSignUpElements();
+        if(document.getElementById("first-name")){
+            collapseSignUpElements();
+        };
+    });
+
+    signInPasswordInput && signInPasswordInput.addEventListener('focus', (e) => {
+        if(document.getElementById("first-name")){
+            collapseSignUpElements();
+        }
     });
 }
 
