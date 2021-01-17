@@ -72,6 +72,8 @@ function updateProfile(){
     const profilePosition = document.getElementById("profilePosition");
     const profileEmail = document.getElementById("profileEmail");
 
+    const proceedToUpate = checkChangesBeforeFetchRequest(profileFirstName, profileLastName, profilePosition, profileEmail);
+
     const bodyObj = { employee: {
             first_name: profileFirstName.value,
             last_name: profileLastName.value,
@@ -80,28 +82,38 @@ function updateProfile(){
         }
     };
 
-    fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
-        },
-        body: JSON.stringify(bodyObj)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if(data.employee){
-            const oldEmployeeData = getOldEmployeeData();
-            localStorage.setItem('data', JSON.stringify(data));
-            updateEmployeeTag(oldEmployeeData, data.employee);
-            switchEditProfileToProfile();
-            renderMessage("Profile successfully updated", msgColor="green");
-        } else {
-            document.getElementById("span-message").innerText = "";
-            cleanUpEditProfileErrors();
-            renderEditProfileErrors(data.messages);
-        }
-    })
+    if(proceedToUpate){
+        fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
+            },
+            body: JSON.stringify(bodyObj)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.employee){
+                const oldEmployeeData = getOldEmployeeData();
+                localStorage.setItem('data', JSON.stringify(data));
+                updateEmployeeTag(oldEmployeeData, data.employee);
+                switchEditProfileToProfile();
+                renderMessage("Profile successfully updated", msgColor="green");
+            } else {
+                document.getElementById("span-message").innerText = "";
+                cleanUpEditProfileErrors();
+                renderEditProfileErrors(data.messages);
+            }
+        })
+    } else {
+        switchEditProfileToProfile();
+        renderMessage("No change to profile", msgColor="green");
+    }
+}
+
+function checkChangesBeforeFetchRequest(profileFirstName, profileLastName, profilePosition, profileEmail){
+    const oldEmployeeData = getOldEmployeeData();
+    return profileFirstName.value !== oldEmployeeData.first_name || profileLastName.value !== oldEmployeeData.last_name || profilePosition.value !== oldEmployeeData.position || profileEmail.value !== oldEmployeeData.email;
 }
 
 function updateEmployeeTag(oldEmployeeData, newEmployeeData){
