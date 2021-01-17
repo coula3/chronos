@@ -112,21 +112,6 @@ function resetButtonBreakResume(){
     buttonClockInOut.style.backgroundColor = "";
 }
 
-function addCommonElementsToDOM(){
-    addSignOutBtnOnReSignInEmployee();
-
-    const employee = instantiateEmployeeObject(localStorageData.employee);
-    const employeeNameTag = createEmployeeNameTag(employee);
-    createDivNameTag(employeeNameTag);
-    createDivMenu();
-
-    if(employee.position === "Manager"){
-        appendButtonAdmin();
-    }
-
-    clearInterval(runningTimeInterval);
-}
-
 function reloadProfile(){
     addCommonElementsToDOM();
 
@@ -147,4 +132,18 @@ function reloadChangePassword(){
 
     appendEmployeeProfile(passwordCard);
     changePassword();
+}
+
+function addCommonElementsToDOM(){
+    addSignOutBtnOnReSignInEmployee();
+
+    const employee = instantiateEmployeeObject(localStorageData.employee);
+    const employeeNameTag = createEmployeeNameTag(employee);
+    createDivNameTag(employeeNameTag);
+    createDivMenu();
+
+    if(employee.position === "Manager"){
+        appendButtonAdmin();
+    }
+    clearInterval(runningTimeInterval);
 }
