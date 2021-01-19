@@ -31,10 +31,10 @@ document.addEventListener("DOMContentLoaded", () => {
     stageSignUpSignIn();
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
-    checkToReRender();
+    checkBeforeReRender();
 })
 
-function checkToReRender(){
+function checkBeforeReRender(){
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
             updateDOMOnReload(employeeId);
