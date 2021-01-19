@@ -245,7 +245,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     }
 
     const closedtimeEvents = employeeTimeEvents.filter((e) => { return e.timeOut});
-    const renderedTimeEvents = closedtimeEvents.sort((a, b) => a.id - b.id ).slice(-5);
+    const renderedTimeEvents = [...closedtimeEvents].sort((a, b) => a.id - b.id ).slice(-5);
     const openTimeEvent = employeeTimeEvents.filter((e) => { return !e.timeOut });
 
     const divTimeEvents = document.createElement("div");
