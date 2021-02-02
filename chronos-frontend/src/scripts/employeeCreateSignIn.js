@@ -41,6 +41,7 @@ function stageCreateEmployeeForm(){
             buttonSignIn.style.removeProperty("color");
             buttonSignIn.style.removeProperty("background-color");
             buttonSignIn.disabled = true;
+            buttonSignIn.style.cssText += "cursor: not-allowed;";
             document.getElementById("sign-in-email").value = null;
             document.getElementById("sign-in-password").value = null;
 
@@ -120,7 +121,7 @@ function collapseSignUpElements(){
         document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
         document.getElementById("btn-create-user").innerText = "Sign Up";
         document.getElementById("btn-sign-in").disabled = false;
-        document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
+        document.getElementById("btn-sign-in").style.cssText = "background-color: #9932CC; color: #FFF";
     }
 }
 
