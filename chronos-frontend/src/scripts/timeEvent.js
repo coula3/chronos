@@ -349,7 +349,7 @@ function renderNewTimeEvent(event) {
         </thead>
         <tbody>
             <tr>
-                <td class="td-event" id="td-event-new" style="color:red; text-align:center"><span id="new-event">new</span></td>
+                <td class="td-event" id="td-event-new"><span id="new-event">new</span></td>
                 <td class="td-event" id="td-event-date">${event.date ? event.date.slice(0, 10) : ""}</td>
                 <td class="td-event" id="td-event-time-in" >${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-event" id="td-event-break-start" >${event.breakStart ? getTime(event.breakStart) : ""}</td>
