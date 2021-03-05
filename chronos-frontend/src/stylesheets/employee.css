@@ -71,6 +71,21 @@
     background-color: #fff;
 }
 
+#employee-name {
+    color: #0000CD;
+    padding-left: 10px;
+    margin: 20px 0px 0px 0px;
+    float: right;
+    clear: both;
+}
+
+#employee-position {
+    padding-left: 10px;
+    margin: 0;
+    float: right;
+    clear: both;
+}
+
 #profilePosition {
     width: 240px;
 }

@@ -17,8 +17,8 @@ function createEmployeeNameTag(employee){
         const lastName = `${capitalize(employee.lastName)}`;
 
         const employeeNameTag = `
-            <h2 id="employee-name" employee-data-id = ${employee.id} style="color: #0000CD; padding-left:10px; margin:20px 0px 0px 0px; float:right; clear:both">${firstName} ${lastName}</h2>
-            <h4 id="employee-position" style="padding-left:10px; margin:0px 0px 0px 0px; float:right; clear:both">${employee.position}</h4>
+            <h2 id="employee-name" employee-data-id = ${employee.id}>${firstName} ${lastName}</h2>
+            <h4 id="employee-position">${employee.position}</h4>
         `;
 
         return employeeNameTag;
