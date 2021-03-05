@@ -5,7 +5,7 @@ let messageTimeout;
 
 function appendImageOfWorkers(){
     const imageDiv = document.getElementById("workers-image-container");
-    imageDiv.style.cssText = "width: 100%; height: 600px; background-size: 100% 100%; background-repeat: no-repeat; background-image: url('images/workers.png')";
+    imageDiv.style.cssText = "width: 100%; height: 600px; background: url('images/workers.png') no-repeat bottom center/cover";
 }
 
 function instantiateEmployeeObject(employeeObject){
