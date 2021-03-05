@@ -29,7 +29,7 @@ function generateProfileCard(){
 }
 
 buttonProfile.addEventListener("click", (e) => {
-    const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
+    const isTimeEventOnEditMode = JSON.parse(localStorage.getItem('isTimeEventOnEditMode'));
     document.getElementById("span-message").innerText = "";
 
     if(e.target.innerText === "Profile"){
@@ -48,7 +48,7 @@ buttonProfile.addEventListener("click", (e) => {
         e.target.innerText = "Profile";
         localStorage.setItem("rendered", "Time Data");
         buttonClockInOut.disabled = false;
-        if(editModeTimeEvent){
+        if(isTimeEventOnEditMode){
             buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #9932CC; color: #FFF";
         } else {
             buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
@@ -70,12 +70,12 @@ buttonProfile.addEventListener("click", (e) => {
 
             renderEmployeeTimeEvents(employee);
 
-            if(JSON.parse(localStorage.getItem('editModeTimeEvent'))){
+            if(JSON.parse(localStorage.getItem('isTimeEventOnEditMode'))){
                 const newTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
 
                 if((newTimeEvent.break_start || newTimeEvent.breakStart) && (newTimeEvent.break_end || newTimeEvent.breakEnd)){
-                    resetButtonBreakResume();
-                    resetButtonClockInOut();
+                    resetBreakResumeButton();
+                    resetClockInOutButton();
                 }
                 addRunningTime(newTimeEvent);
             }

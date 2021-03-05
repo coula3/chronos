@@ -62,7 +62,7 @@ function createTimeEvent(e) {
             .then(timeEvent => {
                 const newTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
 
-                localStorage.setItem('editModeTimeEvent', true);
+                localStorage.setItem('isTimeEventOnEditMode', true);
                 localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
                 localStorage.setItem("rendered", "Time Data");
 
@@ -109,7 +109,7 @@ function createTimeEvent(e) {
             const timeEvent = getEmployeeLastTimeEvent(data);
             const currentTimeEvent = new TimeEvent(timeEvent.id, timeEvent.date, timeEvent.time_out, timeEvent.break_start, timeEvent.break_end, timeEvent.employee_id);
 
-            localStorage.setItem('editModeTimeEvent', false);
+            localStorage.setItem('isTimeEventOnEditMode', false);
             localStorage.setItem('data', JSON.stringify(data))
             localStorage.setItem('newTimeEvent', JSON.stringify(currentTimeEvent));
 
@@ -249,7 +249,7 @@ function renderEmployeeTimeEvents(employeeObject) {
     const openTimeEvent = employeeTimeEvents.filter((e) => { return !e.timeOut });
 
     const divTimeEvents = document.createElement("div");
-    divEventsContainer = createDivEventsContainer();
+    divEventsContainer = createEventsContainerDiv();
 
     divTimeEvents.setAttribute("id", "div-time-events");
 
@@ -367,7 +367,7 @@ function renderNewTimeEvent(event) {
     divTimeEventContainer.appendChild(divTimeEventButtons);
 
     if(!document.getElementById("events-container")){
-        divEventsContainer = createDivEventsContainer();
+        divEventsContainer = createEventsContainerDiv();
         document.getElementById("main-container").appendChild(divEventsContainer);
     }
 

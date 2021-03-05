@@ -72,7 +72,7 @@ function updateProfile(){
     const profilePosition = document.getElementById("profilePosition");
     const profileEmail = document.getElementById("profileEmail");
 
-    const proceedToUpate = checkChangesBeforeFetchRequest(profileFirstName, profileLastName, profilePosition, profileEmail);
+    const toProceedWithUpate = checkChangesBeforeFetchRequest(profileFirstName, profileLastName, profilePosition, profileEmail);
 
     const bodyObj = { employee: {
             first_name: profileFirstName.value,
@@ -82,7 +82,7 @@ function updateProfile(){
         }
     };
 
-    if(proceedToUpate){
+    if(toProceedWithUpate){
         fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
             method: "PATCH",
             headers: {
@@ -117,31 +117,31 @@ function checkChangesBeforeFetchRequest(profileFirstName, profileLastName, profi
 }
 
 function updateEmployeeTag(oldEmployeeData, newEmployeeData){
-    const diffKeys = checkUpdateChanges(oldEmployeeData, newEmployeeData);
+    const changedAttributes = checkChangedAttributes(oldEmployeeData, newEmployeeData);
 
-    if(diffKeys.includes("first_name") || diffKeys.includes("last_name")){
+    if(changedAttributes.includes("first_name") || changedAttributes.includes("last_name")){
         document.getElementById("employee-name").innerText = `${capitalize(newEmployeeData.first_name)} ${capitalize(newEmployeeData.last_name)}`;
     }
 
-    if(diffKeys.includes("position")){
+    if(changedAttributes.includes("position")){
         document.getElementById("employee-position").innerText = `${newEmployeeData.position}`;
     }
 }
 
-function checkUpdateChanges(oldEmployeeData, newEmployeeData){
-    const diffKeys = [];
+function checkChangedAttributes(oldEmployeeData, newEmployeeData){
+    const changedAttributes = [];
 
     if(oldEmployeeData.first_name !== newEmployeeData.first_name){
-        diffKeys.push("first_name");
+        changedAttributes.push("first_name");
     }
 
     if (oldEmployeeData.last_name !== newEmployeeData.last_name){
-        diffKeys.push("last_name");
+        changedAttributes.push("last_name");
     }
 
     if (oldEmployeeData.position !== newEmployeeData.position){
-        diffKeys.push("position");
+        changedAttributes.push("position");
     }
 
-    return diffKeys;
+    return changedAttributes;
 }

@@ -4,7 +4,7 @@ let buttonSignIn, buttonCreateUser, addEmployeeForm, breakStarted, breakEnded, c
 const localStorageData = JSON.parse(localStorage.getItem('data'));
 const employeeId = localStorageData && localStorageData.employee.id;
 const isAuthenticated = localStorage.getItem('jwt_token');
-const editModeTimeEvent = JSON.parse(localStorage.getItem('editModeTimeEvent'));
+const isTimeEventOnEditMode = JSON.parse(localStorage.getItem('isTimeEventOnEditMode'));
 
 document.addEventListener("DOMContentLoaded", () => {
     const currentTimeEvent = JSON.parse(localStorage.getItem('newTimeEvent'));
@@ -13,14 +13,12 @@ document.addEventListener("DOMContentLoaded", () => {
         appendImageOfWorkers();
 
         document.getElementById("main-container").innerHTML += signInForm;
-
         buttonSignIn = document.getElementById("btn-sign-in");
         buttonSignIn.style.cssText += "background-color: #9932CC; color: #FFF";
     }
 
     buttonCreateUser = document.getElementById("btn-create-user");
     addEmployeeForm = document.getElementById("form-create-employee");
-
     isNewUser = localStorage.getItem('rendered') === "New User";
     isTimeData = localStorage.getItem('rendered') === "Time Data";
     isProfile = localStorage.getItem('rendered') === "Profile";
@@ -31,17 +29,17 @@ document.addEventListener("DOMContentLoaded", () => {
     stageSignUpSignIn();
     getTimeEventStatus(currentTimeEvent);
     updateRunningTime(currentTimeEvent);
-    checkBeforeReRender();
+    checksBeforeDOMUpdateOrPageReloads();
 })
 
-function checkBeforeReRender(){
+function checksBeforeDOMUpdateOrPageReloads(){
     if(isAuthenticated){
         if(breakStarted && breakEnded && clockedOut){
             updateDOMOnReload(employeeId);
         } else if(isNewUser){
             updateDOMOnReload(employeeId);
         } else if(isTimeData){
-            updateDOMOnReload(employeeId, editModeTimeEvent);
+            updateDOMOnReload(employeeId, isTimeEventOnEditMode);
         } else if(isProfile){
             reloadProfile();
         } else if(isEditProfile){
@@ -55,6 +53,7 @@ function checkBeforeReRender(){
 function stageSignUpSignIn(){
     stageCreateEmployeeForm();
     stageSignInButton();
+
     if(!localStorage.getItem('jwt_token')){
         document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
     }
@@ -79,7 +78,7 @@ function getTimeEventStatus(currentTimeEvent){
     }
 }
 
-function updateDOMOnReload(employeeId, editModeTimeEvent){
+function updateDOMOnReload(employeeId, isTimeEventOnEditMode){
     fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
         method: "GET",
         headers: {
@@ -91,21 +90,21 @@ function updateDOMOnReload(employeeId, editModeTimeEvent){
     .then(response => response.json())
     .then(data => {
         reSignInEmployee(data);
-        if(editModeTimeEvent && breakEnded){
-            resetButtonBreakResume();
-            resetButtonClockInOut();
-        } else if(editModeTimeEvent){
-            resetButtonClockInOut();
+        if(isTimeEventOnEditMode && breakEnded){
+            resetBreakResumeButton();
+            resetClockInOutButton();
+        } else if(isTimeEventOnEditMode){
+            resetClockInOutButton();
         }
     })
 }
 
-function resetButtonClockInOut(){
+function resetClockInOutButton(){
     buttonClockInOut.innerText = "Clock Out";
     buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
 }
 
-function resetButtonBreakResume(){
+function resetBreakResumeButton(){
     buttonBreakResume.innerText = "Take Break";
     buttonBreakResume.disabled = true;
     buttonClockInOut.style.color = "#000";
@@ -114,7 +113,6 @@ function resetButtonBreakResume(){
 
 function reloadProfile(){
     addCommonElementsToDOM();
-
     appendEmployeeProfile(generateProfileCard());
     setSwitchToEditProfileCard();
     setSwitchToPasswordCard();
@@ -122,14 +120,12 @@ function reloadProfile(){
 
 function reloadEditProfile(){
     addCommonElementsToDOM();
-
     appendEmployeeProfile(generateEditProfileCard());
     editProfile();
 }
 
 function reloadChangePassword(){
     addCommonElementsToDOM();
-
     appendEmployeeProfile(passwordCard);
     changePassword();
 }
@@ -139,11 +135,13 @@ function addCommonElementsToDOM(){
 
     const employee = instantiateEmployeeObject(localStorageData.employee);
     const employeeNameTag = createEmployeeNameTag(employee);
-    createDivNameTag(employeeNameTag);
-    createDivMenu();
+
+    createNameTagDiv(employeeNameTag);
+    createMenuDiv();
 
     if(employee.position === "Manager"){
-        appendButtonAdmin();
+        appendAdminButton();
     }
+
     clearInterval(runningTimeInterval);
 }

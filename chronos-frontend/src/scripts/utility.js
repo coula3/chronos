@@ -24,13 +24,13 @@ function createEmployeeNameTag(employee){
         return employeeNameTag;
 }
 
-function disableButtonSignIn(e){
+function disableSignInButton(e){
     if(e.submitter.innerText === "Submit"){
         buttonSignIn.disabled = true;
     }
 }
 
-function disableButtonCreateUserSubmit(e){
+function disableCreateUserSubmitButton(e){
     if(e.target.innerText === "Sign In" && buttonCreateUser.innerText === "Submit"){
         buttonCreateUser.disabled = true;
     }
@@ -38,6 +38,7 @@ function disableButtonCreateUserSubmit(e){
 
 function renderMessage(message, msgColor) {
     clearTimeout(messageTimeout);
+
     spanMsg.innerText = "";
     spanMsg.innerText = message;
 
@@ -61,6 +62,7 @@ function addColorToMessage(spanMsg, msgColor){
 function renderWelcomeMsg(employeeObject){
     const firstName = capitalize(employeeObject.firstName);
     const p = document.createElement("p");
+
     p.setAttribute("id", "p-new-user-msg");
     p.style.cssText = "text-align:center; color:#0000CD; font-size:18px; padding-top:10px; clear:both;";
 
@@ -80,25 +82,27 @@ function renderWelcomeMsg(employeeObject){
         { document.getElementById("div-time-events").style.backgroundColor = "#F5F5F5"; };
 }
 
-function createDivMenu(){
+function createMenuDiv(){
     const divMenu = document.createElement("div");
+
     divMenu.setAttribute("id", "div-menu");
     divMenu.style.cssText = "float:right; margin:20px 0px 10px 0px; clear:both;";
     document.getElementById("div-employee-tag-name").after(divMenu);
-    appendButtonClockInOut();
+
+    appendClockInOutButton();
 }
 
-function appendButtonClockInOut() {
-    editModeTimeEvent ? buttonClockInOut.innerText = "Clock Out" : buttonClockInOut.innerText = "Clock In";
+function appendClockInOutButton() {
+    isTimeEventOnEditMode ? buttonClockInOut.innerText = "Clock Out" : buttonClockInOut.innerText = "Clock In";
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
     buttonClockInOut.classList.add("button");
     buttonClockInOut.style.cssText = "margin-left:15px; background-color: #0000CD; color: #FFF;";
-
     document.getElementById("div-menu").appendChild(buttonClockInOut);
-    appendButtonProfile();
+
+    appendProfileButton();
 }
 
-function appendButtonProfile(){
+function appendProfileButton(){
     buttonProfile.innerText = "Profile";
     buttonProfile.setAttribute("id", "btn-profile");
     buttonProfile.classList.add("button");
@@ -107,11 +111,10 @@ function appendButtonProfile(){
     appendMsgSpan();
 }
 
-function appendButtonAdmin() {
+function appendAdminButton() {
     buttonAdmin.innerText = "Admin";
     buttonAdmin.setAttribute("id", "btn-admin");
     buttonAdmin.classList.add("button");
-
     document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
 }
 
@@ -121,11 +124,13 @@ function appendMsgSpan(){
     document.getElementById("div-menu").after(spanMsg);
 }
 
-function createDivEventsContainer(){
-    const divEventsContainer = document.createElement("div");
-    divEventsContainer.setAttribute("id", "events-container");
-    divEventsContainer.style.cssText = "clear: both";
-    return divEventsContainer;
+function createEventsContainerDiv(){
+    const eventsContainerDiv = document.createElement("div");
+
+    eventsContainerDiv.setAttribute("id", "events-container");
+    eventsContainerDiv.style.cssText = "clear: both";
+
+    return eventsContainerDiv;
 }
 
 function capitalize(string){

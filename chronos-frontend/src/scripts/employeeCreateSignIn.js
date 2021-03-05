@@ -11,12 +11,12 @@ class Employee {
     renderEmployeeData() {
         const employeeNameTag = createEmployeeNameTag(this);
 
-        createDivNameTag(employeeNameTag);
+        createNameTagDiv(employeeNameTag);
 
-        createDivMenu();
+        createMenuDiv();
 
         if(this.position === "Manager"){
-            appendButtonAdmin();
+            appendAdminButton();
         }
 
         if(this.timeEvents){
@@ -87,7 +87,7 @@ function createEmployee(e) {
             } else {
                 cleanUpSignUpErrors();
                 renderSignUpErrors(data.messages)
-                disableButtonSignIn(e)
+                disableSignInButton(e)
             }
         })
         .catch(error => console.log(error))
@@ -168,14 +168,14 @@ function signInEmployee(e) {
                 } else {
                     document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
                     renderSignInErrors(data.message);
-                    disableButtonCreateUserSubmit(e);
+                    disableCreateUserSubmitButton(e);
                 }
             })
         } else {
             document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
             const message = "Please provide a valid email and password";
             renderSignInErrors(message);
-            disableButtonCreateUserSubmit(e);
+            disableCreateUserSubmitButton(e);
         }
     } else {
         clearTimeout(activateButtonTimeout);
@@ -195,9 +195,10 @@ function signInEmployee(e) {
 function resetDOMOnSignOut(){
     buttonClockInOut.disabled = false;
     document.getElementById("span-message").innerText = "";
-    clearTimeout(messageTimeout);
 
+    clearTimeout(messageTimeout);
     appendImageOfWorkers();
+
     document.getElementById("main-container").innerHTML = "";
     document.getElementById("main-container").innerHTML += signInForm;
 }
@@ -214,7 +215,7 @@ function persistToLocalStorageOnSignIn(data){
 
     if(newTimeEvent){
         localStorage.setItem('newTimeEvent', JSON.stringify(newTimeEvent));
-        localStorage.setItem('editModeTimeEvent', true);
+        localStorage.setItem('isTimeEventOnEditMode', true);
     }
 
     const timeEventInLocalStorage = JSON.parse(localStorage.getItem('newTimeEvent'));
@@ -250,7 +251,6 @@ function addSignOutBtnOnReSignInEmployee(){
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
     buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF";
-
     document.getElementById("div-signin").style.cssText = "margin-right: 0px; padding: 0px 0px 0px 15px; border: none; float: right;";
 
     buttonSignIn.addEventListener("click", (e) => {
@@ -259,7 +259,7 @@ function addSignOutBtnOnReSignInEmployee(){
     });
 }
 
-function createDivNameTag(employeeNameTag){
+function createNameTagDiv(employeeNameTag){
     divEmployeeNameTag = document.createElement("div");
     divEmployeeNameTag.setAttribute("id", "div-employee-tag-name");
     appendEmployeeNameTag(divEmployeeNameTag, employeeNameTag);
