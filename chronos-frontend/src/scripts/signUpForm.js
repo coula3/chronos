@@ -11,7 +11,7 @@ function appendEmployeeFormElements(){
     });
 
     const formElements = `
-        <div id="div-input-elements" style="display:inline-block">
+        <div id="div-input-elements">
             <input id="first-name" class="input" type="text" name="first-name" placeholder="first name" />
             <input id="last-name" class="input" type="text" name="last-name" placeholder="last name" />
             <select type="select" id="position" name="position">

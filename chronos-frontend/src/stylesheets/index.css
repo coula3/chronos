@@ -47,23 +47,25 @@ body {
 
 #div-signup-signin {
     padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 #div-signup {
     background: rgb(245, 245, 245, 0.85);
+    width: 315px;
     margin: 15px 15px 0px 0px;
     padding: 15px;
     border: solid 1px grey;
-    float: right;
-    clear: both;
 }
 
 #div-signin {
     background: rgb(245, 245, 245, 0.85);
+    width: 315px;
     margin: 15px 15px 0px 0px;
     padding: 15px;
     border: solid 1px grey;
-    float: right;
 }
 
 #btn-sign-in {
@@ -148,4 +150,23 @@ body {
 #app-branding {
     position: absolute;
     bottom: 10px;
+}
+
+@media (max-width: 500px) {
+    #div-signup-signin {
+        align-items: center;
+    }
+
+    #div-signin, #div-signup {
+        width: 75%;
+        margin-right: 0;
+    }
+
+    #sign-in-email, #sign-in-password, #btn-sign-in, #first-name, #last-name, #email, #password, #password-confirmation {
+        width: 95%;
+    }
+
+    #btn-sign-in, #position, #btn-create-user {
+        width: 100%;
+    }
 }
