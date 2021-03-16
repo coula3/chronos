@@ -1,3 +1,9 @@
+body {
+    font-family: Roboto, 'Droid Sans', Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0;
+}
+
 .wrapper {
     background: #F5F5F5;
     -moz-box-shadow: 0 0 10px rgba(0,0,0);
