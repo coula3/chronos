@@ -64,7 +64,7 @@ function renderWelcomeMsg(employeeObject){
     const p = document.createElement("p");
 
     p.setAttribute("id", "p-new-user-msg");
-    p.style.cssText = "text-align:center; color:#0000CD; font-size:18px; padding-top:10px; clear:both;";
+    p.style.cssText = "text-align:center; color:#0000CD; font-size:1.125rem; padding-top:10px; clear:both;";
 
     if(employeeObject.timeEvents && employeeObject.timeEvents.some(event => event.time_out)){
         if(!document.getElementById("div-time-event")){
@@ -120,7 +120,7 @@ function appendAdminButton() {
 
 function appendMsgSpan(){
     spanMsg.setAttribute("id", "span-message");
-    spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 16px; clear: both";
+    spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 1rem; clear: both";
     document.getElementById("div-menu").after(spanMsg);
 }
 

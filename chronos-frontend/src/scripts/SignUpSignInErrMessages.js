@@ -2,13 +2,13 @@ function renderSignInErrors(message) {
     const spanSignInMsg = document.createElement("span")
     spanSignInMsg.innerText = message;
     spanSignInMsg.setAttribute("id", "spanSignInMsg");
-    spanSignInMsg.style.cssText = "display: block; font-size: 14px; color: red; text-align: center;";
+    spanSignInMsg.style.cssText = "display: block; font-size: 0.875rem; color: red; text-align: center;";
     !document.getElementById("spanSignInMsg") && document.getElementById("div-signin-inputs").appendChild(spanSignInMsg);
 }
 
 function renderSignUpErrors(messages) {
     let firstNameErr, lastNameErr, positionErr, emailErr, passwordErr;
-    const spanStyles = "display: block; margin-bottom: 5px; font-size: 12px; color: red; text-align: center;";
+    const spanStyles = "display: block; margin-bottom: 5px; font-size: 0.75rem; color: red; text-align: center;";
 
     messages.forEach(message => {
         if(message.includes("First")){

@@ -1,6 +1,6 @@
 function renderEditProfileErrors(messages){
     let firstNameErr, lastNameErr, emailErr;
-    const spanStyles = "display: block; margin-bottom: 5px; font-size: 12px; color: red; text-align: center;";
+    const spanStyles = "display: block; margin-bottom: 5px; font-size: 0.75rem; color: red; text-align: center;";
 
     messages.forEach(message => {
         if(message.includes("First")){

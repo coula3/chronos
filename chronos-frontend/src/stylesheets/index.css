@@ -24,7 +24,7 @@ body {
 
 #app-name {
     color: #0000CD;
-    font-size: 50px;
+    font-size: 3rem;
     text-align: center;
     margin-bottom: 0px;
     margin-top: 0px;
@@ -38,7 +38,7 @@ body {
 }
 
 #app-desc-span {
-    font-size: 14px;
+    font-size: 0.875rem;
     border: solid 1px #9932CC;
     color: #9932CC;
     border-radius: 15px;
@@ -79,9 +79,12 @@ body {
     width: 315px;
 }
 
+.button, .input, #position {
+    font-size: 1rem;
+}
+
 .button {
     padding: 2px 5px;
-    font-size: 15px;
     width: 100px
 }
 
@@ -89,7 +92,6 @@ body {
     width: 300px;
     margin-bottom: 10px;
     padding: 2px 5px;
-    font-size: 17px;
     display: block;
 }
 
@@ -121,7 +123,6 @@ body {
 
 #position {
     padding: 2px 5px;
-    font-size: 17px;
     width: 315px;
     margin-bottom: 10px;
     display: block;

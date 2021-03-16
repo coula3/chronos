@@ -125,7 +125,7 @@ function createTimeEvent(e) {
             buttonBreakResume.disabled = false;
             buttonBreakResume.innerText = "X";
             buttonBreakResume.setAttribute("title", "Delete Record");
-            buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
+            buttonBreakResume.style.cssText = "width: 25px; height: 25px; font-size: 0.875rem; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #FF0000; display: inline-block;";
 
             if(!JSON.parse(localStorage.getItem('selfTimeout'))){
                 buttonBreakResume.addEventListener("click", (e) => {
@@ -137,7 +137,7 @@ function createTimeEvent(e) {
             buttonUpdateTimeEvents.innerText = "✓";
             buttonUpdateTimeEvents.setAttribute("id", "btn-update-dom");
             buttonUpdateTimeEvents.setAttribute("title", "Update Time Records");
-            buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 6px; font-size: 14px; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
+            buttonUpdateTimeEvents.style.cssText = "width: 25px; height: 25px; margin-right: 6px; font-size: 0.875rem; padding: 2px; border: transparent; border-radius: 50%; color: #FFF; background-color: #008000; display: inline-block;";
             document.getElementById("div-time-event-buttons").insertBefore(buttonUpdateTimeEvents, buttonBreakResume);
 
             addNewTimeEventToTimeEvents(buttonUpdateTimeEvents);
