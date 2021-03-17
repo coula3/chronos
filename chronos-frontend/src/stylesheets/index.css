@@ -164,6 +164,21 @@ body {
 }
 
 @media (max-width: 500px) {
+    #app-logo {
+        width: 40px;
+        height: 40px;
+        margin-top: 15px;
+    }
+
+    #app-name {
+        font-size: 2rem;
+    }
+
+    #app-desc-span {
+        font-size: 0.6rem;
+        padding: 2px 5px;
+    }
+
     #div-signup-signin {
         align-items: center;
     }
