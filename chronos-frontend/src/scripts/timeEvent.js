@@ -69,7 +69,7 @@ function createTimeEvent(e) {
                 renderNewTimeEvent(newTimeEvent);
 
                 buttonClockInOut.innerText = "Clock Out";
-                buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
+                buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF;";
                 document.getElementById("td-event-hours").innerText = "00:00:00";
 
                 addRunningTime(newTimeEvent);
@@ -257,9 +257,9 @@ function renderEmployeeTimeEvents(employeeObject) {
     document.getElementById("events-container").appendChild(divTimeEvents);
 
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0){
-        divTimeEvents.style.cssText = "border: solid 1px grey; clear:both";
+        divTimeEvents.style.cssText = "border: solid 1px grey; clear:both;";
     } else {
-        divTimeEvents.style.cssText = "padding-left:30px; clear:both";
+        divTimeEvents.style.cssText = "padding-left:30px; clear:both;";
     }
     
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0) {
@@ -282,7 +282,7 @@ function renderEmployeeTimeEvents(employeeObject) {
         renderedTimeEvents.forEach((event) => {
             tableOfEvents += `
             <tr>
-                <td class="td-events" id="td-events-col-a" style="text-align:center">${renderedTimeEvents.indexOf(event) + 1}</td>
+                <td class="td-events" id="td-events-col-a" style="text-align:center;">${renderedTimeEvents.indexOf(event) + 1}</td>
                 <td class="td-events" id="td-events-date">${event.date ? getDate(event.date) : ""}</td>
                 <td class="td-events" id="td-events-time-in">${event.date ? getTime(event.date) : ""}</td>
                 <td class="td-events" id="td-events-break-start">${event.breakStart ? getTime(event.breakStart) : ""}</td>
@@ -322,29 +322,29 @@ function renderNewTimeEvent(event) {
     buttonBreakResume.innerText = "Take Break";
 
     if(event.breakStart && !event.breakEnd){
-        buttonBreakResume.style.cssText += "background-color: #9932CC; color: #FFF";
+        buttonBreakResume.style.cssText += "background-color: #9932CC; color: #FFF;";
     }
 
     buttonBreakResume.disabled = true;
     divTimeEvent.setAttribute("event-data-id", event.id);
-    divTimeEvent.style.cssText = "margin:30px 0px 15px 0px; border: solid 1px grey; clear:both";
+    divTimeEvent.style.cssText = "margin:30px 0px 15px 0px; border: solid 1px grey; clear:both;";
     divTimeEvent.setAttribute("id", "div-time-event");
     divTimeEventContainer.setAttribute("id", "div-time-event-container");
     divTimeEventButtons.setAttribute("id", "div-time-event-buttons");
-    divTimeEventButtons.style.cssText = "float:right";
+    divTimeEventButtons.style.cssText = "float:right;";
 
     const tableOfEvent = `
     <table id="tbl-event">
         <thead>
             <tr id="tr-event">
-                <th class="th-event" id="th-event-new" style="width:5%">&nbsp</th>
-                <th class="th-event" id="th-event-date" style="width:15%">Date</th>
-                <th class="th-event" id="th-event-time-in" style="width:15%">Time In</th>
-                <th class="th-event" id="th-event-break-start" style="width:15%">Break Start</th>
-                <th class="th-event" id="th-event-break-end" style="width:15%">Break End</th>
-                <th class="th-event" id="th-event-time-out" style="width:15%">Time Out</th>
-                <th class="th-event" id="th-event-shift" style="width:10%">Shift</th>
-                <th class="th-event" id="th-event-hours" style="width:15%">Hours</th>
+                <th class="th-event" id="th-event-new" style="width:5%;">&nbsp</th>
+                <th class="th-event" id="th-event-date" style="width:15%;">Date</th>
+                <th class="th-event" id="th-event-time-in" style="width:15%;">Time In</th>
+                <th class="th-event" id="th-event-break-start" style="width:15%;">Break Start</th>
+                <th class="th-event" id="th-event-break-end" style="width:15%;">Break End</th>
+                <th class="th-event" id="th-event-time-out" style="width:15%;">Time Out</th>
+                <th class="th-event" id="th-event-shift" style="width:10%;">Shift</th>
+                <th class="th-event" id="th-event-hours" style="width:15%;">Hours</th>
             </tr>
         </thead>
         <tbody>
@@ -412,7 +412,7 @@ function addNewTimeEventToTimeEvents(buttonUpdateTimeEvents){
     buttonUpdateTimeEvents.addEventListener("click", () => {
         const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
         buttonClockInOut.disabled = false;
-        buttonClockInOut.style.cssText += "color: #FFF; background-color: #0000FF";
+        buttonClockInOut.style.cssText += "color: #FFF; background-color: #0000FF;";
         document.getElementById("div-time-event-container").remove();
         document.getElementById("events-container").innerHTML = "";
 

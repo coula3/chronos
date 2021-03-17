@@ -5,7 +5,7 @@ let messageTimeout;
 
 function appendImageOfWorkers(){
     const imageDiv = document.getElementById("workers-image-container");
-    imageDiv.style.cssText = "width: 100%; height: 600px; background: url('images/workers.png') no-repeat bottom center/cover";
+    imageDiv.style.cssText = "width: 100%; height: 600px; background: url('images/workers.png') no-repeat bottom center/cover;";
 }
 
 function instantiateEmployeeObject(employeeObject){
@@ -120,7 +120,7 @@ function appendAdminButton() {
 
 function appendMsgSpan(){
     spanMsg.setAttribute("id", "span-message");
-    spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 1rem; clear: both";
+    spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 1rem; clear: both;";
     document.getElementById("div-menu").after(spanMsg);
 }
 
@@ -128,7 +128,7 @@ function createEventsContainerDiv(){
     const eventsContainerDiv = document.createElement("div");
 
     eventsContainerDiv.setAttribute("id", "events-container");
-    eventsContainerDiv.style.cssText = "clear: both";
+    eventsContainerDiv.style.cssText = "clear: both;";
 
     return eventsContainerDiv;
 }

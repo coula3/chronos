@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         document.getElementById("main-container").innerHTML += signInForm;
         buttonSignIn = document.getElementById("btn-sign-in");
-        buttonSignIn.style.cssText += "background-color: #9932CC; color: #FFF";
+        buttonSignIn.style.cssText += "background-color: #9932CC; color: #FFF;";
     }
 
     buttonCreateUser = document.getElementById("btn-create-user");
@@ -55,7 +55,7 @@ function stageSignUpSignIn(){
     stageSignInButton();
 
     if(!localStorage.getItem('jwt_token')){
-        document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF";
+        document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF;";
     }
 }
 
@@ -101,7 +101,7 @@ function updateDOMOnReload(employeeId, isTimeEventOnEditMode){
 
 function resetClockInOutButton(){
     buttonClockInOut.innerText = "Clock Out";
-    buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
+    buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF;";
 }
 
 function resetBreakResumeButton(){

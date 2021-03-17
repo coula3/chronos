@@ -123,7 +123,7 @@ function collapseSignUpElements(){
         document.getElementById("div-input-elements") && document.getElementById("div-input-elements").remove();
         document.getElementById("btn-create-user").innerText = "Sign Up";
         document.getElementById("btn-sign-in").disabled = false;
-        document.getElementById("btn-sign-in").style.cssText = "background-color: #9932CC; color: #FFF";
+        document.getElementById("btn-sign-in").style.cssText = "background-color: #9932CC; color: #FFF;";
     }
 }
 
@@ -164,10 +164,10 @@ function signInEmployee(e) {
                         buttonBreakResume.disabled = true;
                         buttonBreakResume.innerText = "Take Break";
                         buttonClockInOut.innerText = "Clock Out";
-                        buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
+                        buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF;";
                     } else if(document.getElementById("btn-break-resume")) {
                         buttonClockInOut.innerText = "Clock Out";
-                        buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
+                        buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF;";
                     }
                 } else {
                     signInMsgSpan && signInMsgSpan.remove();
@@ -255,7 +255,7 @@ function addSignOutBtnOnReSignInEmployee(){
 
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
-    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF";
+    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF;";
     document.getElementById("div-signin").style.cssText = "margin-right: 0px; padding: 0px 0px 0px 15px; border: none; float: right;";
 
     buttonSignIn.addEventListener("click", (e) => {

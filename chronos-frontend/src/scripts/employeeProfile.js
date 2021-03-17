@@ -1,6 +1,6 @@
 const divEmployeeProfile = document.createElement("div");
 divEmployeeProfile.setAttribute("id", "profile-container");
-divEmployeeProfile.style.cssText = "clear: both";
+divEmployeeProfile.style.cssText = "clear: both;";
 
 function generateProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
@@ -49,9 +49,9 @@ buttonProfile.addEventListener("click", (e) => {
         localStorage.setItem("rendered", "Time Data");
         buttonClockInOut.disabled = false;
         if(isTimeEventOnEditMode){
-            buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #9932CC; color: #FFF";
+            buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #9932CC; color: #FFF;";
         } else {
-            buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF";
+            buttonClockInOut.style.cssText += "margin-left: 15px; background-color: #0000FF; color: #FFF;";
         }
 
         const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
@@ -85,7 +85,7 @@ buttonProfile.addEventListener("click", (e) => {
 
 function appendEmployeeProfile(card){
     buttonClockInOut.disabled = true;
-    buttonClockInOut.style.cssText = "margin-left: 15px; background-color: null, color: #000";
+    buttonClockInOut.style.cssText = "margin-left: 15px; background-color: null, color: #000;";
     document.getElementById("p-new-user-msg") && document.getElementById("p-new-user-msg").remove();
     document.getElementById("events-container") && document.getElementById("events-container").remove();
     document.getElementById("btn-profile").innerText = "Time Data";
