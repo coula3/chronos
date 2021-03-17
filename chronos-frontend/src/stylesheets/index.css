@@ -169,4 +169,8 @@ body {
     #btn-sign-in, #position, #btn-create-user {
         width: 100%;
     }
+
+    .button, .input, #position {
+        font-size: 0.6rem;
+    }
 }
