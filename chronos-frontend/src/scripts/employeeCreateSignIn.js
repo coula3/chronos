@@ -238,12 +238,10 @@ function reSignInEmployee(data){
 function removeDOMElementsOnSignIn(){
     document.getElementById("div-signup").remove();
     document.getElementById("div-signin-inputs").remove();
-    document.getElementById("form-signin").style.cssText = "display: flex; justify-content: flex-end; width: 100%;";
-    document.getElementById("div-signin").style.cssText = "width: 100%; margin-right: 0px; padding: 0; border: none;";
-    buttonSignIn.disabled = false;
-    buttonSignIn.innerText = "Sign Out";
-    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF; margin-right: 0;";
-    document.getElementById("workers-image-container").style.backgroundImage = "";
+
+    reStyleSignInElements();
+
+    document.getElementById("workers-image-container").style.backgroundImage = null;
 }
 
 function addSignOutBtnOnReSignInEmployee(){
@@ -251,17 +249,26 @@ function addSignOutBtnOnReSignInEmployee(){
     divSignUpSignIn.setAttribute("id",  "div-signup-signin");
     document.getElementById("main-container").insertBefore(divSignUpSignIn, document.getElementById("div-employee-tag-name"));
     divSignUpSignIn.innerHTML += divSignIn;
+
     const buttonSignIn = document.getElementById("btn-sign-in");
+
+    reStyleSignInElements();
 
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
-    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF;";
-    document.getElementById("div-signin").style.cssText = "margin-right: 0px; padding: 0px 0px 0px 15px; border: none; float: right;";
 
     buttonSignIn.addEventListener("click", (e) => {
         e.preventDefault();
         signInEmployee(e);
     });
+}
+
+function reStyleSignInElements(){
+    const buttonSignIn = document.getElementById("btn-sign-in");
+
+    document.getElementById("form-signin").style.cssText = "display: flex; justify-content: flex-end; width: 100%;";
+    document.getElementById("div-signin").style.cssText = "width: 100%; margin-right: 0px; padding: 0; border: none;";
+    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF; margin-right: 0;";
 }
 
 function createNameTagDiv(employeeNameTag){
