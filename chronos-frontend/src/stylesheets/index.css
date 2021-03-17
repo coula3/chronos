@@ -152,11 +152,15 @@ body {
     bottom: 10px;
 }
 
-#signin-msg-span {
+#signin-msg-span, .signup-msg-span {
     display: block;
     font-size: 0.75rem;
     color: red;
     text-align: center;
+}
+
+.signup-msg-span {
+    margin-bottom: 5px;
 }
 
 @media (max-width: 500px) {
@@ -181,7 +185,7 @@ body {
         font-size: 0.6rem;
     }
 
-    #signin-msg-span {
+    #signin-msg-span, .signup-msg-span {
         font-size: 0.5rem;
     }
 }

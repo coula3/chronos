@@ -7,80 +7,79 @@ function renderSignInErrors(message) {
 
 function renderSignUpErrors(messages) {
     let firstNameErr, lastNameErr, positionErr, emailErr, passwordErr;
-    const spanStyles = "display: block; margin-bottom: 5px; font-size: 0.75rem; color: red; text-align: center;";
 
     messages.forEach(message => {
         if(message.includes("First")){
             firstNameErr = message;
-            renderSignUpFirstNameErr(firstNameErr, spanStyles);
+            renderSignUpFirstNameErr(firstNameErr);
         } else if(message.includes("Last")){
             lastNameErr = message;
-            renderSignUpLastNameErr(lastNameErr, spanStyles);
+            renderSignUpLastNameErr(lastNameErr);
         } else if(message.includes("Position")){
             positionErr = message;
-            renderSignUpPositionErr(positionErr, spanStyles);
+            renderSignUpPositionErr(positionErr);
         } else if(message.includes("Email")){
             emailErr = message;
-            renderSignUpEmailErr(emailErr, spanStyles);
+            renderSignUpEmailErr(emailErr);
         } else if(message.includes("Password")){
             passwordErr = message;
-            renderSignUpPasswordErr(passwordErr, spanStyles);
+            renderSignUpPasswordErr(passwordErr);
         }
     });
 }
 
-function renderSignUpFirstNameErr(firstNameMsg, spanStyles){
-    spanFirstName = document.createElement("span");
-    spanFirstName.innerText = firstNameMsg;
-    spanFirstName.setAttribute("id", "span-first-name");
-    spanFirstName.style.cssText = spanStyles;
+function renderSignUpFirstNameErr(firstNameMsg){
+    const firstNameSpan = document.createElement("span");
+    firstNameSpan.innerText = firstNameMsg;
+    firstNameSpan.classList.add("signup-msg-span");
+    firstNameSpan.setAttribute("id", "first-name-span");
     document.getElementById("first-name").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-first-name") && document.getElementById("div-input-elements").insertBefore(spanFirstName, document.getElementById("last-name"));
+    !document.getElementById("first-name-span") && document.getElementById("div-input-elements").insertBefore(firstNameSpan, document.getElementById("last-name"));
 }
 
-function renderSignUpLastNameErr(lastNameMsg, spanStyles){
-    spanLastName = document.createElement("span");
-    spanLastName.innerText = lastNameMsg;
-    spanLastName.setAttribute("id", "span-last-name");
-    spanLastName.style.cssText = spanStyles;
+function renderSignUpLastNameErr(lastNameMsg){
+    const lastNameSpan = document.createElement("span");
+    lastNameSpan.innerText = lastNameMsg;
+    lastNameSpan.classList.add("signup-msg-span");
+    lastNameSpan.setAttribute("id", "last-name-span");
     document.getElementById("last-name").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-last-name") && document.getElementById("div-input-elements").insertBefore(spanLastName, document.getElementById("position"));
+    !document.getElementById("last-name-span") && document.getElementById("div-input-elements").insertBefore(lastNameSpan, document.getElementById("position"));
 }
 
-function renderSignUpPositionErr(positionMsg, spanStyles){
-    spanPosition = document.createElement("span");
-    spanPosition.innerText = positionMsg;
-    spanPosition.setAttribute("id", "span-position");
-    spanPosition.style.cssText = spanStyles;
+function renderSignUpPositionErr(positionMsg){
+    const positionSpan = document.createElement("span");
+    positionSpan.innerText = positionMsg;
+    positionSpan.classList.add("signup-msg-span");
+    positionSpan.setAttribute("id", "position-span");
     document.getElementById("position").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-position") && document.getElementById("div-input-elements").insertBefore(spanPosition, document.getElementById("email"));
+    !document.getElementById("position-span") && document.getElementById("div-input-elements").insertBefore(positionSpan, document.getElementById("email"));
 }
 
-function renderSignUpEmailErr(emailMsg, spanStyles){
-    spanEmail = document.createElement("span");
-    spanEmail.innerText = emailMsg;
-    spanEmail.setAttribute("id", "span-email");
-    spanEmail.style.cssText = spanStyles;
+function renderSignUpEmailErr(emailMsg){
+    const emailSpan = document.createElement("span");
+    emailSpan.innerText = emailMsg;
+    emailSpan.classList.add("signup-msg-span");
+    emailSpan.setAttribute("id", "email-span");
     document.getElementById("email").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-email") && document.getElementById("div-input-elements").insertBefore(spanEmail, document.getElementById("password"));
+    !document.getElementById("email-span") && document.getElementById("div-input-elements").insertBefore(emailSpan, document.getElementById("password"));
 }
 
-function renderSignUpPasswordErr(passwordMsg, spanStyles){
-    spanPassword = document.createElement("span");
-    spanPassword.innerText = passwordMsg;
-    spanPassword.setAttribute("id", "span-password");
-    spanPassword.style.cssText = spanStyles;
-    spanPassword.style.marginBottom = "10px";
+function renderSignUpPasswordErr(passwordMsg){
+    const passwordSpan = document.createElement("span");
+    passwordSpan.innerText = passwordMsg;
+    passwordSpan.classList.add("signup-msg-span");
+    passwordSpan.setAttribute("id", "password-span");
+    passwordSpan.style.marginBottom = "10px";
     document.getElementById("password-confirmation").style.cssText = "margin-bottom: 0px";
-    !document.getElementById("span-password") && document.getElementById("password-confirmation").after(spanPassword);
+    !document.getElementById("password-span") && document.getElementById("password-confirmation").after(passwordSpan);
 }
 
 function cleanUpSignUpErrors(){
-    document.getElementById("span-first-name") && document.getElementById("span-first-name").remove();
-    document.getElementById("span-last-name") && document.getElementById("span-last-name").remove();
-    document.getElementById("span-position") && document.getElementById("span-position").remove();
-    document.getElementById("span-email") && document.getElementById("span-email").remove();
-    document.getElementById("span-password") && document.getElementById("span-password").remove();
+    document.getElementById("first-name-span") && document.getElementById("first-name-span").remove();
+    document.getElementById("last-name-span") && document.getElementById("last-name-span").remove();
+    document.getElementById("position-span") && document.getElementById("position-span").remove();
+    document.getElementById("email-span") && document.getElementById("email-span").remove();
+    document.getElementById("password-span") && document.getElementById("password-span").remove();
 
     document.getElementById("first-name").style.cssText = "margin-bottom: 10px";
     document.getElementById("last-name").style.cssText = "margin-bottom: 10px";

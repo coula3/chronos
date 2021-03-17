@@ -28,10 +28,11 @@ class Employee {
 }
 
 function stageCreateEmployeeForm(){
-    const signInMsgSpan = document.getElementById("signin-msg-span");
-
-    addEmployeeForm && addEmployeeForm.addEventListener("submit", (e)=>{
+    addEmployeeForm && addEmployeeForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
+        const signInMsgSpan = document.getElementById("signin-msg-span");
+        signInMsgSpan && signInMsgSpan.remove();
 
         if(buttonCreateUser.innerText === "Submit"){
             createEmployee(e);
@@ -39,7 +40,6 @@ function stageCreateEmployeeForm(){
 
         if(!document.querySelector("#div-input-elements")){
             buttonCreateUser.innerText = "Submit";
-            signInMsgSpan && signInMsgSpan.remove();
             buttonSignIn.style.removeProperty("color");
             buttonSignIn.style.removeProperty("background-color");
             buttonSignIn.disabled = true;
