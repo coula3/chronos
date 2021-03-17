@@ -28,6 +28,8 @@ class Employee {
 }
 
 function stageCreateEmployeeForm(){
+    const signInMsgSpan = document.getElementById("signin-msg-span");
+
     addEmployeeForm && addEmployeeForm.addEventListener("submit", (e)=>{
         e.preventDefault();
 
@@ -37,7 +39,7 @@ function stageCreateEmployeeForm(){
 
         if(!document.querySelector("#div-input-elements")){
             buttonCreateUser.innerText = "Submit";
-            document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
+            signInMsgSpan && signInMsgSpan.remove();
             buttonSignIn.style.removeProperty("color");
             buttonSignIn.style.removeProperty("background-color");
             buttonSignIn.disabled = true;
@@ -128,7 +130,9 @@ function collapseSignUpElements(){
 function signInEmployee(e) {
     const signInEmail = document.getElementById("sign-in-email") ? document.getElementById("sign-in-email").value : null;
     const signInPassword = document.getElementById("sign-in-password") ? document.getElementById("sign-in-password").value : null;
+    const signInMsgSpan = document.getElementById("signin-msg-span");
     const bodyObject = {employee: {email: signInEmail, password: signInPassword}};
+
     const configObj = {
         method: "POST",
         headers: {
@@ -166,13 +170,13 @@ function signInEmployee(e) {
                         buttonClockInOut.style.cssText += "background-color: #9932CC; color: #FFF";
                     }
                 } else {
-                    document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
+                    signInMsgSpan && signInMsgSpan.remove();
                     renderSignInErrors(data.message);
                     disableCreateUserSubmitButton(e);
                 }
             })
         } else {
-            document.getElementById("spanSignInMsg") && document.getElementById("spanSignInMsg").remove();
+            signInMsgSpan && signInMsgSpan.remove();
             const message = "Please provide a valid email and password";
             renderSignInErrors(message);
             disableCreateUserSubmitButton(e);

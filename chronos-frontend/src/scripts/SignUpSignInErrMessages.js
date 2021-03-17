@@ -1,9 +1,8 @@
 function renderSignInErrors(message) {
-    const spanSignInMsg = document.createElement("span")
-    spanSignInMsg.innerText = message;
-    spanSignInMsg.setAttribute("id", "spanSignInMsg");
-    spanSignInMsg.style.cssText = "display: block; font-size: 0.875rem; color: red; text-align: center;";
-    !document.getElementById("spanSignInMsg") && document.getElementById("div-signin-inputs").appendChild(spanSignInMsg);
+    const signInMsgSpan = document.createElement("span")
+    signInMsgSpan.innerText = message;
+    signInMsgSpan.setAttribute("id", "signin-msg-span");
+    !document.getElementById("signin-msg-span") && document.getElementById("div-signin-inputs").appendChild(signInMsgSpan);
 }
 
 function renderSignUpErrors(messages) {

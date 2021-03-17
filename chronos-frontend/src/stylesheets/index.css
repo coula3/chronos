@@ -152,6 +152,13 @@ body {
     bottom: 10px;
 }
 
+#signin-msg-span {
+    display: block;
+    font-size: 0.75rem;
+    color: red;
+    text-align: center;
+}
+
 @media (max-width: 500px) {
     #div-signup-signin {
         align-items: center;
@@ -172,5 +179,9 @@ body {
 
     .button, .input, #position {
         font-size: 0.6rem;
+    }
+
+    #signin-msg-span {
+        font-size: 0.5rem;
     }
 }
