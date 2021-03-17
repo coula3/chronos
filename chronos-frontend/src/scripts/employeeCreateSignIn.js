@@ -238,10 +238,11 @@ function reSignInEmployee(data){
 function removeDOMElementsOnSignIn(){
     document.getElementById("div-signup").remove();
     document.getElementById("div-signin-inputs").remove();
+    document.getElementById("form-signin").style.cssText = "display: flex; justify-content: flex-end; width: 100%;";
+    document.getElementById("div-signin").style.cssText = "width: 100%; margin-right: 0px; padding: 0; border: none;";
     buttonSignIn.disabled = false;
     buttonSignIn.innerText = "Sign Out";
-    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF";
-    document.getElementById("div-signin").style.cssText = "margin-right: 0px; padding: 0px 0px 0px 15px; border: none; float: right;";
+    buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF; margin-right: 0;";
     document.getElementById("workers-image-container").style.backgroundImage = "";
 }
 
