@@ -76,7 +76,6 @@
     padding-left: 10px;
     margin: 20px 0px 0px 0px;
     float: right;
-    clear: both;
 }
 
 #employee-position {
@@ -98,4 +97,29 @@
 #btn-admin {
     background-color: #9932CC;
     color: #FFF;
+}
+
+#p-new-user-msg {
+    text-align: center;
+    color: #0000CD;
+    font-size: 1.125rem;
+    padding-top: 10px;
+    clear: both;
+}
+
+@media (max-width: 500px) {
+    #employee-name {
+        font-size: 1rem;
+        margin-top: 5px;
+    }
+
+    #employee-position {
+        font-size: 0.75rem;
+    }
+
+    #p-new-user-msg {
+        font-size: 0.75rem;
+        padding-top: 15px;
+        margin-bottom: -12px;
+    }
 }

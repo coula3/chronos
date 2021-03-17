@@ -64,7 +64,6 @@ function renderWelcomeMsg(employeeObject){
     const p = document.createElement("p");
 
     p.setAttribute("id", "p-new-user-msg");
-    p.style.cssText = "text-align:center; color:#0000CD; font-size:1.125rem; padding-top:10px; clear:both;";
 
     if(employeeObject.timeEvents && employeeObject.timeEvents.some(event => event.time_out)){
         if(!document.getElementById("div-time-event")){

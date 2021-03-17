@@ -194,12 +194,17 @@ body {
         height: 410px;
     }
 
+    #para-header {
+        margin-bottom: 0;
+    }
+
     #app-branding {
         font-size: 0.7rem;
     }
 
     #div-signup-signin {
         align-items: center;
+        padding-bottom: 10px;
     }
 
     #div-signin, #div-signup {
@@ -208,7 +213,9 @@ body {
         border: none;
     }
 
-    #sign-in-email, #sign-in-password, #btn-sign-in, #first-name, #last-name, #email, #password, #password-confirmation {
+    #sign-in-email, #sign-in-password, #btn-sign-in,
+    #first-name, #last-name, #email, #password,
+    #password-confirmation {
         width: 95%;
     }
 
