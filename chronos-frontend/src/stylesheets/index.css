@@ -170,13 +170,14 @@ body {
 
 @media (max-width: 500px) {
     .wrapper {
-        height: 600px;
+        height: 590px;
+        padding: 15px;
     }
 
     #app-logo {
         width: 40px;
         height: 40px;
-        margin-top: 15px;
+        margin-top: 5px;
     }
 
     #app-name {
@@ -192,6 +193,10 @@ body {
         height: 410px;
     }
 
+    #app-branding {
+        font-size: 0.7rem;
+    }
+
     #div-signup-signin {
         align-items: center;
     }
@@ -199,6 +204,7 @@ body {
     #div-signin, #div-signup {
         width: 75%;
         margin-right: 0;
+        border: none;
     }
 
     #sign-in-email, #sign-in-password, #btn-sign-in, #first-name, #last-name, #email, #password, #password-confirmation {
