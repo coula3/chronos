@@ -85,7 +85,6 @@ function createMenuDiv(){
     const divMenu = document.createElement("div");
 
     divMenu.setAttribute("id", "div-menu");
-    divMenu.style.cssText = "float:right; margin:20px 0px 10px 0px; clear:both;";
     document.getElementById("div-employee-tag-name").after(divMenu);
 
     appendClockInOutButton();

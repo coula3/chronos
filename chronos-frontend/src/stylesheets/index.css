@@ -169,6 +169,12 @@ body {
     margin-bottom: 5px;
 }
 
+#div-menu {
+    float: right;
+    margin: 20px 0px 10px 0px;
+    clear: both;
+}
+
 @media (max-width: 500px) {
     .wrapper {
         height: 590px;
@@ -238,5 +244,9 @@ body {
 
     #btn-sign-in {
         margin-top: 0;
+    }
+
+    #div-menu {
+        margin-top: 10px;
     }
 }
