@@ -6,7 +6,6 @@ function appendCurrentTime(){
     paraTime.appendChild(spanTime);
     document.getElementById("app-name").after(paraTime);
     spanTime.setAttribute("id", "span-time");
-    spanTime.style.cssText = "font-size: 0.875rem; font-weight: bold; color: red; display: block; margin-top: 15px;";
     computeCurrentTime(spanTime);
 }
 

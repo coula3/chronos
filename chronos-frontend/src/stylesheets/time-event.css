@@ -1,0 +1,14 @@
+#span-time {
+    font-size: 0.875rem;
+    font-weight: bold;
+    color: red;
+    display: block;
+    margin-top: 15px;
+}
+
+@media (max-width: 500px) {
+    #span-time {
+        font-size: 0.7rem;
+        margin-top: 7.5px;
+    }
+}
