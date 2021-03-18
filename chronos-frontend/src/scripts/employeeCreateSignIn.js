@@ -254,8 +254,6 @@ function addSignOutBtnOnReSignInEmployee(){
 
     reStyleSignInElements();
 
-    buttonSignIn.disabled = false;
-
     buttonSignIn.addEventListener("click", (e) => {
         e.preventDefault();
         signInEmployee(e);
@@ -268,6 +266,7 @@ function reStyleSignInElements(){
     document.getElementById("form-signin").style.cssText = "display: flex; justify-content: flex-end; width: 100%;";
     document.getElementById("div-signin").style.cssText = "width: 100%; margin: 0; padding: 0; border: none;";
     buttonSignIn.innerText = "Sign Out";
+    buttonSignIn.disabled = false;
     buttonSignIn.style.cssText = "width: 100px; background-color: #9932CC; color: #FFF; margin-right: 0;";
 }
 
