@@ -192,10 +192,11 @@ body {
 
     #workers-image-container {
         height: 410px;
+        margin-top: 20px;
     }
 
     #para-header {
-        margin-bottom: 0;
+        margin-bottom: 0px;
     }
 
     #app-branding {
@@ -227,7 +228,15 @@ body {
         font-size: 0.6rem;
     }
 
+    .button {
+        width: 80px;
+    }
+
     #signin-msg-span, .signup-msg-span {
         font-size: 0.5rem;
+    }
+
+    #btn-sign-in {
+        margin-top: 0;
     }
 }
