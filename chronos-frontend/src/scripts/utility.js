@@ -123,9 +123,7 @@ function appendAdminButton() {
 
 function createEventsContainerDiv(){
     const eventsContainerDiv = document.createElement("div");
-
     eventsContainerDiv.setAttribute("id", "events-container");
-    eventsContainerDiv.style.cssText = "clear: both;";
 
     return eventsContainerDiv;
 }

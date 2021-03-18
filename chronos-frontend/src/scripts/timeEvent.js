@@ -254,9 +254,9 @@ function renderEmployeeTimeEvents(employeeObject) {
     document.getElementById("events-container").appendChild(divTimeEvents);
 
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0){
-        divTimeEvents.style.cssText = "border: solid 1px grey; clear:both;";
+        divTimeEvents.style.cssText += "border: solid 1px grey;";
     } else {
-        divTimeEvents.style.cssText = "padding-left:30px; clear:both;";
+        divTimeEvents.style.cssText += "padding-left:30px;";
     }
     
     if(employeeTimeEvents.filter(event => event.timeOut).length > 0) {

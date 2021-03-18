@@ -6,9 +6,21 @@
     margin-top: 15px;
 }
 
+#div-time-events {
+    overflow-x: auto;
+}
+
+#tbl-events {
+    min-width: 500px;
+}
+
 @media (max-width: 500px) {
     #span-time {
         font-size: 0.7rem;
         margin-top: 7.5px;
+    }
+
+    #tbl-events {
+        font-size: 0.6rem;
     }
 }
