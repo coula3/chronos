@@ -210,6 +210,7 @@ function resetDOMOnSignOut(){
 function persistToLocalStorageOnCreateEmployee(data){
     localStorage.setItem('jwt_token', data.jwt);
     localStorage.setItem('data', JSON.stringify(data));
+    localStorage.setItem('rendered', "New User");
 }
 
 function persistToLocalStorageOnSignIn(data){
