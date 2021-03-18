@@ -36,6 +36,11 @@ function disableCreateUserSubmitButton(e){
     }
 }
 
+function appendMsgSpan(){
+    spanMsg.setAttribute("id", "span-message");
+    document.getElementById("div-menu").after(spanMsg);
+}
+
 function renderMessage(message, msgColor) {
     clearTimeout(messageTimeout);
 
@@ -46,9 +51,9 @@ function renderMessage(message, msgColor) {
 
     messageTimeout = setTimeout(() => {
         if(document.getElementById("span-message").innerText){
-            document.getElementById("span-message").innerText = ""
+            document.getElementById("span-message").innerText = "";
         }
-    }, 6000)
+    }, 5000);
 }
 
 function addColorToMessage(spanMsg, msgColor){
@@ -114,12 +119,6 @@ function appendAdminButton() {
     buttonAdmin.setAttribute("id", "btn-admin");
     buttonAdmin.classList.add("button");
     document.getElementById("div-menu").insertBefore(buttonAdmin, document.getElementById("btn-clock-in-out"));
-}
-
-function appendMsgSpan(){
-    spanMsg.setAttribute("id", "span-message");
-    spanMsg.style.cssText = "display: block; height: 20px; margin-bottom: 10px; text-align: center; font-size: 1rem; clear: both;";
-    document.getElementById("div-menu").after(spanMsg);
 }
 
 function createEventsContainerDiv(){

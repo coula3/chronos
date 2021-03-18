@@ -175,6 +175,15 @@ body {
     clear: both;
 }
 
+#span-message {
+    display: block;
+    height: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 1rem;
+    clear: both;
+}
+
 @media (max-width: 500px) {
     .wrapper {
         height: 590px;
@@ -197,8 +206,8 @@ body {
     }
 
     #workers-image-container {
-        height: 410px;
-        margin-top: 20px;
+        height: 420px;
+        margin-top: 10px;
     }
 
     #para-header {
@@ -248,5 +257,10 @@ body {
 
     #div-menu {
         margin-top: 10px;
+    }
+
+
+    #span-message {
+        font-size: 0.6rem;
     }
 }
