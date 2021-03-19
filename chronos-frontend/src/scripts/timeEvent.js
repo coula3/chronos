@@ -324,7 +324,6 @@ function renderNewTimeEvent(event) {
 
     buttonBreakResume.disabled = true;
     divTimeEvent.setAttribute("event-data-id", event.id);
-    divTimeEvent.style.cssText = "margin:30px 0px 15px 0px; border: solid 1px grey; clear:both;";
     divTimeEvent.setAttribute("id", "div-time-event");
     divTimeEventContainer.setAttribute("id", "div-time-event-container");
     divTimeEventButtons.setAttribute("id", "div-time-event-buttons");
