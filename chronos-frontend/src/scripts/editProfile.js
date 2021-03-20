@@ -6,9 +6,14 @@ function getOldEmployeeData(){
 
 function generateEditProfileCard(){
     const localStorageData = JSON.parse(localStorage.getItem('data'));
-    const positionOptions = employeePositions.map(position => {
+    const indexOfManager = employeePositions.indexOf("Manager");
+    let listOfEmployeePositions = [...employeePositions];
+
+    localStorageData.employee.position !== "Manager" && listOfEmployeePositions.splice(indexOfManager, 1);
+
+    const positionOptions = listOfEmployeePositions.map(position => {
         const selected = localStorageData.employee.position === position ? "selected" : null;
-        return  `<option value="${position}" ${selected}>${position}</option>`;
+        return `<option value="${position}" ${selected}>${position}</option>`;
     });
 
     const editProfileCard = `
