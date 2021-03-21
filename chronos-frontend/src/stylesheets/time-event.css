@@ -34,4 +34,8 @@
     #tbl-events, #tbl-event {
         font-size: 0.6rem;
     }
+
+    .th-event {
+        color: #000;
+    }
 }
