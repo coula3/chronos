@@ -23,4 +23,5 @@ function appendEmployeeFormElements(){
         </div>
     `
     buttonCreateUser.insertAdjacentHTML('beforebegin', formElements);
+    document.getElementById("first-name").focus();
 }

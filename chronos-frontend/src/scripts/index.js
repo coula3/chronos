@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         appendImageOfWorkers();
 
         document.getElementById("main-container").innerHTML += signInForm;
+        document.getElementById("sign-in-email").focus();
         buttonSignIn = document.getElementById("btn-sign-in");
         buttonSignIn.style.cssText += "background-color: #9932CC; color: #FFF;";
     }
@@ -56,6 +57,7 @@ function stageSignUpSignIn(){
 
     if(!localStorage.getItem('jwt_token')){
         document.getElementById("btn-sign-in").style.cssText += "background-color: #9932CC; color: #FFF;";
+        document.getElementById("sign-in-email").focus();
     }
 }
 
