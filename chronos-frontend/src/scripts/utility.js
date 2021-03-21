@@ -97,8 +97,10 @@ function createMenuDiv(){
 
 function appendClockInOutButton() {
     isTimeEventOnEditMode ? buttonClockInOut.innerText = "Clock Out" : buttonClockInOut.innerText = "Clock In";
+
     buttonClockInOut.setAttribute("id", "btn-clock-in-out");
     buttonClockInOut.classList.add("button");
+    buttonClockInOut.style.cssText = "background-color: #0000CD; color: #FFF;";
     document.getElementById("div-menu").appendChild(buttonClockInOut);
 
     appendProfileButton();
