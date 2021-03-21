@@ -19,70 +19,82 @@ const passwordCard = `
     </div>
 `;
 
-function changePassword(){
-    const passwordForm = document.getElementById("changePasswordForm");
+function changePassword() {
+  const passwordForm = document.getElementById("changePasswordForm");
 
-    if(passwordForm){
-        passwordForm.addEventListener("submit", (e) => {
-            e.preventDefault();
+  if (passwordForm) {
+    passwordForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-            if(e.submitter.innerText === "Save"){
-                checkPasswordEntries();
-            } else {
-                switchPasswordToProfile();
-                localStorage.setItem('rendered', 'Profile');
-            }
-        })
-    }
+      if (e.submitter.innerText === "Save") {
+        checkPasswordEntries();
+      } else {
+        switchPasswordToProfile();
+        localStorage.setItem("rendered", "Profile");
+      }
+    });
+  }
 }
 
-function checkPasswordEntries(){
-    const currentPassword = document.getElementById("currentPassword");
-    const newPassword = document.getElementById("newPassword");
-    const confirmPassword = document.getElementById("confirmPassword");
-    const msgColor = "red";
+function checkPasswordEntries() {
+  const currentPassword = document.getElementById("currentPassword");
+  const newPassword = document.getElementById("newPassword");
+  const confirmPassword = document.getElementById("confirmPassword");
+  const msgColor = "red";
 
-    if(currentPassword.value && (newPassword.value === confirmPassword.value) && newPassword.value.includes(" ")){
-        renderMessage("Password doesn't accept spaces", msgColor);
-    } else if((currentPassword.value && newPassword.value) && !confirmPassword.value){
-        renderMessage("Please confirm new password", msgColor);
-    } else if(!currentPassword.value || !newPassword.value || !confirmPassword.value){
-        renderMessage("Please provide current and new passwords", msgColor);
-    } else if (newPassword.value !== confirmPassword.value){
-        renderMessage("Please provide matching new passwords", msgColor);
-    } else {
-       updatePassword(currentPassword.value, newPassword.value);
-    }
+  if (
+    currentPassword.value &&
+    newPassword.value === confirmPassword.value &&
+    newPassword.value.includes(" ")
+  ) {
+    renderMessage("Password doesn't accept spaces", msgColor);
+  } else if (
+    currentPassword.value &&
+    newPassword.value &&
+    !confirmPassword.value
+  ) {
+    renderMessage("Please confirm new password", msgColor);
+  } else if (
+    !currentPassword.value ||
+    !newPassword.value ||
+    !confirmPassword.value
+  ) {
+    renderMessage("Please provide current and new passwords", msgColor);
+  } else if (newPassword.value !== confirmPassword.value) {
+    renderMessage("Please provide matching new passwords", msgColor);
+  } else {
+    updatePassword(currentPassword.value, newPassword.value);
+  }
 }
 
-function updatePassword(currentPassword, newPassword){
-    const employeeId = JSON.parse(localStorage.getItem('data')).employee.id;
-    const bodyObj = {employee: {password: currentPassword, newPassword}};
+function updatePassword(currentPassword, newPassword) {
+  const employeeId = JSON.parse(localStorage.getItem("data")).employee.id;
+  const bodyObj = { employee: { password: currentPassword, newPassword } };
 
-    fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
-        method: "PATCH",
-        headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${localStorage.getItem('jwt_token')}`
-        },
-        body: JSON.stringify(bodyObj)
-    })
-    .then(response => response.json())
-    .then(data => {
-        if(data.employee){
-            switchPasswordToProfile();
-            renderMessage("Password successfully updated", msgColor="green");
-        } else {
-            renderMessage(data.message, msg="red");
-        }
-    })
+  fetch(`${CHRONOS_URL}/employees/${employeeId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${localStorage.getItem("jwt_token")}`,
+    },
+    body: JSON.stringify(bodyObj),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.employee) {
+        switchPasswordToProfile();
+        renderMessage("Password successfully updated", (msgColor = "green"));
+      } else {
+        renderMessage(data.message, (msg = "red"));
+      }
+    });
 }
 
-function switchPasswordToProfile(){
-    document.getElementById("span-message").innerText = ""
-    document.getElementById("passwordCard").remove();
-    divEmployeeProfile.innerHTML += generateProfileCard();
-    localStorage.setItem('rendered', 'Profile');
-    setSwitchToPasswordCard();
-    setSwitchToEditProfileCard();
+function switchPasswordToProfile() {
+  document.getElementById("span-message").innerText = "";
+  document.getElementById("passwordCard").remove();
+  divEmployeeProfile.innerHTML += generateProfileCard();
+  localStorage.setItem("rendered", "Profile");
+  setSwitchToPasswordCard();
+  setSwitchToEditProfileCard();
 }
