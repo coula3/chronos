@@ -57,15 +57,7 @@ body {
     align-items: flex-end;
 }
 
-#div-signup {
-    background: rgb(245, 245, 245, 0.85);
-    width: 315px;
-    margin: 15px 15px 0px 0px;
-    padding: 15px;
-    border: solid 1px grey;
-}
-
-#div-signin {
+#div-signup, #div-signin {
     background: rgb(245, 245, 245, 0.85);
     width: 315px;
     margin: 15px 15px 0px 0px;
@@ -200,8 +192,11 @@ body {
         font-size: 2rem;
     }
 
-    #app-desc-span {
+    #app-desc-span, .button, .input, #position, #span-message {
         font-size: 0.6rem;
+    }
+
+    #app-desc-span {
         padding: 2px 5px;
     }
 
@@ -239,10 +234,6 @@ body {
         width: 100%;
     }
 
-    .button, .input, #position {
-        font-size: 0.6rem;
-    }
-
     .button {
         width: 80px;
     }
@@ -256,11 +247,12 @@ body {
     }
 
     #div-menu {
-        margin-top: 10px;
+        margin-top: 20px;
     }
+}
 
-
-    #span-message {
-        font-size: 0.6rem;
+@media (max-width: 250px) {
+    .button {
+        width: 65px;
     }
 }

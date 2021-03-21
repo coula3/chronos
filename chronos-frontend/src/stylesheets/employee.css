@@ -1,5 +1,5 @@
-#profileCard {
-    width: 275px;
+#profileCard, #passwordCard, #editProfileCard {
+    width: 375px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     margin: auto;
@@ -27,7 +27,7 @@
 }
 
 .profileButtonsDiv {
-    margin-top: 20px;
+    margin-top: 10px;
     padding: 15px;
     border-radius: 0px 0px 15px 15px;
     background-color: #9932CC;
@@ -40,48 +40,27 @@
     color: #FFF;
 }
 
-#passwordCard {
-    width: 275px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    margin: auto;
-    padding-top: 15px;
-    border-radius: 15px;
-    background-color: #fff;
-}
-
-.passwordInputs {
+.passwordInputs, .editProfileInputs {
     padding: 2px 4px;
-    width: 175px;
+    width: 225px;
 }
 
 .editProfileInputs {
-    padding: 2px 4px;
-    width: 225px;
     margin-bottom: 10px;
 }
 
-#editProfileCard {
-    width: 275px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    text-align: center;
-    margin: auto;
-    padding-top: 15px;
-    border-radius: 15px;
-    background-color: #fff;
+#employee-name, #employee-position {
+    padding-left: 10px;
+    float: right;
 }
 
 #employee-name {
     color: #0000CD;
-    padding-left: 10px;
     margin: 20px 0px 0px 0px;
-    float: right;
 }
 
 #employee-position {
-    padding-left: 10px;
     margin: 0;
-    float: right;
     clear: both;
 }
 
@@ -89,12 +68,7 @@
     width: 240px;
 }
 
-#btn-profile {
-    background-color: #9932CC;
-    color: #FFF;
-}
-
-#btn-admin {
+#btn-profile, #btn-admin {
     background-color: #9932CC;
     color: #FFF;
 }
@@ -113,13 +87,29 @@
         margin-top: 5px;
     }
 
-    #employee-position {
+    #employee-position, #p-new-user-msg, .profileHeader {
         font-size: 0.75rem;
     }
 
     #p-new-user-msg {
-        font-size: 0.75rem;
         padding-top: 15px;
-        margin-bottom: -12px;
+        margin-bottom: 0;
+    }
+
+    #profileCard, #editProfileCard, #passwordCard, #profilePosition {
+        width: 90%;
+    }
+
+    #profileCard, .profileParagraph, .profileButtons, .passwordInputs, .editProfileInputs, .profileCaption {
+        font-size: 0.6rem;
+    }
+
+    .editProfileInputs, .passwordInputs {
+        width: 85%;
+    }
+
+    .profileButtons {
+        width: 75%;
+        max-width: 150px;
     }
 }
