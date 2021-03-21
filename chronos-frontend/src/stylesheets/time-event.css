@@ -19,6 +19,12 @@
     border: solid 1px grey;
 }
 
+#btn-clock-in-out {
+    margin-left: 10px;
+    background-color: #0000CD;
+    color: #FFF;
+}
+
 @media (max-width: 500px) {
     #span-time {
         font-size: 0.7rem;
