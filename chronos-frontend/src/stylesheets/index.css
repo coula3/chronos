@@ -253,6 +253,6 @@ body {
 
 @media (max-width: 250px) {
     .button {
-        width: 65px;
+        width: 62.5px;
     }
 }
