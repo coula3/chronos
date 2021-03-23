@@ -113,3 +113,13 @@
         max-width: 150px;
     }
 }
+
+@media (max-width: 250px) {
+    #employee-name {
+        font-size: 0.75rem;
+    }
+
+    #employee-position, #p-new-user-msg {
+        font-size: 0.6rem;
+    }
+}
