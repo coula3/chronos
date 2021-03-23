@@ -76,6 +76,7 @@ body {
     background-color: #0000CD;
     color: #FFF;
     width: 315px;
+    margin-top: 10px;
 }
 
 .button, .input, #position {

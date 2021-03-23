@@ -105,5 +105,4 @@ function cleanUpSignUpErrors() {
   document.getElementById("last-name").style.cssText = "margin-bottom: 10px";
   document.getElementById("position").style.cssText = "margin-bottom: 10px";
   document.getElementById("email").style.cssText = "margin-bottom: 10px";
-  document.getElementById("password").style.cssText = "margin-bottom: 10px";
 }
