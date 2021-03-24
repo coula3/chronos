@@ -1,4 +1,4 @@
-const CHRONOS_URL = "http://localhost:3000/api/v1";
+const CHRONOS_URL = "https://chronos-backend-v5.herokuapp.com/api/v1"
 
 let buttonSignIn,
   buttonCreateUser,
