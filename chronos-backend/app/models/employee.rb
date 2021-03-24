@@ -8,5 +8,5 @@ class Employee < ApplicationRecord
     validates :email, uniqueness: { case_sensitive: false }
     validates :email, email: true
     has_secure_password
-    validates :password, length: { in: 3..12}
+    validates :password, length: { in: 3..12}, :if => lambda{ new_record? && password.present? }
 end
