@@ -67,14 +67,15 @@ function getShift(timeIn) {
 
 function addRunningTime(currentTimeEvent) {
   const elapseTime = getElapseTime(currentTimeEvent);
+  const runningTimeTd = document.getElementById("td-event-hours");
 
   counter = Math.round(elapseTime / 1000);
 
   runningTimeInterval = setInterval(() => {
     seconds = counter += 1;
-    document.getElementById("td-event-hours").innerText = getRunningTime(
-      seconds
-    );
+    if (runningTimeTd) {
+      runningTimeTd.innerText = getRunningTime(seconds);
+    }
     localStorage.setItem("runningTimeStarted", true);
   }, 1000);
 }
