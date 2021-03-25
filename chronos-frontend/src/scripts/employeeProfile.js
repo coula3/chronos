@@ -91,7 +91,6 @@ buttonProfile.addEventListener("click", (e) => {
             resetBreakResumeButton();
             resetClockInOutButton();
           }
-          addRunningTime(newTimeEvent);
         }
       });
   }

@@ -73,9 +73,7 @@ function addRunningTime(currentTimeEvent) {
 
   runningTimeInterval = setInterval(() => {
     seconds = counter += 1;
-    if (runningTimeTd) {
-      runningTimeTd.innerText = getRunningTime(seconds);
-    }
+    runningTimeTd.innerText = getRunningTime(seconds);
     localStorage.setItem("runningTimeStarted", true);
   }, 1000);
 }

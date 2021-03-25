@@ -393,6 +393,7 @@ function renderEmployeeTimeEvents(employeeObject) {
 
   if (openTimeEvent.length) {
     renderNewTimeEvent(openTimeEvent[0]);
+    updateRunningTime(openTimeEvent[0]);
   }
 }
 
