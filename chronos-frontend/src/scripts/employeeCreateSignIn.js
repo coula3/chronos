@@ -166,41 +166,46 @@ function signInEmployee(e) {
 
   if (e.target.innerText === "Sign In") {
     if (signInEmail) {
-      fetch(`${CHRONOS_URL}/signin`, configObj)
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.employee) {
-            const currentEmployee = instantiateEmployeeObject(data.employee);
+      if(!localStorage.getItem("loading"))
+        { localStorage.setItem("loading", "Loading...");
+          fetch(`${CHRONOS_URL}/signin`, configObj)
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.employee) {
+              const currentEmployee = instantiateEmployeeObject(data.employee);
 
-            currentEmployee.renderEmployeeData();
-            persistToLocalStorageOnSignIn(data);
-            removeDOMElementsOnSignIn();
+              currentEmployee.renderEmployeeData();
+              persistToLocalStorageOnSignIn(data);
+              removeDOMElementsOnSignIn();
+              localStorage.removeItem("loading");
 
-            if (document.getElementById("div-time-event")) {
-              localStorage.setItem("runningTimeStarted", true);
-              addRunningTime(JSON.parse(localStorage.getItem("newTimeEvent")));
+              if (document.getElementById("div-time-event")) {
+                localStorage.setItem("runningTimeStarted", true);
+                addRunningTime(JSON.parse(localStorage.getItem("newTimeEvent")));
+              }
+
+              if (
+                document.getElementById("td-event-break-end") &&
+                document.getElementById("td-event-break-end").innerText
+              ) {
+                buttonBreakResume.disabled = true;
+                buttonBreakResume.innerText = "Take Break";
+                buttonClockInOut.innerText = "Clock Out";
+                buttonClockInOut.style.cssText +=
+                  "background-color: #9932CC; color: #FFF;";
+              } else if (document.getElementById("btn-break-resume")) {
+                buttonClockInOut.innerText = "Clock Out";
+                buttonClockInOut.style.cssText +=
+                  "background-color: #9932CC; color: #FFF;";
+              }
+            } else {
+              signInMsgSpan && signInMsgSpan.remove();
+              renderSignInErrors(data.message);
+              disableCreateUserSubmitButton(e);
+              localStorage.removeItem("loading");
             }
-
-            if (
-              document.getElementById("td-event-break-end") &&
-              document.getElementById("td-event-break-end").innerText
-            ) {
-              buttonBreakResume.disabled = true;
-              buttonBreakResume.innerText = "Take Break";
-              buttonClockInOut.innerText = "Clock Out";
-              buttonClockInOut.style.cssText +=
-                "background-color: #9932CC; color: #FFF;";
-            } else if (document.getElementById("btn-break-resume")) {
-              buttonClockInOut.innerText = "Clock Out";
-              buttonClockInOut.style.cssText +=
-                "background-color: #9932CC; color: #FFF;";
-            }
-          } else {
-            signInMsgSpan && signInMsgSpan.remove();
-            renderSignInErrors(data.message);
-            disableCreateUserSubmitButton(e);
-          }
-        });
+          });
+        }
     } else {
       signInMsgSpan && signInMsgSpan.remove();
       const message = "Please provide a valid email and password";
